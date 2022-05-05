@@ -1,0 +1,143 @@
+.boton{
+    margin-top: 200px;
+}
+
+.row-image{   
+    margin-top: calc(50% - 40% - 300.5px);
+    position: relative;
+    width: 1980px;
+    height: 490px;
+    left: calc(50% - 1980px/2 - 14.5px);
+    top: calc(50% - 490px/2 - 267.5px);
+    background-image: url("../../../../../assets/imagenes/mamaCortada.jpg");
+    background-position: center -80px;    
+}
+
+.operation-section{
+    background-color: #EDEDED;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container{
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-search{
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+
+.btn-new{
+    text-align: center;
+}
+
+.btn-new > a{
+    background-color: #FB9130;
+    border-radius: 100px;
+    color: #FFFFFF;
+    width: 100%;
+    max-height: 40px;
+}
+
+.row-container{
+    padding-top: 3px;
+    margin-top: 10px;
+}
+
+.thead-turnos{
+    background:#222222;
+    color: white;
+
+}
+
+.btn-detalles{
+    background-color: #FB9130;
+    
+}
+
+.btn-table{
+    border-radius: 100px;
+    color: #FFFFFF;
+    float: right;
+    margin-top: 4px;
+}
+.btn-editar{
+    background-color: #222222;
+    margin-right: 5px;
+}
+
+.tabla-turnos{
+    margin: auto;
+    width: 70%;
+}
+
+
+
+@media (max-width: 992px) {
+    .btn-new{
+        padding: 0px;
+    }
+
+    .panel-footer > button{
+        margin-top: 10px;
+        margin-bottom: 6px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .box-card-parent{
+        float: none;
+        margin-left: auto;
+        margin-right: auto; 
+        max-width: 415px;
+        min-width: 280px;
+    }
+    .btn-new{
+        margin-top: 8px;
+    }
+    .btn-new > a{
+        width: 40%;
+    }
+
+    .tabla-turnos{
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .card-footer{
+        margin-top: 15px;
+    }
+
+}
+
+@media (max-width: 576px){
+    .input-search{
+        margin-bottom: 8px;
+    }
+
+    .operation-section{
+        margin: 5px;
+    }
+}
+
+@media (max-width: 367px){
+    .btn-new > a{
+        width: 60%;
+    }
+}
+
+@media (max-width: 425px){
+    .btn-table{
+        margin-top: 3px;
+        margin-bottom: 3px;
+       font-size: 10px;
+       width: 100%;
+       float: none;
+    }
+}

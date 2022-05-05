@@ -1,0 +1,95 @@
+.row-image{   
+    margin-top: calc(50% - 40% - 300.5px);
+    position: relative;
+    width: 1980px;
+    height: 490px;
+    left: calc(50% - 1980px/2 - 14.5px);
+    top: calc(50% - 490px/2 - 267.5px);
+    background-image: url("../../../../assets/imagenes/mamaCortada.jpg");
+    background-position: center -80px;    
+}
+
+.service-image-icon{
+    max-width:75px;
+}
+
+.container{
+    padding-top: 20px;
+}
+
+.box-part{
+    background:#FFF;
+    padding:60px 10px;
+    margin:30px 0px;
+
+
+
+    border: 1px solid #FB9130;
+	border-radius: 25px;
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+    
+}
+
+.box-part:hover{
+    background-color: #222222;
+    color: #FB9130;
+}
+
+.link-box-part{
+    text-decoration: none;
+    color:#222222;
+}
+
+.text{
+    margin:20px 0px;
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 462px) {
+    .box-part{
+        max-width: 150px;
+        max-height: 150px;
+        padding-top: 20px;
+    }
+
+    .container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .text{
+        font-size: 13px;
+    }
+
+}
+@media(max-width:350px){
+    .text{
+        font-size: 9px;
+    }
+}
+@media (min-width: 462px) {
+    .box-part{
+        max-width: 200px;
+        max-height: 200px;
+        padding-top: 40px;
+    }
+
+    .container{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+}
+
+
+@media (min-width: 992px) {
+    .container{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+}

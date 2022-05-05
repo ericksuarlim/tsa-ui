@@ -1,0 +1,202 @@
+.boton{
+    margin-top: 200px;
+}
+
+.row-image{   
+    margin-top: calc(50% - 40% - 300.5px);
+    position: relative;
+    width: 1980px;
+    height: 490px;
+    left: calc(50% - 1980px/2 - 14.5px);
+    top: calc(50% - 490px/2 - 267.5px);
+    background-image: url("../../../../../assets/imagenes/mamaCortada.jpg");
+    background-position: center -80px;    
+}
+
+.operation-section{
+    background-color: #EDEDED;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container{
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-search{
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+
+.btn-new{
+    text-align: center;
+}
+
+.btn-new > a{
+    background-color: #FB9130;
+    border-radius: 100px;
+    color: #FFFFFF;
+    width: 100%;
+    max-height: 40px;
+}
+
+.row-container{
+    padding-top: 3px;
+    margin-top: 10px;
+}
+
+.conductores-secction{
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+}
+
+.box-card{
+    border: 1px solid #EDEDED; 
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 8px; 
+}
+
+.col-img{
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    padding: 0px;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    /* flex: 1;
+    align-items: center;
+     */
+}
+
+.panel-heading{
+    text-align: center;
+    border-bottom: 1px solid #EDEDED;
+}
+
+.panel-heading> h3{
+    margin-top: 8px;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.panel-body{
+    display: flex;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    
+}
+
+.panel-body-main{
+    padding-left: 10px;
+    
+}
+
+.panel-body > ul >li{
+    list-style-type: none;
+   
+}
+
+.attribute{
+    display: block;
+    font-weight: bold;
+    color: #4E4E4E;
+    font-style: italic;
+    
+}
+
+.value{
+    display: block;
+    padding-left: 25px;
+}
+
+.atributes-col{
+    padding-left: 12px;
+}
+
+.panel-footer > button{
+    float: right;
+    margin-left: 8px;
+    margin-bottom: 6px; 
+    width: 80px; 
+    padding-top: 1px;
+}
+
+.btn-editar{
+    background-color: #FB9130;
+}
+
+.btn-borrar{
+    background-color: red;
+}
+
+.btn{
+    color: white;
+    border-radius: 100px;
+    max-height: 30px;
+    padding-top: 4px;
+}
+
+.col-center{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+@media (max-width: 992px) {
+    .btn-new{
+        padding: 0px;
+    }
+
+    .panel-footer > button{
+        margin-top: 10px;
+        margin-bottom: 6px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .box-card-parent{
+        float: none;
+        margin-left: auto;
+        margin-right: auto; 
+        max-width: 415px;
+        min-width: 280px;
+    }
+    .btn-new{
+        margin-top: 8px;
+    }
+    .btn-new > a{
+        width: 40%;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .card-footer{
+        margin-top: 15px;
+    }
+
+}
+
+@media (max-width: 576px){
+    .input-search{
+        margin-bottom: 8px;
+    }
+
+    .operation-section{
+        margin: 5px;
+    }
+}
+
+@media (max-width: 367px){
+    .btn-new > a{
+        width: 60%;
+    }
+}

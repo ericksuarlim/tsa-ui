@@ -1,0 +1,30 @@
+.btn-cancelar{
+    background: #FB9130;
+    
+}
+
+.btn-confirmar{
+    background: #EC0000;
+    
+}
+
+.btn{
+    border-radius: 100px;
+    color: white;
+}
+
+.modal-body{
+    text-align: center;
+    padding-top: 7px;
+}
+
+.modal-header{
+    justify-content: center;
+    border: none;
+}
+
+.modal-footer{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+

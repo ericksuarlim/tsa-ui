@@ -1,0 +1,40 @@
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Turno } from '../modelos/turno';
+
+const httpOptions = {
+  headers : new HttpHeaders({
+    'Content-Type':'application/json'
+  })
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ServicioTurnosService {
+
+  baseUrl: string = "http://localhost:5000/turnos";
+
+  constructor(private http:HttpClient) { }
+
+  ObtenerTurnos(): Observable<Turno[]>{
+    return this.http.get<Turno[]>(this.baseUrl);
+  }
+
+  CrearTurno(turno:Turno):Observable<Turno>{
+    return this.http.post<any>(this.baseUrl, turno, httpOptions);
+  }
+
+  ObtenerTurno(id_turno:number):Observable<Turno>{
+    return this.http.get<Turno>(this.baseUrl+"/"+id_turno);
+  }
+    
+  EditarTurno(turno:Turno):Observable<any>{
+    return this.http.put(`${this.baseUrl}/${turno.id_turno}`, turno, httpOptions );
+  }
+
+  EliminarTurno(id_turno:number):Observable<any>{
+    return this.http.delete<any>(this.baseUrl + "/" + id_turno)
+  }
+}

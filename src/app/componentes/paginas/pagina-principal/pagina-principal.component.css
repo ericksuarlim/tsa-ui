@@ -1,0 +1,169 @@
+.row-image{   
+    margin-top: calc(50% - 40% - 300.5px);
+    position: relative;
+    width: 1980px;
+    height: 490px;
+    left: calc(50% - 1980px/2 - 14.5px);
+    top: calc(50% - 490px/2 - 267.5px);
+    background-image: url("../../../../assets/imagenes/macheteroCortada.jpg");
+    background-position: center -80px;    
+}
+
+
+.van-image-icon{
+    max-width: 45px;
+}
+
+.sindicatos{
+    margin-top: 15px;
+}
+
+.inner-box{
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.upper-box{
+   padding-bottom: -4;
+  
+}
+
+.inner-box > .lower-box > h3{
+    margin-top: 0px;
+    padding-bottom: 7px;
+    margin-bottom: 0px;
+
+}
+
+.lower-box > h3 > a:hover{
+	text-decoration: none;
+}
+
+
+.services-block-address, .services-block-celphone{
+    font-size: 12px;
+    padding-top: -5px;
+    margin-top: 0px;
+    color: #4E4E4E
+}
+
+.services-block-address{
+    margin-bottom: 5px;
+}
+
+.card-title{
+
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 47px;
+}
+
+.info > ul> li{
+  float: left;
+  text-decoration: none;
+  margin-right: 12px;
+  list-style: none;
+  font-size: 13px;
+    
+}
+.info ul{
+  padding-left: 10px;
+  font-weight: bold;
+
+}
+.caption{
+  font-weight: bold;
+  color: #FB9130;
+}
+
+.info{
+  display: flex;
+  margin-bottom: -2px;
+  margin-top: 30px;
+}
+
+
+.vgr-cards .card {
+    display: flex;
+    flex-flow: wrap;
+    flex: 100%;
+    margin-bottom: 40px;
+    padding: 12px;
+    background-color: #F2F2F2;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.34); 
+    max-width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    min-height: 200px;
+}
+
+.vgr-cards .card-img-body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vgr-cards .card-img {
+  width: 70%;
+  max-height: 150px;
+  position: absolute;
+  border-radius: 10px;
+  text-align: center;
+}
+
+  .vgr-cards .card-body {
+    flex: 2;
+    padding: 0 10px 5px 20px;
+
+  }
+
+  .card-text{
+    padding-left: 10px;
+    font-size: 15px;
+  }
+
+  .vgr-cards .card:nth-child(even) .card-img-body {
+    order: 2;
+  }
+
+  .vgr-cards .card:nth-child(even) .card-body {
+    padding-left: 0;
+    padding-right: 1.25rem;
+  }
+
+
+
+  @media (max-width: 576px) {
+
+    .vgr-cards .card {
+        display: block;
+
+      }
+
+    .vgr-cards .card-img-body {
+      width: 100%;
+      height: 200px;
+      margin-bottom: -25px;
+    }
+
+    .vgr-cards .card-body {
+        padding: 20px;
+      }
+
+  }
+
+  @media (max-width: 1140px) {
+    .vgr-cards .card-img {
+      margin: 0;
+      transform: none;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  
+  

@@ -1,0 +1,58 @@
+.logo-image-santana{
+    width: 45px;
+    margin-top: -15px;
+    margin-right: 10px;
+}
+
+.title-main{
+    font-size: 15px;
+    color: #4E4E4E;
+    font: bold;
+    text-decoration: none;
+    padding-top: 25px;
+}
+
+.title-main:hover{
+	color:#ff8201;
+	opacity:1;
+	text-decoration: none;
+}
+
+.main-header .header-top .ubication-icon, .cellphone-icon, .office-icon{
+	max-width: 18px;
+    margin-right: 5px;
+}
+
+.clearfix{
+    margin-bottom: 0px;
+}
+
+.top-right > ul > li{
+    margin-right: 60px;
+}
+
+.button-image-toggler{
+    max-width: 15px;
+}
+
+.hidden-bar-opener{
+    margin-right: 10px;
+}
+
+@media (max-width: 427px){
+    .title-main{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 882px){
+    .top-right > ul > li{
+        margin-right: 18px;
+    }
+}
+
+@media (max-width: 932px){
+    .top-right > .clearfix{
+        padding: 0px;
+    }
+}

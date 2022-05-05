@@ -1,0 +1,105 @@
+<section class="main-image-page">
+    <div class="row-image">
+    </div>
+</section>
+
+<section class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">NUEVO CONDUCTOR</h3>
+        </div>
+        <div class="col-sm-12">
+            <form class="formulario-conductores" (ngSubmit)="CrearConductor()">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12">
+                            <h1 for="carnet" class="input-title">Carnet</h1>
+                            <input type="number" name="carnet" class="input-form-conductores form-control" [(ngModel)]="conductor.carnet" (ngModelChange)="ValidarCampos('verificar')"  placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.carnet" class="text-danger">{{mensajeErrorValidacion.carnet}}</div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="nombre" class="input-title">Nombres</h1>
+                            <input type="text"  name="nombre" class="input-form-conductores form-control" [(ngModel)]="conductor.nombre" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.nombre" class="text-danger">{{mensajeErrorValidacion.nombre}}</div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="apellido_paterno" class="input-title">Apellido Paterno</h1>
+                            <input type="text"  name="apellido_paterno" class="input-form-conductores form-control" [(ngModel)]="conductor.apellido_paterno" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.apellido_paterno" class="text-danger">{{mensajeErrorValidacion.apellido_paterno}}</div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="apellido_materno" class="input-title">Apellido Materno</h1>
+                            <input type="text"  name="apellido_materno" class="input-form-conductores form-control" [(ngModel)]="conductor.apellido_materno" placeholder="No Requerido" value required>
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="ciudad" class="input-title">Ciudad</h1>
+                            <select name="ciudad" class="form-control" [(ngModel)]="conductor.ciudad" (ngModelChange)="ValidarCampos('verificar')"  value required>
+                                <option>Santa Ana</option>
+                                <option>Trinidad</option>
+                            </select>
+                            <div *ngIf="!validacion.ciudad" class="text-danger">{{mensajeErrorValidacion.ciudad}}</div>                    
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12">
+                            <h1 for="fecha_nacimiento" class="input-title">Fecha Nacimiento</h1>
+                            <input type="date"  name="fecha_nacimiento" class="input-form-conductores form-control" [(ngModel)]="conductor.fecha_nacimiento" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.fecha_nacimiento" class="text-danger">{{mensajeErrorValidacion.fecha_nacimiento}}</div>   
+                        </div>
+                          
+                        <div class="row exception">
+
+                        
+                            <div class="col-sm-6">
+                                <h1 for="id_auto_1" class="input-title">Placa Auto 1</h1>
+                                <input type="text"  name="id_auto_1" class="input-form-conductores form-control" [(ngModel)]="conductor.id_auto_1" placeholder="No Requerido" value required>
+                            </div>
+    
+                            <div class="col-sm-6">
+                                <h1 for="id_auto_2" class="input-title">Placa Auto 2</h1>
+                                <input type="text"  name="id_auto_2" class="input-form-conductores form-control"  [(ngModel)]="conductor.id_auto_2" placeholder="No Requerido" value required>
+                            </div>
+                        </div>
+
+         
+                        <div class="col-sm-12">
+                            <h1 for="id_sindicato" class="input-title">Sindicato</h1>
+                            <select name="id_sindicato" class="form-control"  [(ngModel)]="conductor.id_sindicato" (ngModelChange)="ValidarCampos('verificar')" value required>
+                                <option>Yacuma</option>
+                                <option>1º Mayo</option>
+                                <option>12 de Marzo</option>
+                                <option>Movima</option>
+                            </select> 
+                            <div *ngIf="!validacion.id_sindicato" class="text-danger">{{mensajeErrorValidacion.id_sindicato}}</div>   
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="grupo" class="input-title">Grupo</h1>
+                            <input type="text"  name="grupo" class="input-form-conductores form-control" [(ngModel)]="conductor.grupo" (ngModelChange)="ValidarCampos('verificar')" placeholder="Ej Turno Santa Ana"  value required>
+                            <div *ngIf="!validacion.grupo" class="text-danger">{{mensajeErrorValidacion.grupo}}</div>   
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="activo" class="input-title">Estado</h1>
+                            <select name="activo" class="form-control" [(ngModel)]="activo" (ngModelChange)="ValidarCampos('verificar')" value required>
+                                <option>Activo</option>
+                                <option>Desocupado</option>
+                            </select> 
+                            <div *ngIf="!validacion.activo" class="text-danger">{{mensajeErrorValidacion.activo}}</div>                      
+                        </div>
+
+                    </div>
+                </div>
+    
+                <div class="row section-bottons">
+                    <div class="col-sm-12">
+                        <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                        <input *ngIf="conductorNuevo" type="submit" class="btn button-registrar" value="Registrar">
+                        <input *ngIf="!conductorNuevo" class="btn button-registrar" value="Actualizar" (click)="EditarConductor()">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
