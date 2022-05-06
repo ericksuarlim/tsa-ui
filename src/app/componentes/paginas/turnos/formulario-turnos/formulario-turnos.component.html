@@ -9,100 +9,11 @@
             <h3 class="title-page">REGISTRO DE TURNOS</h3>
         </div>
         <div class="col-sm-12">
-            <!-- <form class="formulario-conductores" (ngSubmit)="CrearConductor()">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="col-sm-12">
-                            <h1 for="carnet" class="input-title">Carnet</h1>
-                            <input type="number" name="carnet" class="input-form-conductores form-control" [(ngModel)]="conductor.carnet" (ngModelChange)="ValidarCampos('verificar')"  placeholder="Requerido" value required>
-                            <div *ngIf="!validacion.carnet" class="text-danger">{{mensajeErrorValidacion.carnet}}</div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h1 for="nombre" class="input-title">Nombres</h1>
-                            <input type="text"  name="nombre" class="input-form-conductores form-control" [(ngModel)]="conductor.nombre" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
-                            <div *ngIf="!validacion.nombre" class="text-danger">{{mensajeErrorValidacion.nombre}}</div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h1 for="apellido_paterno" class="input-title">Apellido Paterno</h1>
-                            <input type="text"  name="apellido_paterno" class="input-form-conductores form-control" [(ngModel)]="conductor.apellido_paterno" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
-                            <div *ngIf="!validacion.apellido_paterno" class="text-danger">{{mensajeErrorValidacion.apellido_paterno}}</div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h1 for="apellido_materno" class="input-title">Apellido Materno</h1>
-                            <input type="text"  name="apellido_materno" class="input-form-conductores form-control" [(ngModel)]="conductor.apellido_materno" placeholder="No Requerido" value required>
-                        </div>
-                        <div class="col-sm-12">
-                            <h1 for="ciudad" class="input-title">Ciudad</h1>
-                            <select name="ciudad" class="form-control" [(ngModel)]="conductor.ciudad" (ngModelChange)="ValidarCampos('verificar')"  value required>
-                                <option>Santa Ana</option>
-                                <option>Trinidad</option>
-                            </select>
-                            <div *ngIf="!validacion.ciudad" class="text-danger">{{mensajeErrorValidacion.ciudad}}</div>                    
-                        </div>
-                    </div>
-        
-                    <div class="col-sm-12 col-md-6">
-                        <div class="col-sm-12">
-                            <h1 for="fecha_nacimiento" class="input-title">Fecha Nacimiento</h1>
-                            <input type="date"  name="fecha_nacimiento" class="input-form-conductores form-control" [(ngModel)]="conductor.fecha_nacimiento" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
-                            <div *ngIf="!validacion.fecha_nacimiento" class="text-danger">{{mensajeErrorValidacion.fecha_nacimiento}}</div>   
-                        </div>
-                          
-                        <div class="row exception">
-
-                        
-                            <div class="col-sm-6">
-                                <h1 for="id_auto_1" class="input-title">Placa Auto 1</h1>
-                                <input type="text"  name="id_auto_1" class="input-form-conductores form-control" [(ngModel)]="conductor.id_auto_1" placeholder="No Requerido" value required>
-                            </div>
-    
-                            <div class="col-sm-6">
-                                <h1 for="id_auto_2" class="input-title">Placa Auto 2</h1>
-                                <input type="text"  name="id_auto_2" class="input-form-conductores form-control"  [(ngModel)]="conductor.id_auto_2" placeholder="No Requerido" value required>
-                            </div>
-                        </div>
-
-         
-                        <div class="col-sm-12">
-                            <h1 for="id_sindicato" class="input-title">Sindicato</h1>
-                            <select name="id_sindicato" class="form-control"  [(ngModel)]="conductor.id_sindicato" (ngModelChange)="ValidarCampos('verificar')" value required>
-                                <option>Yacuma</option>
-                                <option>1º Mayo</option>
-                                <option>12 de Marzo</option>
-                                <option>Movima</option>
-                            </select> 
-                            <div *ngIf="!validacion.id_sindicato" class="text-danger">{{mensajeErrorValidacion.id_sindicato}}</div>   
-                        </div>
-                        <div class="col-sm-12">
-                            <h1 for="grupo" class="input-title">Grupo</h1>
-                            <input type="text"  name="grupo" class="input-form-conductores form-control" [(ngModel)]="conductor.grupo" (ngModelChange)="ValidarCampos('verificar')" placeholder="Ej Turno Santa Ana"  value required>
-                            <div *ngIf="!validacion.grupo" class="text-danger">{{mensajeErrorValidacion.grupo}}</div>   
-                        </div>
-                        <div class="col-sm-12">
-                            <h1 for="activo" class="input-title">Estado</h1>
-                            <select name="activo" class="form-control" [(ngModel)]="activo" (ngModelChange)="ValidarCampos('verificar')" value required>
-                                <option>Activo</option>
-                                <option>Desocupado</option>
-                            </select> 
-                            <div *ngIf="!validacion.activo" class="text-danger">{{mensajeErrorValidacion.activo}}</div>                      
-                        </div>
-
-                    </div>
-                </div>
-    
-                <div class="row section-bottons">
-                    <div class="col-sm-12">
-                        <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
-                        <input *ngIf="conductorNuevo" type="submit" class="btn button-registrar" value="Registrar">
-                        <input *ngIf="!conductorNuevo" class="btn button-registrar" value="Actualizar" (click)="EditarConductor()">
-                    </div>
-                </div>
-            </form> -->
             <form class="formulario-conductores" name="FormularioTurnos">
                 <div class="row operation-section">
                     <div class="col-sm-2">
                         <h5 for="grupo" class="input-operation-section-title">Grupo</h5>
-                        <input type="text" name="grupo" class="input-search form-control input-operation-section" [(ngModel)]="turno.grupo" (ngModelChange)="ValidarTurno('verificar')" placeholder="Ej. Turno Movima">
+                        <input type="text" name="grupo" class="input-search form-control input-operation-section" [(ngModel)]="turno.grupo" (ngModelChange)="ValidarTurno('verificar')" >
                         <div *ngIf="!validacion.grupo" class="text-danger">{{mensajeErrorValidacion.grupo}}</div>  
                     </div>
                     <div class="col-sm-2">
@@ -110,21 +21,16 @@
                         <input type="date" name="fecha" class="input-search form-control input-operation-section" [(ngModel)]="turno.fecha" (ngModelChange)="ValidarTurno('verificar')" >
                         <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>   
                     </div>
-                    <div class="col-sm-3">
-                        <button class="btn btn-formulario-turnos btn-registrar-manualmente"  [disabled]="!ValidarTurno('registrar')" (click)="CrearTurno()">Registrar Manualmente</button>
-                    </div>
-                    <div class="col-sm-2">
-                        <!-- <button class="btn btn-formulario-turnos btn-turno-anterior">Turno Anterior</button> -->
-                    </div>
-                    <div class="col-sm-3">
-                        <button class="btn btn-confirmar" (click)="CrearViajes()">Confirmar Turnos</button>
+                    <div class="col-sm-8">
+                        <button class="btn btn-confirmar" (click)="CrearTurno()">Confirmar Turnos</button>
+                        <button class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
                     </div>
                 </div>
-                <div *ngIf="registroManual" class="col-12 turnos-section">
+                <div class="col-12 turnos-section">
                     <div class="row operation-turnos-section">
                         <div class="col-sm-3">
-                            <h5 for="grupo" class="input-operation-section-title"># Turno</h5>
-                            <input type="text" name="grupo" class="input-search form-control input-operation-section" [(ngModel)]="formulario.turnoConductor" placeholder="Requerido">
+                            <h5 for="turno" class="input-operation-section-title"># Turno</h5>
+                            <input type="text" name="turno" class="input-search form-control input-operation-section" [(ngModel)]="formulario.turnoConductor" placeholder="Requerido">
                         </div>
                         <div class="col-sm-7">
                             <h5 for="conductor" class="input-operation-section-title" >Nombres</h5>
@@ -134,7 +40,7 @@
                             </select>
                         </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-agregar" (click)="AgregarViaje()">Agregar</button>
+                            <button class="btn btn-agregar" (click)="AgregarViaje()" [disabled]="!botonAgregarHabilitado">Agregar</button>
                         </div>
                     </div>
                     <div class="col-12">
@@ -154,12 +60,13 @@
                                 <tr *ngFor="let item of viajes">
                                     <td class="col-2">{{item.numero_turno}}</td>
                                     <td class="col-6 text-center">{{getConductorNombre(item.id_carnet_conductor)}}</td>
-                                    <td class="col-4"><button (click)="BorrarTurno(item.id_carnet_conductor)">Borrar</button></td>
+                                    <td class="col-4"><button class="btn btn-borrar-viaje" (click)="BorrarTurno(item.id_carnet_conductor)">Borrar</button></td>
                                 </tr>
                             </tbody>
                           </table>
                     </div>
                 </div>
+                <div *ngIf="!validacion.viajes" class="text-danger">{{mensajeErrorValidacion.viajes}}</div>  
             </form>
         </div>
     </div>

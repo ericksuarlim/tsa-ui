@@ -25,6 +25,7 @@
     background-color: #EDEDED;
     border-radius: 3px;
     padding: 10px;
+    margin-top: 20px;
 }
 
 .input-operation-section-title{
@@ -51,15 +52,37 @@ margin-bottom: 3px;
     margin-top: 22px;
     background-color: #FB9130;
     border-radius: 100px;
+    margin-left: 7px;
     color: white;
     float: right;
 }
+
+.btn-cancelar{
+    margin-top: 22px;
+    background-color: white;
+    border-radius: 100px;
+    float: right;
+    border: 1px solid #FB9130;
+    background-color: #FFFFFF;
+    
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.btn-borrar-viaje{
+    background-color: #FB9130;
+    color: white;
+    border-radius: 100px;
+}
+
 .turnos-section{
     width: 90%;
     margin: auto;
     border: 4px solid #EDEDED;
     border-radius: 3px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .operation-turnos-section{

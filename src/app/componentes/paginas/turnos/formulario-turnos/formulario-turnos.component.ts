@@ -14,15 +14,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario-turnos.component.css']
 })
 export class FormularioTurnosComponent implements OnInit {
-
-  public items: Array<string>;
-  private draggedIndex: number;
-
-  registroManual: boolean =false;
-  botonRegistroManual: boolean =false;
-
   viaje: Viaje = new Viaje();
   turno: Turno = new Turno();
+  botonAgregarHabilitado: boolean = true;
 
   conductores: Conductor[];
   viajes: Viaje[] = [];
@@ -30,23 +24,23 @@ export class FormularioTurnosComponent implements OnInit {
   formulario={
     turnoConductor: null,
     carnetConductor: null,
-    grupoConductores:"",
   }
 
   mensajeErrorValidacion={
     fecha: "",
-    grupo: ""
+    grupo: "",
+    viajes: ""
   }
 
   validacion={
     fecha: false,
-    grupo: false
+    grupo: false,
+    viajes: false
   }
 
   constructor(
     private conductoresService:ServicioConductoresService, 
     private servicioTurnos:ServicioTurnosService,
-    private servicioViajes:ServicioViajesService,
     private router: Router,
 
   ) { }
@@ -55,44 +49,21 @@ export class FormularioTurnosComponent implements OnInit {
     this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
   }
 
-  CrearViajes(){
-    console.log("Estos son los viajes",this.viajes);
-    this.servicioViajes.CrearViajes(this.viajes).subscribe(r=>{
-      this.router.navigateByUrl("//turnos");
-    });
-  }
-
-  allowDrop($event): void {
-    $event.preventDefault();
- }
-
-  
-  onDragStart(index): void {
-    this.draggedIndex = index;
-  }
-
-  onDrop($event, index): void {
-    $event.preventDefault();
-    const item = this.items[this.draggedIndex];
-    this.items.splice(this.draggedIndex, 1);
-    this.items.splice(index, 0, item);
-    this.draggedIndex = -1;
-  }
-
   CrearTurno(){
     if(this.ValidarTurno('registrar'))
-    {
-      this.registroManual = true;
-      this.turno.id_sindicato = null;
-      this.servicioTurnos.CrearTurno(this.turno).subscribe(()=>{this.botonRegistroManual = false;});
-
+    { 
+      this.servicioTurnos.CrearTurno(this.turno).subscribe(result=>{
+        this.router.navigateByUrl("/turnos");
+      }); 
     }
   }
 
   ValidarTurno(action:string){
     if(this.turno.fecha === "" || (action=="registrar" && this.turno.fecha == undefined)){this.mensajeErrorValidacion.fecha="Fecha necesaria"; this.validacion.fecha = false}else if(this.turno.fecha < moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha="Fecha invalida"; this.validacion.fecha = false}else{this.validacion.fecha =true};
     if(this.turno.grupo === "" || (action=="registrar" && this.turno.grupo == undefined)){this.mensajeErrorValidacion.grupo="Grupo necesario"; this.validacion.grupo = false}else{this.validacion.grupo =true};
-    const response = this.validacion.fecha && this.validacion.grupo;
+    if( this.turno.viajes.length < 1 ){this.mensajeErrorValidacion.viajes="Necesita registrar al menos un viaje"; this.validacion.viajes = false}else if(this.turno.viajes.filter((v)=>{return v.numero_turno == this.formulario.turnoConductor}).length>1){this.mensajeErrorValidacion.viajes="El turno ingresado ya existe"; this.botonAgregarHabilitado=false ;this.validacion.viajes = false}else{this.validacion.viajes =true; this.botonAgregarHabilitado=true};
+    
+    const response = this.validacion.fecha && this.validacion.grupo && this.validacion.viajes;
     return response;
   }
 
@@ -100,14 +71,17 @@ export class FormularioTurnosComponent implements OnInit {
     var turnoAgregar = new Viaje();
     turnoAgregar.id_carnet_conductor =  this.formulario.carnetConductor;
     turnoAgregar.numero_turno = this.formulario.turnoConductor;
-    turnoAgregar.estado=null;
-    turnoAgregar.hora_salida="10:50";
-    turnoAgregar.hora_llegada=null;
-    turnoAgregar.aporte=null;
+    turnoAgregar.estado="";
+    turnoAgregar.hora_salida="";
+    turnoAgregar.hora_llegada="";
+    turnoAgregar.aporte="";
     turnoAgregar.id_turno = null;
     this.viajes.push(turnoAgregar);
+    this.turno.viajes.push(turnoAgregar);
+    this.ValidarTurno('verificar');
     this.formulario.carnetConductor = "";
     this.formulario.turnoConductor = "";
+    
   }
 
   getConductorNombre(carnet:Number){
@@ -118,7 +92,15 @@ export class FormularioTurnosComponent implements OnInit {
   BorrarTurno(IdABorrar:Number){
     this.viajes.forEach((value,index)=>{
       if(value.id_carnet_conductor==IdABorrar) this.viajes.splice(index,1);
-  });
+    });
+    this.turno.viajes.forEach((value,index)=>{
+      if(value.id_carnet_conductor==IdABorrar) this.turno.viajes.splice(index,1);
+    });
+    this.ValidarTurno('verificar');
+  }
+
+  Cancelar(){
+    this.router.navigateByUrl("/turnos");
   }
 
 }
