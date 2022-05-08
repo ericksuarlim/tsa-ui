@@ -22,4 +22,8 @@ export class PrincipalTurnosComponent implements OnInit {
     this.servicioTurnos.ObtenerTurnos().subscribe(turnos =>{this.turnos= turnos});
   }
 
+  editarTurno(id_turno: number){
+    this.router.navigate(["/turnos/formulario"], { queryParams: { id_turno } });
+  }
+
 }

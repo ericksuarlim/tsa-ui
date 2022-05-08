@@ -6,7 +6,7 @@ import { Turno } from 'src/app/modelos/turno';
 import { ServicioConductoresService } from 'src/app/servicios/servicio-conductores.service';
 import { ServicioTurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-turnos',
@@ -20,6 +20,7 @@ export class FormularioTurnosComponent implements OnInit {
 
   conductores: Conductor[];
   viajes: Viaje[] = [];
+  turnoNuevo: boolean;
 
   formulario={
     turnoConductor: null,
@@ -42,21 +43,40 @@ export class FormularioTurnosComponent implements OnInit {
     private conductoresService:ServicioConductoresService, 
     private servicioTurnos:ServicioTurnosService,
     private router: Router,
-
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    const id_turno = this.route.snapshot.queryParams["id_turno"];
+    this.turnoNuevo = id_turno == undefined;
+    if(!this.turnoNuevo){      
+      this.servicioTurnos.ObtenerTurno(id_turno).subscribe((turno)=>{
+        this.viajes = turno.viajes;
+        console.log(this.viajes);
+        this.turno = turno;
+        
+      });
+    }
     this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
   }
 
   CrearTurno(){
     if(this.ValidarTurno('registrar'))
     { 
+
       this.servicioTurnos.CrearTurno(this.turno).subscribe(result=>{
         this.router.navigateByUrl("/turnos");
       }); 
     }
   }
+
+  EditarTurno(){
+    console.log("Turno",this.turno)
+    this.servicioTurnos.EditarTurno(this.turno).subscribe(result=>{
+      this.router.navigateByUrl("/turnos");
+    });
+  }
+
 
   ValidarTurno(action:string){
     if(this.turno.fecha === "" || (action=="registrar" && this.turno.fecha == undefined)){this.mensajeErrorValidacion.fecha="Fecha necesaria"; this.validacion.fecha = false}else if(this.turno.fecha < moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha="Fecha invalida"; this.validacion.fecha = false}else{this.validacion.fecha =true};
@@ -76,7 +96,6 @@ export class FormularioTurnosComponent implements OnInit {
     turnoAgregar.hora_llegada="";
     turnoAgregar.aporte="";
     turnoAgregar.id_turno = null;
-    this.viajes.push(turnoAgregar);
     this.turno.viajes.push(turnoAgregar);
     this.ValidarTurno('verificar');
     this.formulario.carnetConductor = "";
@@ -90,9 +109,9 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   BorrarTurno(IdABorrar:Number){
-    this.viajes.forEach((value,index)=>{
-      if(value.id_carnet_conductor==IdABorrar) this.viajes.splice(index,1);
-    });
+    // this.viajes.forEach((value,index)=>{
+    //   if(value.id_carnet_conductor==IdABorrar) this.viajes.splice(index,1);
+    // });
     this.turno.viajes.forEach((value,index)=>{
       if(value.id_carnet_conductor==IdABorrar) this.turno.viajes.splice(index,1);
     });

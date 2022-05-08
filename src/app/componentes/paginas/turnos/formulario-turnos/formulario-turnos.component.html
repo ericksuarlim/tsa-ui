@@ -22,7 +22,9 @@
                         <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>   
                     </div>
                     <div class="col-sm-8">
-                        <button class="btn btn-confirmar" (click)="CrearTurno()">Confirmar Turnos</button>
+                        <button *ngIf="turnoNuevo"  class="btn btn-confirmar" (click)="CrearTurno()">Confirmar Turno</button>
+                        <button *ngIf="!turnoNuevo"  class="btn btn-confirmar" (click)="EditarTurno()">Actualizar Turno</button>
+
                         <button class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
                     </div>
                 </div>
@@ -57,7 +59,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of viajes">
+                                <tr *ngFor="let item of turno.viajes">
                                     <td class="col-2">{{item.numero_turno}}</td>
                                     <td class="col-6 text-center">{{getConductorNombre(item.id_carnet_conductor)}}</td>
                                     <td class="col-4"><button class="btn btn-borrar-viaje" (click)="BorrarTurno(item.id_carnet_conductor)">Borrar</button></td>
