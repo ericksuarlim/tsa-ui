@@ -14,6 +14,8 @@ import { ModalEliminarComponent } from './componentes/modals/modal-eliminar/moda
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrincipalTurnosComponent } from './componentes/paginas/turnos/principal-turnos/principal-turnos.component';
 import { FormularioTurnosComponent } from './componentes/paginas/turnos/formulario-turnos/formulario-turnos.component';
+import { DetallesTurnoComponent } from './componentes/paginas/turnos/detalles-turno/detalles-turno.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FormularioTurnosComponent } from './componentes/paginas/turnos/formular
     FormularioChoferesComponent,
     ModalEliminarComponent,
     PrincipalTurnosComponent,
-    FormularioTurnosComponent
+    FormularioTurnosComponent,
+    DetallesTurnoComponent
   ],
   imports: [
     BrowserModule,

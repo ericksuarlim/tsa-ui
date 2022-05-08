@@ -1,0 +1,48 @@
+<section class="main-image-page">
+    <div class="row-image">
+    </div>
+</section>
+
+<section class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">DETALLES DEL TURNO</h3>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-12 turnos-section">
+
+                <div class="col-12">
+                    <h1 class="title-table-viajes">PIZARRA DE TURNOS</h1>
+                    <h5 class="fecha-table-viajes" >{{FormatoFecha()}}</h5>
+                </div>
+                <div class="col-12">
+                     <table class="table table-striped">
+
+                        <thead>
+                            <tr>
+                                <th class="col-1" scope="col">#</th>
+                                <th class="col-2 text-center" scope="col">Nombre</th>
+                                <th class="col-2 text-center" scope="col">Estado</th> 
+                                <th class="col-2 text-center" scope="col">Hora Salida</th>
+                                <th class="col-2 text-center" scope="col">Hora Llegada</th>
+                                <th class="col-1 text-center" scope="col">Pagado</th>
+                                <th class="col-2" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr *ngFor="let item of turno.viajes">
+                                <td class="col-1">{{item.numero_turno}}</td>
+                                <td class="col-2 text-center">{{getConductorNombre(item.id_carnet_conductor)}}</td>
+                                <td class="col-2 text-center">{{item.estado}}</td>
+                                <td class="col-2 text-center">{{item.hora_salida}}</td>
+                                <td class="col-2 text-center">{{item.hora_llegada}}</td>
+                                <td class="col-1 text-center">{{item.aporte}}</td>
+                                <td class="col-2"><button class="btn btn-editar-viaje" (click)="EditarViaje()">Editar</button></td>
+                            </tr>
+                        </tbody>
+                      </table> 
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>

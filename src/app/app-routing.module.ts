@@ -7,6 +7,7 @@ import  {FormularioChoferesComponent} from './componentes/paginas/choferes/formu
 import { ModalEliminarComponent } from './componentes/modals/modal-eliminar/modal-eliminar.component';
 import { PrincipalTurnosComponent } from './componentes/paginas/turnos/principal-turnos/principal-turnos.component';
 import { FormularioTurnosComponent } from './componentes/paginas/turnos/formulario-turnos/formulario-turnos.component';
+import { DetallesTurnoComponent } from './componentes/paginas/turnos/detalles-turno/detalles-turno.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'conductores/modal', component: ModalEliminarComponent},
   {path:'turnos', component: PrincipalTurnosComponent},
   {path:'turnos/formulario', component: FormularioTurnosComponent},
+  {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   
 ];
 

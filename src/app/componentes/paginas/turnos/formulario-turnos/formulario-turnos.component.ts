@@ -109,9 +109,6 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   BorrarTurno(IdABorrar:Number){
-    // this.viajes.forEach((value,index)=>{
-    //   if(value.id_carnet_conductor==IdABorrar) this.viajes.splice(index,1);
-    // });
     this.turno.viajes.forEach((value,index)=>{
       if(value.id_carnet_conductor==IdABorrar) this.turno.viajes.splice(index,1);
     });

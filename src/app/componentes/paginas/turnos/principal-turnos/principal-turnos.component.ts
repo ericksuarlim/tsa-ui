@@ -26,4 +26,9 @@ export class PrincipalTurnosComponent implements OnInit {
     this.router.navigate(["/turnos/formulario"], { queryParams: { id_turno } });
   }
 
+  verTurno(id_turno: number){
+    this.router.navigateByUrl(`/turnos/${id_turno}/detalles-turno`);
+
+  }
+
 }
