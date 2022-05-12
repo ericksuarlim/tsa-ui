@@ -1,12 +1,8 @@
-.row-image{   
-    margin-top: calc(50% - 40% - 300.5px);
-    position: relative;
-    width: 1980px;
-    height: 490px;
-    left: calc(50% - 1980px/2 - 14.5px);
-    top: calc(50% - 490px/2 - 267.5px);
-    background-image: url("../../../../assets/imagenes/mamaCortada.jpg");
-    background-position: center -80px;    
+.image-top{
+    width: 100%;
+    margin-top: -70px;
+    max-height: 370px;
+    filter: brightness(50%);
 }
 
 .service-image-icon{
@@ -21,9 +17,6 @@
     background:#FFF;
     padding:60px 10px;
     margin:30px 0px;
-
-
-
     border: 1px solid #FB9130;
 	border-radius: 25px;
     max-width: 200px;
@@ -93,3 +86,9 @@
         padding-right: 150px;
     }
 }
+
+@media (max-width: 767px) {
+    .image-top{
+      margin-top: -20px;
+    }
+  }

@@ -39,6 +39,82 @@
     margin-right: 10px;
 }
 
+.logo-box{
+	position:relative;
+	float:left;
+	left:0px;
+	padding:10px 0px;
+	z-index:10;	
+}
+
+.menu-navbar{
+    font-family: 'Catamaran', sans-serif;
+}
+
+.ul-navbar > li{
+    padding-top: 7px;
+}
+
+.ul-navbar > li > a {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #777777;
+    font-weight: 700;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+}
+
+.collapse > ul > li{
+    margin-right: 30px;
+}
+
+.navbar-nav > li:hover > a,
+.navbar-nav > li.active > a,
+.navbar-nav > li.active-menu-item > a{
+	color:#ff8201;
+	opacity:1;
+	text-decoration: none;
+}
+
+.dropdown-menu{
+    border-top: 3px solid #ff8201;
+    padding-top: 0px;
+    box-shadow:2px 2px 5px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
+    margin-right: -35px; 
+    /* float: right;
+    margin-top: 40px;
+    width: 30%;*/
+    
+}
+
+.dropdown-menu > li {
+    position: relative;
+    padding: 0px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    list-style: none;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 10px 15px;
+    line-height: 24px;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #272727;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    text-decoration: none;
+}
+
+.dropdown-menu > li:hover > a
+{   color: #FFFFFF;
+    background-color: #ff8201;
+} 
+
 @media (max-width: 427px){
     .title-main{
         font-size: 13px;
@@ -56,3 +132,47 @@
         padding: 0px;
     }
 }
+
+@media only screen and (max-width: 499px) {
+	.logo-box .logo img{
+		max-width:70%;	
+	}	
+}
+
+@media only screen and (max-width: 1023px){
+	.logo-box {
+		position:relative;
+		left:0px;
+		top:0px;
+		right:0px;
+		bottom:0px;
+		width:200px;
+		margin:0px;
+		text-align:left;
+        min-width: 60%;
+	}
+
+    .navbar-expand-lg {
+        padding-right: 100px;
+    }
+}
+
+@media only screen and (max-width: 991px){
+    .navbar-expand-lg {
+        padding-right: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
