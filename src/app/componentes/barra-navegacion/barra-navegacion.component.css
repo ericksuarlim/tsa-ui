@@ -31,8 +31,14 @@
     margin-right: 60px;
 }
 
+.navbar-toggler{
+    background-color: #ff8201;
+    outline: none;
+}
+
+
 .button-image-toggler{
-    max-width: 15px;
+    max-width: 22px;
 }
 
 .hidden-bar-opener{

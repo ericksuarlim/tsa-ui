@@ -1,7 +1,23 @@
-.escudo-santana-footer-image{
-    max-height: 40px;
+.footer-copyright-section {
+    background-color: #272727;
+    text-align: center;
+    padding: 1em;
 }
 
-.santana-refran{
-    color: #FB9130;
+.main-section-footer{
+    background-color: #2f2f2f;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+}
+
+.col-img > img{
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    filter: brightness(70%);
+}
+
+.top-footer-section{
+    padding-top: 1.50em;
+    padding-bottom: 0px;
+
 }
