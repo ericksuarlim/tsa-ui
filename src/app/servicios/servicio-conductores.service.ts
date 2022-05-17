@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class ServicioConductoresService {
 
-  baseUrl: string = "http://localhost:5000/conductores";
+  baseUrl: string = "https://tsa-api-dev.herokuapp.com/conductores";
 
   constructor(private http:HttpClient) { }
     //Obtener registros de conductores

@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class ServicioTurnosService {
 
-  baseUrl: string = "http://localhost:5000/turnos";
+  baseUrl: string = "https://tsa-api-dev.herokuapp.com/turnos";
 
   constructor(private http:HttpClient) { }
 
