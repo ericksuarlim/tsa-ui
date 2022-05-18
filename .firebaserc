@@ -1,5 +1,8 @@
 {
   "projects": {
+    "dev": "tsa-ui-dev-c29b6",
+    "prod": "tsa-ui-prod",
     "default": "tsa-ui-dev-c29b6"
-  }
+  },
+  "targets": {}
 }

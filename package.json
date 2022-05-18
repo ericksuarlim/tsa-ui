@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "release-prod": "ng build --prod && firebase deploy --project prod",
+    "release-dev": "ng build --dev && firebase deploy --project dev"
   },
   "private": true,
   "dependencies": {
