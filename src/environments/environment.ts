@@ -12,7 +12,8 @@ export const environment = {
     messagingSenderId: "333512153438",
     appId: "1:333512153438:web:488f9635d90b1ebd8cd7cf",
     measurementId: "G-2V0RLHWW9V"
-  }
+  },
+  urlApi: "https://tsa-api-dev.herokuapp.com"
 };
 
 /*

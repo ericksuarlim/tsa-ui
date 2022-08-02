@@ -1,0 +1,50 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row operation-section">
+        <div class="col-sm-8 col-md-7 ">
+            <input type="text" name="nombre_reserva" class="input-search form-control" placeholder="Ej. Ramiro Colque">
+        </div>
+        <div class="col-sm-4 col-md-3">
+            <select name="tipo_busqueda" class="form-control">
+                <option>Nombre</option>
+                <option>Codigo reserva</option>
+                <option>Fecha</option>
+            </select>   
+        </div>
+        <div class="col-sm-12 col-md-2 btn-new">
+            <a href="/reservas/formulario" class="btn">Crear Reserva</a>
+        </div>
+    </div>
+    <div class="row row-container">
+        <div class="box-card-parent col-12">
+            <table class="table tabla-reservas">
+                <thead class="thead-turnos">
+                  <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Cliente Referencia</th>
+                    <th scope="col">Conductor</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let reserva of reservas">
+                  <tr>
+                    <th scope="row">{{reserva.fecha}}</th>
+                    <td>{{reserva.nombre_completo_reserva}}</td>
+                    <td>{{reserva.id_conductor}}</td>
+                    <td class="text-center">{{reserva.cantidad}}</td>
+                    <td>{{reserva.estado}}</td>
+                    <a class="btn btn-table btn-detalles" (click)="opcionesReserva(reserva.id_turno)">Opciones</a>
+                  </tr>
+                 
+                </tbody>
+              </table>
+            
+              
+        </div>
+    </div>
+</div>

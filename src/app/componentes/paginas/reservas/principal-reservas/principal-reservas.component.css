@@ -1,0 +1,123 @@
+.image-top{
+    width: 100%;
+    margin-top: -70px;
+    max-height: 370px;
+    filter: brightness(50%);
+}
+
+
+.operation-section{
+    background-color: #EDEDED;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container{
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-search{
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+
+.btn-new{
+    text-align: center;
+}
+
+.btn-new > a{
+    background-color: #FB9130;
+    border-radius: 100px;
+    color: #FFFFFF;
+    width: 100%;
+    max-height: 40px;
+}
+
+.row-container{
+    padding-top: 3px;
+    margin-top: 10px;
+}
+
+.thead-turnos{
+    background:#222222;
+    color: white;
+
+}
+
+.btn-detalles{
+    background-color: #FB9130; 
+}
+
+.btn-table{
+    border-radius: 100px;
+    color: #FFFFFF;
+    float: right;
+    margin-top: 4px;
+}
+.btn-editar{
+    background-color: #222222;
+    margin-right: 5px;
+}
+
+.tabla-reservas{
+    margin: auto;
+    width: 70%;
+}
+
+@media (max-width: 992px) {
+    .btn-new{
+        padding: 0px;
+    }
+}
+
+@media (max-width: 767px) {
+    .box-card-parent{
+        float: none;
+        margin-left: auto;
+        margin-right: auto; 
+        max-width: 415px;
+        min-width: 280px;
+    }
+    .btn-new{
+        margin-top: 8px;
+    }
+
+    .btn-new > a{
+        width: 40%;
+    }
+
+    .tabla-reservas{
+        width: 100%;
+    }
+    .image-top{
+        margin-top: -20px;
+    }
+}
+
+@media (max-width: 576px){
+    .input-search{
+        margin-bottom: 8px;
+    }
+
+    .operation-section{
+        margin: 5px;
+    }
+}
+
+@media (max-width: 367px){
+    .btn-new > a{
+        width: 60%;
+    }
+}
+
+@media (max-width: 425px){
+    .btn-table{
+        margin-top: 3px;
+        margin-bottom: 3px;
+       font-size: 10px;
+       width: 100%;
+       float: none;
+    }
+}

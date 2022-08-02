@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrincipalTurnosComponent } from './componentes/paginas/turnos/principal-turnos/principal-turnos.component';
 import { FormularioTurnosComponent } from './componentes/paginas/turnos/formulario-turnos/formulario-turnos.component';
 import { DetallesTurnoComponent } from './componentes/paginas/turnos/detalles-turno/detalles-turno.component';
+import { PrincipalReservasComponent } from './componentes/paginas/reservas/principal-reservas/principal-reservas.component';
+import { FormularioReservasComponent } from './componentes/paginas/reservas/formulario-reservas/formulario-reservas.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { DetallesTurnoComponent } from './componentes/paginas/turnos/detalles-tu
     ModalEliminarComponent,
     PrincipalTurnosComponent,
     FormularioTurnosComponent,
-    DetallesTurnoComponent
+    DetallesTurnoComponent,
+    PrincipalReservasComponent,
+    FormularioReservasComponent
   ],
   imports: [
     BrowserModule,
