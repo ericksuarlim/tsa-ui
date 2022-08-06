@@ -5,6 +5,6 @@ export class Reserva{
     fecha: string;
     celular: number;
     nombre_completo_reserva: string;
-    estado: boolean;
+    estado: string;
     cantidad: number;
 }

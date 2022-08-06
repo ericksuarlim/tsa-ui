@@ -35,7 +35,7 @@
                   <tr>
                     <th scope="row">{{reserva.fecha}}</th>
                     <td>{{reserva.nombre_completo_reserva}}</td>
-                    <td>{{reserva.id_conductor}}</td>
+                    <td>{{reserva.id_conductor !=null ? reserva.conductore.nombre + ' ' + reserva.conductore.apellido_paterno  : reserva.viaje.conductore.nombre + ' ' + reserva.viaje.conductore.apellido_paterno }}</td>
                     <td class="text-center">{{reserva.cantidad}}</td>
                     <td>{{reserva.estado}}</td>
                     <a class="btn btn-table btn-detalles" (click)="opcionesReserva(reserva.id_turno)">Opciones</a>
