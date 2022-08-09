@@ -32,6 +32,7 @@
 
 .modal-footer {
     border: none;
+    justify-content: center;
 } 
 
 .btn{
@@ -50,12 +51,11 @@
     border: 1px solid #FB9130;
     background-color: #FFFFFF;
 }
-/* .modal-dialog{
-    height: 500px;
 
+.row-middle{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-
-*/
 
 
 

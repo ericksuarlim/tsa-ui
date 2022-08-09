@@ -19,8 +19,8 @@
         </div>
     </div>
     <div class="row row-container">
-        <div class="box-card-parent col-12">
-            <table class="table tabla-reservas">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-reservas">
                 <thead class="thead-turnos">
                   <tr>
                     <th scope="col">Fec. Solicitada</th>
@@ -38,13 +38,11 @@
                     <td>{{reserva.id_sindicato !=null ? reserva.sindicato?.nombre : reserva.viaje?.conductore.sindicato.nombre}}</td>
                     <td class="text-center">{{reserva.cantidad}}</td>
                     <td>{{reserva.estado}}</td>
-                    <a class="btn btn-table btn-detalles" (click)="opcionesReserva(reserva)">Opciones</a>
+                    <td>                    <a class="btn btn-table btn-detalles" (click)="opcionesReserva(reserva)">Opciones</a>
+                    </td>
                   </tr>
-                 
                 </tbody>
               </table>
-            
-              
         </div>
     </div>
 </div>

@@ -61,6 +61,10 @@
     margin-right: 5px;
 }
 
+.table th, .table td {
+    vertical-align: middle;
+}
+
 .tabla-reservas{
     margin: auto;
     width: 70%;
@@ -69,6 +73,14 @@
 @media (max-width: 992px) {
     .btn-new{
         padding: 0px;
+    }
+    
+    .btn-new a{
+        font-size: 0.85em;
+    }
+    
+    .row-container{
+        font-size: 0.85em;
     }
 }
 
@@ -80,6 +92,7 @@
         max-width: 415px;
         min-width: 280px;
     }
+
     .btn-new{
         margin-top: 8px;
     }
@@ -91,6 +104,7 @@
     .tabla-reservas{
         width: 100%;
     }
+
     .image-top{
         margin-top: -20px;
     }
@@ -104,20 +118,15 @@
     .operation-section{
         margin: 5px;
     }
+
+    .row-container{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 @media (max-width: 367px){
     .btn-new > a{
         width: 60%;
-    }
-}
-
-@media (max-width: 425px){
-    .btn-table{
-        margin-top: 3px;
-        margin-bottom: 3px;
-       font-size: 10px;
-       width: 100%;
-       float: none;
     }
 }
