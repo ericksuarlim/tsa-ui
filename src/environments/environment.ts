@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:333512153438:web:488f9635d90b1ebd8cd7cf",
     measurementId: "G-2V0RLHWW9V"
   },
-  urlApi: "http://localhost:5000"
+  urlApi: "https://tsa-api-dev.herokuapp.com"
 };
 
 /*

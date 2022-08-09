@@ -1,10 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
 import { Conductor } from 'src/app/modelos/conductor';
 import { Reserva } from 'src/app/modelos/reserva';
 import { Viaje } from 'src/app/modelos/viaje';
-import { ServicioConductoresService } from 'src/app/servicios/servicio-conductores.service';
+import { ServicioReservasService } from 'src/app/servicios/servicio-reservas.service';
 import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
 
 @Component({
@@ -18,44 +17,42 @@ export class ModalOpcionesReservasComponent implements OnInit {
   @Output() actualizar: EventEmitter<boolean>  = new EventEmitter();
   conductores: Conductor[];
   viajes: Viaje[];
+  sinViaje: boolean;
   validacion= {
+    estado: true,
     id_viaje: true
   }
 
   mensajeErrorValidacion= {
+    estado: "",
     viaje: "",
   }
   
   constructor(
     private activeModal: NgbActiveModal,
-    private servicioConductores: ServicioConductoresService,
-    private viajesService:ServicioViajesService
+    private viajesService:ServicioViajesService,
+    private reservasService: ServicioReservasService
     ) { }
 
   ngOnInit(): void {
-    this.servicioConductores.ObtenerConductores().subscribe(conductores =>{
-      this.conductores = conductores;
-    })
     if(this.reserva.id_viaje===null)
     {
-      console.log(this.reserva.id_sindicato)
+      this.sinViaje = true;
       this.viajesService.ObtenerViajes().subscribe(viajes=>{
         this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== this.reserva.fecha && v.turno?.id_sindicato ===this.reserva.id_sindicato && v.disponibilidad >= this.reserva.cantidad)}) 
-        console.log(this.viajes); 
       })
     }
     else{
       this.viajesService.ObtenerViajes().subscribe(viajes=>{
         this.viajes = viajes.filter((v:Viaje)=>{return (v.id_viaje===this.reserva.id_viaje)});
-        
       })
     }
   }
+
   ValidarReserva(action:String):boolean{
     if((this.reserva.id_viaje === null && this.viajes?.length>0) || ((action=="registrar" && this.reserva.id_viaje == undefined && this.viajes?.length>0))){this.mensajeErrorValidacion.viaje="Se debe de seleccionar un viaje"; this.validacion.id_viaje = false}else{this.validacion.id_viaje =true};
-
-    const response = this.validacion.id_viaje;
-   
+    if(this.reserva.estado ==="Pendiente"){this.mensajeErrorValidacion.estado="Para actualizar debe de cambiar el estado"; this.validacion.estado = false}else{this.validacion.estado =true};
+    const response = this.validacion.id_viaje && this.validacion.estado;
     return response;
   }
 
@@ -65,9 +62,19 @@ export class ModalOpcionesReservasComponent implements OnInit {
   }
 
   async Actualizar(){
-    console.log("Reserva", this.reserva)
-    // this.actualizar.emit(true);
-    // this.activeModal.close();
+    if(this.ValidarReserva("registrar")){
+      if(this.sinViaje)
+      {
+        this.reserva.id_sindicato = this.reserva.sindicato.id_sindicato;
+      }
+      else{
+        this.reserva.id_sindicato = this.reserva.viaje.conductore.id_sindicato;
+      }
+      this.reservasService.EditarReserva(this.reserva).subscribe(()=>{
+        this.actualizar.emit(true);
+        this.activeModal.close();
+      });
+    }
   }
 
   async Cancelar(){

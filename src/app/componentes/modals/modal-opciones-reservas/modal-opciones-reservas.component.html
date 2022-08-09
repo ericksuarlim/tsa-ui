@@ -4,7 +4,6 @@
             <h2 class="modal-title">Reserva {{ reserva.id_reserva}}</h2>
         </div>
         <div class="modal-body">
-        <!-- <h3>Nombre {{reserva.nombre_completo_reserva}}</h3>  -->
             <div class="row">
                 <div  class="col-md-3">
                     <h5 class="modal-label-title">Nombre Referencia</h5>
@@ -20,17 +19,20 @@
                 </div>
                 <div  class="col-md-3">
                     <h5 class="modal-label-title">Estado</h5>
-                    <select name="estado" class="form-control" [(ngModel)]="reserva.estado">
+                    <select name="estado" class="form-control" [(ngModel)]="reserva.estado" (ngModelChange)="ValidarReserva('verificar')">
                         <option>Pendiente</option>
                         <option>Aceptado</option>
                         <option>Rechazado</option>
                     </select> 
+                    <div class="col-12">
+                        <div *ngIf="!validacion.estado" class="text-danger">{{mensajeErrorValidacion.estado}}</div>  
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div  class="col-md-12">
+                <div *ngIf="sinViaje" class="col-md-12">
                     <h5 class="modal-label-title">Viaje</h5>
-                    <div  class="table-responsive">
+                    <div class="table-responsive">
                         <table class="table table-striped table-modal-viajes">
                             <thead class="thead-moda-viajes">
                                 <tr>
@@ -51,18 +53,38 @@
                                 </tr>
                             </tbody>
                         </table>
+             
                     </div>
-
-                    <!-- <select name="conductor" class="form-control" [(ngModel)]="reserva.id_conductor">
-                        <option selected disabled value=''>Seleccionar Conductor</option>
-                        <option *ngFor='let c of conductores' [value]="c.carnet">{{c.nombre}} {{c.apellido_paterno}}</option>
-                    </select> -->
+                    <div class="col-12">
+                        <div *ngIf="!validacion.id_viaje" class="text-danger">{{mensajeErrorValidacion.viaje}}</div>  
+                    </div>
+                </div>
+                <div *ngIf="!sinViaje" class="col-md-12">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Id Viaje</h5>
+                            <label class="modal-label-data">{{reserva.id_viaje}}</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Nombre Conductor</h5>
+                            <label class="modal-label-data">{{reserva.viaje.conductore.nombre}} {{reserva.viaje.conductore.apellido_paterno}}</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Hora Salida</h5>
+                            <label class="modal-label-data">{{reserva.viaje.hora_salida}}</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Sindicato</h5>
+                            <label class="modal-label-data">{{reserva.viaje.conductore.sindicato.nombre}}</label>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
             <div class="row">
                 <div  class="col-12">
                     <h5 class="modal-label-title">Comentario</h5>
-                    <input type="text" class="form-control input-comentario">
+                    <input type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
                 </div>
             </div>
         </div>

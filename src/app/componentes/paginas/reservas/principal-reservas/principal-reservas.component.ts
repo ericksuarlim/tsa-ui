@@ -25,14 +25,10 @@ export class PrincipalReservasComponent implements OnInit {
 
   opcionesReserva(reserva: Reserva){
     const modalRef = this.modalService.open(ModalOpcionesReservasComponent, { size: 'xl', backdrop: 'static' });
-
     modalRef.componentInstance.reserva = reserva;
-    // modalRef.componentInstance.mensaje = `¿Estás seguro que quieres eliminar al conductor?`;
-    // modalRef.componentInstance.delete.subscribe((confirm: boolean) => {
-    //   if (confirm) {
-    //     this.EliminarConductor(conductor.carnet);
-    //   }
-    // });
+    modalRef.componentInstance.actualizar.subscribe((confirm: boolean) => {
+        window.location.reload();
+    });
   }
 
 }
