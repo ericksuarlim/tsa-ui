@@ -12,13 +12,13 @@
                     <div class="row top-section">
                         <div class="col-sm-12 col-md-6">
                             <h5 for="fecha" class="input-operation-section-title">Fecha</h5>
-                            <input type="date" name="fecha" class="input-search form-control input-operation-section" (input)="reserva.fecha=$event.target.value; ValidarReserva('verificar'); FiltrarViajes()" [value]="reserva.fecha | date:'yyyy-MM-dd'">
+                            <input type="date" name="fecha" id="fecha" class="input-search form-control input-operation-section" (input)="reserva.fecha=$event.target.value ; ValidarReserva('verificar'); FiltrarViajes('fecha')" [value]="reserva.fecha | date:'yyyy-MM-dd'" >
                             <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>  
                         </div>
 
                         <div class="col-sm-12 col-md-6">
                             <h5 for="cantidad" class="input-operation-section-title">Cantidad</h5>
-                            <input type="number" name="cantidad" class="input-search form-control input-operation-section" [(ngModel)]="reserva.cantidad" (ngModelChange)="ValidarReserva('verificar')" >
+                            <input type="number" name="cantidad" id="cantidad" class="input-search form-control input-operation-section" [(ngModel)]="reserva.cantidad" (ngModelChange)="ValidarReserva('verificar') ; FiltrarViajes('cantidad')" >
                             <div *ngIf="!validacion.cantidad" class="text-danger">{{mensajeErrorValidacion.cantidad}}</div>   
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                             <input class="form-check-input radio-table-select" type="radio" name="id_viaje" [value]="viaje.id_viaje" (click)="SeleccionarViaje(viaje.id_viaje)">                                       
                                             <!-- <button class="btn btn-seleccionar-viaje" (click)="SeleccionarViaje(viaje.id_viaje)">Seleccionar</button> -->
                                         </td>
-                                        <td class="col-3 text-center">{{viaje.id_carnet_conductor}}</td>
+                                        <td class="col-3 text-center">{{viaje.conductore.nombre + ' ' +viaje.conductore.apellido_paterno}}</td>
                                         <td class="col-2 text-center">{{viaje.hora_salida}}</td>
                                         <td class="col-2 text-center">Movima</td>
                                         <td class="col-2 text-center">Camioneta</td>                                                                       
@@ -68,23 +68,15 @@
                                 Actualmente no existen viajes de acuerdo a su seleccion. Usted puede continuar con su reserva y esperar una respuesta del sindicato.
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12">
                             <h1 for="id_sindicato" class="input-operation-section-title">Sindicato</h1>
-                            <select name="id_sindicato" class="form-control"  [(ngModel)]="reserva.id_viaje" (ngModelChange)="ValidarReserva('verificar')" value required>
-                                <option>Todos los sindicatos</option>\
-                                <option>Yacuma</option>
-                                <option>1º Mayo</option>
-                                <option>12 de Marzo</option>
-                                <option>Movima</option>
-                            </select> 
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <h5 for="conductor" class="input-operation-section-title" >Conductores</h5>
-                            <select name="conductor" class="form-control" [(ngModel)]="reserva.id_conductor">
-                                <option selected disabled value=''>Seleccionar Conductor</option>
-                                <option *ngFor='let c of conductores' [value]="c.carnet">{{c.nombre}} {{c.apellido_paterno}}</option>
+                            <select name="id_sindicato" class="form-control" [(ngModel)]="reserva.id_sindicato" (ngModelChange)="ValidarReserva('verificar')" value required>
+                                <option selected disabled value=''>Seleccionar Sindicato</option>
+                                <option *ngFor='let s of sindicatos' [value]="s.id_sindicato">{{s.nombre}}</option>
                             </select>
-                            <div *ngIf="!validacion.id_conductor" class="text-danger">{{mensajeErrorValidacion.id_conductor}}</div>   
+                            <div class="col-12">
+                                <div *ngIf="!validacion.id_sindicato" class="text-danger">{{mensajeErrorValidacion.id_sindicato}}</div>  
+                            </div>
                         </div>
                     </div>
                     

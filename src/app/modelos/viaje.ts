@@ -7,6 +7,7 @@ export class Viaje{
     hora_llegada: string;
     aporte: string;
     id_turno: number;
+    disponibilidad: number;
     conductore: {
         activo: boolean,
         apellido_materno: string,
@@ -23,7 +24,7 @@ export class Viaje{
     turno:{
         fecha: string,
         grupo: string,
-        id_sindicato: string,
+        id_sindicato: number,
         id_turno: number,
     };
 }

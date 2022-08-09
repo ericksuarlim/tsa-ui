@@ -63,7 +63,7 @@ export class FormularioTurnosComponent implements OnInit {
   CrearTurno(){
     if(this.ValidarTurno('registrar'))
     { 
-
+      this.turno.fecha = moment(this.turno.fecha).format('DD/MM/YYYY')
       this.servicioTurnos.CrearTurno(this.turno).subscribe(result=>{
         this.router.navigateByUrl("/turnos");
       }); 

@@ -2,7 +2,7 @@ export class Turno{
     id_turno: number;
     fecha: string;
     grupo: string;
-    id_sindicato: string;
+    id_sindicato: number;
     viajes:{
         id_viaje: number;
         id_carnet_conductor: number,
@@ -12,6 +12,7 @@ export class Turno{
         hora_llegada: string,
         aporte: string,
         id_turno: number,
+        disponibilidad:number,
         conductore: {
             activo: boolean,
             apellido_materno: string,
@@ -28,7 +29,7 @@ export class Turno{
         turno:{
             fecha: string,
             grupo: string,
-            id_sindicato: string,
+            id_sindicato: number,
             id_turno: number,
         };
     }[]=[];

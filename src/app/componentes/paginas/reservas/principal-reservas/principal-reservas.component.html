@@ -23,9 +23,9 @@
             <table class="table tabla-reservas">
                 <thead class="thead-turnos">
                   <tr>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Fec. Solicitada</th>
                     <th scope="col">Cliente Referencia</th>
-                    <th scope="col">Conductor</th>
+                    <th scope="col">Sindicato</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Estado</th>
                     <th scope="col"></th>
@@ -35,10 +35,10 @@
                   <tr>
                     <th scope="row">{{reserva.fecha}}</th>
                     <td>{{reserva.nombre_completo_reserva}}</td>
-                    <td>{{reserva.id_conductor !=null ? reserva.conductore.nombre + ' ' + reserva.conductore.apellido_paterno  : reserva.viaje.conductore.nombre + ' ' + reserva.viaje.conductore.apellido_paterno }}</td>
+                    <td>{{reserva.id_sindicato !=null ? reserva.sindicato?.nombre : reserva.viaje?.conductore.sindicato.nombre}}</td>
                     <td class="text-center">{{reserva.cantidad}}</td>
                     <td>{{reserva.estado}}</td>
-                    <a class="btn btn-table btn-detalles" (click)="opcionesReserva(reserva.id_turno)">Opciones</a>
+                    <a class="btn btn-table btn-detalles" (click)="opcionesReserva(reserva)">Opciones</a>
                   </tr>
                  
                 </tbody>
