@@ -1,10 +1,9 @@
 export class Pasaje{
-    nombre : string;
-    apellido_paterno : string;
-    apellido_materno : string;
-    fecha_nacimiento : Date;
+    nombre_completo : string;
     precio : number;
     pagado : boolean;
+    asiento: string;
+    celular: number
     carnet_pasajero : number;
     id_pasaje : number;
     id_viaje : number;

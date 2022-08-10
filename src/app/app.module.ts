@@ -19,6 +19,7 @@ import { PrincipalReservasComponent } from './componentes/paginas/reservas/princ
 import { FormularioReservasComponent } from './componentes/paginas/reservas/formulario-reservas/formulario-reservas.component';
 import { ModalOpcionesReservasComponent } from './componentes/modals/modal-opciones-reservas/modal-opciones-reservas.component';
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
+import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes
     PrincipalReservasComponent,
     FormularioReservasComponent,
     ModalOpcionesReservasComponent,
-    PasajesPrincipalComponent
+    PasajesPrincipalComponent,
+    FormularioPasajesComponent
   ],
   imports: [
     BrowserModule,

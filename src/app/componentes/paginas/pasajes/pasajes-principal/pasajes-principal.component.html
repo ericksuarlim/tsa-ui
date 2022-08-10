@@ -33,7 +33,7 @@
                 <tbody *ngFor="let pasaje of pasajes">
                   <tr>
                     <th class="text-center">{{pasaje.id_pasaje}}</th>
-                    <td>{{pasaje.nombre}} {{pasaje.apellido_paterno}} {{pasaje.apellido_materno}} </td>
+                    <td>{{pasaje.nombre_completo}}</td>
                     <td>{{pasaje.precio}}</td>
                     <td>{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
                     <td></td>

@@ -11,6 +11,7 @@ import { DetallesTurnoComponent } from './componentes/paginas/turnos/detalles-tu
 import { PrincipalReservasComponent } from './componentes/paginas/reservas/principal-reservas/principal-reservas.component';
 import { FormularioReservasComponent } from './componentes/paginas/reservas/formulario-reservas/formulario-reservas.component';
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
+import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'turnos', component: PrincipalTurnosComponent},
   {path:'pasajes', component: PasajesPrincipalComponent},
   {path:'turnos/formulario', component: FormularioTurnosComponent},
+  {path:'pasajes/formulario', component: FormularioPasajesComponent},
   {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   {path:'reservas', component: PrincipalReservasComponent},
   {path:'reservas/formulario', component: FormularioReservasComponent},
