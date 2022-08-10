@@ -18,6 +18,7 @@ import { DetallesTurnoComponent } from './componentes/paginas/turnos/detalles-tu
 import { PrincipalReservasComponent } from './componentes/paginas/reservas/principal-reservas/principal-reservas.component';
 import { FormularioReservasComponent } from './componentes/paginas/reservas/formulario-reservas/formulario-reservas.component';
 import { ModalOpcionesReservasComponent } from './componentes/modals/modal-opciones-reservas/modal-opciones-reservas.component';
+import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ModalOpcionesReservasComponent } from './componentes/modals/modal-opcio
     DetallesTurnoComponent,
     PrincipalReservasComponent,
     FormularioReservasComponent,
-    ModalOpcionesReservasComponent
+    ModalOpcionesReservasComponent,
+    PasajesPrincipalComponent
   ],
   imports: [
     BrowserModule,

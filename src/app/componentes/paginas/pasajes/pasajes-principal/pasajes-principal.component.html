@@ -1,0 +1,45 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row operation-section">
+        <div class="col-sm-8 col-md-7 ">
+            <input type="text" name="nombre_pasaje" class="input-search form-control" placeholder="Ej. Ramiro Colque">
+        </div>
+        <div class="col-sm-4 col-md-3">
+            <select name="tipo_busqueda" class="form-control">
+                <option>Nombre</option>
+                <option>Codigo pasaje</option>
+                <option>Fecha</option>
+            </select>   
+        </div>
+        <div class="col-sm-12 col-md-2 btn-new">
+            <a href="/pasajes/formulario" class="btn">Crear Pasaje</a>
+        </div>
+    </div>
+    <div class="row row-container">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-pasajes">
+                <thead class="thead-pasajes">
+                  <tr>
+                    <th scope="col">Cod. Pasaje</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Pagado</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let pasaje of pasajes">
+                  <tr>
+                    <th class="text-center">{{pasaje.id_pasaje}}</th>
+                    <td>{{pasaje.nombre}} {{pasaje.apellido_paterno}} {{pasaje.apellido_materno}} </td>
+                    <td>{{pasaje.precio}}</td>
+                    <td>{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
