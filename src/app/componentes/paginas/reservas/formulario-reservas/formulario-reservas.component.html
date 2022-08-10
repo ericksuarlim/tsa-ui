@@ -1,0 +1,105 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">REGISTRO DE RESERVAS</h3>
+        </div>
+        <div class="col-sm-12">
+            <form class="formulario-reservas" name="FormularioReservas">
+                <div class="col ">
+                    <div class="row top-section">
+                        <div class="col-sm-12 col-md-6">
+                            <h5 for="fecha" class="input-operation-section-title">Fecha</h5>
+                            <input type="date" name="fecha" id="fecha" class="input-search form-control input-operation-section" (input)="reserva.fecha=$event.target.value ; ValidarReserva('verificar'); FiltrarViajes('fecha')" [value]="reserva.fecha | date:'yyyy-MM-dd'" >
+                            <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>  
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <h5 for="cantidad" class="input-operation-section-title">Cantidad</h5>
+                            <input type="number" name="cantidad" id="cantidad" class="input-search form-control input-operation-section" [(ngModel)]="reserva.cantidad" (ngModelChange)="ValidarReserva('verificar') ; FiltrarViajes('cantidad')" >
+                            <div *ngIf="!validacion.cantidad" class="text-danger">{{mensajeErrorValidacion.cantidad}}</div>   
+                        </div>
+                    </div>
+
+                    <div *ngIf="viajes ==  undefined || viajes.length !=0" class="row mid-section">
+                        <div class="col-12">
+                            <h1 for="id_viaje" class="input-operation-section-title">Seleccionar Viaje</h1>
+                        </div>
+
+                        <div  class="table-responsive">
+                            <table class="table table-striped table-viajes">
+                                <thead class="thead-viajes">
+                                    <tr>
+                                        <th class="col-1 text-center" >Seleccionar</th>
+                                        <th class="col-3 text-center" >Conductor</th> 
+                                        <th class="col-2 text-center" >Hora Salida</th>
+                                        <th class="col-2 text-center" >Sindicato</th>
+                                        <th class="col-2 text-center" >Movilidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let viaje of viajes">
+                                        <td class="col-1 text-center">    
+                                            <input class="form-check-input radio-table-select" type="radio" name="id_viaje" [value]="viaje.id_viaje" (click)="SeleccionarViaje(viaje.id_viaje)">                                       
+                                            <!-- <button class="btn btn-seleccionar-viaje" (click)="SeleccionarViaje(viaje.id_viaje)">Seleccionar</button> -->
+                                        </td>
+                                        <td class="col-3 text-center">{{viaje.conductore.nombre + ' ' +viaje.conductore.apellido_paterno}}</td>
+                                        <td class="col-2 text-center">{{viaje.hora_salida}}</td>
+                                        <td class="col-2 text-center">Movima</td>
+                                        <td class="col-2 text-center">Camioneta</td>                                                                       
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12">
+                            <div *ngIf="!validacion.id_viaje" class="text-danger">{{mensajeErrorValidacion.viaje}}</div>  
+                        </div>
+
+                     
+                        
+                      
+                    </div>
+
+                    <div *ngIf="viajes?.length == 0"  class="row mid-section">
+                        <div class="col-12 col-info-no-viajes">
+                            <div class="info-no-viajes">
+                                Actualmente no existen viajes de acuerdo a su seleccion. Usted puede continuar con su reserva y esperar una respuesta del sindicato.
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h1 for="id_sindicato" class="input-operation-section-title">Sindicato</h1>
+                            <select name="id_sindicato" class="form-control" [(ngModel)]="reserva.id_sindicato" (ngModelChange)="ValidarReserva('verificar')" value required>
+                                <option selected disabled value=''>Seleccionar Sindicato</option>
+                                <option *ngFor='let s of sindicatos' [value]="s.id_sindicato">{{s.nombre}}</option>
+                            </select>
+                            <div class="col-12">
+                                <div *ngIf="!validacion.id_sindicato" class="text-danger">{{mensajeErrorValidacion.id_sindicato}}</div>  
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row bottom-section">
+                        <div class="col-sm-12 col-md-6">
+                            <h5 for="nombre_completo_reserva" class="input-operation-section-title">Nombre Referencia</h5>
+                            <input type="text" name="nombre_completo_reserva" class="input-search form-control input-operation-section" [(ngModel)]="reserva.nombre_completo_reserva" (ngModelChange)="ValidarReserva('verificar')" >
+                            <div *ngIf="!validacion.nombre_completo_reserva" class="text-danger">{{mensajeErrorValidacion.nombre_completo_reserva}}</div>  
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <h5 for="celular" class="input-operation-section-title">Celular</h5>
+                            <input type="text" name="celular" class="input-search form-control input-operation-section" [(ngModel)]="reserva.celular" (ngModelChange)="ValidarReserva('verificar')" >
+                            <div *ngIf="!validacion.celular" class="text-danger">{{mensajeErrorValidacion.celular}}</div>  
+                        </div>
+
+                        <div class="col-sm-12 section-bottons">
+                            <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                            <button  *ngIf="reservaNueva" class="btn button-registrar" (click)="RegistrarReserva()">Registrar</button>
+                            <button *ngIf="!reservaNueva" class="btn button-registrar" (click)="EditarReserva()">Actualizar</button>
+                        </div>
+                    </div>  
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>

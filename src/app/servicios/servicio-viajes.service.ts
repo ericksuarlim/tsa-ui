@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Viaje } from '../modelos/viaje';
-
+import { environment } from '../../environments/environment'
 
 const httpOptions = {
   headers : new HttpHeaders({
@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class ServicioViajesService {
 
-  baseUrl: string = "https://tsa-api-prod.herokuapp.com/viajes";
+  baseUrl: string = environment.urlApi + "/viajes";
 
   constructor(private http:HttpClient) { }
 

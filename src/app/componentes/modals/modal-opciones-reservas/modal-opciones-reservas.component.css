@@ -1,0 +1,62 @@
+.modal-label-title{
+    font-size: 1.3em;
+    font-style: bold;
+}
+
+.modal-label-data{
+    font-size: 1em;
+    padding-left: 5%;
+}
+
+.input-comentario{
+    height: 8em;
+    background-color: #EDEDED;
+}
+
+.modal-content{
+    border: none;
+}
+
+.modal-dialog{
+    padding: 0px 10px 10px 10px;
+}
+
+.modal-header {
+    border: none;
+    justify-content: center;
+    text-transform: uppercase;
+}
+.modal-body {
+    border: none;
+}
+
+.modal-footer {
+    border: none;
+    justify-content: center;
+} 
+
+.btn{
+    width: 150px;
+    border-radius: 100px;
+    height: 40px;
+}
+
+.btn-actualizar{
+    background-color: #FB9130;
+    margin-left: 8px;
+    color: #FFFFFF;
+}
+
+.btn-cancelar{
+    border: 1px solid #FB9130;
+    background-color: #FFFFFF;
+}
+
+.row-middle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+

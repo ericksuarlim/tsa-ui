@@ -8,5 +8,6 @@ export const environment = {
     messagingSenderId: "861158725365",
     appId: "1:861158725365:web:218493fe1a91812d0757bc",
     measurementId: "G-WYZXGH7J4Z"
-  }
+  },
+  urlApi: "https://tsa-api-prod.herokuapp.com"
 };

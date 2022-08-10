@@ -2,6 +2,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Turno } from '../modelos/turno';
+import { environment } from '../../environments/environment'
 
 const httpOptions = {
   headers : new HttpHeaders({
@@ -14,7 +15,7 @@ const httpOptions = {
 })
 export class ServicioTurnosService {
 
-  baseUrl: string = "https://tsa-api-prod.herokuapp.com/turnos";
+  baseUrl: string =  environment.urlApi + "/turnos";
 
   constructor(private http:HttpClient) { }
 

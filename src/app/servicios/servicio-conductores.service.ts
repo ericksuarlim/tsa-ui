@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Conductor } from '../modelos/conductor';
+import { environment } from '../../environments/environment'
 
 const httpOptions = {
   headers : new HttpHeaders({
@@ -14,7 +15,7 @@ const httpOptions = {
 })
 export class ServicioConductoresService {
 
-  baseUrl: string = "https://tsa-api-prod.herokuapp.com/conductores";
+  baseUrl: string = environment.urlApi + "/conductores";
 
   constructor(private http:HttpClient) { }
     //Obtener registros de conductores

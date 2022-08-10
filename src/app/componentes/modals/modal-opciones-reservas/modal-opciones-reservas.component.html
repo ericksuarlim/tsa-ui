@@ -1,0 +1,96 @@
+<div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Reserva {{ reserva.id_reserva}}</h2>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div  class="col-md-3">
+                    <h5 class="modal-label-title">Nombre Referencia</h5>
+                    <label class="modal-label-data">{{reserva.nombre_completo_reserva}}</label>
+                </div>
+                <div  class="col-md-3">
+                    <h5 class="modal-label-title">Fecha Solicitada</h5>
+                    <label class="modal-label-data">{{reserva.fecha}}</label>
+                </div>
+                <div  class="col-md-3">
+                    <h5 class="modal-label-title">Cantidad</h5>
+                    <label class="modal-label-data">{{reserva.cantidad}}</label>
+                </div>
+                <div  class="col-md-3">
+                    <h5 class="modal-label-title">Estado</h5>
+                    <select name="estado" class="form-control" [(ngModel)]="reserva.estado" (ngModelChange)="ValidarReserva('verificar')">
+                        <option>Pendiente</option>
+                        <option>Aceptado</option>
+                        <option>Rechazado</option>
+                    </select> 
+                    <div class="col-12">
+                        <div *ngIf="!validacion.estado" class="text-danger">{{mensajeErrorValidacion.estado}}</div>  
+                    </div>
+                </div>
+            </div>
+            <div class="row row-middle">
+                <div *ngIf="sinViaje" class="col-md-12">
+                    <h5 class="modal-label-title">Viaje</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-modal-viajes">
+                            <thead class="thead-moda-viajes">
+                                <tr>
+                                    <th class="col-1 text-center" >Seleccionar</th>
+                                    <th class="col-3 text-center" >Conductor</th> 
+                                    <th class="col-2 text-center" >Hora Salida</th>
+                                    <th class="col-2 text-center" >Sindicato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let viaje of viajes">
+                                    <td class="col-1 text-center">    
+                                        <input class="form-check-input radio-table-select" type="radio" name="id_viaje" [value]="viaje.id_viaje" (click)="SeleccionarViaje(viaje.id_viaje)">                                       
+                                    </td>
+                                    <td class="col-3 text-center">{{viaje.conductore.nombre + ' ' +viaje.conductore.apellido_paterno}}</td>
+                                    <td class="col-2 text-center">{{viaje.hora_salida}}</td>
+                                    <td class="col-2 text-center">Movima</td>                                                                    
+                                </tr>
+                            </tbody>
+                        </table>
+             
+                    </div>
+                    <div class="col-12">
+                        <div *ngIf="!validacion.id_viaje" class="text-danger">{{mensajeErrorValidacion.viaje}}</div>  
+                    </div>
+                </div>
+                <div *ngIf="!sinViaje" class="col-md-12">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Id Viaje</h5>
+                            <label class="modal-label-data">{{reserva.id_viaje}}</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Nombre Conductor</h5>
+                            <label class="modal-label-data">{{reserva.viaje.conductore.nombre}} {{reserva.viaje.conductore.apellido_paterno}}</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Hora Salida</h5>
+                            <label class="modal-label-data">{{reserva.viaje.hora_salida}}</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h5 class="modal-label-title">Sindicato</h5>
+                            <label class="modal-label-data">{{reserva.viaje.conductore.sindicato.nombre}}</label>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="row">
+                <div  class="col-12">
+                    <h5 class="modal-label-title">Comentario</h5>
+                    <input type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
+            <button type="button" class="btn btn-actualizar" (click)="Actualizar()">Actualizar</button>
+        </div>
+    </div>
+</div>

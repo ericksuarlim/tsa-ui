@@ -43,6 +43,7 @@ color: #cecece;
 
 .button-registrar{
     background-color: #FB9130;
+    color: #FFFFFF;
     margin-left: 8px;
 }
 
@@ -73,5 +74,11 @@ color: #cecece;
     .image-top{
       margin-top: -20px;
     }
-  }
+}
+
+@media only screen and (max-width: 499px) {
+    .btn{
+        margin-bottom: 5px;
+    }
+}
 
