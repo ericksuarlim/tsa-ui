@@ -40,7 +40,6 @@
     font-weight: 800px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     box-shadow:5px 10px 10px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
-
 }
 
 .columna-container p{
@@ -57,6 +56,10 @@
 .thead-pasaje{
     background:#222222;
     color: white;
+}
+
+.sections-buttons{
+    margin-top: 25px;
 }
 
 @media (min-width: 990px) {

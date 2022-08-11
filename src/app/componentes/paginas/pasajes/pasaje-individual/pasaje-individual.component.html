@@ -4,7 +4,7 @@
 </div>
 
 <div class="container">
-    <div class="col columna-container">
+    <div class="col columna-container" id="recibo-pasaje">
         <div class="row justify-content-between">
             <div class="col-12 col-sm-4">
                 <p><b>Pasaje No: </b>{{pasaje.id_pasaje}}</p>
@@ -77,10 +77,11 @@
                 <p>EL presente documento tiene valor a nivel nacional respaldado por el sindicato.</p>
             </div>
         </div>
-        <div class="row sections-buttons">
-            <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div>
-            <div class="text-center"><button class="btn button-imprimir">Imprimir</button></div>
-            <div class="text-center"><button class="btn button-descargar">Descargar PDF</button></div>
-        </div>
+
+    </div>
+    <div class="row sections-buttons">
+        <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div>
+        <div class="text-center"><button class="btn button-imprimir" (click)="Imprimir()">Imprimir</button></div>
+        <div class="text-center"><button class="btn button-descargar" (click)="ExportarPDF()">Descargar PDF</button></div>
     </div>
 </div>
