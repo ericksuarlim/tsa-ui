@@ -1,0 +1,86 @@
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="col columna-container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-sm-4">
+                <p><b>Pasaje No: </b>{{pasaje.id_pasaje}}</p>
+                <p><b>Fecha: </b>{{pasaje?.viaje?.turno?.fecha}}</p>
+            </div>
+            <div class="col-12 col-sm-7">
+                <p class="text-md-right"><b>Terminal de Buses {{pasaje?.viaje?.conductore?.sindicato?.ciudad}}, Sindicato: </b>{{pasaje?.viaje?.conductore?.sindicato?.nombre}}</p>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-12 col-sm-4">
+                <b>Info. Pasajero</b>
+                <p>Nombre: {{pasaje.nombre_completo}}</p>
+                <p>Celular: {{pasaje.celular}}</p>
+                <p>CI: {{pasaje.carnet_pasajero}}</p>
+            </div>
+            <div class="col-12 col-sm-6">
+                <p class="text-md-right"><b >Info. Sindicato</b></p>
+                <p class="text-md-right">Sindicato: {{pasaje?.viaje?.conductore?.sindicato?.nombre}}</p>
+                <p class="text-md-right">Ciudad: {{pasaje?.viaje?.conductore?.sindicato?.ciudad}}<p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <p class="text-md-right"><b>Desde: </b>{{pasaje?.viaje?.origen}}</p>
+                <p class="text-md-right"><b>A: </b>{{pasaje?.viaje?.destino}}</p>
+                <p class="text-md-right"><b>Nombre: </b>{{pasaje.nombre_completo}}</p>
+                <p class="text-md-right"><b>Asiento: </b>{{pasaje.asiento}}</p>
+            </div>
+            <div class="col-12 col-sm-6">
+                <p><b>Salida: </b>{{pasaje?.viaje?.hora_salida}}</p>
+                <p><b>Llegada: </b>{{pasaje?.viaje?.hora_llegada}} </p>
+                <p><b>Numero Viaje: </b>{{pasaje?.viaje?.id_viaje}}</p>
+                <p><b>Fecha: </b>{{pasaje?.viaje?.turno?.fecha}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive box-card-parent">
+                <table class="table table-striped">
+                    <thead class="thead-pasaje">
+                    <tr>
+                        <th scope="col">Detalle</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th class="text-right" scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="col">Ticket de pasaje</th>
+                        <th scope="col">1</th>
+                        <th scope="col">{{pasaje.precio}}</th>
+                        <th class="text-right" scope="col">{{pasaje.precio}}</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-3">
+                <p class="text-right"><b>TOTAL</b></p>
+            </div>
+            <div class="col-4">
+                <p class="text-right"><b>{{pasaje.precio}} BS</b></p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-12">
+                <p><b>NOTA:</b></p>
+                <p>EL presente documento tiene valor a nivel nacional respaldado por el sindicato.</p>
+            </div>
+        </div>
+        <div class="row sections-buttons">
+            <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div>
+            <div class="text-center"><button class="btn button-imprimir">Imprimir</button></div>
+            <div class="text-center"><button class="btn button-descargar">Descargar PDF</button></div>
+        </div>
+    </div>
+</div>

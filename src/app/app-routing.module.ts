@@ -12,6 +12,7 @@ import { PrincipalReservasComponent } from './componentes/paginas/reservas/princ
 import { FormularioReservasComponent } from './componentes/paginas/reservas/formulario-reservas/formulario-reservas.component';
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
 import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
+import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-individual/pasaje-individual.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   {path:'reservas', component: PrincipalReservasComponent},
   {path:'reservas/formulario', component: FormularioReservasComponent},
+  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent }
 ];
 
 @NgModule({

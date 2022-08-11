@@ -36,7 +36,7 @@
                     <td>{{pasaje.nombre_completo}}</td>
                     <td>{{pasaje.precio}}</td>
                     <td>{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
-                    <td></td>
+                    <td><a class="btn btn-table btn-detalles" (click)="abrirPasaje(pasaje.id_pasaje)">Opciones</a></td>
                   </tr>
                 </tbody>
               </table>
