@@ -1,0 +1,76 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">NUEVO PASAJE</h3>
+        </div>
+        <div class="col-sm-12">
+            <form class="formulario-pasajes" (ngSubmit)="CrearPasaje()">
+                <div  class="col">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h1 for="id_viaje" class="input-title">Viaje</h1>
+                            <input type="number"  name="id_viaje" class="input-form-pasajes form-control" [(ngModel)]="viaje.id_viaje" disabled>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="origen" class="input-title">Origen</h1>
+                            <input type="text"  name="origen" class="input-form-pasajes form-control" [(ngModel)]="viaje.origen" disabled>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="destino" class="input-title">Destino</h1>
+                            <input type="text"  name="destino" class="input-form-pasajes form-control" [(ngModel)]="viaje.destino" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h1 for="asiento" class="input-title">Asiento</h1>
+                            <input type="text"  name="asiento" class="input-form-pasajes form-control" [(ngModel)]="pasaje.asiento" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.asiento" class="text-danger">{{mensajeErrorValidacion.asiento}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="pagado" class="input-title">Pagado</h1>
+                            <select name="pagado" class="form-control"  [(ngModel)]="pasaje.pagado" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                                <option [value]="true">Pagado</option>
+                                <option [value]="false">Por pagar</option>
+                            </select> 
+                            <div *ngIf="!validacion.pagado" class="text-danger">{{mensajeErrorValidacion.pagado}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="precio" class="input-title">Precio</h1>
+                            <input type="number"  name="precio" class="input-form-pasajes form-control" [(ngModel)]="pasaje.precio" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.precio" class="text-danger">{{mensajeErrorValidacion.precio}}</div>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <h1 for="carnet_pasajero" class="input-title">Carnet</h1>
+                            <input type="number"  name="carnet_pasajero" class="input-form-pasajes form-control" [(ngModel)]="pasaje.carnet_pasajero" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.carnet_pasajero" class="text-danger">{{mensajeErrorValidacion.carnet_pasajero}}</div>                      
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h1 for="nombre_completo" class="input-title">Nombre Completo</h1>
+                            <input type="text"  name="nombre_completo" class="input-form-pasajes form-control" [(ngModel)]="pasaje.nombre_completo" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.nombre_completo" class="text-danger">{{mensajeErrorValidacion.nombre_completo}}</div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h1 for="celular" class="input-title">Celular</h1>
+                            <input type="number"  name="celular" class="input-form-pasajes form-control" [(ngModel)]="pasaje.celular" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.celular" class="text-danger">{{mensajeErrorValidacion.celular}}</div>                      
+                        </div>
+    
+                    </div>
+                    <div class="row section-bottons">
+                        <div class="col-sm-12">
+                            <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                            <input *ngIf="pasajeNuevo" type="submit" class="btn button-registrar" value="Registrar">
+                            <input *ngIf="!pasajeNuevo" class="btn button-registrar" value="Actualizar" (click)="EditarPasaje()">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

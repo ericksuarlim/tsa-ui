@@ -26,6 +26,7 @@
     "@popperjs/core": "^2.11.2",
     "bootstrap": "^4.5.2",
     "firebase": "^9.8.1",
+    "html2pdf.js": "^0.10.1",
     "jquery": "^3.6.0",
     "moment": "^2.29.2",
     "popper.js": "^1.16.1",
