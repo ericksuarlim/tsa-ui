@@ -1,0 +1,53 @@
+.btn-cancelar{
+    background: #FB9130;
+    
+}
+
+.modal-body > .btn:hover{
+    background-color: #222222;
+    color: #FB9130;
+}
+
+.modal-body > .btn{
+    background: #ffffff;
+    color: #222222;
+    border: 1px solid #FB9130;
+    width: 30%;
+}
+
+
+.btn{
+    border-radius: 100px;
+    color: white;
+}
+
+.modal-body{
+    text-align: center;
+    padding-top: 0px;
+}
+
+.modal-header{
+    justify-content: center;
+    border: none;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.modal-footer{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+@media (max-width: 510px) {
+    .modal-body > .btn{
+        margin-bottom: 5px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 510px) {
+    .btn-registrar-pasaje{
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}

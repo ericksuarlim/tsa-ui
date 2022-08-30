@@ -1,0 +1,85 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">NUEVO VIAJE</h3>
+        </div>
+        <div class="col-sm-12">
+            <form class="formulario-viajes" name="FormularioViajes">
+                <div  class="col">
+                    <div class="row">
+                        <div class="col-12 col-md-7">
+                            <h1 for="id_carnet_conductor" class="input-title">Conductor</h1>
+                            <select name="id_carnet_conductor" class="form-control" [(ngModel)]="viaje.id_carnet_conductor" (ngModelChange)="ValidarCampos('verificar')">
+                                <option selected disabled value=''>Seleccionar Conductor</option>
+                                <option *ngFor='let c of conductores' [value]="c.carnet">{{c.nombre}} {{c.apellido_paterno}}</option>
+                            </select>
+                            <div *ngIf="!validacion.id_carnet_conductor" class="text-danger">{{mensajeErrorValidacion.id_carnet_conductor}}</div>     
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <h1 for="fecha" class="input-title">Fecha</h1>
+                            <input type="date"  name="fecha" class="input-form-viajes form-control"  (input)="viaje.fecha=$event.target.value ; ValidarCampos('verificar')" [value]="viaje.fecha | date:'yyyy-MM-dd'" >
+                            <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <h1 for="hora_salida" class="input-title">Hora salida</h1>
+                            <input type="time"  name="hora_salida" class="input-form-viajes form-control" [(ngModel)]="viaje.hora_salida" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.hora_salida" class="text-danger">{{mensajeErrorValidacion.hora_salida}}</div>   
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h1 for="hora_llegada" class="input-title">Hora llegada</h1>
+                            <input type="time"  name="hora_llegada" class="input-form-viajes form-control" [(ngModel)]="viaje.hora_llegada" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.hora_llegada" class="text-danger">{{mensajeErrorValidacion.hora_llegada}}</div>     
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h1 for="origen" class="input-title">Origen</h1>
+                            <input type="text"  name="origen" class="input-form-viajes form-control" [(ngModel)]="viaje.origen" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.origen" class="text-danger">{{mensajeErrorValidacion.origen}}</div>                             
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h1 for="destino" class="input-title">Destino</h1>
+                            <input type="text"  name="destino" class="input-form-viajes form-control" [(ngModel)]="viaje.destino" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.destino" class="text-danger">{{mensajeErrorValidacion.destino}}</div>                             
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h1 for="disponibilidad" class="input-title">Disponibilidad</h1>
+                            <input type="number"  name="disponibilidad" class="input-form-viajes form-control" [(ngModel)]="viaje.disponibilidad" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.disponibilidad" class="text-danger">{{mensajeErrorValidacion.disponibilidad}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="aporte" class="input-title">Aporte</h1>
+                            <select name="aporte" class="form-control" [(ngModel)]="viaje.aporte" (ngModelChange)="ValidarCampos('verificar')"  value required>
+                                <option>Pagado</option>
+                                <option>No Pagado</option>
+                            </select>
+                            <div *ngIf="!validacion.aporte" class="text-danger">{{mensajeErrorValidacion.aporte}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="ubicacion" class="input-title">Ubicacion</h1>
+                            <select name="ubicacion" class="form-control" [(ngModel)]="viaje.ubicacion" (ngModelChange)="ValidarCampos('verificar')"  value required>
+                                <option>En Origen</option>
+                                <option>En Carretera</option>
+                                <option>En Destino</option>
+                            </select>
+                            <div *ngIf="!validacion.ubicacion" class="text-danger">{{mensajeErrorValidacion.ubicacion}}</div>   
+                        </div>
+                    </div>
+                    <div class="row section-bottons">
+                        <div class="col-sm-12">
+                            <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                            <button *ngIf="viajeNuevo"  class="btn button-registrar" (click)="CrearViaje()">Registrar</button>
+                            <button *ngIf="!viajeNuevo" class="btn button-registrar" (click)="EditarViaje()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="modal-header">
+   ¿ Que desea realizar ?
+</div>
+<div class="modal-body ">
+    <button class="btn btn-editar" (click)="EditarViaje(viaje.id_viaje)">Editar</button>
+    <button class="btn btn-registrar-pasaje" (click)="RegistrarPasaje(viaje.id_viaje)">Registrar Pasaje</button>
+    <button class="btn btn-cambiar-ubicacion" (click)="CambiarUbicacion(viaje.id_viaje)">Cambiar Ubicacion</button>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
+</div>

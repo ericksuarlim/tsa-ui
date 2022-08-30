@@ -21,6 +21,9 @@ import { ModalOpcionesReservasComponent } from './componentes/modals/modal-opcio
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
 import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
 import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-individual/pasaje-individual.component';
+import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
+import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
+import { ModalOpcionesViajesComponent } from './componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-
     ModalOpcionesReservasComponent,
     PasajesPrincipalComponent,
     FormularioPasajesComponent,
-    PasajeIndividualComponent
+    PasajeIndividualComponent,
+    PrincipalViajesComponent,
+    FormularioViajesComponent,
+    ModalOpcionesViajesComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@
                         <tr>
                             <th class="col-1" scope="col">#</th>
                             <th class="col-2 text-center" scope="col">Nombre</th>
-                            <th class="col-2 text-center" scope="col">Estado</th> 
+                            <th class="col-2 text-center" scope="col">Ubicacion</th> 
                             <th class="col-2 text-center" scope="col">Hora Salida</th>
                             <th class="col-2 text-center" scope="col">Hora Llegada</th>
                             <th class="col-1 text-center" scope="col">Pagado</th>
@@ -30,12 +30,12 @@
                     <tbody>
                             <tr *ngFor="let item of turno.viajes">
                             <td class="col-1">{{item.numero_turno}}</td>
-                            <td class="col-2 text-center">{{getConductorNombre(item.id_carnet_conductor)}}</td>
-                            <td class="col-2 text-center">{{item.estado}}</td>
+                            <td class="col-2 text-center">{{item.conductore?.nombre}} {{item.conductore?.apellido_paterno}}</td>
+                            <td class="col-2 text-center">{{item.ubicacion}}</td>
                             <td class="col-2 text-center">{{item.hora_salida}}</td>
                             <td class="col-2 text-center">{{item.hora_llegada}}</td>
                             <td class="col-1 text-center">{{item.aporte}}</td>
-                            <td class="col-2"><button class="btn btn-editar-viaje" (click)="EditarViaje()">Editar</button></td>
+                            <td class="col-2"><button class="btn btn-editar-viaje" (click)="EditarViaje(item.id_viaje)">Editar</button></td>
                         </tr>
                     </tbody>
                     </table> 

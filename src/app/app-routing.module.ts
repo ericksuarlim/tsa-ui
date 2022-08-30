@@ -13,6 +13,8 @@ import { FormularioReservasComponent } from './componentes/paginas/reservas/form
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
 import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
 import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-individual/pasaje-individual.component';
+import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
+import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -27,7 +29,10 @@ const routes: Routes = [
   {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   {path:'reservas', component: PrincipalReservasComponent},
   {path:'reservas/formulario', component: FormularioReservasComponent},
-  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent }
+  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent },
+  {path:'viajes', component: PrincipalViajesComponent },
+  {path:'viajes/formulario', component: FormularioViajesComponent},
+  
 ];
 
 @NgModule({

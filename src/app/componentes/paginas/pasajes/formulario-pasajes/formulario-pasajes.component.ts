@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pasaje } from 'src/app/modelos/pasaje';
+import { Viaje } from 'src/app/modelos/viaje';
 import { ServicioPasajesService } from 'src/app/servicios/servicio-pasajes.service';
+import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
+import {Location} from '@angular/common';
 import { BooleanLiteral } from 'typescript';
 
 @Component({
@@ -14,16 +17,14 @@ export class FormularioPasajesComponent implements OnInit {
   constructor(
     private servicioPasaje:ServicioPasajesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private viajesService:ServicioViajesService,
+    private _location: Location
   ) { }
 
   pasaje: Pasaje = new Pasaje();
+  viaje: Viaje = new Viaje();
   pasajeNuevo: boolean = true;
-  viaje={
-    id_viaje: 1,
-    origen: "Santa Ana",
-    destino: "Trinidad"
-  }
 
   validacion= {
     nombre_completo: true,
@@ -43,13 +44,8 @@ export class FormularioPasajesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id_pasaje = this.route.snapshot.queryParams["id_pasaje"];
-    this.pasajeNuevo = id_pasaje == undefined;
-    if(!this.pasajeNuevo){
-      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe(pasaje=>{
-        this.pasaje=pasaje;
-      });
-    }
+    const id_viaje = this.route.snapshot.queryParams["id_viaje"];
+    this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
   }
 
   ValidarCampos(action: string){
@@ -66,9 +62,10 @@ export class FormularioPasajesComponent implements OnInit {
 
   CrearPasaje(){
     if(this.ValidarCampos("registrar")){
+      this.pasaje.id_viaje = this.viaje.id_viaje;
       this.servicioPasaje.CrearPasaje(this.pasaje).subscribe(result=>{
         this.sendViaWhatsApp(result);
-        this.router.navigateByUrl("/pasajes")
+        this._location.back();
       });
     }
   }
@@ -83,7 +80,8 @@ export class FormularioPasajesComponent implements OnInit {
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/pasajes");
+    this._location.back();
+    //this.router.navigateByUrl("/pasajes");
   }
 
 }

@@ -18,7 +18,7 @@ export class Reserva{
         id_viaje: number;
         id_carnet_conductor: number;
         numero_turno: number;
-        estado: string;
+        ubicacion: string;
         hora_salida: string;
         hora_llegada: string;
         aporte: string;

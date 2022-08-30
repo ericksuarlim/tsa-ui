@@ -22,7 +22,6 @@
     border-radius: 2px;
 }
 
-
 .btn-new{
     text-align: center;
 }
@@ -40,7 +39,7 @@
     margin-top: 10px;
 }
 
-.thead-reservas{
+.thead-viajes{
     background:#222222;
     color: white;
 }

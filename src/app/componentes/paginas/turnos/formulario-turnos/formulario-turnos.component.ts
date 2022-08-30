@@ -52,9 +52,7 @@ export class FormularioTurnosComponent implements OnInit {
     if(!this.turnoNuevo){      
       this.servicioTurnos.ObtenerTurno(id_turno).subscribe((turno)=>{
         this.viajes = turno.viajes;
-        console.log(this.viajes);
         this.turno = turno;
-        
       });
     }
     this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
@@ -71,7 +69,6 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   EditarTurno(){
-    console.log("Turno",this.turno)
     this.servicioTurnos.EditarTurno(this.turno).subscribe(result=>{
       this.router.navigateByUrl("/turnos");
     });
@@ -91,7 +88,8 @@ export class FormularioTurnosComponent implements OnInit {
     var turnoAgregar = new Viaje();
     turnoAgregar.id_carnet_conductor =  this.formulario.carnetConductor;
     turnoAgregar.numero_turno = this.formulario.turnoConductor;
-    turnoAgregar.estado="";
+    turnoAgregar.ubicacion="";
+    turnoAgregar.fecha= moment(this.turno.fecha).format('DD/MM/YYYY');
     turnoAgregar.hora_salida="";
     turnoAgregar.hora_llegada="";
     turnoAgregar.aporte="";

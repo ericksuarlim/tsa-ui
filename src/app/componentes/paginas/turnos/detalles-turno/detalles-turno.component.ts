@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Conductor } from 'src/app/modelos/conductor';
 import { Turno } from 'src/app/modelos/turno';
 import { ServicioConductoresService } from 'src/app/servicios/servicio-conductores.service';
@@ -19,7 +19,8 @@ export class DetallesTurnoComponent implements OnInit {
   constructor(
     private conductoresService:ServicioConductoresService, 
     private turnoService:ServicioTurnosService, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
@@ -27,14 +28,15 @@ export class DetallesTurnoComponent implements OnInit {
     this.conductoresService.ObtenerConductores().subscribe(conductores=>{
       this.conductores = conductores;
     })
-    this.turnoService.ObtenerTurno(idTurno).subscribe(turno=>{console.log("Turno", turno); this.turno = turno});
+    this.turnoService.ObtenerTurno(idTurno).subscribe(turno=>{this.turno = turno});
   }
 
   EliminarTurno(){
 
   }
 
-  EditarViaje(){
+  EditarViaje(id_viaje:number){
+    this.router.navigate(["/viajes/formulario"], { queryParams: { id_viaje } });
 
   }
 

@@ -7,12 +7,15 @@ export class Turno{
         id_viaje: number;
         id_carnet_conductor: number,
         numero_turno: number,
-        estado: string,
+        ubicacion: string,
         hora_salida: string,
         hora_llegada: string,
         aporte: string,
         id_turno: number,
         disponibilidad:number,
+        origen: string,
+        destino:string;
+        fecha:string;
         conductore: {
             activo: boolean,
             apellido_materno: string,

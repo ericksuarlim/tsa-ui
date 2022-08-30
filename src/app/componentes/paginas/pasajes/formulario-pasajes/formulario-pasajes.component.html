@@ -8,7 +8,7 @@
             <h3 class="title-page">NUEVO PASAJE</h3>
         </div>
         <div class="col-sm-12">
-            <form class="formulario-pasajes" (ngSubmit)="CrearPasaje()">
+            <form class="formulario-pasajes" name="FormularioPasajes">
                 <div  class="col">
                     <div class="row">
                         <div class="col-12 col-md-4">
@@ -31,17 +31,17 @@
                             <div *ngIf="!validacion.asiento" class="text-danger">{{mensajeErrorValidacion.asiento}}</div>   
                         </div>
                         <div class="col-12 col-md-4">
+                            <h1 for="precio" class="input-title">Precio</h1>
+                            <input type="number"  name="precio" class="input-form-pasajes form-control" [(ngModel)]="pasaje.precio" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.precio" class="text-danger">{{mensajeErrorValidacion.precio}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
                             <h1 for="pagado" class="input-title">Pagado</h1>
                             <select name="pagado" class="form-control"  [(ngModel)]="pasaje.pagado" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
                                 <option [value]="true">Pagado</option>
                                 <option [value]="false">Por pagar</option>
                             </select> 
                             <div *ngIf="!validacion.pagado" class="text-danger">{{mensajeErrorValidacion.pagado}}</div>   
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <h1 for="precio" class="input-title">Precio</h1>
-                            <input type="number"  name="precio" class="input-form-pasajes form-control" [(ngModel)]="pasaje.precio" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
-                            <div *ngIf="!validacion.precio" class="text-danger">{{mensajeErrorValidacion.precio}}</div>   
                         </div>
                     </div>
                     <div class="row">
@@ -65,8 +65,7 @@
                     <div class="row section-bottons">
                         <div class="col-sm-12">
                             <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
-                            <input *ngIf="pasajeNuevo" type="submit" class="btn button-registrar" value="Registrar">
-                            <input *ngIf="!pasajeNuevo" class="btn button-registrar" value="Actualizar" (click)="EditarPasaje()">
+                            <button *ngIf="pasajeNuevo" class="btn button-registrar" (click)="CrearPasaje()">Registrar</button>
                         </div>
                     </div>
                 </div>
