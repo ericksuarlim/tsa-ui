@@ -27,6 +27,7 @@ import { ModalOpcionesViajesComponent } from './componentes/modals/modal-opcione
 
 import { registerLocaleData } from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
+import { PrincipalEncomiendasComponent } from './componentes/paginas/encomiendas/principal-encomiendas/principal-encomiendas.component';
 registerLocaleData(localeEsAr, 'es-Ar');
 
 
@@ -52,6 +53,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     PrincipalViajesComponent,
     FormularioViajesComponent,
     ModalOpcionesViajesComponent,
+    PrincipalEncomiendasComponent,
   ],
   imports: [
     BrowserModule,

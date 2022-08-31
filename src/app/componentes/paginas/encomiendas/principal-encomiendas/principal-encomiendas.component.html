@@ -1,0 +1,52 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row operation-section">
+        <div class="col-sm-8 col-md-7 ">
+            <input type="text" name="nombre_cliente" class="input-search form-control" placeholder="Ej. Ramiro Colque">
+        </div>
+        <div class="col-sm-4 col-md-3">
+            <select name="tipo_busqueda" class="form-control">
+                <option>Nombre Cliente</option>
+                <option>Codigo Encomienda</option>
+                <option>Fecha</option>
+            </select>   
+        </div>
+        <div class="col-sm-12 col-md-2 btn-new">
+            <a href="/encomiendas/formulario" class="btn">Crear Encomienda</a>
+        </div>
+    </div>
+    <div class="row row-container">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-encomiendas">
+                <thead class="thead-encomiendas">
+                  <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Nombre Cliente</th>
+                    <th scope="col">Pagada</th>
+                    <th scope="col">Hora Salida</th>
+                    <th scope="col">Hora Llegada</th>
+                    <th scope="col">Ubicacion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let encomienda of encomiendas">
+                  <tr>
+                    <td>{{encomienda.viaje?.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
+                    <td>{{encomienda.nombre_cliente}}</td>
+                    <td>{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
+                    <td>{{encomienda.viaje?.hora_salida}}</td>
+                    <td>{{encomienda.viaje?.hora_llegada}}</td>
+                    <td>{{encomienda.viaje?.ubicacion}}</td>
+                    <td>{{encomienda.monto_pago}}</td>
+                    <td><a class="btn btn-table btn-detalles" (click)="opcionesEncomienda(encomienda)">Opciones</a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+

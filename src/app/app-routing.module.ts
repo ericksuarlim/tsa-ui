@@ -15,6 +15,7 @@ import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formul
 import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-individual/pasaje-individual.component';
 import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
 import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
+import { PrincipalEncomiendasComponent } from './componentes/paginas/encomiendas/principal-encomiendas/principal-encomiendas.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent },
   {path:'viajes', component: PrincipalViajesComponent },
   {path:'viajes/formulario', component: FormularioViajesComponent},
+  {path:'encomiendas', component: PrincipalEncomiendasComponent},
   
 ];
 

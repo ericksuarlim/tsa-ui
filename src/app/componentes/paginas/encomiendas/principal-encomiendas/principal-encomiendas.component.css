@@ -24,6 +24,7 @@
 
 .btn-new{
     text-align: center;
+    padding-top: 4px;
 }
 
 .btn-new > a{
@@ -32,6 +33,7 @@
     color: #FFFFFF;
     width: 100%;
     max-height: 40px;
+    font-size: 0.75em;
 }
 
 .row-container{
@@ -39,7 +41,7 @@
     margin-top: 10px;
 }
 
-.thead-viajes{
+.thead-encomiendas{
     background:#222222;
     color: white;
 }
@@ -55,17 +57,20 @@
     margin-top: 4px;
 }
 
+
 .table th, .table td {
     vertical-align: middle;
+    text-align: center;
 }
 
 @media (max-width: 992px) {
     .btn-new{
         padding: 0px;
+        padding-top: 4px;
     }
     
     .btn-new a{
-        font-size: 0.85em;
+        font-size: 0.70em;
     }
     
     .row-container{
