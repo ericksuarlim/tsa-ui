@@ -1,6 +1,10 @@
 .btn-cancelar{
     background: #FB9130;
-    
+    color: #ededed;
+}
+
+.btn-cancelar:hover{
+    color: #ffffff;
 }
 
 .modal-body > .btn:hover{
@@ -12,13 +16,12 @@
     background: #ffffff;
     color: #222222;
     border: 1px solid #FB9130;
+    font-size: 0.85em;
     width: 30%;
 }
 
-
 .btn{
     border-radius: 100px;
-    color: white;
 }
 
 .modal-body{
@@ -36,6 +39,28 @@
 .modal-footer{
     padding-top: 7px;
     padding-bottom: 7px;
+}
+
+.input-title{
+    font-size: 1em;
+    margin-top:12px;
+    color: #495057;
+}
+
+.change-ubication-section{
+    border-top: 1px solid #dee2e6;
+    margin-top: 10px;
+}
+
+.btn-change-ubication{
+    border: 1px solid #FB9130;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+.btn-change-ubication:hover{
+    background-color: #222222;
+    color: #FB9130;
 }
 
 @media (max-width: 510px) {

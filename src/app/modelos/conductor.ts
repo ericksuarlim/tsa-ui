@@ -3,7 +3,7 @@ export class Conductor{
     nombre : string;
     apellido_paterno : string;
     apellido_materno : string;
-    fecha_nacimiento : string;
+    fecha_nacimiento : Date;
     ciudad : string;
     activo : boolean;
     id_auto_1 : string;

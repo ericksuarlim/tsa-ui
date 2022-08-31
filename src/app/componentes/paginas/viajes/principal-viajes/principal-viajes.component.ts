@@ -22,11 +22,10 @@ export class PrincipalViajesComponent implements OnInit {
   }
 
   opcionesViaje(viaje:Viaje){
+    let copiaViaje = new Viaje()
+    copiaViaje = {...viaje};
     const modalRef = this.modalService.open(ModalOpcionesViajesComponent);
-    modalRef.componentInstance.viaje = viaje;
-    // modalRef.componentInstance.actualizar.subscribe((confirm: boolean) => {
-    //     window.location.reload();
-    // });
+    modalRef.componentInstance.viaje = copiaViaje;
   }
 
 }

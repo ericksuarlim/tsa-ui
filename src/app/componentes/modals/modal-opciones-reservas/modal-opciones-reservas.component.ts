@@ -78,7 +78,7 @@ export class ModalOpcionesReservasComponent implements OnInit {
   }
 
   async Cancelar(){
-    this.actualizar.emit(false);
+    //this.actualizar.emit(false);
     this.activeModal.close(); 
   }
 

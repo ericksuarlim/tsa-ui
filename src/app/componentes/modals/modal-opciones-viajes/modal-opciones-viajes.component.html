@@ -3,9 +3,20 @@
 </div>
 <div class="modal-body ">
     <button class="btn btn-editar" (click)="EditarViaje(viaje.id_viaje)">Editar</button>
-    <button class="btn btn-registrar-pasaje" (click)="RegistrarPasaje(viaje.id_viaje)">Registrar Pasaje</button>
-    <button class="btn btn-cambiar-ubicacion" (click)="CambiarUbicacion(viaje.id_viaje)">Cambiar Ubicacion</button>
+    <button class="btn btn-registrar-pasaje" (click)="RegistrarPasaje(viaje.id_viaje)" [disabled]="viaje.origen===null">Registrar Pasaje</button>
+    <button class="btn btn-cambiar-ubicacion" (click)="cambiarUbicacion=!cambiarUbicacion">Cambiar Ubicacion</button>
+    <div class="row change-ubication-section" *ngIf="cambiarUbicacion">
+        <div class="col-12">
+            <h1 for="ubicacion" class="input-title">Seleccionar nueva ubicacion</h1>
+            <select name="ubicacion" class="form-control" [(ngModel)]="viaje.ubicacion"value required>
+                <option>En Origen</option>
+                <option>En Carretera</option>
+                <option>En Destino</option>
+            </select>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
+    <button type="button" class="btn btn-change-ubication" *ngIf="cambiarUbicacion" (click)="CambiarUbicacionViaje()">Cambiar Ubicacion</button>
 </div>

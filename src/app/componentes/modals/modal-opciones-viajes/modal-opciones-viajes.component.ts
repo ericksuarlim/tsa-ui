@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Viaje } from 'src/app/modelos/viaje';
+import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
 
 @Component({
   selector: 'app-modal-opciones-viajes',
@@ -11,10 +12,12 @@ import { Viaje } from 'src/app/modelos/viaje';
 export class ModalOpcionesViajesComponent implements OnInit {
 
   viaje: Viaje = new Viaje();
+  cambiarUbicacion: boolean = false;
 
   constructor(
     private activeModal: NgbActiveModal,
     private router:Router,
+    private viajesService: ServicioViajesService,
   ) { }
 
   ngOnInit(): void {
@@ -34,8 +37,11 @@ export class ModalOpcionesViajesComponent implements OnInit {
     this.router.navigate(["/pasajes/formulario"], { queryParams: { id_viaje } });
   }
 
-  CambiarUbicacion(id_viaje:number){
-
+  CambiarUbicacionViaje(){
+    this.viajesService.EditarViaje(this.viaje).subscribe(result=>{
+      this.activeModal.close(); 
+      window.location.reload(); 
+    });
   }
 
 

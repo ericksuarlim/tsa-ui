@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,10 @@ import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-
 import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
 import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
 import { ModalOpcionesViajesComponent } from './componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es-Ar');
 
 
 @NgModule({
@@ -56,7 +60,7 @@ import { ModalOpcionesViajesComponent } from './componentes/modals/modal-opcione
     HttpClientModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

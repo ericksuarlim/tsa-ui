@@ -23,9 +23,7 @@ export class PasajesPrincipalComponent implements OnInit {
   }
 
   abrirPasaje(id_pasaje:number){
-    //this.router.navigate(["/pasajes/individual"], { queryParams: { id_pasaje } });
     this.router.navigateByUrl(`/pasajes/recibo/${id_pasaje}`);
-
   }
 
 }

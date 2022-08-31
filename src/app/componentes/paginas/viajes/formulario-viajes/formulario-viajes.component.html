@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-12 col-md-5">
                             <h1 for="fecha" class="input-title">Fecha</h1>
-                            <input type="date"  name="fecha" class="input-form-viajes form-control"  (input)="viaje.fecha=$event.target.value ; ValidarCampos('verificar')" [value]="viaje.fecha | date:'yyyy-MM-dd'" >
+                            <input type="date"  name="fecha" class="input-form-viajes form-control"  [(ngModel)]="viaje.fecha" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
                             <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>   
                         </div>
                     </div>

@@ -55,8 +55,6 @@ export class FormularioViajesComponent implements OnInit {
     if(!this.viajeNuevo){
       this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{
         this.viaje=viaje;
-        this.viaje.fecha =  moment(this.viaje.fecha).format('YYYY-MM-DD');
-        console.log(this.viaje)
       });
     }  
     this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
@@ -65,7 +63,6 @@ export class FormularioViajesComponent implements OnInit {
   CrearViaje(){
     if(this.ValidarCampos('registrar'))
     {
-      this.viaje.fecha = moment(this.viaje.fecha).format('DD/MM/YYYY')
       this.viaje.id_turno =0;
       this.viaje.numero_turno = 0;
       this.viajesService.CrearViaje(this.viaje).subscribe(result=>{
@@ -76,15 +73,14 @@ export class FormularioViajesComponent implements OnInit {
 
   ValidarCampos(action: string){
     if(this.viaje.id_carnet_conductor === null || (action=="registrar" && this.viaje.id_carnet_conductor == undefined)){this.mensajeErrorValidacion.id_carnet_conductor="Debe seleccionar un conductor"; this.validacion.id_carnet_conductor = false}else{this.validacion.id_carnet_conductor =true};
-    if(this.viaje.fecha === "" || (action=="registrar" && this.viaje.fecha == undefined)){this.mensajeErrorValidacion.fecha="Fecha necesaria"; this.validacion.fecha = false}else if(this.viaje.fecha < moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha="Fecha invalida"; this.validacion.fecha = false}else{this.validacion.fecha =true};
+    if(this.viaje.fecha === null || (action=="registrar" && this.viaje.fecha == undefined)){this.mensajeErrorValidacion.fecha="Fecha necesaria"; this.validacion.fecha = false}else if(new Date(this.viaje.fecha) < new Date()){this.mensajeErrorValidacion.fecha="Fecha invalida"; this.validacion.fecha = false}else{this.validacion.fecha =true};
     if(this.viaje.hora_salida === "" || (action=="registrar" && this.viaje.hora_salida == undefined)){this.mensajeErrorValidacion.hora_salida="Hora de salidad necesaria"; this.validacion.hora_salida = false}else{this.validacion.hora_salida =true};
     if(this.viaje.hora_llegada === "" || (action=="registrar" && this.viaje.hora_llegada == undefined)){this.mensajeErrorValidacion.hora_llegada="Hora de llegada necesaria"; this.validacion.hora_llegada = false}else{this.validacion.hora_llegada =true};
     if(this.viaje.origen === "" || (action=="registrar" && this.viaje.origen == undefined)){this.mensajeErrorValidacion.origen="Origen necesario"; this.validacion.origen = false}else{this.validacion.origen =true};
     if(this.viaje.destino === "" || (action=="registrar" && this.viaje.destino == undefined)){this.mensajeErrorValidacion.destino="Destino necesario"; this.validacion.destino = false}else{this.validacion.destino =true};
     if(this.viaje.disponibilidad === null || (action=="registrar" && this.viaje.disponibilidad == undefined)){this.mensajeErrorValidacion.disponibilidad="Disponibilidad necesaria"; this.validacion.disponibilidad = false}else{this.validacion.disponibilidad =true};
-    if(this.viaje.aporte === null || (action=="registrar" && this.viaje.aporte == undefined)){this.mensajeErrorValidacion.aporte="Aporte necesario"; this.validacion.aporte = false}else{this.validacion.aporte =true};
-    if(this.viaje.ubicacion === null || (action=="registrar" && this.viaje.ubicacion == undefined)){this.mensajeErrorValidacion.ubicacion="Ubicacion necesario"; this.validacion.ubicacion = false}else{this.validacion.ubicacion =true};
-
+    if(this.viaje.aporte === "" || (action=="registrar" && this.viaje.aporte == undefined)){this.mensajeErrorValidacion.aporte="Aporte necesario"; this.validacion.aporte = false}else{this.validacion.aporte =true};
+    if(this.viaje.ubicacion === "" || (action=="registrar" && this.viaje.ubicacion == undefined)){this.mensajeErrorValidacion.ubicacion="Ubicacion necesario"; this.validacion.ubicacion = false}else{this.validacion.ubicacion =true};
 
     const response = this.validacion.id_carnet_conductor&& this.validacion.hora_salida && this.validacion.hora_llegada && this.validacion.origen
     && this.validacion.destino && this.validacion.disponibilidad && this.validacion.aporte && this.validacion.ubicacion ;
@@ -94,7 +90,6 @@ export class FormularioViajesComponent implements OnInit {
   EditarViaje(){
     if(this.ValidarCampos('registrar'))
     {
-      this.viaje.fecha = moment(this.viaje.fecha).format('DD/MM/YYYY');
       this.viajesService.EditarViaje(this.viaje).subscribe(result=>{
         this._location.back();
       });

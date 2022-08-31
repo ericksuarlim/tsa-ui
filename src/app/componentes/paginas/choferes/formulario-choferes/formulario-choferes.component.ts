@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Conductor } from 'src/app/modelos/conductor';
 import { ServicioConductoresService } from 'src/app/servicios/servicio-conductores.service';
 import { Router, ActivatedRoute } from "@angular/router";
+import {Location} from '@angular/common';
 import * as moment from 'moment';
-import { Moment } from 'moment';
 
 @Component({
   selector: 'app-formulario-choferes',
@@ -42,9 +42,12 @@ export class FormularioChoferesComponent implements OnInit {
     id_sindicato: "",
   }
 
-  constructor(private servicioConductores: ServicioConductoresService,private router: Router,private route: ActivatedRoute) {
-    
-   }
+  constructor(
+    private servicioConductores: ServicioConductoresService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private _location: Location
+  ){}
 
   ngOnInit(): void {
    
@@ -63,37 +66,30 @@ export class FormularioChoferesComponent implements OnInit {
   }
 
   CrearConductor(){
+    
     if(this.ValidarCampos("registrar"))
     {
-      var conductorEnviar = new Conductor();
-      conductorEnviar.carnet = this.conductor.carnet;
-      conductorEnviar.nombre = this.conductor.nombre;
-      conductorEnviar.apellido_paterno = this.conductor.apellido_paterno;
-      conductorEnviar.apellido_materno = this.conductor.apellido_materno;
-      conductorEnviar.fecha_nacimiento = this.conductor.fecha_nacimiento;
-      conductorEnviar.ciudad = this.conductor.ciudad;
-      conductorEnviar.activo = (this.activo == "Activo") ? true : false;
-      conductorEnviar.id_auto_1 = this.conductor.id_auto_1;
-      conductorEnviar.id_auto_2 = this.conductor.id_auto_2;
-      conductorEnviar.grupo = this.conductor.grupo;
-      conductorEnviar.id_sindicato = this.conductor.id_sindicato;
-      this.servicioConductores.CrearConductor(conductorEnviar).subscribe(result=>{
-        this.router.navigateByUrl("/conductores");
+      this.conductor.activo = (this.activo == "Activo") ? true : false;
+      this.servicioConductores.CrearConductor(this.conductor).subscribe(result=>{
+        this._location.back();
       }); 
     } 
   }
 
   EditarConductor(){
-    this.servicioConductores.EditarConductor(this.conductor).subscribe(result=>{
-      this.router.navigateByUrl("/conductores");
-    });
+    if(this.ValidarCampos("registrar"))
+    {
+      this.servicioConductores.EditarConductor(this.conductor).subscribe(result=>{
+        this._location.back();
+      });
+    }
   }
 
   ValidarCampos(action:String):boolean{ 
     if(this.conductor.carnet === null || (action=="registrar" && this.conductor.carnet == undefined)){this.mensajeErrorValidacion.carnet="Carnet necesario"; this.validacion.carnet = false}else if(this.conductores.find((c)=>{return c.carnet ==this.conductor.carnet}) && this.conductorNuevo){this.mensajeErrorValidacion.carnet="Carnet ya existente"; this.validacion.carnet = false}else{this.validacion.carnet =true};
     if(this.conductor.nombre === "" || (action=="registrar" && this.conductor.nombre == undefined)){this.mensajeErrorValidacion.nombre="Nombre necesario"; this.validacion.nombre = false}else{this.validacion.nombre =true};
     if(this.conductor.apellido_paterno === "" || (action=="registrar" && this.conductor.apellido_paterno == undefined)){this.mensajeErrorValidacion.apellido_paterno="Apellido necesario"; this.validacion.apellido_paterno = false}else{this.validacion.apellido_paterno =true};
-    if(this.conductor.fecha_nacimiento === "" || (action=="registrar" && this.conductor.fecha_nacimiento == undefined)){this.mensajeErrorValidacion.fecha_nacimiento="Fecha necesaria"; this.validacion.fecha_nacimiento = false}else if(this.conductor.fecha_nacimiento >= moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha_nacimiento="Fecha invalida"; this.validacion.fecha_nacimiento = false}else{this.validacion.fecha_nacimiento =true};
+    if(this.conductor.fecha_nacimiento === null || (action=="registrar" && this.conductor.fecha_nacimiento == undefined)){this.mensajeErrorValidacion.fecha_nacimiento="Fecha necesaria"; this.validacion.fecha_nacimiento = false}else if(moment(this.conductor.fecha_nacimiento).format('YYYY-MM-DD') >= moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha_nacimiento="Fecha invalida"; this.validacion.fecha_nacimiento = false}else{this.validacion.fecha_nacimiento =true};
     if(this.conductor.ciudad === "" || (action=="registrar" && this.conductor.ciudad == undefined)){this.mensajeErrorValidacion.ciudad="Ciudad necesaria"; this.validacion.ciudad = false}else{this.validacion.ciudad =true};
     if(this.activo === null || (action=="registrar" && this.activo == undefined)){this.mensajeErrorValidacion.activo="Estado necesario"; this.validacion.activo = false}else{this.validacion.activo =true};
     if(this.conductor.grupo === "" || (action=="registrar" && this.conductor.grupo == undefined)){this.mensajeErrorValidacion.grupo="Grupo necesario"; this.validacion.grupo = false}else{this.validacion.grupo =true};

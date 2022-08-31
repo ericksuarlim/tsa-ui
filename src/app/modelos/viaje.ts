@@ -10,14 +10,14 @@ export class Viaje{
     disponibilidad: number;
     origen: string;
     destino: string;
-    fecha: string;
+    fecha: Date;
     conductore: {
         activo: boolean,
         apellido_materno: string,
         apellido_paterno: string,
         carnet: number,
         ciudad: string,
-        fecha_nacimiento: string,
+        fecha_nacimiento: Date,
         grupo: string,
         id_auto_1: string,
         id_auto_2: string,
@@ -25,7 +25,7 @@ export class Viaje{
         nombre: string,
     };
     turno:{
-        fecha: string,
+        fecha: Date,
         grupo: string,
         id_sindicato: number,
         id_turno: number,

@@ -33,7 +33,7 @@
                 </thead>
                 <tbody *ngFor="let reserva of reservas">
                   <tr>
-                    <th scope="row">{{reserva.fecha}}</th>
+                    <th scope="row">{{ reserva.fecha | date:'dd MMM yyyy':'+0200':'es-AR'}}</th>
                     <td>{{reserva.nombre_completo_reserva}}</td>
                     <td>{{reserva.id_sindicato !=null ? reserva.sindicato?.nombre : reserva.viaje?.conductore.sindicato.nombre}}</td>
                     <td class="text-center">{{reserva.cantidad}}</td>
