@@ -20,6 +20,9 @@ import { FormularioEncomiendasComponent } from './componentes/paginas/encomienda
 import { DetalleEncomiendaComponent } from './componentes/paginas/encomiendas/detalle-encomienda/detalle-encomienda.component';
 import { ReciboEncomiendaComponent } from './componentes/paginas/encomiendas/recibo-encomienda/recibo-encomienda.component';
 import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaje/detalle-viaje.component';
+import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
+import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
+import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -42,6 +45,10 @@ const routes: Routes = [
   {path:'encomiendas/seguimiento/:id_encomienda', component: DetalleEncomiendaComponent},
   {path:'encomiendas/recibo/:id_encomienda', component: ReciboEncomiendaComponent},
   {path:'viajes/:id_viaje', component: DetalleViajeComponent},  
+  {path:'anuncios', component: PrincipalAnunciosComponent},
+  {path:'anuncios/formulario', component: FormularioAnunciosComponent},  
+  {path:'anuncios/:id_anuncio', component: DetalleAnuncioComponent},
+  
 ];
 
 @NgModule({

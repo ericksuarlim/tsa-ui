@@ -25,6 +25,8 @@ export class FormularioEncomiendasComponent implements OnInit {
     monto_pago: true,
     carnet_cliente: true,
     celular_cliente: true,
+    cantidad_bultos: true,
+    detalle: true,
   }
   mensajeErrorValidacion= {
     nombre_cliente: "",
@@ -32,6 +34,8 @@ export class FormularioEncomiendasComponent implements OnInit {
     monto_pago: "",
     carnet_cliente: "",
     celular_cliente: "",
+    cantidad_bultos: "",
+    detalle: ""
   }
 
   constructor( 
@@ -58,8 +62,12 @@ export class FormularioEncomiendasComponent implements OnInit {
     if(this.encomienda.pagada === null || (action=="registrar" && this.encomienda.pagada == undefined)){this.mensajeErrorValidacion.pagada="Estado de pago necesario"; this.validacion.pagada = false}else{this.validacion.pagada =true};
     if(this.encomienda.monto_pago === null || (action=="registrar" && this.encomienda.monto_pago == undefined)){this.mensajeErrorValidacion.monto_pago="Monto de pago necesario"; this.validacion.monto_pago = false}else{this.validacion.monto_pago =true};
     if(this.encomienda.celular_cliente === null || (action=="registrar" && this.encomienda.celular_cliente == undefined)){this.mensajeErrorValidacion.celular_cliente="Celular necesario"; this.validacion.celular_cliente = false}else{this.validacion.celular_cliente =true};
+    if(this.encomienda.detalle === "" || (action=="registrar" && this.encomienda.detalle) == undefined){this.mensajeErrorValidacion.detalle="Detalle necesario"; this.validacion.detalle = false}else{this.validacion.detalle =true};
+    if(this.encomienda.cantidad_bultos === null || (action=="registrar" && this.encomienda.cantidad_bultos == undefined)){this.mensajeErrorValidacion.cantidad_bultos="Cantidad de bultos necesaria"; this.validacion.cantidad_bultos = false}else{this.validacion.cantidad_bultos =true};
 
-    const response = this.validacion.carnet_cliente && this.validacion.nombre_cliente && this.validacion.pagada && this.validacion.monto_pago && this.validacion.celular_cliente;
+
+    const response = this.validacion.carnet_cliente && this.validacion.nombre_cliente && this.validacion.pagada && this.validacion.monto_pago && this.validacion.celular_cliente
+    && this.validacion.detalle && this.validacion.cantidad_bultos;
     return response;
   }
 

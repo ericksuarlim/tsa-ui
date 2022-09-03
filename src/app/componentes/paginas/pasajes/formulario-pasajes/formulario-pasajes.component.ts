@@ -75,6 +75,14 @@ export class FormularioPasajesComponent implements OnInit {
     }
   }
 
+  ActualizarPasaje(){
+    if(this.ValidarCampos("registrar")){
+      this.servicioPasaje.EditarPasaje(this.pasaje).subscribe(result=>{
+        this._location.back();
+      });
+    }
+  }
+
   sendViaWhatsApp(pasajeNuevo:Pasaje) { 
     //console.log(window.location.href);
     const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}`;

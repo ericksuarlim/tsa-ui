@@ -32,6 +32,9 @@ import { DetalleEncomiendaComponent } from './componentes/paginas/encomiendas/de
 import { ReciboEncomiendaComponent } from './componentes/paginas/encomiendas/recibo-encomienda/recibo-encomienda.component';
 import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaje/detalle-viaje.component';
 import { ModalOpcionesCreacionComponent } from './componentes/modals/modal-opciones-creacion/modal-opciones-creacion.component';
+import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
+import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
+import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
 registerLocaleData(localeEsAr, 'es-Ar');
 
 
@@ -63,6 +66,9 @@ registerLocaleData(localeEsAr, 'es-Ar');
     ReciboEncomiendaComponent,
     DetalleViajeComponent,
     ModalOpcionesCreacionComponent,
+    PrincipalAnunciosComponent,
+    DetalleAnuncioComponent,
+    FormularioAnunciosComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,49 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row operation-section">
+        <div class="col-sm-8 col-md-7">
+            <input type="text" name="Titulo" class="input-search form-control" placeholder="Ej. Salidas Diarias a TDD">
+        </div>
+        <div class="col-sm-4 col-md-3">
+            <select name="tipo_busqueda" class="form-control">
+                <option>TItulo</option>
+                <option>Codigo Anuncio</option>
+                <option>Fecha</option>
+            </select>   
+        </div>
+
+        <div class="col-sm-12 col-md-2 btn-new">
+          <button (click)="RedirigirCrearAnuncio()" class="btn">Crear Anuncio</button>
+        </div>
+    </div>
+    <div class="row row-container">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-anuncios">
+                <thead class="thead-anuncios">
+                  <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Sindicato</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let anuncio of anuncios">
+                  <tr>
+                    <td>{{anuncio.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
+                    <th>{{anuncio.titulo}}</th>
+                    <td>{{anuncio.sindicato?.nombre}}</td>
+                    <td >{{(anuncio.detalle | slice:0:35)+'..'}}</td>
+                    <td><a class="btn btn-table btn-eliminar" (click)="ModalEliminarAnuncio(anuncio)">Eliminar</a></td>
+                    <td><a class="btn btn-table btn-ver" (click)="VerAnuncio(anuncio.id_anuncio)">Ver</a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+

@@ -53,6 +53,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 47px;
+  text-transform: capitalize;
 }
 
 .info > ul> li{
@@ -77,6 +78,10 @@
   display: flex;
   margin-bottom: -2px;
   margin-top: 30px;
+}
+
+.card:hover{
+  cursor: pointer;
 }
 
 

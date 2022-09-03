@@ -1448,3 +1448,10 @@
 	}
 	
 }
+
+
+@media only screen and (max-width: 540px) {
+.main-header .header-top{
+	padding:8px 0px;
+}
+}
