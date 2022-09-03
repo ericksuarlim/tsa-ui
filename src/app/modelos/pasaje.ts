@@ -11,7 +11,7 @@ export class Pasaje{
         id_viaje: number;
         id_carnet_conductor: number;
         numero_turno: number;
-        estado: string;
+        ubicacion: string;
         hora_salida: string;
         hora_llegada: string;
         aporte: string;
@@ -23,7 +23,7 @@ export class Pasaje{
             apellido_paterno: string,
             carnet: number,
             ciudad: string,
-            fecha_nacimiento: string,
+            fecha_nacimiento: Date,
             grupo: string,
             id_auto_1: string,
             id_auto_2: string,
@@ -37,7 +37,7 @@ export class Pasaje{
             }
         };
         turno:{
-            fecha: string,
+            fecha: Date,
             grupo: string,
             id_sindicato: number,
             id_turno: number,

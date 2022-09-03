@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
+        <div class="col-sm-8 col-md-7">
             <input type="text" name="nombre_pasaje" class="input-search form-control" placeholder="Ej. Ramiro Colque">
         </div>
         <div class="col-sm-4 col-md-3">
@@ -15,7 +15,7 @@
             </select>   
         </div>
         <div class="col-sm-12 col-md-2 btn-new">
-            <a href="/pasajes/formulario" class="btn">Crear Pasaje</a>
+          <button (click)="RedirigirCrearPasaje()" class="btn">Crear Pasaje</button>
         </div>
     </div>
     <div class="row row-container">
@@ -23,20 +23,25 @@
             <table class="table table-striped tabla-pasajes">
                 <thead class="thead-pasajes">
                   <tr>
-                    <th scope="col">Cod. Pasaje</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Pagado</th>
+                    <th scope="col" class="text-center">Cod. Pasaje</th>
+                    <th scope="col" class="text-center">Fecha</th>
+                    <th scope="col" class="text-center">Cliente</th>
+                    <th scope="col" class="text-center">Precio</th>
+                    <th scope="col" class="text-center">Pagado</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
+
                   </tr>
                 </thead>
                 <tbody *ngFor="let pasaje of pasajes">
                   <tr>
-                    <th class="text-center">{{pasaje.id_pasaje}}</th>
-                    <td>{{pasaje.nombre_completo}}</td>
-                    <td>{{pasaje.precio}}</td>
-                    <td>{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
-                    <td><a class="btn btn-table btn-detalles" (click)="abrirPasaje(pasaje.id_pasaje)">Opciones</a></td>
+                    <td class="text-center">{{pasaje.id_pasaje}}</td>
+                    <th class="text-center">{{pasaje.viaje?.fecha| date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
+                    <td class="text-center">{{pasaje.nombre_completo}}</td>
+                    <td class="text-center">{{pasaje.precio}}</td>
+                    <td class="text-center">{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
+                    <td><a class="btn btn-table btn-ver-recibo" (click)="AbrirPasaje(pasaje.id_pasaje)">Recibo</a></td>
+                    <td><a class="btn btn-table btn-editar-pasaje" (click)="EditarPasajes(pasaje.id_pasaje,pasaje.id_viaje)">Editar</a></td>
                   </tr>
                 </tbody>
               </table>

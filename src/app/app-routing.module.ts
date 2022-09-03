@@ -13,6 +13,16 @@ import { FormularioReservasComponent } from './componentes/paginas/reservas/form
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
 import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
 import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-individual/pasaje-individual.component';
+import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
+import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
+import { PrincipalEncomiendasComponent } from './componentes/paginas/encomiendas/principal-encomiendas/principal-encomiendas.component';
+import { FormularioEncomiendasComponent } from './componentes/paginas/encomiendas/formulario-encomiendas/formulario-encomiendas.component';
+import { DetalleEncomiendaComponent } from './componentes/paginas/encomiendas/detalle-encomienda/detalle-encomienda.component';
+import { ReciboEncomiendaComponent } from './componentes/paginas/encomiendas/recibo-encomienda/recibo-encomienda.component';
+import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaje/detalle-viaje.component';
+import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
+import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
+import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -27,7 +37,18 @@ const routes: Routes = [
   {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   {path:'reservas', component: PrincipalReservasComponent},
   {path:'reservas/formulario', component: FormularioReservasComponent},
-  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent }
+  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent },
+  {path:'viajes', component: PrincipalViajesComponent },
+  {path:'viajes/formulario', component: FormularioViajesComponent},
+  {path:'encomiendas', component: PrincipalEncomiendasComponent},
+  {path:'encomiendas/formulario', component: FormularioEncomiendasComponent},
+  {path:'encomiendas/seguimiento/:id_encomienda', component: DetalleEncomiendaComponent},
+  {path:'encomiendas/recibo/:id_encomienda', component: ReciboEncomiendaComponent},
+  {path:'viajes/:id_viaje', component: DetalleViajeComponent},  
+  {path:'anuncios', component: PrincipalAnunciosComponent},
+  {path:'anuncios/formulario', component: FormularioAnunciosComponent},  
+  {path:'anuncios/:id_anuncio', component: DetalleAnuncioComponent},
+  
 ];
 
 @NgModule({

@@ -14,7 +14,7 @@ import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service
 export class ModalOpcionesReservasComponent implements OnInit {
 
   reserva: Reserva = new Reserva();
-  @Output() actualizar: EventEmitter<boolean>  = new EventEmitter();
+  // @Output() actualizar: EventEmitter<boolean>  = new EventEmitter();
   conductores: Conductor[];
   viajes: Viaje[];
   sinViaje: boolean;
@@ -61,24 +61,27 @@ export class ModalOpcionesReservasComponent implements OnInit {
     this.ValidarReserva("verificar");
   }
 
-  async Actualizar(){
+  Actualizar(){
     if(this.ValidarReserva("registrar")){
       if(this.sinViaje)
-      {
+      { 
         this.reserva.id_sindicato = this.reserva.sindicato.id_sindicato;
       }
       else{
         this.reserva.id_sindicato = this.reserva.viaje.conductore.id_sindicato;
       }
       this.reservasService.EditarReserva(this.reserva).subscribe(()=>{
-        this.actualizar.emit(true);
-        this.activeModal.close();
+        // this.actualizar.emit(true);
+        // this.activeModal.close();
+        // console.log("Entro")
+        this.activeModal.close(); 
+        window.location.reload(); 
       });
     }
   }
 
-  async Cancelar(){
-    this.actualizar.emit(false);
+  Cancelar(){
+    //this.actualizar.emit(false);
     this.activeModal.close(); 
   }
 

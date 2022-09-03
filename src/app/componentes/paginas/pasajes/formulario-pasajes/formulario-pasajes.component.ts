@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pasaje } from 'src/app/modelos/pasaje';
+import { Viaje } from 'src/app/modelos/viaje';
 import { ServicioPasajesService } from 'src/app/servicios/servicio-pasajes.service';
-import { BooleanLiteral } from 'typescript';
+import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
+import {Location} from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-formulario-pasajes',
@@ -14,16 +17,14 @@ export class FormularioPasajesComponent implements OnInit {
   constructor(
     private servicioPasaje:ServicioPasajesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private viajesService:ServicioViajesService,
+    private _location: Location
   ) { }
 
   pasaje: Pasaje = new Pasaje();
+  viaje: Viaje = new Viaje();
   pasajeNuevo: boolean = true;
-  viaje={
-    id_viaje: 1,
-    origen: "Santa Ana",
-    destino: "Trinidad"
-  }
 
   validacion= {
     nombre_completo: true,
@@ -43,13 +44,13 @@ export class FormularioPasajesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const id_viaje = this.route.snapshot.queryParams["id_viaje"];
     const id_pasaje = this.route.snapshot.queryParams["id_pasaje"];
-    this.pasajeNuevo = id_pasaje == undefined;
+    this.pasajeNuevo = id_pasaje ==undefined;
     if(!this.pasajeNuevo){
-      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe(pasaje=>{
-        this.pasaje=pasaje;
-      });
+      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{this.pasaje=pasaje});
     }
+    this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
   }
 
   ValidarCampos(action: string){
@@ -66,24 +67,34 @@ export class FormularioPasajesComponent implements OnInit {
 
   CrearPasaje(){
     if(this.ValidarCampos("registrar")){
+      this.pasaje.id_viaje = this.viaje.id_viaje;
       this.servicioPasaje.CrearPasaje(this.pasaje).subscribe(result=>{
         this.sendViaWhatsApp(result);
-        this.router.navigateByUrl("/pasajes")
+        this._location.back();
+      });
+    }
+  }
+
+  ActualizarPasaje(){
+    if(this.ValidarCampos("registrar")){
+      this.servicioPasaje.EditarPasaje(this.pasaje).subscribe(result=>{
+        this._location.back();
       });
     }
   }
 
   sendViaWhatsApp(pasajeNuevo:Pasaje) { 
-    const urlRecibo = `https://tsa-ui-prod.web.app/pasajes/recibo/${pasajeNuevo.id_pasaje}`;
+    //console.log(window.location.href);
+    const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}`;
     const message = `Usted adquirió un boleto de transporte${(pasajeNuevo.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : "en el sindicato: "+pasajeNuevo.viaje?.conductore?.sindicato?.nombre}.%0A%0ASu boleto y recibo de compra digitales se encuentran en el siguiente enlace:%0A${urlRecibo}%0A%0AMuchas gracias por su preferencia!`;
-    const phoneNumber = '59168595230'; 
+    const phoneNumber = `591${this.pasaje.celular}`; 
     const messageText = message.split(' ').join('%20');; 
     var finalUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + messageText ; 
     window.open(finalUrl, "_blank");
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/pasajes");
+    this._location.back();
   }
 
 }

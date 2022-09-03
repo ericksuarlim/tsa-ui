@@ -19,7 +19,6 @@ export class ModalEliminarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("entro al ngoninit Modal");
   }
 
   async confirmar(){

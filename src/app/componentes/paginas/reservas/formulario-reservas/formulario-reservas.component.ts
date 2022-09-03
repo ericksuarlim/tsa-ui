@@ -7,6 +7,7 @@ import { Viaje } from 'src/app/modelos/viaje';
 import { ServicioReservasService } from 'src/app/servicios/servicio-reservas.service';
 import { ServicioSindicatosService } from 'src/app/servicios/servicio-sindicatos.service';
 import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-formulario-reservas',
@@ -41,14 +42,17 @@ export class FormularioReservasComponent implements OnInit {
     private viajesService:ServicioViajesService ,
     private reservaService:ServicioReservasService,
     private router: Router,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute,
+    private _location: Location
   ){ }
 
   ngOnInit(): void {
     this.viajesService.ObtenerViajes().subscribe(viajes=>{
-      this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== moment().format('DD/MM/YYYY'))}) 
+      this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== new Date() || v.fecha === new Date())}) 
     })
-    this.reserva.fecha =  moment().format('YYYY-MM-DD');
+
+ 
+    this.reserva.fecha = new Date();
     this.sindicatosServices.ObtenerSindicatos().subscribe(sindicatos=>{this.sindicatos = sindicatos})
 
   }
@@ -56,13 +60,13 @@ export class FormularioReservasComponent implements OnInit {
   FiltrarViajes(name:string){
     if(name==='cantidad'){ this.reserva.id_viaje = null; this.reserva.id_sindicato =null}
     this.viajesService.ObtenerViajes().subscribe(viajes=>{
-      this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== moment(this.reserva.fecha).format('DD/MM/YYYY') && (v.disponibilidad >= this.reserva.cantidad || this.reserva.cantidad === undefined))});
+      this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== this.reserva.fecha && (v.disponibilidad >= this.reserva.cantidad || this.reserva.cantidad === undefined))});
     })
    
   }
 
   ValidarReserva(action:String):boolean{
-    if(this.reserva.fecha === "" || (action=="registrar" && this.reserva.fecha == undefined)){this.mensajeErrorValidacion.fecha="Fecha necesaria"; this.validacion.fecha = false}else if(this.reserva.fecha < moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha="Fecha invalida"; this.validacion.fecha = false}else{this.validacion.fecha =true};
+    if(this.reserva.fecha === null || (action=="registrar" && this.reserva.fecha == undefined)){this.mensajeErrorValidacion.fecha="Fecha necesaria"; this.validacion.fecha = false}else if(moment(this.reserva.fecha).format('YYYY-MM-DD') < moment().format('YYYY-MM-DD')){this.mensajeErrorValidacion.fecha="Fecha invalida"; this.validacion.fecha = false}else{this.validacion.fecha =true};
     if(this.reserva.cantidad === null  || (action=="registrar" && this.reserva.cantidad == undefined)){this.mensajeErrorValidacion.cantidad="Cantidad necesaria"; this.validacion.cantidad = false}else if(this.reserva.cantidad===0){this.mensajeErrorValidacion.cantidad="Cantidad invalida"; this.validacion.cantidad = false}else{this.validacion.cantidad =true};
     if((this.reserva.id_viaje === null && this.viajes?.length>0) || ((action=="registrar" && this.reserva.id_viaje == undefined && this.viajes?.length>0))){this.mensajeErrorValidacion.viaje="Se debe de seleccionar un viaje"; this.validacion.id_viaje = false}else{this.validacion.id_viaje =true};
     if(this.reserva.nombre_completo_reserva === "" || (action=="registrar" && this.reserva.nombre_completo_reserva == undefined)){this.mensajeErrorValidacion.nombre_completo_reserva="Nombre de referencia necesario"; this.validacion.nombre_completo_reserva = false}else{this.validacion.nombre_completo_reserva =true};
@@ -86,11 +90,10 @@ export class FormularioReservasComponent implements OnInit {
   }
 
   RegistrarReserva(){
-    
     if(this.ValidarReserva("registrar"))
     {
       var reservaEnviar = new Reserva();
-      reservaEnviar.fecha = moment(this.reserva.fecha).format('DD/MM/YYYY');
+      reservaEnviar.fecha = this.reserva.fecha;
       reservaEnviar.cantidad = this.reserva.cantidad;
       if(this.viajes.length == 0)
       {
@@ -105,13 +108,13 @@ export class FormularioReservasComponent implements OnInit {
       reservaEnviar.celular = this.reserva.celular;
       reservaEnviar.estado = "Pendiente";
       this.reservaService.CrearReserva(reservaEnviar).subscribe(result=>{
-        this.router.navigateByUrl("/reservas");
+        this._location.back();
       });
     } 
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/reservas");
+    this._location.back();
   }
 
 }

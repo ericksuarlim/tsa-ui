@@ -77,23 +77,23 @@
         </section>
         
         <section class="anuncios">    
-            <div class="vgr-cards">
-                <div class="card">
+            <div class="vgr-cards" *ngFor="let anuncio of anuncios" >
+                <div class="card" (click)="AbrirAnuncio(anuncio.id_anuncio)">
                   <div class="card-img-body">
                     <img class="card-img" src="../../../../assets/imagenes/carreteraSantaAna.jpg" alt="Card image cap">
                   </div>
                   <div class="card-body">
-                    <h4 class="card-title">Salidas diarias disponibles</h4>
-                    <p class="card-text">Realizamos salidas diarias a Trinidad - San Joaquin - Guayara - Magdalea - San Ramon, cumpliendo con todos los protocolos de cuidado para tu saluda. Contamos con los mejores Minibuses disponibles en la ciudad, choferes certificados para el transporte de pasajeros. </p>
+                    <h4 class="card-title">{{anuncio.titulo}}</h4>
+                    <p class="card-text">{{(anuncio.detalle.length>200) ? (anuncio.detalle | slice:0:150+'..'):(anuncio.detalle)}}</p>
                     <div  class="info">
                         <ul>
                             <li>
                                 <span class="caption">Sindicato:</span>
-                                <span> Yacuma</span>
+                                <span>{{anuncio.sindicato.nombre}}</span>
                             </li>
                             <li>
                                 <span class="caption">Cel:</span>
-                                <span> +591 71234567</span>
+                                <span> +591 {{anuncio.celular_referencia}}</span>
                             </li>
                         </ul>
                     </div>

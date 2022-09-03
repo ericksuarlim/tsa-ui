@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,21 @@ import { ModalOpcionesReservasComponent } from './componentes/modals/modal-opcio
 import { PasajesPrincipalComponent } from './componentes/paginas/pasajes/pasajes-principal/pasajes-principal.component';
 import { FormularioPasajesComponent } from './componentes/paginas/pasajes/formulario-pasajes/formulario-pasajes.component';
 import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-individual/pasaje-individual.component';
+import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
+import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
+import { ModalOpcionesViajesComponent } from './componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
+import { registerLocaleData } from '@angular/common';
+import localeEsAr from '@angular/common/locales/es-AR';
+import { PrincipalEncomiendasComponent } from './componentes/paginas/encomiendas/principal-encomiendas/principal-encomiendas.component';
+import { FormularioEncomiendasComponent } from './componentes/paginas/encomiendas/formulario-encomiendas/formulario-encomiendas.component';
+import { DetalleEncomiendaComponent } from './componentes/paginas/encomiendas/detalle-encomienda/detalle-encomienda.component';
+import { ReciboEncomiendaComponent } from './componentes/paginas/encomiendas/recibo-encomienda/recibo-encomienda.component';
+import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaje/detalle-viaje.component';
+import { ModalOpcionesCreacionComponent } from './componentes/modals/modal-opciones-creacion/modal-opciones-creacion.component';
+import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
+import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
+import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
+registerLocaleData(localeEsAr, 'es-Ar');
 
 
 @NgModule({
@@ -41,7 +56,19 @@ import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-
     ModalOpcionesReservasComponent,
     PasajesPrincipalComponent,
     FormularioPasajesComponent,
-    PasajeIndividualComponent
+    PasajeIndividualComponent,
+    PrincipalViajesComponent,
+    FormularioViajesComponent,
+    ModalOpcionesViajesComponent,
+    PrincipalEncomiendasComponent,
+    FormularioEncomiendasComponent,
+    DetalleEncomiendaComponent,
+    ReciboEncomiendaComponent,
+    DetalleViajeComponent,
+    ModalOpcionesCreacionComponent,
+    PrincipalAnunciosComponent,
+    DetalleAnuncioComponent,
+    FormularioAnunciosComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +77,7 @@ import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-
     HttpClientModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,13 +19,9 @@
     </div>
     
     <div class="row row-container">
-        <div class="box-card-parent col-md-12 col-lg-6 col-sm-12" *ngFor="let conductor of conductores">
+        <div class="box-card-parent col-md-6 col-lg-4 col-sm-12" *ngFor="let conductor of conductores">
             <div class="box-card row">
-                <div class="col-img col-sm-12 col-md-5">
-                    <img class="card-img" src="../../../../../assets/imagenes/conductorFoto.jpeg" alt="Card image cap">
-                </div> 
-
-                <div class="panel-body-main col-sm-12 col-md-7">
+                <div class="panel-body-main col-sm-12">
                    <div class="panel-heading">
                         <h3 class="panel-title">{{conductor.nombre}} {{conductor.apellido_paterno}} {{conductor.apellido_materno}}</h3>
                     </div>
@@ -39,7 +35,7 @@
                             <span class="attribute">Sindicato:</span>
                         </div>
                         <div class="value-col col-sm-9">
-                            <span class="value"> {{conductor.fecha_nacimiento}}</span>
+                            <span class="value">{{ conductor.fecha_nacimiento | date:'dd MMMM yyyy':'+0200':'es-AR'}}</span>
                             <span class="value"> {{conductor.carnet}}</span>
                             <span class="value"> {{conductor.ciudad}}</span>
                             <span class="value"> {{conductor.activo}}</span>

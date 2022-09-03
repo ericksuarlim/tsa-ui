@@ -12,7 +12,7 @@
                     <div class="row top-section">
                         <div class="col-sm-12 col-md-6">
                             <h5 for="fecha" class="input-operation-section-title">Fecha</h5>
-                            <input type="date" name="fecha" id="fecha" class="input-search form-control input-operation-section" (input)="reserva.fecha=$event.target.value ; ValidarReserva('verificar'); FiltrarViajes('fecha')" [value]="reserva.fecha | date:'yyyy-MM-dd'" >
+                            <input type="date" name="fecha" id="fecha" class="input-search form-control input-operation-section" (input)="reserva.fecha=$event.target.value ; ValidarReserva('verificar'); FiltrarViajes('fecha')" [value]="reserva.fecha | date:'yyyy-MM-dd'"  >
                             <div *ngIf="!validacion.fecha" class="text-danger">{{mensajeErrorValidacion.fecha}}</div>  
                         </div>
 
@@ -56,10 +56,6 @@
                         <div class="col-12">
                             <div *ngIf="!validacion.id_viaje" class="text-danger">{{mensajeErrorValidacion.viaje}}</div>  
                         </div>
-
-                     
-                        
-                      
                     </div>
 
                     <div *ngIf="viajes?.length == 0"  class="row mid-section">

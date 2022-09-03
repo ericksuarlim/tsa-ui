@@ -1,0 +1,151 @@
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row columna-container">
+        <div class="col">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Id Viaje:</b> {{viaje.id_viaje}}</p>                
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Fecha:</b> {{viaje.fecha | date:'dd MMM yyyy':'+0200':'es-AR'}}</p>                
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 text-center">
+                        <p [ngClass]="{'p-ubication-origen': viaje.ubicacion === 'En Origen',
+                        'p-ubication-carretera': viaje.ubicacion === 'En Carretera', 
+                        'p-ubication-destino': viaje.ubicacion === 'En Destino'}"
+                        ><b>Ubicacion:</b> {{viaje.ubicacion}}</p>                
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Conductor:</b> {{viaje.conductore?.nombre}} {{viaje.conductore?.apellido_paterno}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Origen:</b> {{viaje.origen}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Hora Salida:</b> {{viaje.hora_salida}}</p>                
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Disponibilidad:</b> {{viaje.disponibilidad}}</p>        
+                    </div>
+                    <div class="col-12">
+                        <p><b>Destino:</b> {{viaje.destino}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Hora Llegada:</b> {{viaje.hora_llegada}}</p>                
+                    </div>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="title-table"><b>Pasajes</b></h1>
+                </div>
+                <div class="table-responsive box-card-parent">
+                    <table class="table table-striped tabla-pasajes">
+                        <thead class="thead-pasajes">
+                          <tr>
+                            <th scope="col" class="text-center">Cod. Pasaje</th>
+                            <th scope="col" class="text-center">Cliente</th>
+                            <th scope="col" class="text-center">Precio</th>
+                            <th scope="col" class="text-center">Pagado</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let pasaje of viaje.pasajes">
+                          <tr>
+                            <th class="text-center">{{pasaje.id_pasaje}}</th>
+                            <td class="text-center">{{pasaje.nombre_completo}}</td>
+                            <td class="text-center">{{pasaje.precio}}</td>
+                            <td class="text-center">{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
+                            <td><a class="btn btn-table btn-detalles" (click)="AbrirPasaje(pasaje.id_pasaje)">Ver</a></td>
+                           
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+                    <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene pasajes</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="title-table"><b>Encomiendas</b></h1>
+                </div>
+                <div class="table-responsive box-card-parent">
+                    <table class="table table-striped tabla-pasajes">
+                        <thead class="thead-pasajes">
+                          <tr>
+                            <th scope="col" class="text-center">Cod. Encomienda</th>
+                            <th scope="col" class="text-center">Cliente</th>
+                            <th scope="col" class="text-center">Pagada</th>
+                            <th scope="col" class="text-center">Bultos</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let encomienda of viaje.encomiendas">
+                          <tr>
+                            <th class="text-center">{{encomienda.id_encomienda}}</th>
+                            <td class="text-center">{{encomienda.nombre_cliente}}</td>
+                            <td class="text-center">{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
+                            <td class="text-center">{{encomienda.cantidad_bultos}}</td>
+                            <td><a class="btn btn-table btn-detalles" (click)="VerEncomienda(encomienda.id_encomienda)">Ver</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene encomiendas</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="title-table"><b>Reservas</b></h1>
+                </div>
+                <div class="table-responsive box-card-parent">
+                    <table class="table table-striped tabla-pasajes">
+                        <thead class="thead-pasajes">
+                          <tr>
+                            <th scope="col" class="text-center">Cod. Reserva</th>
+                            <th scope="col" class="text-center">Cliente</th>
+                            <th scope="col" class="text-center">Cantidad</th>
+                            <th scope="col" class="text-center">Estado</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let reserva of viaje.reservas">
+                          <tr>
+                            <th class="text-center">{{reserva.id_reserva}}</th>
+                            <td class="text-center">{{reserva.nombre_completo_reserva}}</td>
+                            <td class="text-center">{{reserva.cantidad}}</td>
+                            <td class="text-center">{{reserva.estado}}</td>
+                            <td><a class="btn btn-table btn-detalles" (click)="OpcionesReserva(reserva.id_reserva)">Ver</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene reservas</div>
+                </div>
+            </div>
+            <div class="row sections-buttons">
+                <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>
+                <div class="text-center"><button class="btn button-editar" (click)="Editar(viaje.id_viaje)">Editar Viaje</button></div>
+                <div class="text-center"><button class="btn button-ver-recibo" (click)="VerRecibo(viaje.id_viaje)">Ver Recibo</button></div>
+            </div>
+        </div>        
+    </div>
+</div>
+

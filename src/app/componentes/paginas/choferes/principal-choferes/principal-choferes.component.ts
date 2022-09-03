@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalEliminarComponent } from 'src/app/componentes/modals/modal-eliminar/modal-eliminar.component';
 import { Conductor } from 'src/app/modelos/conductor';
 import { ServicioConductoresService } from 'src/app/servicios/servicio-conductores.service';
+
+
+
+
+
 
 @Component({
   selector: 'app-principal-choferes',

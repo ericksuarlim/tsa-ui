@@ -23,24 +23,22 @@
             <table class="table tabla-turnos">
                 <thead class="thead-turnos">
                   <tr>
-                    <th scope="col">Turno</th>
-                    <th scope="col">Fecha</th>
+                    <th scope="col" class="text-center">Id. Turno</th>
+                    <th scope="col" class="text-center">Fecha</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody *ngFor="let turno of turnos">
                   <tr>
-                    <th scope="row">{{turno.id_turno}}</th>
-                    <td>{{turno.fecha}}</td>
+                    <td scope="row" class="td-size text-center">{{turno.id_turno}}</td>
+                    <td class="td-size text-center">{{ turno.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
                     <a class="btn btn-table btn-detalles" (click)="verTurno(turno.id_turno)">Ver Detalles</a>
                     <a class="btn btn-table btn-editar" (click)="editarTurno(turno.id_turno)">Editar</a>
                   </tr>
                  
                 </tbody>
               </table>
-            
-              
         </div>
     </div>
   </div>

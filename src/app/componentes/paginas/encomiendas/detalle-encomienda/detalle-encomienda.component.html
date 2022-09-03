@@ -1,0 +1,77 @@
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row columna-container">
+        <div class="col">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Id Encomienda:</b> {{encomienda.viaje?.id_viaje}}</p>                
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Fecha:</b> {{encomienda.viaje?.fecha | date:'dd MMM yyyy':'+0200':'es-AR'}}</p>                
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 text-center">
+                        <p [ngClass]="{'p-ubication-origen': encomienda.viaje?.ubicacion === 'En Origen',
+                        'p-ubication-carretera': encomienda.viaje?.ubicacion === 'En Carretera', 
+                        'p-ubication-destino': encomienda.viaje?.ubicacion === 'En Destino'}"
+                        ><b>Ubicacion:</b> {{encomienda.viaje?.ubicacion}}</p>                
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Conductor:</b> {{encomienda.viaje?.conductore?.nombre}} {{encomienda.viaje?.conductore?.apellido_paterno}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Origen:</b> {{encomienda.viaje?.origen}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Destino:</b> {{encomienda.viaje?.destino}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Hora Salida:</b> {{encomienda.viaje?.hora_salida}}</p>                
+                    </div>
+                    <div class="col-12">
+                        <p><b>Hora Llegada:</b> {{encomienda.viaje?.hora_llegada}}</p>                
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6">
+                    <div class="col-12">
+                        <p><b>Cliente:</b> {{encomienda.nombre_cliente}}</p>        
+                    </div>
+                    <div class="col-12">
+                        <p><b>Carnet:</b> {{encomienda.carnet_cliente}}</p>                              
+                    </div>
+                    <div class="col-12">
+                        <p><b>Celular:</b> {{encomienda.celular_cliente}}</p>         
+                    </div>  
+                    <div class="col-12">
+                        <p><b>Monto Pago:</b> {{encomienda.monto_pago}}</p>           
+                    </div>
+                    <div class="col-12">
+                        <p><b>Pagada:</b> {{encomienda.pagada===true? "Pagada" : "Por pagar"}}</p>           
+                    </div>   
+                </div>
+            
+            </div>
+            <div class="row sections-buttons">
+                <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>
+                <div class="text-center"><button class="btn button-editar" (click)="Editar(encomienda.id_encomienda,encomienda.id_viaje)">Editar</button></div>
+                <div class="text-center"><button class="btn button-ver-recibo" (click)="VerRecibo(encomienda.id_encomienda)">Ver Recibo</button></div>
+            </div>
+        </div>        
+    </div>
+</div>

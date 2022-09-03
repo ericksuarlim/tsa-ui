@@ -1,0 +1,53 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row operation-section">
+        <div class="col-sm-8 col-md-7 ">
+            <input type="text" name="nombre_conductor" class="input-search form-control" placeholder="Ej. Ramiro Colque">
+        </div>
+        <div class="col-sm-4 col-md-3">
+            <select name="tipo_busqueda" class="form-control">
+                <option>Nombre Conductor</option>
+                <option>Codigo viaje</option>
+                <option>Fecha</option>
+            </select>   
+        </div>
+        <div class="col-sm-12 col-md-2 btn-new">
+            <a href="/viajes/formulario" class="btn">Crear Viaje</a>
+        </div>
+    </div>
+    <div class="row row-container">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-viajes">
+                <thead class="thead-viajes">
+                  <tr>
+                    <th scope="col">Fec. Salida</th>
+                    <th scope="col">Nombre Conductor</th>
+                    <th scope="col">Ubicacion</th>
+                    <th scope="col">Hora Salida</th>
+                    <th scope="col">Hora Llegada</th>
+                    <th scope="col">Disponibilidad</th>
+                    <th scope="col">Origen</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let viaje of viajes">
+                  <tr>
+                    <th>{{viaje.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
+                    <td>{{viaje.conductore?.nombre}} {{viaje.conductore?.apellido_paterno}}</td>
+                    <td>{{viaje.ubicacion}}</td>
+                    <td>{{viaje.hora_salida}}</td>
+                    <td>{{viaje.hora_llegada}}</td>
+                    <td>{{viaje.disponibilidad}}</td>
+                    <td>{{viaje.origen}}</td>
+                    <td>{{viaje.destino}}</td>
+                    <td><a class="btn btn-table btn-detalles" (click)="opcionesViaje(viaje)">Opciones</a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

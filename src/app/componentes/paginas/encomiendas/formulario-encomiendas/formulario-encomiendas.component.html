@@ -1,0 +1,82 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">NUEVA ENCOMIENDA</h3>
+        </div>
+        <div class="col-sm-12">
+            <form class="formulario-encomiendas" name="FormularioEncomiendas">
+                <div  class="col">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h1 for="id_viaje" class="input-title">Viaje</h1>
+                            <input type="number"  name="id_viaje" class="input-form-encomiendas form-control" [(ngModel)]="viaje.id_viaje" disabled>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="origen" class="input-title">Origen</h1>
+                            <input type="text"  name="origen" class="input-form-encomiendas form-control" [(ngModel)]="viaje.origen" disabled>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="destino" class="input-title">Destino</h1>
+                            <input type="text"  name="destino" class="input-form-encomiendas form-control" [(ngModel)]="viaje.destino" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h1 for="nombre_cliente" class="input-title">Nombre Cliente</h1>
+                            <input type="text"  name="nombre_cliente" class="input-form-encomiendas form-control" [(ngModel)]="encomienda.nombre_cliente" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.nombre_cliente" class="text-danger">{{mensajeErrorValidacion.nombre_cliente}}</div>   
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h1 for="carnet_cliente" class="input-title">Carnet Cliente</h1>
+                            <input type="number"  name="carnet_cliente" class="input-form-encomiendas form-control" [(ngModel)]="encomienda.carnet_cliente" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.carnet_cliente" class="text-danger">{{mensajeErrorValidacion.carnet_cliente}}</div>                      
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <h1 for="celular_cliente" class="input-title">Celular Cliente</h1>
+                            <input type="number"  name="celular_cliente" class="input-form-encomiendas form-control" [(ngModel)]="encomienda.celular_cliente" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.celular_cliente" class="text-danger">{{mensajeErrorValidacion.celular_cliente}}</div>                      
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h1 for="monto_pago" class="input-title">Monto Pago</h1>
+                            <input type="number"  name="monto_pago" class="input-form-encomiendas form-control" [(ngModel)]="encomienda.monto_pago" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required [disabled]="!esEncomiendaNueva">
+                            <div *ngIf="!validacion.monto_pago" class="text-danger">{{mensajeErrorValidacion.monto_pago}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="pagada" class="input-title">Pagada</h1>
+                            <select name="pagada" class="form-control"  [(ngModel)]="encomienda.pagada" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                                <option [value]="true">Pagada</option>
+                                <option [value]="false">Por pagar</option>
+                            </select> 
+                            <div *ngIf="!validacion.pagada" class="text-danger">{{mensajeErrorValidacion.pagada}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="cantidad_bultos" class="input-title">Cantidad Bultos</h1>
+                            <input type="number"  name="cantidad_bultos" class="input-form-encomiendas form-control" [(ngModel)]="encomienda.cantidad_bultos" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required [disabled]="!esEncomiendaNueva">
+                            <div *ngIf="!validacion.cantidad_bultos" class="text-danger">{{mensajeErrorValidacion.cantidad_bultos}}</div>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 for="detalle" class="input-title">Detalle</h1>
+                            <textarea name ="detalle" class="input-form-anuncios form-control detalle-input" [(ngModel)]="encomienda.detalle" (ngModelChange)="ValidarCampos('verificar')"></textarea>
+                            <div *ngIf="!validacion.detalle" class="text-danger">{{mensajeErrorValidacion.detalle}}</div>   
+                        </div>
+                    </div>
+                    <div class="row section-bottons">
+                        <div class="col-sm-12">
+                            <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                            <button *ngIf="esEncomiendaNueva" class="btn button-registrar" (click)="CrearEncomienda()">Registrar</button>
+                            <button *ngIf="!esEncomiendaNueva" class="btn button-registrar" (click)="ActualizarEncomienda()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
