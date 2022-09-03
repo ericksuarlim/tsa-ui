@@ -1,8 +1,13 @@
 export class Encomienda{
-    id_encomienda : string;
-    id_viaje : string;
+    id_encomienda : number;
+    id_viaje : number;
     nombre_cliente : string;
-    monto_pago : Date;
+    monto_pago : number;
+    carnet_cliente: number;
+    pagada: boolean;
+    celular_cliente: number;
+    cantidad_bultos: number;
+    detalle: string;
     viaje: {
         id_viaje: number;
         id_carnet_conductor: number;
@@ -28,6 +33,12 @@ export class Encomienda{
             id_auto_2: string,
             id_sindicato:string,
             nombre: string,
+            sindicato: {
+                id_sindicato: number;
+                nombre: string;
+                estado: boolean;
+                ciudad: string;
+            }
         };
         turno:{
             fecha: Date,

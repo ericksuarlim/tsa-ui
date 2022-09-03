@@ -1,0 +1,132 @@
+.container{
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-top{
+    width: 100%;
+    margin-top: -70px;
+    max-height: 370px;
+    filter: brightness(50%);
+}
+
+.btn{
+    width: 150px;
+    border-radius: 100px;
+    height: 40px;
+}
+
+.button-editar{
+    border: 1px solid #FB9130;
+    background-color: #FB9130;
+    color: #FFFFFF;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.p-ubication-origen{
+    color:#d31919;
+    font-weight: 700;
+}
+
+.p-ubication-carretera{
+    color:#d38c19
+}
+
+.p-ubication-destino{
+    color:#19d328
+}
+
+.button-editar:hover{
+    border: 1px solid #FB9130;
+    background-color: #2f2f2f;
+    color: #FB9130;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.button-atras{
+    border: 1px solid #FB9130;
+    background-color: #FFFFFF;
+}
+
+.button-atras:hover{
+    border: 1px solid #FB9130;
+    background-color: #2f2f2f;
+    color: #FB9130;
+}
+
+.button-ver-recibo{
+    border: 1px solid #FB9130;
+    background-color: #2f2f2f;
+    color: #FFFFFF;
+}
+.button-ver-recibo:hover{
+    color: #FB9130;
+}
+
+
+.columna-container{
+    background-color: #fbfbfb;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 800px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    box-shadow:5px 10px 10px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
+}
+
+.columna-container p:not(.p-ubication-origen,.p-ubication-carretera,.p-ubication-destino){
+    color: rgb(100, 100, 100);
+}
+
+.columna-container b{
+    color: #212529;
+}
+.box-card-parent{
+    padding: 15px;
+}
+
+.thead-pasaje{
+    background:#222222;
+    color: white;
+}
+
+.sections-buttons{
+    margin-top: 25px;
+}
+
+@media (min-width: 990px) {
+    .columna-container{
+      margin: auto;
+      max-width: 70%;
+    }
+}
+
+@media (max-width: 542px) {
+    .sections-buttons{
+        display: block;
+    }
+    .btn{
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 543px) {
+    .sections-buttons{
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 577px) {
+    .columna-container{
+        margin: 1px;
+    }
+
+    .columna-container col{
+        text-align: center;
+    }
+}
+
+
+

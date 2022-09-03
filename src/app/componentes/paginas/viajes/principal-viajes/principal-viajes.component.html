@@ -36,7 +36,7 @@
                 </thead>
                 <tbody *ngFor="let viaje of viajes">
                   <tr>
-                    <th scope="row">{{viaje.turno?.fecha !=null ? viaje.turno?.fecha : viaje.fecha}}</th>
+                    <th>{{viaje.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
                     <td>{{viaje.conductore?.nombre}} {{viaje.conductore?.apellido_paterno}}</td>
                     <td>{{viaje.ubicacion}}</td>
                     <td>{{viaje.hora_salida}}</td>

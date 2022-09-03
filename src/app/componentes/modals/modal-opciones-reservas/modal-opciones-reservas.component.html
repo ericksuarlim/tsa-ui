@@ -47,7 +47,7 @@
                                     <td class="col-1 text-center">    
                                         <input class="form-check-input radio-table-select" type="radio" name="id_viaje" [value]="viaje.id_viaje" (click)="SeleccionarViaje(viaje.id_viaje)">                                       
                                     </td>
-                                    <td class="col-3 text-center">{{viaje.conductore.nombre + ' ' +viaje.conductore.apellido_paterno}}</td>
+                                    <td class="col-3 text-center">{{viaje.conductore?.nombre + ' ' +viaje.conductore?.apellido_paterno}}</td>
                                     <td class="col-2 text-center">{{viaje.hora_salida}}</td>
                                     <td class="col-2 text-center">Movima</td>                                                                    
                                 </tr>
@@ -67,15 +67,15 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <h5 class="modal-label-title">Nombre Conductor</h5>
-                            <label class="modal-label-data">{{reserva.viaje.conductore.nombre}} {{reserva.viaje.conductore.apellido_paterno}}</label>
+                            <label class="modal-label-data">{{reserva.viaje?.conductore?.nombre}} {{reserva.viaje?.conductore?.apellido_paterno}}</label>
                         </div>
                         <div class="col-12 col-md-3">
                             <h5 class="modal-label-title">Hora Salida</h5>
-                            <label class="modal-label-data">{{reserva.viaje.hora_salida}}</label>
+                            <label class="modal-label-data">{{reserva.viaje?.hora_salida}}</label>
                         </div>
                         <div class="col-12 col-md-3">
                             <h5 class="modal-label-title">Sindicato</h5>
-                            <label class="modal-label-data">{{reserva.viaje.conductore.sindicato.nombre}}</label>
+                            <label class="modal-label-data">{{reserva.viaje?.conductore?.sindicato?.nombre}}</label>
                         </div>
                     </div>
                    

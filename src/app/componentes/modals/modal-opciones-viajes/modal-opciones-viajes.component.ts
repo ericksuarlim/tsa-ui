@@ -37,11 +37,21 @@ export class ModalOpcionesViajesComponent implements OnInit {
     this.router.navigate(["/pasajes/formulario"], { queryParams: { id_viaje } });
   }
 
+  RegistrarEncomienda(id_viaje:number){
+    this.activeModal.close(); 
+    this.router.navigate(["/encomiendas/formulario"], { queryParams: { id_viaje } });
+  }
+
   CambiarUbicacionViaje(){
     this.viajesService.EditarViaje(this.viaje).subscribe(result=>{
       this.activeModal.close(); 
       window.location.reload(); 
     });
+  }
+
+  VerViaje(id_viaje:number){
+    this.activeModal.close(); 
+    this.router.navigateByUrl(`/viajes/${id_viaje}`);
   }
 
 

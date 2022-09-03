@@ -45,6 +45,11 @@ export class FormularioPasajesComponent implements OnInit {
 
   ngOnInit(): void {
     const id_viaje = this.route.snapshot.queryParams["id_viaje"];
+    const id_pasaje = this.route.snapshot.queryParams["id_pasaje"];
+    this.pasajeNuevo = id_pasaje ==undefined;
+    if(!this.pasajeNuevo){
+      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{this.pasaje=pasaje});
+    }
     this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
   }
 

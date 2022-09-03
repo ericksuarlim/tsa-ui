@@ -1,0 +1,58 @@
+
+.input-title{
+    font-size: 1em;
+    margin-top:12px;
+    color: #495057;
+}
+
+.modal-header{
+    justify-content: center;
+    border: none;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.modal-body{
+    text-align: center;
+    padding-top: 0px;
+}
+
+.modal-footer{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.btn{
+    border-radius: 100px;
+}
+
+.btn-cancelar{
+    border: 1px solid #FB9130;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+.btn-cancelar:hover{
+    color: #d8d8d8;
+    
+}
+
+.btn-ok{
+    background: #FB9130;
+    color: #ffffff;
+}
+
+.btn-ok:hover{
+    background-color: #222222;
+    color: #FB9130;
+   
+}
+
+@media (max-width: 992px) {
+    .modal-body .btn{
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+}
+

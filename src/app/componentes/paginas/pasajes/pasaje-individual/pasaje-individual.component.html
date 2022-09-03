@@ -47,7 +47,6 @@
                     <thead class="thead-pasaje">
                     <tr>
                         <th scope="col">Detalle</th>
-                        <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
                         <th class="text-right" scope="col">Total</th>
                     </tr>
@@ -55,7 +54,6 @@
                     <tbody>
                     <tr>
                         <th scope="col">Ticket de pasaje</th>
-                        <th scope="col">1</th>
                         <th scope="col">{{pasaje.precio}}</th>
                         <th class="text-right" scope="col">{{pasaje.precio}}</th>
                     </tr>
@@ -80,7 +78,7 @@
 
     </div>
     <div class="row sections-buttons">
-        <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div>
+        <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Atras</button></div>
         <div class="text-center"><button class="btn button-imprimir" (click)="Imprimir()">Imprimir</button></div>
         <div class="text-center"><button class="btn button-descargar" (click)="ExportarPDF()">Descargar PDF</button></div>
     </div>

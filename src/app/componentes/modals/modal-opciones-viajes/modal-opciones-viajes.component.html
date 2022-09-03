@@ -2,9 +2,15 @@
    ¿ Que desea realizar ?
 </div>
 <div class="modal-body ">
-    <button class="btn btn-editar" (click)="EditarViaje(viaje.id_viaje)">Editar</button>
-    <button class="btn btn-registrar-pasaje" (click)="RegistrarPasaje(viaje.id_viaje)" [disabled]="viaje.origen===null">Registrar Pasaje</button>
-    <button class="btn btn-cambiar-ubicacion" (click)="cambiarUbicacion=!cambiarUbicacion">Cambiar Ubicacion</button>
+    <div class="body-top">
+            <button class="btn btn-actions btn-ver-viaje" (click)="VerViaje(viaje.id_viaje)">Ver Viaje</button> 
+            <button class="btn btn-actions btn-editar" (click)="EditarViaje(viaje.id_viaje)">Editar</button>
+            <button class="btn btn-actions btn-cambiar-ubicacion" (click)="cambiarUbicacion=!cambiarUbicacion">Cambiar Ubicacion</button>
+    </div>
+    <div class="body-bottom">     
+            <button class="btn btn-actions btn-registrar-pasaje" (click)="RegistrarPasaje(viaje.id_viaje)" [disabled]="viaje.origen===null">Registrar Pasaje</button>
+            <button class="btn btn-actions btn-registrar-encomienda" (click)="RegistrarEncomienda(viaje.id_viaje)">Registrar Encomienda</button>     
+    </div>
     <div class="row change-ubication-section" *ngIf="cambiarUbicacion">
         <div class="col-12">
             <h1 for="ubicacion" class="input-title">Seleccionar nueva ubicacion</h1>

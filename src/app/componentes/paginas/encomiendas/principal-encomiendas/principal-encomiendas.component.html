@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
+        <div class="col-sm-8 col-md-7">
             <input type="text" name="nombre_cliente" class="input-search form-control" placeholder="Ej. Ramiro Colque">
         </div>
         <div class="col-sm-4 col-md-3">
@@ -14,8 +14,9 @@
                 <option>Fecha</option>
             </select>   
         </div>
+
         <div class="col-sm-12 col-md-2 btn-new">
-            <a href="/encomiendas/formulario" class="btn">Crear Encomienda</a>
+          <button (click)="RedirigirCrearEncomienda()" class="btn">Crear Encomienda</button>
         </div>
     </div>
     <div class="row row-container">
@@ -35,14 +36,14 @@
                 </thead>
                 <tbody *ngFor="let encomienda of encomiendas">
                   <tr>
-                    <td>{{encomienda.viaje?.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
+                    <th>{{encomienda.viaje?.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
                     <td>{{encomienda.nombre_cliente}}</td>
                     <td>{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
                     <td>{{encomienda.viaje?.hora_salida}}</td>
                     <td>{{encomienda.viaje?.hora_llegada}}</td>
                     <td>{{encomienda.viaje?.ubicacion}}</td>
                     <td>{{encomienda.monto_pago}}</td>
-                    <td><a class="btn btn-table btn-detalles" (click)="opcionesEncomienda(encomienda)">Opciones</a></td>
+                    <td><a class="btn btn-table btn-detalles" (click)="VerEncomienda(encomienda.id_encomienda)">Ver</a></td>
                   </tr>
                 </tbody>
               </table>

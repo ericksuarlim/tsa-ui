@@ -1,0 +1,92 @@
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="col columna-container" id="recibo-encomienda">
+        <div class="row justify-content-between">
+            <div class="col-12 col-sm-4">
+                <p><b>Encomienda No: </b>{{encomienda.id_encomienda}}</p>
+                <p><b>Fecha: </b>{{encomienda?.viaje?.fecha| date:'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="col-12 col-sm-7">
+                <p class="text-md-right"><b>Terminal de Buses {{encomienda?.viaje?.conductore?.sindicato?.ciudad}}, Sindicato: </b>{{encomienda?.viaje?.conductore?.sindicato?.nombre}}</p>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-12 col-sm-4">
+                <b>Info. Encomienda</b>
+                <p>Cliente: {{encomienda.nombre_cliente}}</p>
+                <p>Celular: {{encomienda.celular_cliente}}</p>
+                <p>CI: {{encomienda.carnet_cliente}}</p>
+            </div>
+            <div class="col-12 col-sm-6">
+                <p class="text-md-right"><b >Info. Sindicato</b></p>
+                <p class="text-md-right">Sindicato: {{encomienda?.viaje?.conductore?.sindicato?.nombre}}</p>
+                <p class="text-md-right">Ciudad: {{encomienda?.viaje?.conductore?.sindicato?.ciudad}}<p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <p class="text-md-right"><b>Desde: </b>{{encomienda?.viaje?.origen}}</p>
+                <p class="text-md-right"><b>A: </b>{{encomienda?.viaje?.destino}}</p>
+                <p class="text-md-right"><b>Cliente: </b>{{encomienda.nombre_cliente}}</p>
+                <p class="text-md-right"><b>Cantidad Bultos: </b>{{encomienda.cantidad_bultos}}</p>
+                
+            </div>
+            <div class="col-12 col-sm-6">
+                <p><b>Salida: </b>{{encomienda?.viaje?.hora_salida}}</p>
+                <p><b>Llegada: </b>{{encomienda?.viaje?.hora_llegada}} </p>
+                <p><b>Numero Viaje: </b>{{encomienda?.viaje?.id_viaje}}</p>
+                <p><b>Fecha: </b>{{encomienda?.viaje?.fecha| date:'dd/MM/yyyy'}}</p>
+            
+                
+            </div>
+            <div class="col-12">
+                <p><b>Detalle: </b>{{encomienda.detalle}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive box-card-parent">
+                <table class="table table-striped">
+                    <thead class="thead-encomienda">
+                    <tr>
+                        <th scope="col">Detalle</th>
+                        <th scope="col">Monto</th>
+                        <th class="text-right" scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="col">Encomiendas</th>
+                        <th scope="col">{{encomienda.monto_pago}}</th>
+                        <th class="text-right" scope="col">{{encomienda.monto_pago}}</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-3">
+                <p class="text-right"><b>TOTAL</b></p>
+            </div>
+            <div class="col-4">
+                <p class="text-right"><b>{{encomienda.monto_pago}} BS</b></p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-12">
+                <p><b>NOTA:</b></p>
+                <p>EL presente documento tiene valor a nivel nacional respaldado por el sindicato.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="row sections-buttons">
+        <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div>
+        <div class="text-center"><button class="btn button-imprimir" (click)="Imprimir()">Imprimir</button></div>
+        <div class="text-center"><button class="btn button-descargar" (click)="ExportarPDF()">Descargar PDF</button></div>
+    </div>
+</div>
+

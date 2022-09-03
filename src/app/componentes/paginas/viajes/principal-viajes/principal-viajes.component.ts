@@ -24,7 +24,7 @@ export class PrincipalViajesComponent implements OnInit {
   opcionesViaje(viaje:Viaje){
     let copiaViaje = new Viaje()
     copiaViaje = {...viaje};
-    const modalRef = this.modalService.open(ModalOpcionesViajesComponent);
+    const modalRef = this.modalService.open(ModalOpcionesViajesComponent, { size: 'lg'});
     modalRef.componentInstance.viaje = copiaViaje;
   }
 

@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pasaje } from 'src/app/modelos/pasaje';
 import { ServicioPasajesService } from 'src/app/servicios/servicio-pasajes.service';
 import * as html2pdf from 'html2pdf.js'
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-pasaje-individual',
@@ -16,7 +18,8 @@ export class PasajeIndividualComponent implements OnInit {
   constructor(
     private servicioPasaje:ServicioPasajesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location,
   ){ }
 
   ngOnInit(): void {
@@ -27,7 +30,7 @@ export class PasajeIndividualComponent implements OnInit {
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/pasajes");
+    this._location.back();
   }
 
   ExportarPDF(){
@@ -45,8 +48,6 @@ export class PasajeIndividualComponent implements OnInit {
     const content: Element = document.getElementById('recibo-pasaje');
 
     html2pdf().from(content).toPdf().get('pdf').then(function (pdfObj) {
-      // pdfObj has your jsPDF object in it, use it as you please!
-      // For instance (untested):
       pdfObj.autoPrint();
       window.open(pdfObj.output('bloburl'), '_blank');
   });

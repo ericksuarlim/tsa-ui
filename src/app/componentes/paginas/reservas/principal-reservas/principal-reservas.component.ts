@@ -23,12 +23,14 @@ export class PrincipalReservasComponent implements OnInit {
     this.servicioReservas.ObtenerReservas().subscribe(reservas =>{this.reservas= reservas});
   }
 
-  opcionesReserva(reserva: Reserva){
+  OpcionesReserva(reserva: Reserva){
+    let copiaReserva = new Reserva()
+    copiaReserva = {...reserva};
     const modalRef = this.modalService.open(ModalOpcionesReservasComponent, { size: 'xl', backdrop: 'static' });
-    modalRef.componentInstance.reserva = reserva;
-    modalRef.componentInstance.actualizar.subscribe((confirm: boolean) => {
-        window.location.reload();
-    });
+    modalRef.componentInstance.reserva = copiaReserva;
+    // modalRef.componentInstance.actualizar.subscribe((confirm: boolean) => {
+    //     window.location.reload();
+    // });
   }
 
 }

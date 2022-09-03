@@ -1,32 +1,8 @@
-.btn-cancelar{
-    background: #FB9130;
-    color: #ededed;
-}
 
-.btn-cancelar:hover{
-    color: #ffffff;
-}
-
-.modal-body > .btn:hover{
-    background-color: #222222;
-    color: #FB9130;
-}
-
-.modal-body > .btn{
-    background: #ffffff;
-    color: #222222;
-    border: 1px solid #FB9130;
-    font-size: 0.85em;
-    width: 30%;
-}
-
-.btn{
-    border-radius: 100px;
-}
-
-.modal-body{
-    text-align: center;
-    padding-top: 0px;
+.input-title{
+    font-size: 1em;
+    margin-top:12px;
+    color: #495057;
 }
 
 .modal-header{
@@ -36,15 +12,40 @@
     font-weight: 500;
 }
 
+.modal-body{
+    text-align: center;
+    padding-top: 0px;
+}
+
 .modal-footer{
     padding-top: 7px;
     padding-bottom: 7px;
 }
 
-.input-title{
-    font-size: 1em;
-    margin-top:12px;
-    color: #495057;
+.btn{
+    border-radius: 100px;
+}
+
+.btn-actions{
+    background: #ffffff;
+    color: #222222;
+    border: 1px solid #FB9130;
+    font-size: 0.85em;
+    width: 30%;
+}
+
+.modal-body .btn:hover{
+    background-color: #222222;
+    color: #FB9130;
+}
+
+.btn-cancelar{
+    background: #FB9130;
+    color: #ededed;
+}
+
+.btn-cancelar:hover{
+    color: #ffffff;
 }
 
 .change-ubication-section{
@@ -63,15 +64,23 @@
     color: #FB9130;
 }
 
-@media (max-width: 510px) {
-    .modal-body > .btn{
+@media (max-width: 992px) {
+    .modal-body .btn{
         margin-bottom: 5px;
         width: 100%;
     }
+
+}
+
+@media (min-width: 992px) {
+    .body-top{
+        margin-bottom: 8px;
+    }
+    
 }
 
 @media (min-width: 510px) {
-    .btn-registrar-pasaje{
+    .btn-actions{
         margin-right: 5px;
         margin-left: 5px;
     }

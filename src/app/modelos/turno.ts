@@ -16,6 +16,38 @@ export class Turno{
         origen: string,
         destino:string;
         fecha:Date;
+        pasajes:{
+            nombre_completo : string;
+            precio : number;
+            pagado : boolean;
+            asiento: string;
+            celular: number
+            carnet_pasajero : number;
+            id_pasaje : number;
+            id_viaje : number;
+        };
+        encomiendas: {
+            id_encomienda : number;
+            id_viaje : number;
+            nombre_cliente : string;
+            monto_pago : number;
+            carnet_cliente: number;
+            pagada: boolean;
+            celular_cliente: number;
+            cantidad_bultos: number;
+            detalle: string;
+        };
+        reservas:{
+            id_reserva: number;
+            id_sindicato: number;
+            id_viaje: number;
+            fecha: Date;
+            celular: number;
+            nombre_completo_reserva: string;
+            estado: string;
+            cantidad: number;
+            comentario: string;
+        };
         conductore: {
             activo: boolean,
             apellido_materno: string,

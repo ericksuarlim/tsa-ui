@@ -24,10 +24,14 @@ import { PasajeIndividualComponent } from './componentes/paginas/pasajes/pasaje-
 import { PrincipalViajesComponent } from './componentes/paginas/viajes/principal-viajes/principal-viajes.component';
 import { FormularioViajesComponent } from './componentes/paginas/viajes/formulario-viajes/formulario-viajes.component';
 import { ModalOpcionesViajesComponent } from './componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
-
 import { registerLocaleData } from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
 import { PrincipalEncomiendasComponent } from './componentes/paginas/encomiendas/principal-encomiendas/principal-encomiendas.component';
+import { FormularioEncomiendasComponent } from './componentes/paginas/encomiendas/formulario-encomiendas/formulario-encomiendas.component';
+import { DetalleEncomiendaComponent } from './componentes/paginas/encomiendas/detalle-encomienda/detalle-encomienda.component';
+import { ReciboEncomiendaComponent } from './componentes/paginas/encomiendas/recibo-encomienda/recibo-encomienda.component';
+import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaje/detalle-viaje.component';
+import { ModalOpcionesCreacionComponent } from './componentes/modals/modal-opciones-creacion/modal-opciones-creacion.component';
 registerLocaleData(localeEsAr, 'es-Ar');
 
 
@@ -54,6 +58,11 @@ registerLocaleData(localeEsAr, 'es-Ar');
     FormularioViajesComponent,
     ModalOpcionesViajesComponent,
     PrincipalEncomiendasComponent,
+    FormularioEncomiendasComponent,
+    DetalleEncomiendaComponent,
+    ReciboEncomiendaComponent,
+    DetalleViajeComponent,
+    ModalOpcionesCreacionComponent,
   ],
   imports: [
     BrowserModule,

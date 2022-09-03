@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <h1 for="precio" class="input-title">Precio</h1>
-                            <input type="number"  name="precio" class="input-form-pasajes form-control" [(ngModel)]="pasaje.precio" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <input type="number"  name="precio" class="input-form-pasajes form-control" [(ngModel)]="pasaje.precio" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required [disabled]="!pasajeNuevo">
                             <div *ngIf="!validacion.precio" class="text-danger">{{mensajeErrorValidacion.precio}}</div>   
                         </div>
                         <div class="col-12 col-md-4">
@@ -66,6 +66,7 @@
                         <div class="col-sm-12">
                             <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
                             <button *ngIf="pasajeNuevo" class="btn button-registrar" (click)="CrearPasaje()">Registrar</button>
+                            <button *ngIf="!pasajeNuevo" class="btn button-registrar" (click)="CrearPasaje()">Actualizar</button>
                         </div>
                     </div>
                 </div>
