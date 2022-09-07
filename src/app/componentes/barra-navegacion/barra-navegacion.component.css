@@ -130,6 +130,10 @@
     background-color: #ff8201;
 } 
 
+.btn-opcines-administrador{
+    cursor: pointer;
+}
+
 @media (max-width: 427px){
     .title-main{
         font-size: 13px;

@@ -1,0 +1,33 @@
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row columna-container">
+        <div class="col">
+            <div class="row">
+                <div class="col-12">
+                    <h1 for="nombre_usuario" class="input-title">Nombre Usuario</h1>
+                    <input type="text"  name="nombre_usuario" class="input-form-sesion form-control" [(ngModel)]="nombre_usuario" (ngModelChange)="ValidarEntrada('nombre_usuario')">
+                    <div *ngIf="!validacion.nombre_usuario" class="text-danger">{{mensajeErrorValidacion.nombre_usuario}}</div>   
+                </div>
+                <div class="col-12">
+                    <h1 for="password" class="input-title">Contraseña</h1>
+                    <input type="password"  name="password" class="input-form-sesion form-control" [(ngModel)]="password" (ngModelChange)="ValidarEntrada('password')">
+                    <div *ngIf="!validacion.password" class="text-danger">{{mensajeErrorValidacion.password}}</div>   
+                </div>
+            </div>
+            <div class="row">   
+                <div class="col-12 forgot-password-sections">
+                    <a (click)="AbrirEnvioCodigo()">Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+            <div class="row sections-buttons">
+                <div class="div-button-entrar"><button class="btn button-entrar" (click)="Entrar()">Entrar</button></div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+

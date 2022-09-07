@@ -35,6 +35,14 @@ import { ModalOpcionesCreacionComponent } from './componentes/modals/modal-opcio
 import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
 import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
 import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
+import { InicioSesionComponent } from './componentes/paginas/sesion/inicio-sesion/inicio-sesion.component';
+import { FormularioCrearUsuarioComponent } from './componentes/paginas/sesion/formulario-crear-usuario/formulario-crear-usuario.component';
+import { FormularioRestablecerPasswordComponent } from './componentes/paginas/sesion/formulario-restablecer-password/formulario-restablecer-password.component';
+import { ModalOpcionesAdministradorComponent } from './componentes/modals/modal-opciones-administrador/modal-opciones-administrador.component';
+import { FormularioHabilitarUsuarioComponent } from './componentes/paginas/sesion/formulario-habilitar-usuario/formulario-habilitar-usuario.component';
+import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuarios/lista-usuarios.component';
+import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-usuario/detalles-usuario.component';
+import { ModalEnvioCodigoComponent } from './componentes/modals/modal-envio-codigo/modal-envio-codigo.component';
 registerLocaleData(localeEsAr, 'es-Ar');
 
 
@@ -69,6 +77,14 @@ registerLocaleData(localeEsAr, 'es-Ar');
     PrincipalAnunciosComponent,
     DetalleAnuncioComponent,
     FormularioAnunciosComponent,
+    InicioSesionComponent,
+    FormularioCrearUsuarioComponent,
+    FormularioRestablecerPasswordComponent,
+    ModalOpcionesAdministradorComponent,
+    FormularioHabilitarUsuarioComponent,
+    ListaUsuariosComponent,
+    DetallesUsuarioComponent,
+    ModalEnvioCodigoComponent,
   ],
   imports: [
     BrowserModule,

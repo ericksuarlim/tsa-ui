@@ -1,0 +1,49 @@
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row columna-container" id="datos-usuario">
+        <div class="col">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 text-center">
+                        <p>Los datos que se muestra a continuacion son sensibles, usted debe ser muy responsable con ellos y con quien los comparte.</p>                
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <p><b>Nombre Usuario:</b> {{usuario.nombre_usuario}}</p>                
+                </div>
+                <div class="col-12 col-md-6">
+                    <p><b>Contraseña:</b> {{usuario.password}}</p>                
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <p><b>Usuario:</b> {{usuario.nombres}} {{usuario.apellido_paterno}}</p>                
+                </div>
+                <div class="col-12 col-md-6">
+                    <p><b>Correo Electronico:</b> {{usuario.correo_electronico}}</p>                
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <p><b>Numero referencia:</b> {{usuario.celular_referencia}}</p>                
+                </div>
+                <div class="col-12 col-md-4">
+                    <p><b>Sindicato:</b> {{usuario.sindicato?.nombre}}</p>                
+                </div>
+                <div class="col-12 col-md-3">
+                    <p><b>Rol:</b> {{usuario.rol}}</p>                
+                </div>
+            </div>
+            <div class="row sections-buttons">
+                <div class="text-center"><button class="btn button-cerrar" (click)="Cerrar()">Cerrar</button></div>
+                <div class="text-center"><button class="btn button-editar" (click)="EditarUsuario(usuario.id_usuario)">Editar</button></div>
+                <div class="text-center"><button class="btn button-descargar" (click)="DescargarDatos()">Imprimir Datos</button></div>
+            </div>
+        </div>        
+    </div>
+</div>
+

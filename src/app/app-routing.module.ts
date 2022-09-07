@@ -23,6 +23,12 @@ import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaj
 import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
 import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
 import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
+import { InicioSesionComponent } from './componentes/paginas/sesion/inicio-sesion/inicio-sesion.component';
+import { FormularioHabilitarUsuarioComponent } from './componentes/paginas/sesion/formulario-habilitar-usuario/formulario-habilitar-usuario.component';
+import { FormularioCrearUsuarioComponent } from './componentes/paginas/sesion/formulario-crear-usuario/formulario-crear-usuario.component';
+import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-usuario/detalles-usuario.component';
+import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuarios/lista-usuarios.component';
+import { FormularioRestablecerPasswordComponent } from './componentes/paginas/sesion/formulario-restablecer-password/formulario-restablecer-password.component';
 
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
@@ -48,6 +54,13 @@ const routes: Routes = [
   {path:'anuncios', component: PrincipalAnunciosComponent},
   {path:'anuncios/formulario', component: FormularioAnunciosComponent},  
   {path:'anuncios/:id_anuncio', component: DetalleAnuncioComponent},
+  {path:'sesion/inicio-sesion', component: InicioSesionComponent},
+  {path:'sesion/restablecer-password', component: FormularioRestablecerPasswordComponent},
+  {path:'usuarios/gestion', component: FormularioHabilitarUsuarioComponent},
+  {path:'usuarios', component: ListaUsuariosComponent},
+  {path:'usuarios/formulario', component: FormularioCrearUsuarioComponent},
+  {path:'usuarios/:id_usuario', component: DetallesUsuarioComponent},
+
   
 ];
 
