@@ -28,7 +28,8 @@ export class ModalOpcionesAdministradorComponent implements OnInit {
 
   HabilitarUsuario(){
     this.activeModal.close(); 
-    this.router.navigateByUrl("/usuarios/gestion");
+    this.router.navigate(['/usuarios/gestion'],{queryParams: {sindicato: 1}})
+    // this.router.navigateByUrl("/usuarios/gestion");
   }
 
   VerUsuarios(){

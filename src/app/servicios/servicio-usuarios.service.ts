@@ -24,16 +24,25 @@ export class ServicioUsuariosService {
     return this.http.get<Usuario[]>(this.baseUrl);
   }
 
+  ObtenerUsuariosFiltrados(id_sindicato:number): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.baseUrl+"/gestion?sindicato="+id_sindicato);
+  }
+
+
   ObtenerCantidadUsuarios(): Observable<number>{
     return this.http.get<number>(this.baseUrl+"/cantidad");
+  }
+
+  HabilitarUsuario(id_usuario:number):Observable<any>{
+    return this.http.put(`${this.baseUrl}/gestion/${id_usuario}`, httpOptions );
   }
 
   CrearUsuario(usuario:Usuario):Observable<Usuario>{
     return this.http.post<any>(this.baseUrl, usuario, httpOptions);
   }
 
-  CrearUsuarios(usuario:Usuario[]):Observable<Usuario>{
-    return this.http.post<any>(this.baseUrl, usuario, httpOptions);
+  CrearUsuarios(usuarios:Usuario[]):Observable<Usuario>{
+    return this.http.post<any>(this.baseUrl, usuarios, httpOptions);
   }
 
   ObtenerUsuario(id_usuario:number):Observable<Usuario>{

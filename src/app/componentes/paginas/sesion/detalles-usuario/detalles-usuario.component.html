@@ -28,14 +28,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-5">
+                <div class="col-12 col-md-6">
                     <p><b>Numero referencia:</b> {{usuario.celular_referencia}}</p>                
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6">
                     <p><b>Sindicato:</b> {{usuario.sindicato?.nombre}}</p>                
                 </div>
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-6">
                     <p><b>Rol:</b> {{usuario.rol}}</p>                
+                </div>
+                <div class="col-12 col-md-6">
+                    <p><b>Estado:</b> {{usuario.habilitado===true? 'Habilitado' : 'Desabilitado'}}</p>                
                 </div>
             </div>
             <div class="row sections-buttons">

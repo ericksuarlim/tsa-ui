@@ -1,1 +1,34 @@
-<p>formulario-habilitar-usuario works!</p>
+
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row columna-container">
+        <div class="col">
+            <div class="row">
+                <div class="col-12 col-md-7">
+                    <h1 for="usuario" class="input-title">Seleccionar Usuario</h1>
+                    <select name="usuario" class="form-control"  [(ngModel)]="usuario">
+                        <option selected disabled value=''>Seleccionar Conductor</option>
+                        <option *ngFor='let u of usuarios' [ngValue]="u">{{u.nombres}} {{u.apellido_paterno}}</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5">
+                    <h1 for="estado" class="input-title">Estado Usuario</h1>
+                    <label for="estado" class="input-form-usuarios form-control f-2">{{usuario.habilitado===true?'Habilitado': usuario.habilitado===false?'Desabilitado': 'Seleccione Usuario'}}</label>
+                </div>
+            </div>
+            <div class="row sections-buttons">
+                <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div> 
+                <div class="text-center"><button class="btn button-habilitar" (click)="CambiarEstado()" [disabled]='usuario.habilitado===undefined'>{{usuario.habilitado===true?'Desabilitar': usuario.habilitado===false?'Habilitar': 'Seleccione Usuario'}}</button></div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+
+
+

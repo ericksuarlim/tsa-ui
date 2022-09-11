@@ -50,7 +50,6 @@ export class FormularioCrearUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     const id_usuario = this.route.snapshot.queryParams["id_usuario"];
-    console.log(id_usuario)
     this.usuarioNuevo = id_usuario == undefined;
     if(!this.usuarioNuevo){
       this.usuariosService.ObtenerUsuario(id_usuario).subscribe(usuario=>{this.usuario=usuario})
@@ -89,12 +88,12 @@ export class FormularioCrearUsuarioComponent implements OnInit {
       this.usuario.habilitado = true;
       if(this.usuario.rol === 'administrador')
       {
-        this.usuario.nombre_usuario = `administrador_${this.numeroCorrelativo} `;
+        this.usuario.nombre_usuario = `administrador_${this.numeroCorrelativo}`;
         this.usuario.password = `administrador_${this.GeneradorCaracteres()}`;
       }
       else
       {
-        this.usuario.nombre_usuario = `secretaria_${this.numeroCorrelativo} `;
+        this.usuario.nombre_usuario = `secretaria_${this.numeroCorrelativo}`;
         this.usuario.password = `secretaria${this.GeneradorCaracteres()}`;
       }
       this.usuariosService.CrearUsuario(this.usuario).subscribe((result)=>{
