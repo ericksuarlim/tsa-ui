@@ -50,8 +50,17 @@
     cursor: pointer;
     text-decoration: none;
     color: #212529;
-   
+}
 
+.ver-password-sections{
+    margin-top: 15px;
+    text-align: left;
+}
+
+.ver-password-sections > a{
+    cursor: pointer;
+    text-decoration: none;
+    color: #212529;
 }
 
 .forgot-password-sections > a:hover{
@@ -95,6 +104,10 @@
 @media (max-width: 542px) {
     .btn{
         margin-bottom: 5px;
+    }
+
+    .forgot-password-sections > a , .ver-password-sections > a{
+        font-size: 12px;
     }
 }
 

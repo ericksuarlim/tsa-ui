@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ServicioAutenticacionService } from 'src/app/servicios/servicio-autenticacion.service';
 
 @Component({
   selector: 'app-modal-envio-codigo',
@@ -18,16 +19,38 @@ export class ModalEnvioCodigoComponent implements OnInit {
   constructor(
     private activeModal: NgbActiveModal,
     private router:Router,
+    private autenticacionService: ServicioAutenticacionService,
   ) { }
 
   ngOnInit(): void {
   }
 
-  ValidarEntrada(){
-    
+
+  ValidarEntrada(action:string){
+    if(this.nombre_usuario === "" || (action=="registrar" && this.nombre_usuario == undefined)){this.mensajeErrorValidacion.nombre_usuario="Nombre usuario necesario"; this.validacion.nombre_usuario = false}else{this.validacion.nombre_usuario =true};
+
+    const response = this.validacion.nombre_usuario;
+    return response;
   }
+
+  
   EnviarCodigo(){
-    this.activeModal.close(); 
+    if(this.ValidarEntrada('registrar')){
+      const datos= {
+       nombre_usuario: this.nombre_usuario
+      }
+      this.autenticacionService.SolicitudRestablecerPassword(datos).subscribe((resultado)=>{
+        if(resultado.isOperational===true){
+          this.activeModal.close(); 
+        }
+        else
+        {
+          this.validacion.nombre_usuario = false;
+          this.mensajeErrorValidacion.nombre_usuario = resultado.description
+        }
+      })
+
+    }
   }
 
 }

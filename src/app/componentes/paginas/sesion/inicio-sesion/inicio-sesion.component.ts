@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalEnvioCodigoComponent } from 'src/app/componentes/modals/modal-envio-codigo/modal-envio-codigo.component';
+import { ServicioAutenticacionService } from 'src/app/servicios/servicio-autenticacion.service';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -11,6 +15,7 @@ export class InicioSesionComponent implements OnInit {
 
   nombre_usuario:string;
   password:string;
+  verPassword: boolean = false;
   validacion= {
     nombre_usuario: true,
     password: true,
@@ -20,24 +25,53 @@ export class InicioSesionComponent implements OnInit {
     password: "",
   }
 
-  constructor(public modalService: NgbModal) { }
+  constructor(
+    public modalService: NgbModal,
+    private autenticacionService: ServicioAutenticacionService,
+    private _location: Location,
+    private router:Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
 
-  ValidarEntrada(tipo:string){
+  ValidarEntrada(action:string){
+    if(this.nombre_usuario === "" || (action=="registrar" && this.nombre_usuario == undefined)){this.mensajeErrorValidacion.nombre_usuario="Nombre usuario necesario"; this.validacion.nombre_usuario = false}else{this.validacion.nombre_usuario =true};
+    if(this.password === "" || (action=="registrar" && this.password == undefined)){this.mensajeErrorValidacion.password="Contraseña necesaria"; this.validacion.password = false}else{this.validacion.password =true};
 
+    const response = this.validacion.nombre_usuario && this.validacion.password;
+    return response;
   }
 
   Entrar(){
-    const encryptedPassword = btoa(this.toBinary(this.password));
-    console.log(encryptedPassword);
-    const desencryptedPassword = this.fromBinary(atob(encryptedPassword));
+    if(this.ValidarEntrada('registrar')){
+      const encryptedPassword = btoa(this.toBinary(this.password));
+      const datosUsuario ={
+        nombre_usuario: this.nombre_usuario,
+        password: encryptedPassword
+      }
+      this.autenticacionService.Entrar(datosUsuario).subscribe((resultado) => {
+        if(resultado.isOperational===true){
+          localStorage.setItem('usuario',resultado.usuario_registrado.nombre_usuario);
+          localStorage.setItem('rol',resultado.usuario_registrado.rol);
+          localStorage.setItem('token',resultado.sesion.token_usuario);
+          this.router.navigateByUrl(`/`);
+        }
+        else
+        {
+          if(resultado.description === 'Usuario incorrecto'){ this.validacion.nombre_usuario = false;this.mensajeErrorValidacion.nombre_usuario = resultado.description;}else{this.validacion.password = false;this.mensajeErrorValidacion.password = resultado.description;}
+        }
+      })
+    }
+  }
+
+  VerPassword(){
+    this.verPassword = !this.verPassword;
   }
 
   AbrirEnvioCodigo(){
     const modalRef = this.modalService.open(ModalEnvioCodigoComponent);
-
   }
 
   toBinary(string:any) {
