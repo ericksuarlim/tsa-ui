@@ -14,7 +14,8 @@ export class FormularioCrearUsuarioComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
   usuarioNuevo:boolean= true;
-
+  sindicatoUsuario: number;
+  datosRevisados: boolean= false;
 
   abecedario = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"];
   
@@ -48,13 +49,26 @@ export class FormularioCrearUsuarioComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     const id_usuario = this.route.snapshot.queryParams["id_usuario"];
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'))
     this.usuarioNuevo = id_usuario == undefined;
     if(!this.usuarioNuevo){
-      this.usuariosService.ObtenerUsuario(id_usuario).subscribe(usuario=>{this.usuario=usuario})
+      this.usuariosService.ObtenerUsuario(id_usuario).subscribe(usuario=>{
+        if(usuario.id_sindicato===this.sindicatoUsuario){
+          this.usuario=usuario;
+          this.datosRevisados = true;
+        }
+        else{
+          this.router.navigate(['/']);
+        }
+      })
     }
     this.usuariosService.ObtenerCantidadUsuarios().subscribe(resultado=>{this.numeroCorrelativo = resultado+1})
+  }
+
+  ngOnInit(): void {
+    
   }
 
   ValidarCampos(action: string){

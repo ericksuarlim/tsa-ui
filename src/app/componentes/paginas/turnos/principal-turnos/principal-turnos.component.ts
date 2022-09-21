@@ -25,7 +25,7 @@ export class PrincipalTurnosComponent implements OnInit {
 
   ngOnInit(): void {
     this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
-    this.usuario = localStorage.getItem('usuario');
+    this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(this.sindicatoCargado===this.sindicatoUsuario){
       this.servicioTurnos.ObtenerTurnosPorSindicato(this.sindicatoCargado).subscribe(turnos =>{this.turnos= turnos});

@@ -20,7 +20,7 @@ export class PrincipalChoferesComponent implements OnInit {
   conductores: Conductor[];
   usuario: string;
   sindicatoUsuario: number;
-  sindicatoCargado: number;
+  sindicatoCargado: string;
 
   constructor(
     private servicioConductores: ServicioConductoresService,
@@ -30,11 +30,11 @@ export class PrincipalChoferesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
     this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario =  Number(localStorage.getItem('id_sindicato_usuario'));
-    if(this.sindicatoCargado===this.sindicatoUsuario){
-      this.servicioConductores.ObtenerConductoresPorSindicato(this.sindicatoCargado).subscribe(conductores =>{this.conductores= conductores});
+    if(Number(this.sindicatoCargado)===this.sindicatoUsuario){
+      this.servicioConductores.ObtenerConductoresPorSindicato(Number(this.sindicatoCargado)).subscribe(conductores =>{this.conductores= conductores});
     }
     else{
       this.router.navigate(['/']);
@@ -66,7 +66,7 @@ export class PrincipalChoferesComponent implements OnInit {
   }
 
   ValidarVista(){
-    return this.usuario!=null && this.sindicatoUsuario===this.sindicatoCargado;
+    return this.usuario!=null && this.sindicatoUsuario===Number(this.sindicatoCargado);
   }
 
   

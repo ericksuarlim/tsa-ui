@@ -2,7 +2,7 @@
     <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
 </div>
 
-<div class="container">
+<div *ngIf="datosRevisados || usuarioNuevo" class="container">
     <div class="row">
         <div class="col-sm-12">
             <h3 class="title-page">CREAR USUARIO</h3>

@@ -15,7 +15,7 @@ export class PasajesPrincipalComponent implements OnInit {
   pasajes: Pasaje[];
   usuario: string;
   sindicatoUsuario: number;
-  sindicatoCargado: number;
+  sindicatoCargado: string;
 
   constructor(
     private servicioPasajes:ServicioPasajesService,
@@ -25,11 +25,11 @@ export class PasajesPrincipalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
-    this.usuario = localStorage.getItem('usuario');
+    this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
+    this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
-    if(this.sindicatoCargado===this.sindicatoUsuario){
-      this.servicioPasajes.ObtenerPasajesPorSindicato(this.sindicatoCargado).subscribe(pasajes=>{this.pasajes = pasajes})
+    if(Number(this.sindicatoCargado)===this.sindicatoUsuario){
+      this.servicioPasajes.ObtenerPasajesPorSindicato(Number(this.sindicatoCargado)).subscribe(pasajes=>{this.pasajes = pasajes})
     }
     else{
       this.router.navigate(['/']);
@@ -49,7 +49,7 @@ export class PasajesPrincipalComponent implements OnInit {
   }
 
   ValidarVista(){
-    return this.usuario!=null && this.sindicatoUsuario===this.sindicatoCargado;
+    return this.usuario!=null && this.sindicatoUsuario===Number(this.sindicatoCargado);
   }
 
 }

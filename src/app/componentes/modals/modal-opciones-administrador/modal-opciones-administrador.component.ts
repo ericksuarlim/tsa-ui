@@ -9,12 +9,14 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalOpcionesAdministradorComponent implements OnInit {
 
+  sindicatoUsuario: number;
   constructor(
     private activeModal: NgbActiveModal,
     private router:Router,
   ) { }
 
   ngOnInit(): void {
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
   }
 
   Cancelar(){
@@ -28,8 +30,8 @@ export class ModalOpcionesAdministradorComponent implements OnInit {
 
   HabilitarUsuario(){
     this.activeModal.close(); 
-    this.router.navigate(['/usuarios/gestion'],{queryParams: {sindicato: 1}})
-    // this.router.navigateByUrl("/usuarios/gestion");
+    //this.router.navigate(['/usuarios/gestion'],{queryParams: {sindicato: this.sindicatoUsuario }})
+    this.router.navigateByUrl("/usuarios/gestion");
   }
 
   VerUsuarios(){

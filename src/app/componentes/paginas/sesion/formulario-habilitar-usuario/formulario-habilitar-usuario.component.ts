@@ -15,6 +15,7 @@ export class FormularioHabilitarUsuarioComponent implements OnInit {
   usuario: Usuario = new Usuario();
   usuarios:Usuario[];
   estadoUsuario="";
+  sindicatoUsuario: number;
 
   constructor(
     private _location: Location,
@@ -24,8 +25,9 @@ export class FormularioHabilitarUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const sindicato = this.route.snapshot.queryParams["sindicato"];
-    this.usuariosService.ObtenerUsuariosFiltrados(sindicato).subscribe(usuarios=>{this.usuarios=usuarios})
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.usuariosService.ObtenerUsuariosFiltrados(this.sindicatoUsuario).subscribe(usuarios=>{this.usuarios=usuarios})
+
   }
 
   CambiarEstado(){

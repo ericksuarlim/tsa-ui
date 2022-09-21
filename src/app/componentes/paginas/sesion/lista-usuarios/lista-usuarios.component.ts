@@ -12,6 +12,7 @@ import { ServicioUsuariosService } from 'src/app/servicios/servicio-usuarios.ser
 export class ListaUsuariosComponent implements OnInit {
 
   usuarios: Usuario[];
+  sindicatoUsuario: number;
   constructor(
     private _location: Location,
     private usuariosService:ServicioUsuariosService,
@@ -20,7 +21,8 @@ export class ListaUsuariosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.usuariosService.ObtenerUsuarios().subscribe((usuarios)=>{this.usuarios=usuarios});
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.usuariosService.ObtenerUsuariosFiltrados(this.sindicatoUsuario).subscribe((usuarios)=>{this.usuarios=usuarios});
   }
 
   CrearUsuario(){

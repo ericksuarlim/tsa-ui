@@ -12,6 +12,8 @@ import { ServicioUsuariosService } from 'src/app/servicios/servicio-usuarios.ser
 export class DetallesUsuarioComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
+  sindicatoUsuario: number;
+  datosRevisados: boolean= false;
   constructor(
     private router:Router,
     private route: ActivatedRoute,
@@ -20,8 +22,15 @@ export class DetallesUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     const id_usuario = this.route.snapshot.params["id_usuario"];
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'))
     this.servicioUsuarios.ObtenerUsuario(id_usuario).subscribe(usuario=>{
-      this.usuario=usuario;
+      if(usuario.id_sindicato===this.sindicatoUsuario){
+        this.usuario=usuario;
+        this.datosRevisados = true;
+      }
+      else{
+        this.router.navigate(['/']);
+      }
     });
   }
 

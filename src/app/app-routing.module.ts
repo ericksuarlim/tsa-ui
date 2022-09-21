@@ -30,6 +30,7 @@ import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-
 import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuarios/lista-usuarios.component';
 import { FormularioRestablecerPasswordComponent } from './componentes/paginas/sesion/formulario-restablecer-password/formulario-restablecer-password.component';
 import {AutenticacionGuard} from './commons/AutenticacionGuard'
+import { RoleGuard } from './commons/RoleGuard';
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
   {path:'servicio-sindicato', component: ServiciosSindicatosComponent},
@@ -56,10 +57,10 @@ const routes: Routes = [
   {path:'anuncios/:id_anuncio', component: DetalleAnuncioComponent},
   {path:'sesion/inicio-sesion', component: InicioSesionComponent},
   {path:'sesion/restablecer-password', component: FormularioRestablecerPasswordComponent},
-  {path:'usuarios/gestion', component: FormularioHabilitarUsuarioComponent},
-  {path:'usuarios', component: ListaUsuariosComponent},
-  {path:'usuarios/formulario', component: FormularioCrearUsuarioComponent,canActivate: [AutenticacionGuard]},
-  {path:'usuarios/:id_usuario', component: DetallesUsuarioComponent},
+  {path:'usuarios/gestion', component: FormularioHabilitarUsuarioComponent, canActivate: [RoleGuard]},
+  {path:'usuarios', component: ListaUsuariosComponent, canActivate: [RoleGuard]},
+  {path:'usuarios/formulario', component: FormularioCrearUsuarioComponent,canActivate: [RoleGuard]},
+  {path:'usuarios/:id_usuario', component: DetallesUsuarioComponent,canActivate: [RoleGuard]},
 
   
 ];
