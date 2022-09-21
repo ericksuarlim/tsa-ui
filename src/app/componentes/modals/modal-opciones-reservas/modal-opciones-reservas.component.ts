@@ -84,7 +84,6 @@ export class ModalOpcionesReservasComponent implements OnInit {
       this.reservasService.EditarReserva(this.reserva).subscribe(()=>{
         // this.actualizar.emit(true);
         // this.activeModal.close();
-        // console.log("Entro")
         this.activeModal.close(); 
         window.location.reload(); 
       });

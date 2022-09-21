@@ -20,7 +20,6 @@ export class ServicioViajesService {
   constructor(private http:HttpClient) { }
 
   ObtenerViajesPorSindicato(id_sindicato:number): Observable<Viaje[]>{
-    console.log(id_sindicato)
     return this.http.get<Viaje[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
   }
 

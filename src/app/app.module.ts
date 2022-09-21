@@ -44,7 +44,7 @@ import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuar
 import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-usuario/detalles-usuario.component';
 import { ModalEnvioCodigoComponent } from './componentes/modals/modal-envio-codigo/modal-envio-codigo.component';
 registerLocaleData(localeEsAr, 'es-Ar');
-
+import { BnNgIdleService } from 'bn-ng-idle'; 
 
 @NgModule({
   declarations: [
@@ -93,7 +93,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     HttpClientModule,
     NgbModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
+  providers: [BnNgIdleService,{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

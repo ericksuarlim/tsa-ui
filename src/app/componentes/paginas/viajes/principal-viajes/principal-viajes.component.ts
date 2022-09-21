@@ -30,7 +30,7 @@ export class PrincipalViajesComponent implements OnInit {
     this.usuario = localStorage.getItem('usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(!this.esGeneral){
-      this.servicioViajes.ObtenerViajesPorSindicato(Number(this.sindicatoCargado)).subscribe(viajes =>{this.viajes= viajes;console.log(this.viajes)});
+      this.servicioViajes.ObtenerViajesPorSindicato(Number(this.sindicatoCargado)).subscribe(viajes =>{this.viajes= viajes});
     }
     else
     {
