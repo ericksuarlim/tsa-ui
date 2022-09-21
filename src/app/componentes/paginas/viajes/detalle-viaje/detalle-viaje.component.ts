@@ -18,6 +18,11 @@ import { ModalOpcionesReservasComponent } from 'src/app/componentes/modals/modal
 export class DetalleViajeComponent implements OnInit {
 
   viaje: Viaje = new Viaje();
+  esGeneral: boolean= true;
+  permisoBotones: boolean;
+  sindicatoCargado: number;
+  usuario: string;
+  sindicatoUsuario: number;
   constructor(
     private servicioViajes: ServicioViajesService,
     private route: ActivatedRoute,
@@ -29,7 +34,14 @@ export class DetalleViajeComponent implements OnInit {
 
   ngOnInit(): void {
     const id_viaje = this.route.snapshot.params["id_viaje"];
-    this.servicioViajes.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje});
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.esGeneral = this.sindicatoCargado === undefined;
+    this.usuario = localStorage.getItem('usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.servicioViajes.ObtenerViaje(id_viaje).subscribe(viaje=>{
+      this.viaje=viaje;
+      this.permisoBotones = viaje.conductore.id_sindicato === this.sindicatoUsuario;
+    });
   }
 
   Atras(){
@@ -38,10 +50,6 @@ export class DetalleViajeComponent implements OnInit {
 
   Editar(id_viaje:number){
     this.router.navigate(["/viajes/formulario"], { queryParams: { id_viaje} });
-  }
-
-  VerRecibo(id_viaje:number){
-    this.router.navigateByUrl(`/viajes/recibo/${id_viaje}`);
   }
 
   AbrirPasaje(id_pasaje:number){
@@ -67,5 +75,9 @@ export class DetalleViajeComponent implements OnInit {
     // const modalRef = this.modalService.open(ModalOpcionesReservasComponent, { size: 'xl', backdrop: 'static' });
     // modalRef.componentInstance.reserva = copiaReserva;
     
+  }
+
+  ValidarVista(){
+    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado && this.permisoBotones;  
   }
 }

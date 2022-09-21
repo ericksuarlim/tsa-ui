@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,16 +9,22 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalOpcionesCreacionComponent implements OnInit {
 
+
+  id_sindicato: string;
+
   constructor(   private activeModal: NgbActiveModal,
     private router:Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.id_sindicato = this.route.snapshot.queryParams["id_sindicato"];
+
   }
 
   AbrirViajes(){
     this.activeModal.close(); 
-    this.router.navigateByUrl("/viajes");
+    this.router.navigate([`/viajes`], { queryParams: { id_sindicato:this.id_sindicato }})
   }
 
   Cancelar(){

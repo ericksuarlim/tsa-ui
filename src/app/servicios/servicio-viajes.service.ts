@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Viaje } from '../modelos/viaje';
@@ -18,6 +18,11 @@ export class ServicioViajesService {
   baseUrl: string = environment.urlApi + "/viajes";
 
   constructor(private http:HttpClient) { }
+
+  ObtenerViajesPorSindicato(id_sindicato:number): Observable<Viaje[]>{
+    console.log(id_sindicato)
+    return this.http.get<Viaje[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }
 
   ObtenerViajes(): Observable<Viaje[]>{
     return this.http.get<Viaje[]>(this.baseUrl);

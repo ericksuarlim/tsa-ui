@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalEliminarComponent } from 'src/app/componentes/modals/modal-eliminar/modal-eliminar.component';
 import { Conductor } from 'src/app/modelos/conductor';
@@ -18,15 +18,27 @@ import { ServicioConductoresService } from 'src/app/servicios/servicio-conductor
 export class PrincipalChoferesComponent implements OnInit {
 
   conductores: Conductor[];
+  usuario: string;
+  sindicatoUsuario: number;
+  sindicatoCargado: number;
+
   constructor(
     private servicioConductores: ServicioConductoresService,
     private router:Router,
     public modalService: NgbModal,
-
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.servicioConductores.ObtenerConductores().subscribe(conductores =>{this.conductores= conductores});
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.usuario = localStorage.getItem('nombre_usuario');
+    this.sindicatoUsuario =  Number(localStorage.getItem('id_sindicato_usuario'));
+    if(this.sindicatoCargado===this.sindicatoUsuario){
+      this.servicioConductores.ObtenerConductoresPorSindicato(this.sindicatoCargado).subscribe(conductores =>{this.conductores= conductores});
+    }
+    else{
+      this.router.navigate(['/']);
+    }
   }
 
   ngAfterViewInit() {
@@ -51,6 +63,10 @@ export class PrincipalChoferesComponent implements OnInit {
 
   EliminarConductor(carnet:number){
     this.servicioConductores.EliminarConductor(carnet).subscribe(conductores =>{window.location.reload()});
+  }
+
+  ValidarVista(){
+    return this.usuario!=null && this.sindicatoUsuario===this.sindicatoCargado;
   }
 
   

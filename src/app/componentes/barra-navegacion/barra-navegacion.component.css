@@ -5,7 +5,7 @@
 }
 
 .title-main{
-    font-size: 15px;
+    font-size: 0.90em;
     color: #4E4E4E;
     font: bold;
     text-decoration: none;
@@ -43,6 +43,14 @@
 .navbar-toggler{
     background-color: #ff8201;
     outline: none;
+
+}
+
+.navbar-toggler-label{
+    font-size: 0.70em;
+    color: #FFFFFF;
+    margin-left: 8px;
+    margin-bottom: 0px;
 }
 
 
@@ -72,7 +80,7 @@
 
 .ul-navbar > li > a {
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 0.90em;
     color: #777777;
     font-weight: 700;
     transition: all 500ms ease;
@@ -80,9 +88,9 @@
     -webkit-transition: all 500ms ease;
 }
 
-.collapse > ul > li{
-    margin-right: 30px;
-}
+/* .collapse > ul > li{
+    margin-right: 12px;
+} */
 
 .navbar-nav > li:hover > a,
 .navbar-nav > li.active > a,
@@ -96,7 +104,7 @@
     border-top: 3px solid #ff8201;
     padding-top: 0px;
     box-shadow:2px 2px 5px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
-    margin-right: -35px; 
+    margin-right: -15px; 
     /* float: right;
     margin-top: 40px;
     width: 30%;*/
@@ -137,6 +145,9 @@
 @media (max-width: 427px){
     .title-main{
         font-size: 13px;
+    }
+    .navbar-toggler-label{
+        font-size: 0.55em;
     }
 }
 
@@ -181,10 +192,24 @@
 		text-align:left;
         min-width: 60%;
 	}
+/* 
+    .collapse{
 
-    .navbar-expand-lg {
-        padding-right: 100px;
+        display: none !important;
+
     }
+
+    .navbar{
+        justify-content: space-between !important;
+    }
+
+    .navbar-expand-lg .navbar-toggler{
+        display: block !important;
+    } */
+
+    /* .navbar-expand-lg {
+        padding-right: 100px;
+    } */
 }
 
 @media only screen and (max-width: 991px){
@@ -213,6 +238,16 @@
         font-size: 0.55em;
     }
 }
+
+@media (min-width: 573px) and (max-width: 992px) {
+    .navbar-toggler, .ul-navbar{
+        margin-right: 40px;
+    }
+
+ }
+
+
+ 
 
 
 

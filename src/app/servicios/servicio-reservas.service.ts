@@ -21,6 +21,10 @@ export class ServicioReservasService {
     return this.http.get<Reserva[]>(this.baseUrl);
   }
 
+  ObtenerReservasPorSindicato(id_sindicato:number): Observable<Reserva[]>{
+    return this.http.get<Reserva[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }  
+
   CrearReserva(reserva:Reserva):Observable<Reserva>{
     return this.http.post<any>(this.baseUrl, reserva, httpOptions);
   }

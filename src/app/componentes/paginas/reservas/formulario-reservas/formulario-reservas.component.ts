@@ -50,8 +50,6 @@ export class FormularioReservasComponent implements OnInit {
     this.viajesService.ObtenerViajes().subscribe(viajes=>{
       this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== new Date() || v.fecha === new Date())}) 
     })
-
- 
     this.reserva.fecha = new Date();
     this.sindicatosServices.ObtenerSindicatos().subscribe(sindicatos=>{this.sindicatos = sindicatos})
 

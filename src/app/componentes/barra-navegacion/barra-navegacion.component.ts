@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class BarraNavegacionComponent implements OnInit {
 
+  usuario: string;
+  rol: string;
+  sindicatoUsuario: number;
   constructor(
     public modalService: NgbModal,
     private autenticacionService: ServicioAutenticacionService,
@@ -20,6 +23,9 @@ export class BarraNavegacionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.usuario = localStorage.getItem('nombre_usuario');
+    this.rol = localStorage.getItem('rol_usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
   }
 
   AbrirModalAdministrador(){
@@ -27,11 +33,19 @@ export class BarraNavegacionComponent implements OnInit {
   }
 
   CerrarSesion(){
-    const datos ={nombre_usuario: localStorage.getItem('usuario')}
+    const datos ={nombre_usuario: localStorage.getItem('nombre_usuario')}
     this.autenticacionService.Salir(datos).subscribe((resultado)=>{
       localStorage.clear();
-      this.router.navigateByUrl(`/`);
+      this.router.navigateByUrl(`/`).then(() => {
+        window.location.reload();
+      });
     })
+  }
+
+  AbrirServicioSindicatos(id_sindicato:number){
+    this.router.navigate(["servicio-sindicato"], { queryParams: { id_sindicato } }).then(() => {
+      window.location.reload();
+    });
   }
 
 

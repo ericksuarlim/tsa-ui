@@ -19,7 +19,7 @@
                 </div>
                 <div  class="col-md-3">
                     <h5 class="modal-label-title">Estado</h5>
-                    <select name="estado" class="form-control" [(ngModel)]="reserva.estado" (ngModelChange)="ValidarReserva('verificar')">
+                    <select [disabled]="!ValidarVista()"  name="estado" class="form-control" [(ngModel)]="reserva.estado" (ngModelChange)="ValidarReserva('verificar')">
                         <option>Pendiente</option>
                         <option>Aceptado</option>
                         <option>Rechazado</option>
@@ -84,13 +84,13 @@
             <div class="row">
                 <div  class="col-12">
                     <h5 class="modal-label-title">Comentario</h5>
-                    <input type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
+                    <input [disabled]="!ValidarVista()"  type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
-            <button type="button" class="btn btn-actualizar" (click)="Actualizar()">Actualizar</button>
+            <button type="button" class="btn btn-cancelar" (click)="Cancelar()">{{ValidarVista()? 'Cancelar':'Atras' }}</button>
+            <button *ngIf="ValidarVista()"  type="button" class="btn btn-actualizar" (click)="Actualizar()">Actualizar</button>
         </div>
     </div>
 </div>

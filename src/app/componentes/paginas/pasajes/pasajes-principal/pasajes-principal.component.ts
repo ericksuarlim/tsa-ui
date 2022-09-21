@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOpcionesCreacionComponent } from 'src/app/componentes/modals/modal-opciones-creacion/modal-opciones-creacion.component';
 import { Pasaje } from 'src/app/modelos/pasaje';
@@ -13,18 +13,31 @@ import { ServicioPasajesService } from 'src/app/servicios/servicio-pasajes.servi
 export class PasajesPrincipalComponent implements OnInit {
 
   pasajes: Pasaje[];
+  usuario: string;
+  sindicatoUsuario: number;
+  sindicatoCargado: number;
+
   constructor(
     private servicioPasajes:ServicioPasajesService,
     private router:Router,
     public modalService: NgbModal,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.servicioPasajes.ObtenerPasajes().subscribe(pasajes=>{this.pasajes = pasajes})
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.usuario = localStorage.getItem('usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    if(this.sindicatoCargado===this.sindicatoUsuario){
+      this.servicioPasajes.ObtenerPasajesPorSindicato(this.sindicatoCargado).subscribe(pasajes=>{this.pasajes = pasajes})
+    }
+    else{
+      this.router.navigate(['/']);
+    }
   }
 
   AbrirPasaje(id_pasaje:number){
-    this.router.navigateByUrl(`/pasajes/recibo/${id_pasaje}`);
+    this.router.navigate([`/pasajes/recibo/${id_pasaje}`], { queryParams: { id_sindicato:this.sindicatoCargado }})
   }
 
   EditarPasajes(id_pasaje:number,id_viaje:number){
@@ -33,7 +46,10 @@ export class PasajesPrincipalComponent implements OnInit {
 
   RedirigirCrearPasaje(){
     this.modalService.open(ModalOpcionesCreacionComponent);
+  }
 
+  ValidarVista(){
+    return this.usuario!=null && this.sindicatoUsuario===this.sindicatoCargado;
   }
 
 }

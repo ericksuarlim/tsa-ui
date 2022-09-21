@@ -32,10 +32,19 @@
 
 }
 
-.lower-box > h3 > a:hover{
-	text-decoration: none;
+.inner-box:hover{
+  cursor: pointer;
+background-color: #222222;
+  color: rgba(255,130,1,0.90)!important;
 }
 
+.inner-box:hover > h3{
+  color: #acacac;
+}
+
+.inner-box{
+  border-radius: 30px;
+}
 
 .services-block-address, .services-block-celphone{
     font-size: 12px;

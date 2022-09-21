@@ -21,6 +21,7 @@ export class FormularioTurnosComponent implements OnInit {
   conductores: Conductor[];
   viajes: Viaje[] = [];
   turnoNuevo: boolean;
+  sindicatoUsuario: number;
 
   formulario={
     turnoConductor: null,
@@ -49,6 +50,7 @@ export class FormularioTurnosComponent implements OnInit {
 
   ngOnInit(): void {
     const id_turno = this.route.snapshot.queryParams["id_turno"];
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.turnoNuevo = id_turno == undefined;
     if(!this.turnoNuevo){      
       this.servicioTurnos.ObtenerTurno(id_turno).subscribe((turno)=>{
@@ -56,12 +58,13 @@ export class FormularioTurnosComponent implements OnInit {
         this.turno = turno;
       });
     }
-    this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
+    this.conductoresService.ObtenerConductoresPorSindicato(this.sindicatoUsuario).subscribe(conductores=>{this.conductores = conductores})
   }
 
   CrearTurno(){
     if(this.ValidarTurno('registrar'))
     { 
+      this.turno.id_sindicato = this.sindicatoUsuario;
       this.servicioTurnos.CrearTurno(this.turno).subscribe(result=>{
         this._location.back();
       }); 

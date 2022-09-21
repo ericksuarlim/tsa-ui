@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Anuncio } from 'src/app/modelos/anuncios';
 import { ServicioAnunciosService } from 'src/app/servicios/servicio-anuncios.service';
 import {Location} from '@angular/common';
@@ -14,6 +14,7 @@ export class FormularioAnunciosComponent implements OnInit {
 
   anuncio: Anuncio = new Anuncio();
   nuevoAnuncio: boolean = true;
+  sindicatoUsuario: number;
 
   validacion= {
     titulo: true,
@@ -30,15 +31,26 @@ export class FormularioAnunciosComponent implements OnInit {
   constructor(
     private servicioAnuncios:ServicioAnunciosService,
     private route: ActivatedRoute,
-    private _location: Location
+    private _location: Location,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     const id_anuncio = this.route.snapshot.queryParams["id_anuncio"];
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+
     this.nuevoAnuncio = id_anuncio == undefined;
     if(!this.nuevoAnuncio)
     {
-      this.servicioAnuncios.ObtenerAnuncio(id_anuncio).subscribe(anuncio=>{this.anuncio=anuncio});
+      this.servicioAnuncios.ObtenerAnuncio(id_anuncio).subscribe(anuncio=>{
+        if(anuncio.id_sindicato===this.sindicatoUsuario){
+          this.anuncio=anuncio;
+        }
+        else
+        {
+          this.router.navigate(['/']); 
+        } 
+      });
     }
   }
 

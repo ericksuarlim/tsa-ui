@@ -18,10 +18,13 @@ export class ServicioAnunciosService {
   baseUrl: string = environment.urlApi + "/anuncios";
 
   constructor(private http:HttpClient) { }
-    //Obtener registros de anuncios
 
   ObtenerAnuncios(): Observable<Anuncio[]>{
     return this.http.get<Anuncio[]>(this.baseUrl);
+  }
+
+  ObtenerAnunciosPorSindicato(id_sindicato:number): Observable<Anuncio[]>{
+    return this.http.get<Anuncio[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
   }
 
   CrearAnuncio(anuncio:Anuncio):Observable<Anuncio>{

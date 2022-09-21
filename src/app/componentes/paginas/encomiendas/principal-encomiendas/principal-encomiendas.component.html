@@ -4,10 +4,10 @@
 
 <div class="container">
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7">
+        <div [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8 col-md-8'">
             <input type="text" name="nombre_cliente" class="input-search form-control" placeholder="Ej. Ramiro Colque">
         </div>
-        <div class="col-sm-4 col-md-3">
+        <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4 col-md-4'">
             <select name="tipo_busqueda" class="form-control">
                 <option>Nombre Cliente</option>
                 <option>Codigo Encomienda</option>
@@ -15,7 +15,7 @@
             </select>   
         </div>
 
-        <div class="col-sm-12 col-md-2 btn-new">
+        <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
           <button (click)="RedirigirCrearEncomienda()" class="btn">Crear Encomienda</button>
         </div>
     </div>
@@ -47,6 +47,7 @@
                   </tr>
                 </tbody>
               </table>
+              <div *ngIf="encomiendas?.length === 0" class="empty-table-message">Sin Encomiendas</div>
         </div>
     </div>
 </div>

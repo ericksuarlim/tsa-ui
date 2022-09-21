@@ -20,6 +20,6 @@
     </div>
     <div class="row sections-buttons">
         <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>
-        <div class="text-center"><button class="btn button-editar" (click)="EditarAnuncio(anuncio.id_anuncio)">Editar Anuncio</button></div>
+        <div *ngIf="ValidarVista()" class="text-center"><button class="btn button-editar" (click)="EditarAnuncio(anuncio.id_anuncio)">Editar Anuncio</button></div>
     </div>
 </div>

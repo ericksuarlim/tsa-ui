@@ -4,16 +4,16 @@
 
 <div class="container">
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
+        <div [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
             <input type="text" name="nombre_conductor " class="input-search form-control" placeholder="Ej. 05/04/2022">
         </div>
-        <div class="col-sm-4 col-md-3">
+        <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
             <select name="tipo_busqueda" class="form-control">
                 <option>Fecha</option>
                 <option>Numero Turno</option>
             </select>   
         </div>
-        <div class="col-sm-12 col-md-2 btn-new">
+        <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
             <a href="/turnos/formulario" class="btn">Crear Turno</a>
         </div>
     </div>
@@ -25,16 +25,16 @@
                   <tr>
                     <th scope="col" class="text-center">Id. Turno</th>
                     <th scope="col" class="text-center">Fecha</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th *ngIf="ValidarVista()" scope="col"></th>
+                    <th *ngIf="ValidarVista()" scope="col"></th>
                   </tr>
                 </thead>
                 <tbody *ngFor="let turno of turnos">
                   <tr>
                     <td scope="row" class="td-size text-center">{{turno.id_turno}}</td>
                     <td class="td-size text-center">{{ turno.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
-                    <a class="btn btn-table btn-detalles" (click)="verTurno(turno.id_turno)">Ver Detalles</a>
-                    <a class="btn btn-table btn-editar" (click)="editarTurno(turno.id_turno)">Editar</a>
+                    <a *ngIf="ValidarVista()" class="btn btn-table btn-detalles" (click)="verTurno(turno.id_turno)">Ver Detalles</a>
+                    <a *ngIf="ValidarVista()" class="btn btn-table btn-editar" (click)="editarTurno(turno.id_turno)">Editar</a>
                   </tr>
                  
                 </tbody>

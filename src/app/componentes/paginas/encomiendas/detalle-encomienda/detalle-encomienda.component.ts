@@ -13,6 +13,11 @@ import {Location} from '@angular/common';
 export class DetalleEncomiendaComponent implements OnInit {
 
   encomienda:Encomienda= new Encomienda();
+  esGeneral: boolean= true;
+  permisoBotones: boolean;
+  sindicatoCargado: number;
+  usuario: string;
+  sindicatoUsuario: number;
 
   constructor(
     private servicioEncomiendas:ServicioEncomiendasService,
@@ -23,7 +28,14 @@ export class DetalleEncomiendaComponent implements OnInit {
 
   ngOnInit(): void {
     const id_encomienda = this.route.snapshot.params["id_encomienda"];
-    this.servicioEncomiendas.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{this.encomienda=encomienda});
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.esGeneral = this.sindicatoCargado === undefined;
+    this.usuario = localStorage.getItem('usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.servicioEncomiendas.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{
+      this.encomienda=encomienda;
+      this.permisoBotones = encomienda.viaje.conductore.id_sindicato===this.sindicatoUsuario;
+    });
   }
 
   Atras(){
@@ -36,6 +48,10 @@ export class DetalleEncomiendaComponent implements OnInit {
 
   VerRecibo(id_encomienda:number){
     this.router.navigateByUrl(`/encomiendas/recibo/${id_encomienda}`);
+  }
+
+  ValidarVista(){
+    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado && this.permisoBotones;  
   }
 
 }

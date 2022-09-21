@@ -23,6 +23,10 @@ export class ServicioTurnosService {
     return this.http.get<Turno[]>(this.baseUrl);
   }
 
+  ObtenerTurnosPorSindicato(id_sindicato:number): Observable<Turno[]>{
+    return this.http.get<Turno[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }
+
   CrearTurno(turno:Turno):Observable<Turno>{
     return this.http.post<any>(this.baseUrl, turno, httpOptions);
   }

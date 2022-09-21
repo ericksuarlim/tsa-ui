@@ -23,6 +23,10 @@ export class ServicioPasajesService {
     return this.http.get<Pasaje[]>(this.baseUrl);
   }
 
+  ObtenerPasajesPorSindicato(id_sindicato:number): Observable<Pasaje[]>{
+    return this.http.get<Pasaje[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }
+
   CrearPasaje(pasaje:Pasaje):Observable<Pasaje>{
     return this.http.post<any>(this.baseUrl, pasaje, httpOptions);
   }

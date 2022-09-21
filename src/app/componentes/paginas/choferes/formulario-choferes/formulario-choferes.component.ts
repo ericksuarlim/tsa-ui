@@ -15,6 +15,8 @@ export class FormularioChoferesComponent implements OnInit {
   conductores: Conductor[];
   conductorNuevo: boolean;
   activo: string;
+  sindicatoUsuario: number;
+
   validacion= {
     carnet : true,
     nombre: true,
@@ -50,19 +52,21 @@ export class FormularioChoferesComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-   
     const carnet = this.route.snapshot.queryParams["carnet"];
     this.conductorNuevo = carnet == undefined;
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(!this.conductorNuevo){
       this.servicioConductores.ObtenerConductor(carnet).subscribe(conductor=>{
-        this.conductor=conductor;
-        this.activo = (this.conductor.activo==true)? "Activo" : "Desocupado";
+        if(conductor.id_sindicato===this.sindicatoUsuario){
+          this.conductor=conductor;
+          this.activo = (this.conductor.activo==true)? "Activo" : "Desocupado"; 
+        }
+        else
+        {
+          this.router.navigate(['/']);
+        }
       });
     }  
-    this.servicioConductores.ObtenerConductores().subscribe(conductores =>{
-      this.conductores = conductores;
-    })
-
   }
 
   CrearConductor(){
@@ -93,7 +97,7 @@ export class FormularioChoferesComponent implements OnInit {
     if(this.conductor.ciudad === "" || (action=="registrar" && this.conductor.ciudad == undefined)){this.mensajeErrorValidacion.ciudad="Ciudad necesaria"; this.validacion.ciudad = false}else{this.validacion.ciudad =true};
     if(this.activo === null || (action=="registrar" && this.activo == undefined)){this.mensajeErrorValidacion.activo="Estado necesario"; this.validacion.activo = false}else{this.validacion.activo =true};
     if(this.conductor.grupo === "" || (action=="registrar" && this.conductor.grupo == undefined)){this.mensajeErrorValidacion.grupo="Grupo necesario"; this.validacion.grupo = false}else{this.validacion.grupo =true};
-    if(this.conductor.id_sindicato === "" || (action=="registrar" && this.conductor.id_sindicato == undefined)){this.mensajeErrorValidacion.id_sindicato="Sindicato necesario"; this.validacion.id_sindicato = false}else{this.validacion.id_sindicato =true};
+    if(this.conductor.id_sindicato === null || (action=="registrar" && this.conductor.id_sindicato == undefined)){this.mensajeErrorValidacion.id_sindicato="Sindicato necesario"; this.validacion.id_sindicato = false}else{this.validacion.id_sindicato =true};
 
     const response = this.validacion.carnet && this.validacion.nombre && this.validacion.apellido_paterno &&
     this.validacion.fecha_nacimiento && this.validacion.ciudad && this.validacion.activo && this.validacion.grupo && this.validacion.id_sindicato;

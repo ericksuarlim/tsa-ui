@@ -17,6 +17,8 @@ export class FormularioViajesComponent implements OnInit {
   viaje: Viaje = new Viaje();
   viajeNuevo: boolean = true;
   conductores: Conductor[];
+  sindicatoUsuario: number;
+
 
   validacion= {
     id_carnet_conductor:true,
@@ -52,12 +54,19 @@ export class FormularioViajesComponent implements OnInit {
   ngOnInit(): void {
     const id_viaje = this.route.snapshot.queryParams["id_viaje"];
     this.viajeNuevo = id_viaje == undefined;
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(!this.viajeNuevo){
       this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{
-        this.viaje=viaje;
+        if(viaje.conductore.id_sindicato===this.sindicatoUsuario){
+          this.viaje=viaje;
+        }
+        else
+        {
+          this.router.navigate(['/']); 
+        }        
       });
     }  
-    this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
+    this.conductoresService.ObtenerConductoresPorSindicato(this.sindicatoUsuario).subscribe(conductores=>{this.conductores = conductores})
   }
 
   CrearViaje(){

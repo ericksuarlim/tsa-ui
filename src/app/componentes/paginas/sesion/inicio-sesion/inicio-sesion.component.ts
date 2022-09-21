@@ -53,10 +53,13 @@ export class InicioSesionComponent implements OnInit {
       }
       this.autenticacionService.Entrar(datosUsuario).subscribe((resultado) => {
         if(resultado.isOperational===true){
-          localStorage.setItem('usuario',resultado.usuario_registrado.nombre_usuario);
-          localStorage.setItem('rol',resultado.usuario_registrado.rol);
-          localStorage.setItem('token',resultado.sesion.token_usuario);
-          this.router.navigateByUrl(`/`);
+          localStorage.setItem('nombre_usuario',resultado.usuario_registrado.nombre_usuario);
+          localStorage.setItem('rol_usuario',resultado.usuario_registrado.rol);
+          localStorage.setItem('token_usuario',resultado.sesion.token_usuario);
+          localStorage.setItem('id_sindicato_usuario',resultado.usuario_registrado.id_sindicato);
+          this.router.navigateByUrl(`/`).then(() => {
+            window.location.reload();
+          });
         }
         else
         {

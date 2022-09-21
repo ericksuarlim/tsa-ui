@@ -24,6 +24,10 @@ export class ServicioConductoresService {
     return this.http.get<Conductor[]>(this.baseUrl);
   }
 
+  ObtenerConductoresPorSindicato(id_sindicato:number): Observable<Conductor[]>{
+    return this.http.get<Conductor[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }
+
   CrearConductor(conductor:Conductor):Observable<Conductor>{
     return this.http.post<any>(this.baseUrl, conductor, httpOptions);
   }

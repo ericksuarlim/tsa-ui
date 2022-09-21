@@ -33,10 +33,6 @@ export class FormularioRestablecerPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.id_usuario = this.route.snapshot.queryParams["id_usuario"];
     this.codigo = this.route.snapshot.queryParams["codigo"];
-    console.log(this.id_usuario,this.codigo)
-
-
-
   }
 
   RestablecerPassword(){
@@ -47,7 +43,6 @@ export class FormularioRestablecerPasswordComponent implements OnInit {
         nueva_password: this.password,
         codigo: this.codigo
       }
-      console.log(datos)
       this.autenticacionService.RestablecerPassword(datos).subscribe((resultado)=>{
         if(resultado.isOperational===true){
           this.router.navigateByUrl(`/`);

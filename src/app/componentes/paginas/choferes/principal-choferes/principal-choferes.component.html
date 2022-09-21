@@ -4,16 +4,16 @@
 
 <div class="container">
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
+        <div [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
             <input type="text" name="nombre_conductor " class="input-search form-control" placeholder="Ej. Ramiro Colque">
         </div>
-        <div class="col-sm-4 col-md-3">
+        <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
             <select name="tipo_busqueda" class="form-control">
                 <option>Nombre</option>
                 <option>Carnet</option>
             </select>   
         </div>
-        <div class="col-sm-12 col-md-2 btn-new">
+        <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
             <a href="/conductores/formulario" class="btn">Crear Chofer</a>
         </div>
     </div>
@@ -44,8 +44,8 @@
 
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-editar" (click)="editarConductor(conductor.carnet)">Editar </button>
-                        <button class="btn btn-borrar" (click)="AbrilModalEliminar(conductor)">Borrar </button>
+                        <button *ngIf="ValidarVista()" class="btn btn-editar" (click)="editarConductor(conductor.carnet)">Editar </button>
+                        <button *ngIf="ValidarVista()" class="btn btn-borrar" (click)="AbrilModalEliminar(conductor)">Borrar </button>
                     </div>
                 </div>
             </div>

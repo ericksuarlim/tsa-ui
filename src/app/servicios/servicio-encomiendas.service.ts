@@ -20,6 +20,10 @@ export class ServicioEncomiendasService {
 
   constructor(private http:HttpClient) { }
 
+  ObtenerEncomiendasPorSindicato(id_sindicato:number): Observable<Encomienda[]>{
+    return this.http.get<Encomienda[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }
+
   ObtenerEncomiendas(): Observable<Encomienda[]>{
     return this.http.get<Encomienda[]>(this.baseUrl);
   }

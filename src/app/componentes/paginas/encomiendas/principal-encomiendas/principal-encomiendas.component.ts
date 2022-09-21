@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOpcionesCreacionComponent } from 'src/app/componentes/modals/modal-opciones-creacion/modal-opciones-creacion.component';
 import { Encomienda } from 'src/app/modelos/encomienda';
@@ -13,23 +13,41 @@ import { ServicioEncomiendasService } from 'src/app/servicios/servicio-encomiend
 export class PrincipalEncomiendasComponent implements OnInit {
 
   encomiendas: Encomienda[];
+  esGeneral: boolean= true;
+  usuario: string;
+  sindicatoUsuario: number;
+  sindicatoCargado: string;
+
   constructor(
     private servicioEncomiendas:ServicioEncomiendasService,
     private router: Router,
     public modalService: NgbModal,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.servicioEncomiendas.ObtenerEncomiendas().subscribe(encomiendas =>{this.encomiendas= encomiendas});
-
+    this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
+    this.esGeneral = this.sindicatoCargado === undefined;
+    this.usuario = localStorage.getItem('usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    if(!this.esGeneral){
+      this.servicioEncomiendas.ObtenerEncomiendasPorSindicato(Number(this.sindicatoCargado)).subscribe(encomiendas =>{this.encomiendas= encomiendas});
+    }
+    else{
+      this.servicioEncomiendas.ObtenerEncomiendas().subscribe(encomiendas =>{this.encomiendas= encomiendas});
+    }
   }
 
   VerEncomienda(id_encomienda: number){
-    this.router.navigateByUrl(`/encomiendas/seguimiento/${id_encomienda}`);
+    this.router.navigate([`/encomiendas/seguimiento/${id_encomienda}`], { queryParams: { id_sindicato:this.sindicatoCargado }})
   }
 
   RedirigirCrearEncomienda(){
     this.modalService.open(ModalOpcionesCreacionComponent);
+  }
+
+  ValidarVista(){
+    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===Number(this.sindicatoCargado);
   }
 
 }

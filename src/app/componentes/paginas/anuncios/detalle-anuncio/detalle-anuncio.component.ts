@@ -13,6 +13,12 @@ import { Anuncio } from 'src/app/modelos/anuncios';
 export class DetalleAnuncioComponent implements OnInit {
 
   anuncio: Anuncio = new Anuncio();
+  esGeneral: boolean= true;
+  permisoBotones: boolean;
+  sindicatoCargado: number;
+  usuario: string;
+  sindicatoUsuario: number;
+
   constructor(
     private servicioAnuncio:ServicioAnunciosService,
     private route: ActivatedRoute,
@@ -22,8 +28,13 @@ export class DetalleAnuncioComponent implements OnInit {
 
   ngOnInit(): void {
     const id_anuncio = this.route.snapshot.params["id_anuncio"];
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.esGeneral = this.sindicatoCargado === undefined;
+    this.usuario = localStorage.getItem('nombre_usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.servicioAnuncio.ObtenerAnuncio(id_anuncio).subscribe(anuncio=>{
       this.anuncio=anuncio;
+      this.permisoBotones = anuncio.id_sindicato === this.sindicatoUsuario;
     });
   }
 
@@ -33,6 +44,10 @@ export class DetalleAnuncioComponent implements OnInit {
 
   EditarAnuncio(id_anuncio:number){
     this.router.navigate(["/anuncios/formulario"], { queryParams: { id_anuncio} });
+  }
+
+  ValidarVista(){
+    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado && this.permisoBotones;  
   }
 
 }

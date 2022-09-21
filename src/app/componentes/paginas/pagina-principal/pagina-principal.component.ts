@@ -24,4 +24,8 @@ export class PaginaPrincipalComponent implements OnInit {
     this.router.navigateByUrl(`/anuncios/${id_anuncio}`);
   }
 
+  AbrirServicioSindicatos(id_sindicato:number){
+    this.router.navigate(["/servicio-sindicato"], { queryParams: { id_sindicato } });
+  }
+
 }

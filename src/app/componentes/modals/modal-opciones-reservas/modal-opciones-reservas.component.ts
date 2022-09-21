@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Conductor } from 'src/app/modelos/conductor';
 import { Reserva } from 'src/app/modelos/reserva';
@@ -18,6 +19,11 @@ export class ModalOpcionesReservasComponent implements OnInit {
   conductores: Conductor[];
   viajes: Viaje[];
   sinViaje: boolean;
+  esGeneral: boolean= true;
+  usuario: string;
+  sindicato: string;
+  id_sindicato: string;
+
   validacion= {
     estado: true,
     id_viaje: true
@@ -31,10 +37,15 @@ export class ModalOpcionesReservasComponent implements OnInit {
   constructor(
     private activeModal: NgbActiveModal,
     private viajesService:ServicioViajesService,
-    private reservasService: ServicioReservasService
+    private reservasService: ServicioReservasService,
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit(): void {
+    this.id_sindicato = this.route.snapshot.queryParams["id_sindicato"];
+    this.esGeneral = this.id_sindicato === undefined;
+    this.usuario = localStorage.getItem('nombre_usuario');
+    this.sindicato = localStorage.getItem('id_sindicato_usuario');
     if(this.reserva.id_viaje===null)
     {
       this.sinViaje = true;
@@ -83,6 +94,10 @@ export class ModalOpcionesReservasComponent implements OnInit {
   Cancelar(){
     //this.actualizar.emit(false);
     this.activeModal.close(); 
+  }
+
+  ValidarVista(){
+    return this.usuario!=null && !this.esGeneral && this.sindicato===this.id_sindicato;
   }
 
 }
