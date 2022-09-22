@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Anuncio } from '../modelos/anuncios';
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt
   })
 }
 
@@ -24,7 +26,7 @@ export class ServicioAnunciosService {
   }
 
   ObtenerAnunciosPorSindicato(id_sindicato:number): Observable<Anuncio[]>{
-    return this.http.get<Anuncio[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+    return this.http.get<Anuncio[]>(`${this.baseUrl}/sindicato/${id_sindicato}`, httpOptions);
   }
 
   CrearAnuncio(anuncio:Anuncio):Observable<Anuncio>{

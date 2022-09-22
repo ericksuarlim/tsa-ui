@@ -31,8 +31,8 @@
     height: 40px;
 }
 
-.div-button-entrar{
-    width: 50%;
+.div-button-entrar,.div-button-cancelar{
+    width: 25%;
     margin-top: 15px;
 }
 
@@ -84,6 +84,14 @@
     border: 1px solid #FB9130;
     background-color: #FB9130;
     color: #FFFFFF;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.button-cancelar{
+    border: 1px solid #FB9130;
+    background-color: #FFFFFF;
+
     margin-left: 5px;
     margin-right: 5px;
 }
