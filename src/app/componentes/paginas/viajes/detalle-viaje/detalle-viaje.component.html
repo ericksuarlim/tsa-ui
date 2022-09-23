@@ -109,7 +109,7 @@
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene encomiendas</div>
+                      <div *ngIf="viaje?.encomiendas?.length === 0" class="empty-table-message">Este viaje aun no tiene encomiendas</div>
                 </div>
             </div>
             <div class="row">
@@ -137,7 +137,7 @@
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene reservas</div>
+                      <div *ngIf="viaje?.reservas?.length === 0" class="empty-table-message">Este viaje aun no tiene reservas</div>
                 </div>
             </div>
             <div class="row sections-buttons">

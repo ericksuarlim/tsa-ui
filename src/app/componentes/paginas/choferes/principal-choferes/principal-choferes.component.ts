@@ -46,7 +46,7 @@ export class PrincipalChoferesComponent implements OnInit {
   }
 
   editarConductor(carnet: number){
-    this.router.navigate(["/conductores/formulario"], { queryParams: { carnet } });
+    this.router.navigate(["/conductores/formulario"], { queryParams: {carnet} });
   }
 
   AbrilModalEliminar(conductor:Conductor){
@@ -68,7 +68,4 @@ export class PrincipalChoferesComponent implements OnInit {
   ValidarVista(){
     return this.usuario!=null && this.sindicatoUsuario===Number(this.sindicatoCargado);
   }
-
-  
-
 }

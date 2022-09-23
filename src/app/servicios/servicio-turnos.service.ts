@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Turno } from '../modelos/turno';
 import { environment } from '../../environments/environment'
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -20,11 +23,11 @@ export class ServicioTurnosService {
   constructor(private http:HttpClient) { }
 
   ObtenerTurnos(): Observable<Turno[]>{
-    return this.http.get<Turno[]>(this.baseUrl);
+    return this.http.get<Turno[]>(this.baseUrl, httpOptions);
   }
 
   ObtenerTurnosPorSindicato(id_sindicato:number): Observable<Turno[]>{
-    return this.http.get<Turno[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+    return this.http.get<Turno[]>(`${this.baseUrl}/sindicato/${id_sindicato}`, httpOptions);
   }
 
   CrearTurno(turno:Turno):Observable<Turno>{
@@ -32,7 +35,7 @@ export class ServicioTurnosService {
   }
 
   ObtenerTurno(id_turno:number):Observable<Turno>{
-    return this.http.get<Turno>(this.baseUrl+"/"+id_turno);
+    return this.http.get<Turno>(this.baseUrl+"/"+id_turno, httpOptions);
   }
     
   EditarTurno(turno:Turno):Observable<any>{
@@ -40,6 +43,6 @@ export class ServicioTurnosService {
   }
 
   EliminarTurno(id_turno:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_turno)
+    return this.http.delete<any>(this.baseUrl + "/" + id_turno, httpOptions)
   }
 }

@@ -3,11 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../modelos/usuario';
+import { userData } from '../commons/userData'
 
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -21,7 +24,7 @@ export class ServicioUsuariosService {
   constructor(private http:HttpClient) { }
 
   ObtenerUsuarios(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(this.baseUrl);
+    return this.http.get<Usuario[]>(this.baseUrl, httpOptions);
   }
 
   ObtenerUsuariosFiltrados(id_sindicato:number): Observable<Usuario[]>{
@@ -30,7 +33,7 @@ export class ServicioUsuariosService {
 
 
   ObtenerCantidadUsuarios(): Observable<number>{
-    return this.http.get<number>(this.baseUrl+"/cantidad");
+    return this.http.get<number>(this.baseUrl+"/cantidad", httpOptions);
   }
 
   HabilitarUsuario(id_usuario:number):Observable<any>{
@@ -46,7 +49,7 @@ export class ServicioUsuariosService {
   }
 
   ObtenerUsuario(id_usuario:number):Observable<Usuario>{
-    return this.http.get<Usuario>(this.baseUrl+"/"+id_usuario);
+    return this.http.get<Usuario>(this.baseUrl+"/"+id_usuario, httpOptions);
   }
     
   EditarUsuario(usuario:Usuario):Observable<any>{
@@ -54,6 +57,6 @@ export class ServicioUsuariosService {
   }
 
   EliminarUsuario(id_usuario:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_usuario)
+    return this.http.delete<any>(this.baseUrl + "/" + id_usuario, httpOptions)
   }
 }

@@ -27,7 +27,7 @@ export class PrincipalViajesComponent implements OnInit {
   ngOnInit(): void {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
     this.esGeneral = this.sindicatoCargado=== undefined;
-    this.usuario = localStorage.getItem('usuario');
+    this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(!this.esGeneral){
       this.servicioViajes.ObtenerViajesPorSindicato(Number(this.sindicatoCargado)).subscribe(viajes =>{this.viajes= viajes});

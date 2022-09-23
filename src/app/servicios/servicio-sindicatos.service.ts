@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Sindicato } from '../modelos/sindicato';
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 @Injectable({
@@ -18,7 +21,7 @@ export class ServicioSindicatosService {
   constructor(private http:HttpClient) { }
 
   ObtenerSindicatos(): Observable<Sindicato[]>{
-    return this.http.get<Sindicato[]>(this.baseUrl);
+    return this.http.get<Sindicato[]>(this.baseUrl, httpOptions);
   }
 
   CrearSindicato(sindicato:Sindicato):Observable<Sindicato>{
@@ -26,7 +29,7 @@ export class ServicioSindicatosService {
   }
 
   ObtenerSindicato(id_sindicato:number):Observable<Sindicato>{
-    return this.http.get<Sindicato>(this.baseUrl+"/"+id_sindicato);
+    return this.http.get<Sindicato>(this.baseUrl+"/"+id_sindicato, httpOptions);
   }
     
   EditarSindicato(sindicato:Sindicato):Observable<any>{
@@ -34,6 +37,6 @@ export class ServicioSindicatosService {
   }
 
   EliminarSindicato(id_sindicato:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_sindicato)
+    return this.http.delete<any>(this.baseUrl + "/" + id_sindicato, httpOptions)
   }
 }

@@ -27,8 +27,7 @@ export class FormularioChoferesComponent implements OnInit {
     activo: true,
     id_auto_1: true,
     id_auto_2: true,
-    grupo: true,
-    id_sindicato: true
+    grupo: true
   }
   mensajeErrorValidacion= {
     carnet : "",
@@ -40,8 +39,7 @@ export class FormularioChoferesComponent implements OnInit {
     activo: "",
     id_auto_1: "",
     id_auto_2: "",
-    grupo: "",
-    id_sindicato: "",
+    grupo: ""
   }
 
   constructor(
@@ -67,15 +65,17 @@ export class FormularioChoferesComponent implements OnInit {
         }
       });
     }  
+    this.servicioConductores.ObtenerConductoresPorSindicato(Number(this.sindicatoUsuario)).subscribe(conductores=>{this.conductores=conductores})
   }
 
   CrearConductor(){
     
     if(this.ValidarCampos("registrar"))
     {
+      this.conductor.id_sindicato = Number(this.sindicatoUsuario);
       this.conductor.activo = (this.activo == "Activo") ? true : false;
       this.servicioConductores.CrearConductor(this.conductor).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/conductores`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
       }); 
     } 
   }
@@ -84,7 +84,7 @@ export class FormularioChoferesComponent implements OnInit {
     if(this.ValidarCampos("registrar"))
     {
       this.servicioConductores.EditarConductor(this.conductor).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/conductores`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
       });
     }
   }
@@ -97,14 +97,13 @@ export class FormularioChoferesComponent implements OnInit {
     if(this.conductor.ciudad === "" || (action=="registrar" && this.conductor.ciudad == undefined)){this.mensajeErrorValidacion.ciudad="Ciudad necesaria"; this.validacion.ciudad = false}else{this.validacion.ciudad =true};
     if(this.activo === null || (action=="registrar" && this.activo == undefined)){this.mensajeErrorValidacion.activo="Estado necesario"; this.validacion.activo = false}else{this.validacion.activo =true};
     if(this.conductor.grupo === "" || (action=="registrar" && this.conductor.grupo == undefined)){this.mensajeErrorValidacion.grupo="Grupo necesario"; this.validacion.grupo = false}else{this.validacion.grupo =true};
-    if(this.conductor.id_sindicato === null || (action=="registrar" && this.conductor.id_sindicato == undefined)){this.mensajeErrorValidacion.id_sindicato="Sindicato necesario"; this.validacion.id_sindicato = false}else{this.validacion.id_sindicato =true};
 
     const response = this.validacion.carnet && this.validacion.nombre && this.validacion.apellido_paterno &&
-    this.validacion.fecha_nacimiento && this.validacion.ciudad && this.validacion.activo && this.validacion.grupo && this.validacion.id_sindicato;
+    this.validacion.fecha_nacimiento && this.validacion.ciudad && this.validacion.activo && this.validacion.grupo;
     return response;
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/conductores");
+    this._location.back();
   }
 }

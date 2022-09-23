@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pasaje } from '../modelos/pasaje';
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -20,11 +23,11 @@ export class ServicioPasajesService {
   constructor(private http:HttpClient) { }
 
   ObtenerPasajes(): Observable<Pasaje[]>{
-    return this.http.get<Pasaje[]>(this.baseUrl);
+    return this.http.get<Pasaje[]>(this.baseUrl, httpOptions);
   }
 
   ObtenerPasajesPorSindicato(id_sindicato:number): Observable<Pasaje[]>{
-    return this.http.get<Pasaje[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+    return this.http.get<Pasaje[]>(`${this.baseUrl}/sindicato/${id_sindicato}`, httpOptions);
   }
 
   CrearPasaje(pasaje:Pasaje):Observable<Pasaje>{
@@ -32,7 +35,7 @@ export class ServicioPasajesService {
   }
 
   ObtenerPasaje(id_pasaje:number):Observable<Pasaje>{
-    return this.http.get<Pasaje>(this.baseUrl+"/"+id_pasaje);
+    return this.http.get<Pasaje>(this.baseUrl+"/"+id_pasaje, httpOptions);
   }
     
   EditarPasaje(pasaje:Pasaje):Observable<any>{
@@ -40,6 +43,6 @@ export class ServicioPasajesService {
   }
 
   EliminarPasaje(id_pasaje:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_pasaje)
+    return this.http.delete<any>(this.baseUrl + "/" + id_pasaje, httpOptions)
   }
 }

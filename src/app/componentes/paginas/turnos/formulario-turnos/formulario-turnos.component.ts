@@ -35,9 +35,9 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   validacion={
-    fecha: false,
-    grupo: false,
-    viajes: false
+    fecha: true,
+    grupo: true,
+    viajes: true
   }
 
   constructor(
@@ -66,7 +66,7 @@ export class FormularioTurnosComponent implements OnInit {
     { 
       this.turno.id_sindicato = this.sindicatoUsuario;
       this.servicioTurnos.CrearTurno(this.turno).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/turnos`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
       }); 
     }
   }
@@ -75,7 +75,7 @@ export class FormularioTurnosComponent implements OnInit {
     if(this.ValidarTurno('registrar'))
     { 
       this.servicioTurnos.EditarTurno(this.turno).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/turnos`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
       });
     }
   }

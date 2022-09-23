@@ -26,7 +26,7 @@ export class ServicioAnunciosService {
   }
 
   ObtenerAnunciosPorSindicato(id_sindicato:number): Observable<Anuncio[]>{
-    return this.http.get<Anuncio[]>(`${this.baseUrl}/sindicato/${id_sindicato}`, httpOptions);
+    return this.http.get<Anuncio[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
   }
 
   CrearAnuncio(anuncio:Anuncio):Observable<Anuncio>{
