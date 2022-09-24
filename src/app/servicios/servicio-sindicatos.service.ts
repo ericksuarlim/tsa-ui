@@ -22,7 +22,7 @@ export class ServicioSindicatosService {
   constructor(private http:HttpClient) { }
 
   ObtenerSindicatos(): Observable<Sindicato[]>{
-    return this.http.get<Sindicato[]>(this.baseUrl, httpOptions);
+    return this.http.get<Sindicato[]>(this.baseUrl);
   }
 
   CrearSindicato(sindicato:Sindicato):Observable<Sindicato>{
@@ -39,5 +39,9 @@ export class ServicioSindicatosService {
 
   EliminarSindicato(id_sindicato:number):Observable<any>{
     return this.http.delete<any>(this.baseUrl + "/" + id_sindicato, httpOptions)
+  }
+
+  ActivarSindicato(id_sindicato:number):Observable<any>{
+    return this.http.put(`${this.baseUrl}/gestion/${id_sindicato}`,null, httpOptions );
   }
 }

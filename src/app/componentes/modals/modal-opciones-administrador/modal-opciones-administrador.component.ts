@@ -10,6 +10,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalOpcionesAdministradorComponent implements OnInit {
 
   sindicatoUsuario: number;
+  rolUsuario: string;
   constructor(
     private activeModal: NgbActiveModal,
     private router:Router,
@@ -17,6 +18,7 @@ export class ModalOpcionesAdministradorComponent implements OnInit {
 
   ngOnInit(): void {
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.rolUsuario = localStorage.getItem('rol_usuario');
   }
 
   Cancelar(){
@@ -37,6 +39,11 @@ export class ModalOpcionesAdministradorComponent implements OnInit {
   VerUsuarios(){
     this.activeModal.close(); 
     this.router.navigate([`/usuarios`])
+  }
+
+  VerSindicatos(){
+    this.activeModal.close(); 
+    this.router.navigate([`/sindicatos`])
   }
 
 }

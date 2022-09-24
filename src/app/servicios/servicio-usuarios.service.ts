@@ -36,7 +36,6 @@ export class ServicioUsuariosService {
   }
 
   HabilitarUsuario(id_usuario:number):Observable<any>{
-    const obj = {sindicato: 2}
     return this.http.put(`${this.baseUrl}/gestion/${id_usuario}`,null, httpOptions );
   }
 

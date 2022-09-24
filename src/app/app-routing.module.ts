@@ -31,6 +31,10 @@ import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuar
 import { FormularioRestablecerPasswordComponent } from './componentes/paginas/sesion/formulario-restablecer-password/formulario-restablecer-password.component';
 import {AutenticacionGuard} from './commons/AutenticacionGuard'
 import { RoleGuard } from './commons/RoleGuard';
+import { SindicatoPrincipalComponent } from './componentes/paginas/sindicatos/sindicato-principal/sindicato-principal.component';
+import { SupraGuard } from './commons/SupraGuard';
+import { FormularioSindicatoComponent } from './componentes/paginas/sindicatos/formulario-sindicato/formulario-sindicato.component';
+import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/habilitar-sindicato/habilitar-sindicato.component';
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
   {path:'servicio-sindicato', component: ServiciosSindicatosComponent},
@@ -61,6 +65,9 @@ const routes: Routes = [
   {path:'usuarios', component: ListaUsuariosComponent, canActivate: [RoleGuard]},
   {path:'usuarios/formulario', component: FormularioCrearUsuarioComponent,canActivate: [RoleGuard]},
   {path:'usuarios/:id_usuario', component: DetallesUsuarioComponent,canActivate: [RoleGuard]},
+  {path:'sindicatos', component: SindicatoPrincipalComponent,canActivate: [SupraGuard]},
+  {path:'sindicatos/formulario', component: FormularioSindicatoComponent,canActivate: [SupraGuard]},
+  {path:'sindicatos/gestion', component: HabilitarSindicatoComponent,canActivate: [SupraGuard]},
 
   
 ];

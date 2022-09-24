@@ -6,6 +6,7 @@
         <button class="btn btn-actions btn-crear-usuario" (click)="CrearUsuario()">Crear usuario</button> 
         <button class="btn btn-actions btn-habilitar-usuario" (click)="HabilitarUsuario()">Habilitar/Desabilitar usuario</button>
         <button class="btn btn-actions btn-habilitar-usuario" (click)="VerUsuarios()">Ver usuarios</button>
+        <button *ngIf="rolUsuario==='superadministrador'" class="btn btn-actions btn-habilitar-usuario mt-1" (click)="VerSindicatos()">Sindicatos</button>
      </div>
  </div>
  <div class="modal-footer">

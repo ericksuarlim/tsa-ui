@@ -1,1 +1,44 @@
-<p>formulario-sindicato works!</p>
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="title-page">CREAR SINDICATO</h3>
+        </div>
+        <div class="col-sm-12">
+            <form class="formulario-sindicatos" name="FormularioSindicatos">
+                <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h1 for="nombre" class="input-title">Nombre</h1>
+                            <input type="text"  name="nombre" class="input-form-sindicatos form-control" [(ngModel)]="sindicato.nombre" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.nombre" class="text-danger">{{mensajeErrorValidacion.nombre}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="estado" class="input-title">Estado</h1>
+                            <select name="estado" class="form-control"  [(ngModel)]="sindicato.estado" (ngModelChange)="ValidarCampos('verificar')" value required>
+                                <option value="true">Activado</option>
+                                <option value="false">Desactivado</option>
+                            </select>                            
+                            <div *ngIf="!validacion.estado" class="text-danger">{{mensajeErrorValidacion.estado}}</div>   
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h1 for="ciudad" class="input-title">Ciudad</h1>
+                            <input type="text"  name="ciudad" class="input-form-sindicatos form-control" [(ngModel)]="sindicato.ciudad" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.ciudad" class="text-danger">{{mensajeErrorValidacion.ciudad}}</div>   
+                        </div>                       
+                </div>
+               
+                <div class="row section-bottons">
+                    <div class="col-sm-12">
+                        <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                        <button *ngIf="sindicatoNuevo" class="btn button-registrar" (click)="CrearSindicato()">Registrar</button>
+                        <button *ngIf="!sindicatoNuevo" class="btn button-registrar" (click)="ActualizarSindicato()">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

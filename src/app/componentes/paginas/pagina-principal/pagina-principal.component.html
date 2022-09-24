@@ -5,7 +5,23 @@
     <div class="container">
         <section class="sindicatos">
             <div class="row row-services-block">
-                <div class="services-block col-lg-3 col-sm-6 col-6">
+                <div class="services-block col-lg-3 col-sm-6 col-6" *ngFor="let sindicato of sindicatos">
+                    <div (click)="AbrirServicioSindicatos(sindicato.id_sindicato)" class="inner-box">
+                        <div class="upper-box">
+                            <div class="icon-box">
+                                <img class="van-image-icon" src="../../../../assets/imagenes/van.png">
+                            </div>
+                            <span class="number">{{sindicato.id_sindicato}}</span>
+                        </div>
+                        <div class="lower-box">
+                            <h3>{{sindicato.nombre}}</h3>
+                        </div>           
+                        <h3 class="services-block-address">{{sindicato.direccion}}</h3>
+                        <h3 class="services-block-celphone">Cel {{sindicato.celular}}</h3>
+                    </div>
+                </div>
+
+                <!-- <div class="services-block col-lg-3 col-sm-6 col-6">
                     <div (click)="AbrirServicioSindicatos(3)" class="inner-box">
                         <div class="upper-box">
                             <div class="icon-box">
@@ -37,7 +53,6 @@
                     </div>
                 </div>
         
-        
                 <div class="services-block col-lg-3 col-sm-6 col-6">
                     <div (click)="AbrirServicioSindicatos(2)" class="inner-box">
                         <div class="upper-box">
@@ -68,10 +83,7 @@
                         <h3 class="services-block-address">Parque Boris Banzer</h3>
                         <h3 class="services-block-celphone">Cel 71234567</h3>
                     </div>
-                </div>
-        
-        
-        
+                </div>         -->
             </div>
         
         </section>
