@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Viaje } from '../modelos/viaje';
 import { environment } from '../../environments/environment'
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -44,6 +47,6 @@ export class ServicioViajesService {
   }
 
   EliminarViaje(id_viaje:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_viaje)
+    return this.http.delete<any>(this.baseUrl + "/" + id_viaje, httpOptions)
   }
 }

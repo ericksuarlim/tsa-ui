@@ -36,7 +36,7 @@ export class ModalOpcionesAdministradorComponent implements OnInit {
 
   VerUsuarios(){
     this.activeModal.close(); 
-    this.router.navigateByUrl("/usuarios");
+    this.router.navigate([`/usuarios`])
   }
 
 }

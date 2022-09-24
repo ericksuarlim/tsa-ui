@@ -36,7 +36,7 @@
                             <h5 for="conductor" class="input-operation-section-title" >Nombres</h5>
                             <select name="conductor" class="form-control" [(ngModel)]="formulario.carnetConductor">
                                 <option selected disabled value=''>Seleccionar Conductor</option>
-                                <option *ngFor='let c of conductores' [value]="c.carnet">{{c.nombre}} {{c.apellido_paterno}}</option>
+                                <option *ngFor='let c of conductores' [value]="c.carnet" [disabled]="DesabilitarConductores(c.carnet)">{{c.nombre}} {{c.apellido_paterno}}</option>
                             </select>
                         </div>
                         <div class="col-sm-2">

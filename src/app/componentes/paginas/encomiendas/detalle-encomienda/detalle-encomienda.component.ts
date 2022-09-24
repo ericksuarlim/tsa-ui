@@ -30,7 +30,7 @@ export class DetalleEncomiendaComponent implements OnInit {
     const id_encomienda = this.route.snapshot.params["id_encomienda"];
     this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
     this.esGeneral = this.sindicatoCargado === undefined;
-    this.usuario = localStorage.getItem('usuario');
+    this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.servicioEncomiendas.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{
       this.encomienda=encomienda;
@@ -51,7 +51,7 @@ export class DetalleEncomiendaComponent implements OnInit {
   }
 
   ValidarVista(){
-    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado && this.permisoBotones;  
+    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===Number(this.sindicatoCargado) && this.permisoBotones;  
   }
 
 }

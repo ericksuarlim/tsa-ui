@@ -29,7 +29,7 @@ export class PrincipalAnunciosComponent implements OnInit {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
     this.esGeneral = this.sindicatoCargado ===undefined;
     this.usuario = localStorage.getItem('nombre_usuario');
-    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato'));
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(!this.esGeneral){
       this.servicioAnuncios.ObtenerAnunciosPorSindicato(Number(this.sindicatoCargado)).subscribe(anuncios=>{this.anuncios=anuncios})
     }

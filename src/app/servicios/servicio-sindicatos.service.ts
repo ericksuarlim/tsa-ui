@@ -9,7 +9,8 @@ const httpOptions = {
   headers : new HttpHeaders({
     'Content-Type':'application/json',
     'Authorization': "Bearer "+ userData.jwt,
-    'Sindicato': userData.sindicato
+    'Sindicato': userData.sindicato,
+    'Role': userData.role
   })
 }
 @Injectable({

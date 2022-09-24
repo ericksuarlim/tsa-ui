@@ -4,17 +4,17 @@
 
 <div class="container">
     <div class="row operation-section">
-        <div [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+        <div class="col-sm-8 col-md-7">
             <input type="text" name="nombre_reserva" class="input-search form-control" placeholder="Ej. Ramiro Colque">
         </div>
-        <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
+        <div class="col-sm-4 col-md-3">
             <select name="tipo_busqueda" class="form-control">
                 <option>Nombre</option>
                 <option>Codigo reserva</option>
                 <option>Fecha</option>
             </select>   
         </div>
-        <div *ngIf="ValidarVista()"  class="col-sm-12 col-md-2 btn-new">
+        <div class="col-sm-12 col-md-2 btn-new">
             <a href="/reservas/formulario" class="btn">Crear Reserva</a>
         </div>
     </div>

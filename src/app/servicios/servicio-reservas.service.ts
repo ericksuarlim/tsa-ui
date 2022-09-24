@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Reserva } from '../modelos/reserva';
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -38,6 +41,6 @@ export class ServicioReservasService {
   }
 
   EliminarReserva(id_reserva:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_reserva)
+    return this.http.delete<any>(this.baseUrl + "/" + id_reserva, httpOptions)
   }
 }

@@ -74,6 +74,11 @@
     color: white;
 }
 
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
 .col-info-no-viajes{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -163,6 +168,5 @@ table > tbody:empty:before {
 .radio-table-select{
     width: 25%;
     height: 1.2em;
-
-
+    margin-top: -3PX;
 }

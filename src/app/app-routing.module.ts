@@ -44,7 +44,7 @@ const routes: Routes = [
   {path:'turnos', component: PrincipalTurnosComponent},
   {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   {path:'reservas', component: PrincipalReservasComponent},
-  {path:'reservas/formulario', component: FormularioReservasComponent,canActivate: [AutenticacionGuard]},
+  {path:'reservas/formulario', component: FormularioReservasComponent},
   {path:'viajes', component: PrincipalViajesComponent },
   {path:'viajes/formulario', component: FormularioViajesComponent,canActivate: [AutenticacionGuard]},
   {path:'viajes/:id_viaje', component: DetalleViajeComponent}, 

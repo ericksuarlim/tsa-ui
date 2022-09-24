@@ -34,21 +34,22 @@
                                     <tr>
                                         <th class="col-1 text-center" >Seleccionar</th>
                                         <th class="col-3 text-center" >Conductor</th> 
+                                        <th class="col-2 text-center" >Origen</th>
+                                        <th class="col-2 text-center" >Destino</th>
                                         <th class="col-2 text-center" >Hora Salida</th>
                                         <th class="col-2 text-center" >Sindicato</th>
-                                        <th class="col-2 text-center" >Movilidad</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let viaje of viajes">
                                         <td class="col-1 text-center">    
                                             <input class="form-check-input radio-table-select" type="radio" name="id_viaje" [value]="viaje.id_viaje" (click)="SeleccionarViaje(viaje.id_viaje)">                                       
-                                            <!-- <button class="btn btn-seleccionar-viaje" (click)="SeleccionarViaje(viaje.id_viaje)">Seleccionar</button> -->
                                         </td>
                                         <td class="col-3 text-center">{{viaje.conductore.nombre + ' ' +viaje.conductore.apellido_paterno}}</td>
+                                        <td class="col-2 text-center">{{viaje.origen}}</td>
+                                        <td class="col-2 text-center">{{viaje.destino}}</td>
                                         <td class="col-2 text-center">{{viaje.hora_salida}}</td>
-                                        <td class="col-2 text-center">Movima</td>
-                                        <td class="col-2 text-center">Camioneta</td>                                                                       
+                                        <td class="col-2 text-center">{{viaje.conductore?.sindicato?.nombre}}</td>                                                                      
                                     </tr>
                                 </tbody>
                             </table>

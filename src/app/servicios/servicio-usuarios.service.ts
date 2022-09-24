@@ -28,24 +28,20 @@ export class ServicioUsuariosService {
   }
 
   ObtenerUsuariosFiltrados(id_sindicato:number): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(this.baseUrl+"/gestion?sindicato="+id_sindicato);
+    return this.http.get<Usuario[]>(`${this.baseUrl}/gestion/sindicato/${id_sindicato}`, httpOptions);
   }
-
 
   ObtenerCantidadUsuarios(): Observable<number>{
     return this.http.get<number>(this.baseUrl+"/cantidad", httpOptions);
   }
 
   HabilitarUsuario(id_usuario:number):Observable<any>{
-    return this.http.put(`${this.baseUrl}/gestion/${id_usuario}`, httpOptions );
+    const obj = {sindicato: 2}
+    return this.http.put(`${this.baseUrl}/gestion/${id_usuario}`,null, httpOptions );
   }
 
   CrearUsuario(usuario:Usuario):Observable<Usuario>{
     return this.http.post<any>(this.baseUrl, usuario, httpOptions);
-  }
-
-  CrearUsuarios(usuarios:Usuario[]):Observable<Usuario>{
-    return this.http.post<any>(this.baseUrl, usuarios, httpOptions);
   }
 
   ObtenerUsuario(id_usuario:number):Observable<Usuario>{

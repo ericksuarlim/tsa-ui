@@ -66,7 +66,7 @@ export class FormularioAnunciosComponent implements OnInit {
   CrearAnuncio(){
     if(this.ValidarCampos("registrar")){
       this.anuncio.fecha = new Date();
-      this.anuncio.id_sindicato = 1;
+      this.anuncio.id_sindicato = this.sindicatoUsuario;
       this.servicioAnuncios.CrearAnuncio(this.anuncio).subscribe(result=>{
         this._location.back();
       });

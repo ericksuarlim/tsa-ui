@@ -9,7 +9,7 @@
     </div>
     <div class="body-bottom">     
             <button class="btn btn-actions btn-registrar-pasaje" (click)="RegistrarPasaje(viaje.id_viaje)" [disabled]="viaje.origen===null">Registrar Pasaje</button>
-            <button class="btn btn-actions btn-registrar-encomienda" (click)="RegistrarEncomienda(viaje.id_viaje)">Registrar Encomienda</button>     
+            <button class="btn btn-actions btn-registrar-encomienda" (click)="RegistrarEncomienda(viaje.id_viaje)" [disabled]="viaje.origen===null">Registrar Encomienda</button>     
     </div>
     <div class="row change-ubication-section" *ngIf="cambiarUbicacion">
         <div class="col-12">

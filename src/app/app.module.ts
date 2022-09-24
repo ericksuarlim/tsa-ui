@@ -44,7 +44,10 @@ import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuar
 import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-usuario/detalles-usuario.component';
 import { ModalEnvioCodigoComponent } from './componentes/modals/modal-envio-codigo/modal-envio-codigo.component';
 registerLocaleData(localeEsAr, 'es-Ar');
-import { BnNgIdleService } from 'bn-ng-idle'; 
+import { BnNgIdleService } from 'bn-ng-idle';
+import { SindicatoPrincipalComponent } from './componentes/paginas/sindicatos/sindicato-principal/sindicato-principal.component';
+import { FormularioSindicatoComponent } from './componentes/paginas/sindicatos/formulario-sindicato/formulario-sindicato.component';
+import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/habilitar-sindicato/habilitar-sindicato.component'; 
 
 @NgModule({
   declarations: [
@@ -85,6 +88,9 @@ import { BnNgIdleService } from 'bn-ng-idle';
     ListaUsuariosComponent,
     DetallesUsuarioComponent,
     ModalEnvioCodigoComponent,
+    SindicatoPrincipalComponent,
+    FormularioSindicatoComponent,
+    HabilitarSindicatoComponent,
   ],
   imports: [
     BrowserModule,

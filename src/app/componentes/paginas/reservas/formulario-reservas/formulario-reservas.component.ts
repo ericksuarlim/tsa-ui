@@ -48,7 +48,7 @@ export class FormularioReservasComponent implements OnInit {
 
   ngOnInit(): void {
     this.viajesService.ObtenerViajes().subscribe(viajes=>{
-      this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== new Date() || v.fecha === new Date())}) 
+      this.viajes = viajes.filter((v:Viaje)=>{return (moment(v.fecha).format('YYYY-MM-DD') < moment().format('YYYY-MM-DD'))}) 
     })
     this.reserva.fecha = new Date();
     this.sindicatosServices.ObtenerSindicatos().subscribe(sindicatos=>{this.sindicatos = sindicatos})
@@ -58,7 +58,7 @@ export class FormularioReservasComponent implements OnInit {
   FiltrarViajes(name:string){
     if(name==='cantidad'){ this.reserva.id_viaje = null; this.reserva.id_sindicato =null}
     this.viajesService.ObtenerViajes().subscribe(viajes=>{
-      this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== this.reserva.fecha && (v.disponibilidad >= this.reserva.cantidad || this.reserva.cantidad === undefined))});
+      this.viajes = viajes.filter((v:Viaje)=>{return (v.fecha=== this.reserva.fecha && (v.disponibilidad >= this.reserva.cantidad || this.reserva.cantidad === undefined))});
     })
    
   }
@@ -77,14 +77,9 @@ export class FormularioReservasComponent implements OnInit {
     return response;
   }
 
-
   SeleccionarViaje(id_viaje:number){
     this.reserva.id_viaje = id_viaje;
     this.ValidarReserva("verificar");
-  }
-
-  EditarReserva(){
-
   }
 
   RegistrarReserva(){
@@ -106,7 +101,7 @@ export class FormularioReservasComponent implements OnInit {
       reservaEnviar.celular = this.reserva.celular;
       reservaEnviar.estado = "Pendiente";
       this.reservaService.CrearReserva(reservaEnviar).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/reservas`])
       });
     } 
   }

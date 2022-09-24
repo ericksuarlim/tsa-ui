@@ -28,7 +28,7 @@ export class PrincipalEncomiendasComponent implements OnInit {
   ngOnInit(): void {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
     this.esGeneral = this.sindicatoCargado === undefined;
-    this.usuario = localStorage.getItem('usuario');
+    this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     if(!this.esGeneral){
       this.servicioEncomiendas.ObtenerEncomiendasPorSindicato(Number(this.sindicatoCargado)).subscribe(encomiendas =>{this.encomiendas= encomiendas});

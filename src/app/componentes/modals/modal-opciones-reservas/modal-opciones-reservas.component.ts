@@ -50,7 +50,9 @@ export class ModalOpcionesReservasComponent implements OnInit {
     {
       this.sinViaje = true;
       this.viajesService.ObtenerViajes().subscribe(viajes=>{
-        this.viajes = viajes.filter((v:Viaje)=>{return (v.turno?.fecha=== this.reserva.fecha && v.turno?.id_sindicato ===this.reserva.id_sindicato && v.disponibilidad >= this.reserva.cantidad)}) 
+        this.viajes = viajes.filter((v:Viaje)=>{
+          return (v.fecha=== this.reserva.fecha && v.conductore?.id_sindicato ===this.reserva.id_sindicato && v.disponibilidad >= this.reserva.cantidad)}) 
+        
       })
     }
     else{

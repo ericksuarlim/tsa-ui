@@ -95,6 +95,7 @@ export class FormularioTurnosComponent implements OnInit {
     turnoAgregar.id_carnet_conductor =  this.formulario.carnetConductor;
     turnoAgregar.numero_turno = this.formulario.turnoConductor;
     turnoAgregar.fecha= this.turno.fecha;
+    turnoAgregar.id_turno = this.turno.id_turno;
     this.turno.viajes.push(turnoAgregar);
     this.ValidarTurno('verificar');
     this.formulario.carnetConductor = "";
@@ -103,8 +104,9 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   getConductorNombre(carnet:Number){
-    var respuesta = this.conductores.filter(c=>{return c.carnet ==carnet});
-    return respuesta[0].nombre + " " +respuesta[0].apellido_paterno;
+      const con = this.conductores?.find(c=>{return c.carnet===Number(carnet)});
+      return con?.nombre + " " + con?.apellido_paterno;
+
   }
 
   BorrarTurno(IdABorrar:Number){
@@ -115,7 +117,11 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/turnos");
+    this.router.navigate([`/turnos`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
+  }
+
+  DesabilitarConductores(carnet:number){
+    return this.turno.viajes.some(v=>v.id_carnet_conductor===carnet); 
   }
 
 }
