@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row operation-section">
         <div [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
-            <input type="text" name="nombre_conductor" class="input-search form-control" placeholder="Ej. Ramiro Colque">
+            <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar(cadenaBusqueda)" placeholder="Ej. Ramiro Colque">
         </div>
         <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
             <select name="tipo_busqueda" class="form-control">

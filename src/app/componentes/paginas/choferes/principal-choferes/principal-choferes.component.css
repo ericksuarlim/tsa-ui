@@ -85,12 +85,10 @@
     display: flex;
     margin-bottom: 8px;
     padding-top: 8px;
-    
 }
 
 .panel-body-main{
-    padding-left: 10px;
-    
+    padding-left: 10px;  
 }
 
 .panel-body > ul >li{

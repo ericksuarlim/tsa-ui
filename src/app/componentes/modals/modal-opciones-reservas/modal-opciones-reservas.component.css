@@ -57,6 +57,22 @@
     margin-bottom: 10px;
 }
 
+.estado-aceptado{
+    color: rgb(56, 114, 9);
+}
+
+.estado-rechazado{
+    color: rgb(114, 9, 9);
+}
+
+.estado-pendiente{
+    color: rgb(9, 28, 114);
+}
+
+.empty-table-message{
+    color: #989898;
+    text-align: center;
+}
 
 
 

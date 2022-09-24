@@ -21,7 +21,6 @@ export class PaginaPrincipalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('Entro');
     this.sindicatosServices.ObtenerSindicatos().subscribe(sindicatos=>{this.sindicatos = sindicatos})
 
     this.servicioAnuncio.ObtenerAnuncios().subscribe(anuncios=>{this.anuncios=anuncios});

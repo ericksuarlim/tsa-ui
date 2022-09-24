@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
 
-            <div  class="col-lg-4 col-md-4 col-sm-4 col-6"> 
+            <div  class="col-sm-4 col-6"> 
                 <a  class="link-box-part" [routerLink]="['/viajes']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center">                      
                         <div class="title">
@@ -18,7 +18,7 @@
                 </a>  
             </div>	
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-6">  
+            <div class="col-sm-4 col-6">  
                 <a class="link-box-part" [routerLink]="['/encomiendas']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center">                      
                         <div class="title">
@@ -32,7 +32,7 @@
             </div>	
 
                 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-6">  
+            <div class="col-sm-4 col-6">  
                 <a class="link-box-part" [routerLink]="['/reservas']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center">                      
                         <div class="title">
@@ -45,7 +45,7 @@
                 </a> 
             </div>	
             
-            <div *ngIf="usuario!=null && id_sindicato===sindicato" class="col-lg-4 col-md-4 col-sm-4 col-6">   
+            <div *ngIf="usuario!=null && id_sindicato===sindicato" class="col-sm-4 col-6">   
                 <a class="link-box-part" [routerLink]="['/conductores']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center">                      
                         <div class="title">
@@ -58,7 +58,7 @@
                 </a>
             </div>
             
-            <div *ngIf="usuario!=null && id_sindicato===sindicato" class="col-lg-4 col-md-4 col-sm-4 col-6">   
+            <div *ngIf="usuario!=null && id_sindicato===sindicato" class="col-sm-4 col-6">   
                 <a class="link-box-part" [routerLink]="['/turnos']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center">                      
                         <div class="title">
@@ -73,7 +73,7 @@
     
 
     
-            <div *ngIf="usuario!=null && id_sindicato===sindicato" class="col-lg-4 col-md-4 col-sm-4 col-6"> 
+            <div *ngIf="usuario!=null && id_sindicato===sindicato" class="col-sm-4 col-6"> 
                 <a class="link-box-part" [routerLink]="['/pasajes']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center" >    
                                         
@@ -89,7 +89,7 @@
             </div>	
 
     
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">   
+            <div class="col-sm-4 col-6 mx-auto">   
                 <a class="link-box-part" [routerLink]="['/anuncios']" [queryParams]="{id_sindicato: id_sindicato}">
                     <div class="box-part text-center">                      
                         <div class="title">

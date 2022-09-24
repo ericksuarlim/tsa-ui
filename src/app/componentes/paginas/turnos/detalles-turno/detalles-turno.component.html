@@ -39,6 +39,7 @@
                         </tr>
                     </tbody>
                     </table> 
+                    <div *ngIf="turno?.viajes?.length === 0" class="empty-table-message">Sin Viajes</div>
             </div>
         </div>
     </div> 

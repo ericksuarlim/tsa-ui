@@ -17,6 +17,7 @@ export class PrincipalViajesComponent implements OnInit {
   usuario: string;
   sindicatoUsuario: number;
   sindicatoCargado: string;
+  cadenaBusqueda:string;
   constructor(
     private servicioViajes:ServicioViajesService,
     public modalService: NgbModal,
@@ -37,6 +38,11 @@ export class PrincipalViajesComponent implements OnInit {
       this.servicioViajes.ObtenerViajes().subscribe(viajes =>{this.viajes= viajes});
     }
 
+  }
+
+  Filtrar(cadenaBusqueda:string){
+    console.log('Entro',cadenaBusqueda)
+    this.viajes = this.viajes.filter(v=>{return v.conductore.nombre === cadenaBusqueda})
   }
 
   opcionesViaje(viaje:Viaje){
