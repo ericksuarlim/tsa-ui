@@ -18,9 +18,13 @@ import { ServicioConductoresService } from 'src/app/servicios/servicio-conductor
 export class PrincipalChoferesComponent implements OnInit {
 
   conductores: Conductor[];
+  conductoresFiltrados: Conductor[];
   usuario: string;
   sindicatoUsuario: number;
   sindicatoCargado: string;
+  cadenaBusqueda:string;
+  parametroBusqueda:string;
+  nombreSindicato: string;
 
   constructor(
     private servicioConductores: ServicioConductoresService,
@@ -33,8 +37,9 @@ export class PrincipalChoferesComponent implements OnInit {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
     this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario =  Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = this.sindicatoCargado!=undefined? JSON.parse(localStorage.getItem("sindicatos"))[Number(this.sindicatoCargado)-1].nombre:false;
     if(Number(this.sindicatoCargado)===this.sindicatoUsuario){
-      this.servicioConductores.ObtenerConductoresPorSindicato(Number(this.sindicatoCargado)).subscribe(conductores =>{this.conductores= conductores});
+      this.servicioConductores.ObtenerConductoresPorSindicato(Number(this.sindicatoCargado)).subscribe(conductores =>{this.conductores= conductores;this.conductoresFiltrados=conductores});
     }
     else{
       this.router.navigate(['/']);
@@ -43,6 +48,34 @@ export class PrincipalChoferesComponent implements OnInit {
 
   ngAfterViewInit() {
     
+  }
+
+  Filtrar() {
+    if(this.cadenaBusqueda!=undefined && this.parametroBusqueda!=undefined){
+      const palabras: string[] = this.cadenaBusqueda.toString().toLowerCase().trim().split(' ');
+      this.conductoresFiltrados = this.conductores.filter((conductor: Conductor) => {
+          let encontrado = false;
+          palabras.forEach(palabra => {
+            if(this.parametroBusqueda==='Carnet')
+            {
+              if ( String(conductor.carnet).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+            else
+            {
+              if ( String(conductor.nombre.toLowerCase()).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+          });
+          return encontrado;
+        }
+      );
+      if(this.conductoresFiltrados.length===0){
+        this.conductoresFiltrados = this.conductores;
+      }
+    }   
   }
 
   editarConductor(carnet: number){

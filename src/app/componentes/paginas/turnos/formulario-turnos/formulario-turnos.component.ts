@@ -22,6 +22,7 @@ export class FormularioTurnosComponent implements OnInit {
   viajes: Viaje[] = [];
   turnoNuevo: boolean;
   sindicatoUsuario: number;
+  nombreSindicato: string;
 
   formulario={
     turnoConductor: null,
@@ -52,6 +53,8 @@ export class FormularioTurnosComponent implements OnInit {
     const id_turno = this.route.snapshot.queryParams["id_turno"];
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.turnoNuevo = id_turno == undefined;
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
+
     if(!this.turnoNuevo){      
       this.servicioTurnos.ObtenerTurno(id_turno).subscribe((turno)=>{
         this.viajes = turno.viajes;

@@ -13,10 +13,14 @@ import { ServicioReservasService } from 'src/app/servicios/servicio-reservas.ser
 export class PrincipalReservasComponent implements OnInit {
 
   reservas: Reserva[];
+  reservasFiltradas: Reserva[];
   esGeneral: boolean= true;
   usuario: string;
   sindicatoUsuario: number;
   sindicatoCargado: string;
+  cadenaBusqueda:string;
+  parametroBusqueda:string;
+  nombreSindicato: string;
 
   constructor(
     private servicioReservas:ServicioReservasService,
@@ -30,11 +34,41 @@ export class PrincipalReservasComponent implements OnInit {
     this.esGeneral = this.sindicatoCargado ===undefined;
     this.usuario = localStorage.getItem('usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = this.sindicatoCargado!=undefined? JSON.parse(localStorage.getItem("sindicatos"))[Number(this.sindicatoCargado)-1].nombre:false;
+
     if(!this.esGeneral){
-      this.servicioReservas.ObtenerReservasPorSindicato(Number(this.sindicatoCargado)).subscribe(reservas =>{this.reservas= reservas});
+      this.servicioReservas.ObtenerReservasPorSindicato(Number(this.sindicatoCargado)).subscribe(reservas =>{this.reservas= reservas;this.reservasFiltradas=reservas});
     }
     else{
-      this.servicioReservas.ObtenerReservas().subscribe(reservas =>{this.reservas= reservas});
+      this.servicioReservas.ObtenerReservas().subscribe(reservas =>{this.reservas= reservas;this.reservasFiltradas=reservas});
+    }
+  }
+
+  Filtrar() {
+    if(this.cadenaBusqueda!=undefined && this.parametroBusqueda!=undefined){
+      const palabras: string[] = this.cadenaBusqueda.toString().toLowerCase().trim().split(' ');
+      this.reservasFiltradas = this.reservas.filter((reserva: Reserva) => {
+          let encontrado = false;
+          palabras.forEach(palabra => {
+            if(this.parametroBusqueda==='Fecha')
+            {
+              if ( String(reserva.fecha).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+            else
+            {
+              if ( String(reserva.nombre_completo_reserva.toLowerCase()).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+          });
+          return encontrado;
+        }
+      );
+      if(this.reservasFiltradas.length===0){
+        this.reservasFiltradas = this.reservas;
+      }
     }
   }
 

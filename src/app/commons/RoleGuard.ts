@@ -14,7 +14,7 @@ export class RoleGuard implements CanActivate {
   
 canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const estaDentro = localStorage.getItem('nombre_usuario')!=null;
-    const rolCorrecto = localStorage.getItem('rol_usuario')==='administrador';
+    const rolCorrecto = localStorage.getItem('rol_usuario')==='administrador' || localStorage.getItem('rol_usuario')==='superadministrador';
     if(estaDentro && rolCorrecto){ 
       return true;
     }else{

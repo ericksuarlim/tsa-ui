@@ -2,10 +2,12 @@
     <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h3 class="title-page">REGISTRO DE TURNOS</h3>
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion col-ubication-h1__small">
+            <h1>{{turnoNuevo?'Registro':'Edicion'}} de Turnos {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
         </div>
+      </div>
+    <div class="row details-formulario-row-top">
         <div class="col-sm-12">
             <form class="formulario-conductores" name="FormularioTurnos">
                 <div class="row operation-section">

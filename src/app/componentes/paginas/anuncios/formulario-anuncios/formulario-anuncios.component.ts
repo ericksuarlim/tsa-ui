@@ -15,6 +15,7 @@ export class FormularioAnunciosComponent implements OnInit {
   anuncio: Anuncio = new Anuncio();
   nuevoAnuncio: boolean = true;
   sindicatoUsuario: number;
+  nombreSindicato: string;
 
   validacion= {
     titulo: true,
@@ -38,6 +39,7 @@ export class FormularioAnunciosComponent implements OnInit {
   ngOnInit(): void {
     const id_anuncio = this.route.snapshot.queryParams["id_anuncio"];
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
 
     this.nuevoAnuncio = id_anuncio == undefined;
     if(!this.nuevoAnuncio)

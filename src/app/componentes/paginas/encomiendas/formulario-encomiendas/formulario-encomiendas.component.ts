@@ -19,6 +19,7 @@ export class FormularioEncomiendasComponent implements OnInit {
   viaje: Viaje = new Viaje();
   esEncomiendaNueva: boolean = true;
   sindicatoUsuario: number;
+  nombreSindicato: string;
 
   validacion= {
     nombre_cliente: true,
@@ -51,6 +52,7 @@ export class FormularioEncomiendasComponent implements OnInit {
     const id_encomienda = this.route.snapshot.queryParams["id_encomienda"];
     const id_viaje = this.route.snapshot.queryParams["id_viaje"];
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
     this.esEncomiendaNueva = id_encomienda == undefined;
     if(!this.esEncomiendaNueva){
       this.servicioEncomienda.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{

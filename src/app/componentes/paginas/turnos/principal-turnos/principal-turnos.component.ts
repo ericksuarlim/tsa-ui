@@ -12,9 +12,14 @@ import { ServicioTurnosService } from 'src/app/servicios/servicio-turnos.service
 export class PrincipalTurnosComponent implements OnInit {
 
   turnos: Turno[];
+  turnosFiltrados: Turno[];
   usuario: string;
   sindicatoUsuario: number;
   sindicatoCargado: number;
+  cadenaBusqueda:string;
+  parametroBusqueda:string;
+  nombreSindicato: string;
+
 
   constructor(
     private servicioTurnos: ServicioTurnosService,
@@ -27,13 +32,42 @@ export class PrincipalTurnosComponent implements OnInit {
     this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
     this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = this.sindicatoCargado!=undefined? JSON.parse(localStorage.getItem("sindicatos"))[Number(this.sindicatoCargado)-1].nombre:false;
     if(this.sindicatoCargado===this.sindicatoUsuario){
-      this.servicioTurnos.ObtenerTurnosPorSindicato(this.sindicatoCargado).subscribe(turnos =>{this.turnos= turnos});
+      this.servicioTurnos.ObtenerTurnosPorSindicato(this.sindicatoCargado).subscribe(turnos =>{this.turnos= turnos;this.turnosFiltrados=turnos});
     }
     else{
       this.router.navigate(['/']);
     }
 
+  }
+
+  Filtrar() {
+    if(this.cadenaBusqueda!=undefined && this.parametroBusqueda!=undefined){
+      const palabras: string[] = this.cadenaBusqueda.toString().toLowerCase().trim().split(' ');
+      this.turnosFiltrados = this.turnos.filter((turno: Turno) => {
+          let encontrado = false;
+          palabras.forEach(palabra => {
+            if(this.parametroBusqueda==='Fecha')
+            {
+              if ( String(turno.fecha).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+            else
+            {
+              if ( String(turno.id_turno).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+          });
+          return encontrado;
+        }
+      );
+      if(this.turnosFiltrados.length===0){
+        this.turnosFiltrados = this.turnos;
+      }
+    }   
   }
 
   editarTurno(id_turno: number){

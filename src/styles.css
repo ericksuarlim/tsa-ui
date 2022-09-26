@@ -1030,8 +1030,58 @@
 	color:#ffffff;
 }
 
+/***
 
+====================================================================
+	Ubicacion Vistas
+====================================================================
 
+***/
+
+.top-row-ubication{
+    margin-top: -55px;
+}
+
+.col-ubicacion{
+    text-align: center;
+}
+
+.col-ubicacion h1{
+    font-size: 1.3em;
+    text-transform: uppercase;
+    width: 25%;
+    background-color: #00000069;
+    color: #FB9130;
+    display: inline;
+    padding: 10px;
+    font-weight: 450;
+}
+
+.details-row-top{
+	margin: 30px 3px 3px 3px;
+}
+
+.details-formulario-row-top{
+    margin-top: 30px;
+}
+
+@media (max-width: 465px){
+    .col-ubicacion h1{
+        font-size: 1em;
+        padding: 5px; 
+    }
+
+    .top-row-ubication{
+        margin-top: -49px;
+    }
+}
+
+@media (max-width: 550px){
+	.col-ubication-h1__small{
+		font-size: 0.80em;
+		padding: 5px; 
+	}
+}
 
 /***
 

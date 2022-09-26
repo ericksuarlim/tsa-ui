@@ -3,10 +3,12 @@
 </div>
 
 <div *ngIf="datosRevisados || usuarioNuevo" class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h3 class="title-page">CREAR USUARIO</h3>
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion col-ubication-h1__small">
+            <h1>{{usuarioNuevo?'Registro':'Edicion'}} de Usuarios {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
         </div>
+      </div>
+    <div class="row details-formulario-row-top">
         <div class="col-sm-12">
             <form class="formulario-usuarios" name="FormularioUsuarios">
                 <div class="row">

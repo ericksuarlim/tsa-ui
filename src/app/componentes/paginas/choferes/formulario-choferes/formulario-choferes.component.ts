@@ -16,6 +16,7 @@ export class FormularioChoferesComponent implements OnInit {
   conductorNuevo: boolean;
   activo: string;
   sindicatoUsuario: number;
+  nombreSindicato: string;
 
   validacion= {
     carnet : true,
@@ -53,6 +54,8 @@ export class FormularioChoferesComponent implements OnInit {
     const carnet = this.route.snapshot.queryParams["carnet"];
     this.conductorNuevo = carnet == undefined;
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
+
     if(!this.conductorNuevo){
       this.servicioConductores.ObtenerConductor(carnet).subscribe(conductor=>{
         if(conductor.id_sindicato===this.sindicatoUsuario){

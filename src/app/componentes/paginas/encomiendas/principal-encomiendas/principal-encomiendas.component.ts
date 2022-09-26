@@ -13,10 +13,14 @@ import { ServicioEncomiendasService } from 'src/app/servicios/servicio-encomiend
 export class PrincipalEncomiendasComponent implements OnInit {
 
   encomiendas: Encomienda[];
+  encomiendasFiltradas: Encomienda[];
   esGeneral: boolean= true;
   usuario: string;
   sindicatoUsuario: number;
   sindicatoCargado: string;
+  cadenaBusqueda:string;
+  parametroBusqueda:string;
+  nombreSindicato: string;
 
   constructor(
     private servicioEncomiendas:ServicioEncomiendasService,
@@ -30,12 +34,42 @@ export class PrincipalEncomiendasComponent implements OnInit {
     this.esGeneral = this.sindicatoCargado === undefined;
     this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = this.sindicatoCargado!=undefined? JSON.parse(localStorage.getItem("sindicatos"))[Number(this.sindicatoCargado)-1].nombre:false;
+
     if(!this.esGeneral){
-      this.servicioEncomiendas.ObtenerEncomiendasPorSindicato(Number(this.sindicatoCargado)).subscribe(encomiendas =>{this.encomiendas= encomiendas});
+      this.servicioEncomiendas.ObtenerEncomiendasPorSindicato(Number(this.sindicatoCargado)).subscribe(encomiendas =>{this.encomiendas= encomiendas; this.encomiendasFiltradas=encomiendas});
     }
     else{
-      this.servicioEncomiendas.ObtenerEncomiendas().subscribe(encomiendas =>{this.encomiendas= encomiendas});
+      this.servicioEncomiendas.ObtenerEncomiendas().subscribe(encomiendas =>{this.encomiendas= encomiendas; this.encomiendasFiltradas=encomiendas});
     }
+  }
+
+  Filtrar() {
+    if(this.cadenaBusqueda!=undefined && this.parametroBusqueda!=undefined){
+      const palabras: string[] = this.cadenaBusqueda.toString().toLowerCase().trim().split(' ');
+      this.encomiendasFiltradas = this.encomiendas.filter((encomienda: Encomienda) => {
+          let encontrado = false;
+          palabras.forEach(palabra => {
+            if(this.parametroBusqueda==='Fecha')
+            {
+              if ( String(encomienda.viaje.fecha).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+            else
+            {
+              if ( String(encomienda.nombre_cliente.toLowerCase()).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+          });
+          return encontrado;
+        }
+      );
+      if(this.encomiendasFiltradas.length===0){
+        this.encomiendasFiltradas = this.encomiendas;
+      }
+    }   
   }
 
   VerEncomienda(id_encomienda: number){

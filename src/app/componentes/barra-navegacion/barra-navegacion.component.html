@@ -85,7 +85,7 @@
                                 </li>
                                 <li *ngIf="usuario===null" class="nav-item"><a href="/sesion/inicio-sesion" class="nav-link float-right">Iniciar Sesion</a></li>
                                 <li *ngIf="rol==='administrador' || rol==='superadministrador'" class="nav-item"><a (click)="AbrirModalAdministrador()" class="nav-link float-right btn-opcines-administrador">Administrar</a></li>
-                                <li *ngIf="usuario!=null" class="nav-item"><a (click)="CerrarSesion()" class="nav-link float-right">Cerrar Sesion</a></li>
+                                <li *ngIf="usuario!=null" class="nav-item"><a (click)="CerrarSesion()" class="nav-link float-right btn-cerrar-sesion">Cerrar Sesion</a></li>
 
                             </ul>
                         </div>

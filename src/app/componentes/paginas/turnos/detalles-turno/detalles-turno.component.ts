@@ -9,6 +9,8 @@ import 'moment/locale/es';
 import { Viaje } from 'src/app/modelos/viaje';
 import { ModalOpcionesViajesComponent } from 'src/app/componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-detalles-turno',
@@ -28,7 +30,8 @@ export class DetallesTurnoComponent implements OnInit {
     private turnoService:ServicioTurnosService, 
     private route: ActivatedRoute,
     private router:Router,
-    public modalService: NgbModal
+    public modalService: NgbModal,
+    private _location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +55,10 @@ export class DetallesTurnoComponent implements OnInit {
     copiaViaje = {...viaje};
     const modalRef = this.modalService.open(ModalOpcionesViajesComponent, { size: 'lg'});
     modalRef.componentInstance.viaje = copiaViaje;
+  }
+
+  Atras(){
+    this._location.back();
   }
 
 

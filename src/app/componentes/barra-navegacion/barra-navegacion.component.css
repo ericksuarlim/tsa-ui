@@ -138,7 +138,7 @@
     background-color: #ff8201;
 } 
 
-.btn-opcines-administrador{
+.btn-opcines-administrador, .btn-cerrar-sesion{
     cursor: pointer;
 }
 

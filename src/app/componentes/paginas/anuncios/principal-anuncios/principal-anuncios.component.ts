@@ -13,10 +13,15 @@ import { ServicioAnunciosService } from 'src/app/servicios/servicio-anuncios.ser
 export class PrincipalAnunciosComponent implements OnInit {
 
   anuncios: Anuncio[];
+  anunciosFiltrados: Anuncio[];
   esGeneral: boolean= true;
   usuario: string;
   sindicatoUsuario: number;
   sindicatoCargado: string;
+  cadenaBusqueda:string;
+  parametroBusqueda:string;
+  nombreSindicato: string;
+
 
   constructor(
     private servicioAnuncios: ServicioAnunciosService,
@@ -30,12 +35,42 @@ export class PrincipalAnunciosComponent implements OnInit {
     this.esGeneral = this.sindicatoCargado ===undefined;
     this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = this.sindicatoCargado!=undefined? JSON.parse(localStorage.getItem("sindicatos"))[Number(this.sindicatoCargado)-1].nombre:false;
+
     if(!this.esGeneral){
-      this.servicioAnuncios.ObtenerAnunciosPorSindicato(Number(this.sindicatoCargado)).subscribe(anuncios=>{this.anuncios=anuncios})
+      this.servicioAnuncios.ObtenerAnunciosPorSindicato(Number(this.sindicatoCargado)).subscribe(anuncios=>{this.anuncios=anuncios;this.anunciosFiltrados=anuncios})
     }
     else{
-      this.servicioAnuncios.ObtenerAnuncios().subscribe(anuncios=>{this.anuncios=anuncios})
+      this.servicioAnuncios.ObtenerAnuncios().subscribe(anuncios=>{this.anuncios=anuncios;this.anunciosFiltrados=anuncios})
     }
+  }
+
+  Filtrar() {
+    if(this.cadenaBusqueda!=undefined && this.parametroBusqueda!=undefined){
+      const palabras: string[] = this.cadenaBusqueda.toString().toLowerCase().trim().split(' ');
+      this.anunciosFiltrados = this.anuncios.filter((anuncio: Anuncio) => {
+          let encontrado = false;
+          palabras.forEach(palabra => {
+            if(this.parametroBusqueda==='Fecha')
+            {
+              if ( String(anuncio.fecha).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+            else
+            {
+              if ( String(anuncio.titulo.toLowerCase()).includes(palabra)) {
+                encontrado = true;
+              }
+            }
+          });
+          return encontrado;
+        }
+      );
+      if(this.anunciosFiltrados.length===0){
+        this.anunciosFiltrados = this.anuncios;
+      }
+    }   
   }
 
   RedirigirCrearAnuncio(){

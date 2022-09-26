@@ -16,7 +16,10 @@ export class Pasaje{
         hora_llegada: string;
         aporte: string;
         id_turno: number;
+        origen: string;
+        destino: string;
         disponibilidad: number;
+        fecha: Date;
         conductore: {
             activo: boolean,
             apellido_materno: string,

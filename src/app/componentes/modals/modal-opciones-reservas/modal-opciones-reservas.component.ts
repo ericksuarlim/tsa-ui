@@ -21,8 +21,9 @@ export class ModalOpcionesReservasComponent implements OnInit {
   sinViaje: boolean;
   esGeneral: boolean= true;
   usuario: string;
-  sindicato: string;
-  id_sindicato: string;
+  sindicatoUsuario: number;
+  sindicatoCargado: number;
+  estadoPasado: string;
 
   validacion= {
     estado: true,
@@ -42,10 +43,18 @@ export class ModalOpcionesReservasComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.id_sindicato = this.route.snapshot.queryParams["id_sindicato"];
-    this.esGeneral = this.id_sindicato === undefined;
+    if(this.reserva.id_sindicato!= null){
+      this.sindicatoCargado = this.reserva.id_sindicato;
+    }
+    else
+    {
+      this.sindicatoCargado = this.reserva.viaje.conductore.id_sindicato;
+    }
+    this.estadoPasado = this.reserva.estado;
+    this.esGeneral = this.sindicatoCargado === undefined;
     this.usuario = localStorage.getItem('nombre_usuario');
-    this.sindicato = localStorage.getItem('id_sindicato_usuario');
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    console.log(this.reserva.estado)
     if(this.reserva.id_viaje===null)
     {
       this.sinViaje = true;
@@ -98,7 +107,7 @@ export class ModalOpcionesReservasComponent implements OnInit {
   }
 
   ValidarVista(){
-    return this.usuario!=null && !this.esGeneral && this.sindicato===this.id_sindicato;
+    return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado;
   }
 
 }

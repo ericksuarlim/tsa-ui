@@ -96,7 +96,6 @@
     margin-right: auto; 
     max-width: 415px;
     min-width: 280px;
-
   }
 
   .box-card{
@@ -107,6 +106,7 @@
     padding-left: 0px;
     padding-right: 0px;
     margin: 8px; 
+    min-height: 150px;
   }
 
   .panel-body-main{

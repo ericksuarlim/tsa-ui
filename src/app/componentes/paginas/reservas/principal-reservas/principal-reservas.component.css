@@ -2,7 +2,7 @@
     width: 100%;
     margin-top: -70px;
     max-height: 370px;
-    filter: brightness(50%);
+    filter: brightness(35%);
 }
 
 
@@ -10,6 +10,7 @@
     background-color: #EDEDED;
     border-radius: 10px;
     padding: 10px;
+    margin-top: 30px;
 }
 
 .container{
@@ -132,10 +133,11 @@
     }
 
     .operation-section{
-        margin: 5px;
+        margin: 25px 5px 5px 5px;
     }
 
     .row-container{
+        padding-top: 10px;
         padding-left: 15px;
         padding-right: 15px;
     }

@@ -91,7 +91,7 @@
         <section class="anuncios">    
             <div class="row row-container">
                 <div class="box-card-parent col-md-6 col-lg-4 col-sm-12" *ngFor="let anuncio of anuncios">
-                    <div class="box-card row">
+                    <div class="box-card row" (click)="AbrirAnuncio(anuncio.id_anuncio)">
                         <div class="panel-body-main col-sm-12">
                             <div class="panel-heading">
                                 <h3 class="panel-title">{{ anuncio.titulo | slice:0:25 }}{{ anuncio.detalle.length > 25 ? '...' : ''}}</h3>

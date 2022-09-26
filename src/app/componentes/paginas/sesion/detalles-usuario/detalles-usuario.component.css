@@ -7,7 +7,7 @@
     width: 100%;
     margin-top: -70px;
     max-height: 370px;
-    filter: brightness(50%);
+    filter: brightness(35%);
 }
 
 .btn{
@@ -30,6 +30,7 @@
     background-color: #fbfbfb;
     padding: 15px;
     border-radius: 15px;
+    margin-top: 30px;
     font-weight: 800px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     box-shadow:5px 10px 10px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
@@ -60,8 +61,8 @@
 
 @media (min-width: 990px) {
     .columna-container{
-      margin: auto;
-      max-width: 70%;
+        margin: 30px auto;
+        max-width: 70%;
     }
 }
 
@@ -78,6 +79,11 @@
     .sections-buttons{
         justify-content: center;
     }
+}
 
+@media (max-width: 577px) {
+    .columna-container{
+        margin: 30px 1px 1px 1px;
+    }
 }
 

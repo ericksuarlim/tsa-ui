@@ -3,7 +3,7 @@
     width: 100%;
     margin-top: -70px;
     max-height: 370px;
-    filter: brightness(50%);
+    filter: brightness(35%);
 }
 
 .container{
@@ -16,6 +16,7 @@
     padding-left: 15px;
     color: #4E4E4E;
     font-weight: 550;
+    padding-top: 7px;
 }
 
 .turno-detail-top-section{
@@ -58,6 +59,16 @@
     width: 100%;
 }
 
+.btn{
+    border-radius: 100px;
+}
+
+.button-atras{
+    background-color: #FB9130;
+    color: #FFFFFF;
+    width: 100%;
+}
+
 .btn-editar-viaje{
     background-color: #FB9130;
     color: white;
@@ -87,5 +98,12 @@
 @media (max-width: 767px) {
     .image-top{
         margin-top: -20px;
+    }
+
+}
+
+@media (max-width: 525px) {
+    .title-page{
+        font-size: 1em;
     }
 }

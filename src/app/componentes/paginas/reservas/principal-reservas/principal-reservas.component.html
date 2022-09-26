@@ -3,20 +3,31 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+      <div class="col-12 col-ubicacion">
+          <h1>Reservas {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
+      </div>
+    </div>
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7">
-            <input type="text" name="nombre_reserva" class="input-search form-control" placeholder="Ej. Ramiro Colque">
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <select name="tipo_busqueda" class="form-control">
-                <option>Nombre</option>
-                <option>Codigo reserva</option>
-                <option>Fecha</option>
-            </select>   
-        </div>
-        <div class="col-sm-12 col-md-2 btn-new">
-            <a href="/reservas/formulario" class="btn">Crear Reserva</a>
-        </div>
+      <div class="col-sm-4 col-md-3">
+        <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+          <option disabled selected value="undefined">Buscar por</option>
+          <option>Nombre Cliente</option>
+          <option>Fecha</option>
+        </select>    
+      </div>
+
+      <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Cliente'" class="col-sm-8 col-md-7">
+        <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+      </div>
+
+      <div *ngIf="parametroBusqueda==='Fecha'"  class="col-sm-8 col-md-7">
+        <input type="date" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+      </div>
+        
+      <div class="col-sm-12 col-md-2 btn-new">
+          <a href="/reservas/formulario" class="btn">Crear Reserva</a>
+      </div>
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
@@ -31,7 +42,7 @@
                     <th scope="col"></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let reserva of reservas">
+                <tbody *ngFor="let reserva of reservasFiltradas">
                   <tr>
                     <th scope="row">{{ reserva.fecha | date:'dd MMM yyyy':'+0200':'es-AR'}}</th>
                     <td>{{reserva.nombre_completo_reserva}}</td>

@@ -25,6 +25,8 @@ export class FormularioPasajesComponent implements OnInit {
   pasaje: Pasaje = new Pasaje();
   viaje: Viaje = new Viaje();
   pasajeNuevo: boolean = true;
+  sindicatoUsuario: number;
+  nombreSindicato: string;
 
   validacion= {
     nombre_completo: true,
@@ -47,8 +49,20 @@ export class FormularioPasajesComponent implements OnInit {
     const id_viaje = this.route.snapshot.queryParams["id_viaje"];
     const id_pasaje = this.route.snapshot.queryParams["id_pasaje"];
     this.pasajeNuevo = id_pasaje ==undefined;
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
+
     if(!this.pasajeNuevo){
-      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{this.pasaje=pasaje});
+      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{
+        console.log(pasaje.viaje?.conductore?.id_sindicato)
+        if(pasaje.viaje?.conductore?.id_sindicato===this.sindicatoUsuario){
+          this.pasaje=pasaje;
+        }
+        else
+        {
+          this.router.navigate(['/']);
+        }  
+      });
     }
     this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
   }

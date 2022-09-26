@@ -3,16 +3,27 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+      <div class="col-12 col-ubicacion">
+          <h1>Lista Usuarios</h1>
+      </div>
+    </div>
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7">
-            <input type="text" name="nombre_usuario" class="input-search form-control" placeholder="Ej. Ramiro Colque">
-        </div>
         <div class="col-sm-4 col-md-3">
-            <select name="tipo_busqueda" class="form-control">
-                <option>Nombre</option>
-                <option>Codigo usuario</option>
-            </select>   
+          <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+            <option disabled selected value="undefined">Buscar por</option>
+            <option>Nombre Usuario</option>
+            <option>Carnet</option>
+          </select>   
         </div>
+  
+        <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Usuario'" class="col-sm-8 col-md-7">
+            <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+        </div>
+        <div *ngIf="parametroBusqueda==='Carnet'" class="col-sm-8 col-md-7">
+          <input type="number" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. 78964583">
+        </div>
+
         <div class="col-sm-12 col-md-2 btn-new">
           <button (click)="CrearUsuario()" class="btn">Registrar Usuario</button>
         </div>
@@ -29,7 +40,7 @@
                     <th scope="col"></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let usuario of usuarios">
+                <tbody *ngFor="let usuario of usuariosFiltrados">
                   <tr>
                     <td class="text-center">{{usuario.carnet}}</td>
                     <th class="text-center">{{usuario.nombres}} {{usuario.apellido_paterno}}</th>
