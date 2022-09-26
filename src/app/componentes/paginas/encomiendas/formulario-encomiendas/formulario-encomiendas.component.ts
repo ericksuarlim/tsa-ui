@@ -18,6 +18,8 @@ export class FormularioEncomiendasComponent implements OnInit {
   encomienda: Encomienda = new Encomienda();
   viaje: Viaje = new Viaje();
   esEncomiendaNueva: boolean = true;
+  sindicatoUsuario: number;
+  nombreSindicato: string;
 
   validacion= {
     nombre_cliente: true,
@@ -49,9 +51,19 @@ export class FormularioEncomiendasComponent implements OnInit {
   ngOnInit(): void {
     const id_encomienda = this.route.snapshot.queryParams["id_encomienda"];
     const id_viaje = this.route.snapshot.queryParams["id_viaje"];
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
     this.esEncomiendaNueva = id_encomienda == undefined;
     if(!this.esEncomiendaNueva){
-      this.servicioEncomienda.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{this.encomienda=encomienda})
+      this.servicioEncomienda.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{
+        if(encomienda.viaje.conductore.id_sindicato===this.sindicatoUsuario){
+          this.encomienda=encomienda;
+        }
+        else
+        {
+          this.router.navigate(['/']);
+        }  
+      });
     }
     this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
   }

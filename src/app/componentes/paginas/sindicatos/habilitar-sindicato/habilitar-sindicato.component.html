@@ -1,0 +1,34 @@
+
+
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row columna-container">
+        <div class="col">
+            <div class="row">
+                <div class="col-12 col-md-7">
+                    <h1 for="sindicato" class="input-title">Seleccionar Sindicato</h1>
+                    <select name="sindicato" class="form-control"  [(ngModel)]="sindicato">
+                        <option selected disabled value=''>Seleccionar Sindicato</option>
+                        <option *ngFor='let s of sindicatos' [ngValue]="s">{{s.nombre}}</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5">
+                    <h1 for="estado" class="input-title">Estado Sindicato</h1>
+                    <label for="estado" class="input-form-sindicatos form-control f-2">{{sindicato.estado===true?'Activado': sindicato.estado===false?'Desactivado': 'Seleccione Sindicato'}}</label>
+                </div>
+            </div>
+            <div class="row sections-buttons">
+                <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button></div> 
+                <div class="text-center"><button class="btn button-habilitar" (click)="CambiarEstado()" [disabled]='sindicato.estado===undefined'>{{sindicato.estado===true?'Desactivar': sindicato.estado===false?'Activar': 'Seleccione Sindicato'}}</button></div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+
+
+

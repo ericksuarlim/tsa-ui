@@ -3,10 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Encomienda } from '../modelos/encomienda';
+import { userData } from '../commons/userData'
+
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -19,6 +23,10 @@ export class ServicioEncomiendasService {
   baseUrl: string = environment.urlApi + "/encomiendas";
 
   constructor(private http:HttpClient) { }
+
+  ObtenerEncomiendasPorSindicato(id_sindicato:number): Observable<Encomienda[]>{
+    return this.http.get<Encomienda[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
+  }
 
   ObtenerEncomiendas(): Observable<Encomienda[]>{
     return this.http.get<Encomienda[]>(this.baseUrl);
@@ -37,6 +45,6 @@ export class ServicioEncomiendasService {
   }
 
   EliminarEncomienda(id_encomienda:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_encomienda)
+    return this.http.delete<any>(this.baseUrl + "/" + id_encomienda, httpOptions)
   }
 }

@@ -1,8 +1,13 @@
+.my-disable{
+    pointer-events:none;
+    opacity: 0.5;
+}
+
 .image-top{
     width: 100%;
     margin-top: -70px;
     max-height: 370px;
-    filter: brightness(50%);
+    filter: brightness(35%);
 }
 
 .service-image-icon{
@@ -42,6 +47,24 @@
     font-weight: bold;
 }
 
+.top-row-ubication{
+    margin-top: -55px;
+}
+
+.col-ubicacion{
+    text-align: center;
+}
+
+.col-ubicacion h1{
+    font-size: 1.3em;
+    text-transform: uppercase;
+    width: 25%;
+    background-color: #00000069;
+    color: #FB9130;
+    display: inline;
+    padding: 10px;
+    font-weight: 450;
+}
 
 
 @media (max-width: 462px) {
@@ -59,12 +82,22 @@
         font-size: 13px;
     }
 
+    .col-ubicacion h1{
+        font-size: 1em;
+        padding: 5px; 
+    }
+
+    .top-row-ubication{
+        margin-top: -49px;
+    }
+
 }
 @media(max-width:350px){
     .text{
         font-size: 9px;
     }
 }
+
 @media (min-width: 462px) {
     .box-part{
         max-width: 200px;
@@ -76,9 +109,7 @@
         padding-left: 60px;
         padding-right: 60px;
     }
-
 }
-
 
 @media (min-width: 992px) {
     .container{

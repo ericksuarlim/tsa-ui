@@ -58,7 +58,7 @@ export class Turno{
             grupo: string,
             id_auto_1: string,
             id_auto_2: string,
-            id_sindicato:string,
+            id_sindicato:number,
             nombre: string,
         };
         turno:{

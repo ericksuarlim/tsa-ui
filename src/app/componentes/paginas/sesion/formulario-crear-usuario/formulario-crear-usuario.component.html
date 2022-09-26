@@ -1,0 +1,66 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div *ngIf="datosRevisados || usuarioNuevo" class="container">
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion col-ubication-h1__small">
+            <h1>{{usuarioNuevo?'Registro':'Edicion'}} de Usuarios {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
+        </div>
+      </div>
+    <div class="row details-formulario-row-top">
+        <div class="col-sm-12">
+            <form class="formulario-usuarios" name="FormularioUsuarios">
+                <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h1 for="carnet" class="input-title">Carnet</h1>
+                            <input type="number"  name="carnet" class="input-form-usuarios form-control" [(ngModel)]="usuario.carnet" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.carnet" class="text-danger">{{mensajeErrorValidacion.carnet}}</div>   
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h1 for="nombres" class="input-title">Nombres</h1>
+                            <input type="text"  name="nombres" class="input-form-usuarios form-control" [(ngModel)]="usuario.nombres" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.nombres" class="text-danger">{{mensajeErrorValidacion.nombres}}</div>   
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h1 for="apellido_paterno" class="input-title">Apellido Paterno</h1>
+                            <input type="text"  name="apellido_paterno" class="input-form-usuarios form-control" [(ngModel)]="usuario.apellido_paterno" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.apellido_paterno" class="text-danger">{{mensajeErrorValidacion.apellido_paterno}}</div>   
+                        </div>                       
+                        <div class="col-12 col-md-6">
+                            <h1 for="apellido_materno" class="input-title">Apellido Materno</h1>
+                            <input type="text"  name="apellido_materno" class="input-form-usuarios form-control" [(ngModel)]="usuario.apellido_materno">
+                        </div>
+                </div>
+
+                <div class="row">      
+                    <div class="col-12 col-md-4">
+                        <h1 for="celular_referencia" class="input-title">Numero Referencia</h1>
+                        <input type="number"  name="celular_referencia" class="input-form-usuarios form-control" [(ngModel)]="usuario.celular_referencia" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                        <div *ngIf="!validacion.celular_referencia" class="text-danger">{{mensajeErrorValidacion.celular_referencia}}</div>   
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <h1 for="correo_electronico" class="input-title">Correo Electronico</h1>
+                        <input type="text"  name="correo_electronico" class="input-form-usuarios form-control" [(ngModel)]="usuario.correo_electronico" >
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <h1 for="rol" class="input-title">Rol</h1>
+                        <select name="rol" class="form-control"  [(ngModel)]="usuario.rol" (ngModelChange)="ValidarCampos('verificar')" value required [disabled]="!usuarioNuevo">
+                            <option value="administrador">Administrador</option>
+                            <option value="secretaria">Secretaria</option>
+                        </select>
+                        <div *ngIf="!validacion.carnet" class="text-danger">{{mensajeErrorValidacion.carnet}}</div>   
+                    </div>
+                </div>
+               
+                <div class="row section-bottons">
+                    <div class="col-sm-12">
+                        <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                        <button *ngIf="usuarioNuevo" class="btn button-registrar" (click)="CrearUsuario()">Registrar</button>
+                        <button *ngIf="!usuarioNuevo" class="btn button-registrar" (click)="ActualizarUsuario()">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

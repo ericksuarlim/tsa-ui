@@ -4,22 +4,30 @@
 </div>
 
 <div class="container">
-    <div class="col columna-container" id="pasaje">
-        <div class="row">
-            <div class="col-12 col-sm-6">
-                <p class="text-md-right"><b>Id Anuncio: </b>{{anuncio.id_anuncio}}</p>
-                <p class="text-md-right"><b>Sindicato: </b>{{anuncio.sindicato?.nombre}}</p>
-                <p class="text-md-right"><b>Fecha: </b>{{anuncio.fecha| date:'dd/MM/yyyy'}}</p>
-                <p class="text-md-right"><b>Referencia: </b>{{anuncio.celular_referencia}}</p>
-            </div>
-            <div class="col-12 col-sm-6">
-                <p class="text-center"><b>{{anuncio.titulo}}</b></p>
-                <p>{{anuncio.detalle}}</p>
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion">
+            <h1>Detalles Anuncio</h1>
+        </div>
+    </div>
+    <div class="row details-row-top">
+        <div class="col columna-container" id="pasaje">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <p class="text-md-right"><b>Id Anuncio: </b>{{anuncio.id_anuncio}}</p>
+                    <p class="text-md-right"><b>Sindicato: </b>{{anuncio.sindicato?.nombre}}</p>
+                    <p class="text-md-right"><b>Fecha: </b>{{anuncio.fecha| date:'dd/MM/yyyy'}}</p>
+                    <p class="text-md-right"><b>Referencia: </b>{{anuncio.celular_referencia}}</p>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <p class="text-center"><b>{{anuncio.titulo}}</b></p>
+                    <p>{{anuncio.detalle}}</p>
+                </div>
             </div>
         </div>
     </div>
+    
     <div class="row sections-buttons">
         <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>
-        <div class="text-center"><button class="btn button-editar" (click)="EditarAnuncio(anuncio.id_anuncio)">Editar Anuncio</button></div>
+        <div *ngIf="ValidarVista()" class="text-center"><button class="btn button-editar" (click)="EditarAnuncio(anuncio.id_anuncio)">Editar Anuncio</button></div>
     </div>
 </div>

@@ -21,6 +21,8 @@ export class FormularioTurnosComponent implements OnInit {
   conductores: Conductor[];
   viajes: Viaje[] = [];
   turnoNuevo: boolean;
+  sindicatoUsuario: number;
+  nombreSindicato: string;
 
   formulario={
     turnoConductor: null,
@@ -34,9 +36,9 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   validacion={
-    fecha: false,
-    grupo: false,
-    viajes: false
+    fecha: true,
+    grupo: true,
+    viajes: true
   }
 
   constructor(
@@ -49,21 +51,25 @@ export class FormularioTurnosComponent implements OnInit {
 
   ngOnInit(): void {
     const id_turno = this.route.snapshot.queryParams["id_turno"];
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.turnoNuevo = id_turno == undefined;
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
+
     if(!this.turnoNuevo){      
       this.servicioTurnos.ObtenerTurno(id_turno).subscribe((turno)=>{
         this.viajes = turno.viajes;
         this.turno = turno;
       });
     }
-    this.conductoresService.ObtenerConductores().subscribe(conductores=>{this.conductores = conductores})
+    this.conductoresService.ObtenerConductoresPorSindicato(this.sindicatoUsuario).subscribe(conductores=>{this.conductores = conductores})
   }
 
   CrearTurno(){
     if(this.ValidarTurno('registrar'))
     { 
+      this.turno.id_sindicato = this.sindicatoUsuario;
       this.servicioTurnos.CrearTurno(this.turno).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/turnos`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
       }); 
     }
   }
@@ -72,7 +78,7 @@ export class FormularioTurnosComponent implements OnInit {
     if(this.ValidarTurno('registrar'))
     { 
       this.servicioTurnos.EditarTurno(this.turno).subscribe(result=>{
-        this._location.back();
+        this.router.navigate([`/turnos`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
       });
     }
   }
@@ -92,6 +98,7 @@ export class FormularioTurnosComponent implements OnInit {
     turnoAgregar.id_carnet_conductor =  this.formulario.carnetConductor;
     turnoAgregar.numero_turno = this.formulario.turnoConductor;
     turnoAgregar.fecha= this.turno.fecha;
+    turnoAgregar.id_turno = this.turno.id_turno;
     this.turno.viajes.push(turnoAgregar);
     this.ValidarTurno('verificar');
     this.formulario.carnetConductor = "";
@@ -100,8 +107,9 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   getConductorNombre(carnet:Number){
-    var respuesta = this.conductores.filter(c=>{return c.carnet ==carnet});
-    return respuesta[0].nombre + " " +respuesta[0].apellido_paterno;
+      const con = this.conductores?.find(c=>{return c.carnet===Number(carnet)});
+      return con?.nombre + " " + con?.apellido_paterno;
+
   }
 
   BorrarTurno(IdABorrar:Number){
@@ -112,7 +120,11 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   Cancelar(){
-    this.router.navigateByUrl("/turnos");
+    this.router.navigate([`/turnos`], { queryParams: { id_sindicato:this.sindicatoUsuario }})
+  }
+
+  DesabilitarConductores(carnet:number){
+    return this.turno.viajes.some(v=>v.id_carnet_conductor===carnet); 
   }
 
 }

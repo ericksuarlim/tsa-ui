@@ -23,31 +23,52 @@ import { DetalleViajeComponent } from './componentes/paginas/viajes/detalle-viaj
 import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
 import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
 import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
-
+import { InicioSesionComponent } from './componentes/paginas/sesion/inicio-sesion/inicio-sesion.component';
+import { FormularioHabilitarUsuarioComponent } from './componentes/paginas/sesion/formulario-habilitar-usuario/formulario-habilitar-usuario.component';
+import { FormularioCrearUsuarioComponent } from './componentes/paginas/sesion/formulario-crear-usuario/formulario-crear-usuario.component';
+import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-usuario/detalles-usuario.component';
+import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuarios/lista-usuarios.component';
+import { FormularioRestablecerPasswordComponent } from './componentes/paginas/sesion/formulario-restablecer-password/formulario-restablecer-password.component';
+import {AutenticacionGuard} from './commons/AutenticacionGuard'
+import { RoleGuard } from './commons/RoleGuard';
+import { SindicatoPrincipalComponent } from './componentes/paginas/sindicatos/sindicato-principal/sindicato-principal.component';
+import { SupraGuard } from './commons/SupraGuard';
+import { FormularioSindicatoComponent } from './componentes/paginas/sindicatos/formulario-sindicato/formulario-sindicato.component';
+import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/habilitar-sindicato/habilitar-sindicato.component';
 const routes: Routes = [
   {path:'', component: PaginaPrincipalComponent},
   {path:'servicio-sindicato', component: ServiciosSindicatosComponent},
-  {path:'conductores', component: PrincipalChoferesComponent},
-  {path:'conductores/formulario', component: FormularioChoferesComponent},
+  {path:'conductores', component: PrincipalChoferesComponent,canActivate: [AutenticacionGuard]},
+  {path:'conductores/formulario', component: FormularioChoferesComponent,canActivate: [AutenticacionGuard]},
   {path:'conductores/modal', component: ModalEliminarComponent},
-  {path:'turnos', component: PrincipalTurnosComponent},
   {path:'pasajes', component: PasajesPrincipalComponent},
-  {path:'turnos/formulario', component: FormularioTurnosComponent},
-  {path:'pasajes/formulario', component: FormularioPasajesComponent},
+  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent },
+  {path:'pasajes/formulario', component: FormularioPasajesComponent,canActivate: [AutenticacionGuard]},
+  {path:'turnos/formulario', component: FormularioTurnosComponent,canActivate: [AutenticacionGuard]},
+  {path:'turnos', component: PrincipalTurnosComponent},
   {path:'turnos/:id_turno/detalles-turno', component: DetallesTurnoComponent},
   {path:'reservas', component: PrincipalReservasComponent},
   {path:'reservas/formulario', component: FormularioReservasComponent},
-  {path:'pasajes/recibo/:id_pasaje', component: PasajeIndividualComponent },
   {path:'viajes', component: PrincipalViajesComponent },
-  {path:'viajes/formulario', component: FormularioViajesComponent},
+  {path:'viajes/formulario', component: FormularioViajesComponent,canActivate: [AutenticacionGuard]},
+  {path:'viajes/:id_viaje', component: DetalleViajeComponent}, 
   {path:'encomiendas', component: PrincipalEncomiendasComponent},
-  {path:'encomiendas/formulario', component: FormularioEncomiendasComponent},
+  {path:'encomiendas/formulario', component: FormularioEncomiendasComponent,canActivate: [AutenticacionGuard]},
   {path:'encomiendas/seguimiento/:id_encomienda', component: DetalleEncomiendaComponent},
   {path:'encomiendas/recibo/:id_encomienda', component: ReciboEncomiendaComponent},
-  {path:'viajes/:id_viaje', component: DetalleViajeComponent},  
   {path:'anuncios', component: PrincipalAnunciosComponent},
-  {path:'anuncios/formulario', component: FormularioAnunciosComponent},  
+  {path:'anuncios/formulario', component: FormularioAnunciosComponent,canActivate: [AutenticacionGuard]},  
   {path:'anuncios/:id_anuncio', component: DetalleAnuncioComponent},
+  {path:'sesion/inicio-sesion', component: InicioSesionComponent},
+  {path:'sesion/restablecer-password', component: FormularioRestablecerPasswordComponent},
+  {path:'usuarios/gestion', component: FormularioHabilitarUsuarioComponent, canActivate: [RoleGuard]},
+  {path:'usuarios', component: ListaUsuariosComponent, canActivate: [RoleGuard]},
+  {path:'usuarios/formulario', component: FormularioCrearUsuarioComponent,canActivate: [RoleGuard]},
+  {path:'usuarios/:id_usuario', component: DetallesUsuarioComponent,canActivate: [RoleGuard]},
+  {path:'sindicatos', component: SindicatoPrincipalComponent,canActivate: [SupraGuard]},
+  {path:'sindicatos/formulario', component: FormularioSindicatoComponent,canActivate: [SupraGuard]},
+  {path:'sindicatos/gestion', component: HabilitarSindicatoComponent,canActivate: [SupraGuard]},
+
   
 ];
 

@@ -3,51 +3,62 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+      <div class="col-12 col-ubicacion">
+          <h1>Viajes {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
+      </div>
+    </div>
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
-            <input type="text" name="nombre_conductor" class="input-search form-control" placeholder="Ej. Ramiro Colque">
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <select name="tipo_busqueda" class="form-control">
-                <option>Nombre Conductor</option>
-                <option>Codigo viaje</option>
-                <option>Fecha</option>
-            </select>   
-        </div>
-        <div class="col-sm-12 col-md-2 btn-new">
-            <a href="/viajes/formulario" class="btn">Crear Viaje</a>
-        </div>
+      <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
+        <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+          <option disabled selected value="undefined">Buscar por</option>
+          <option>Nombre Cliente</option>
+          <option>Fecha</option>
+        </select>   
+      </div>
+
+      <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Cliente'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+          <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+      </div>
+      <div *ngIf="parametroBusqueda==='Fecha'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+        <input type="date" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+      </div>
+      
+      <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
+          <a href="/viajes/formulario" class="btn">Crear Viaje</a>
+      </div>
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
             <table class="table table-striped tabla-viajes">
                 <thead class="thead-viajes">
                   <tr>
-                    <th scope="col">Fec. Salida</th>
-                    <th scope="col">Nombre Conductor</th>
-                    <th scope="col">Ubicacion</th>
-                    <th scope="col">Hora Salida</th>
-                    <th scope="col">Hora Llegada</th>
-                    <th scope="col">Disponibilidad</th>
-                    <th scope="col">Origen</th>
-                    <th scope="col">Destino</th>
+                    <th class="text-center" scope="col">Fec. Salida</th>
+                    <th class="text-center" scope="col">Nombre Conductor</th>
+                    <th class="text-center" scope="col">Ubicacion</th>
+                    <th class="text-center" scope="col">Hora Salida</th>
+                    <th class="text-center" scope="col">Hora Llegada</th>
+                    <th class="text-center" scope="col">Disponibilidad</th>
+                    <th class="text-center" scope="col">Origen</th>
+                    <th class="text-center" scope="col">Destino</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let viaje of viajes">
+                <tbody *ngFor="let viaje of viajesFiltrados">
                   <tr>
-                    <th>{{viaje.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
-                    <td>{{viaje.conductore?.nombre}} {{viaje.conductore?.apellido_paterno}}</td>
-                    <td>{{viaje.ubicacion}}</td>
-                    <td>{{viaje.hora_salida}}</td>
-                    <td>{{viaje.hora_llegada}}</td>
-                    <td>{{viaje.disponibilidad}}</td>
-                    <td>{{viaje.origen}}</td>
-                    <td>{{viaje.destino}}</td>
-                    <td><a class="btn btn-table btn-detalles" (click)="opcionesViaje(viaje)">Opciones</a></td>
+                    <th class="text-center">{{viaje.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
+                    <td class="text-center">{{viaje.conductore?.nombre}} {{viaje.conductore?.apellido_paterno}}</td>
+                    <td class="text-center">{{viaje.ubicacion}}</td>
+                    <td class="text-center">{{viaje.hora_salida}}</td>
+                    <td class="text-center">{{viaje.hora_llegada}}</td>
+                    <td class="text-center">{{viaje.disponibilidad}}</td>
+                    <td class="text-center">{{viaje.origen}}</td>
+                    <td class="text-center">{{viaje.destino}}</td>
+                    <td ><a class="btn btn-table btn-detalles" (click)="ValidarVista()? opcionesViaje(viaje) : VerViaje(viaje.id_viaje)">{{ValidarVista() ? 'Opciones' : 'Ver'}}</a></td>
                   </tr>
                 </tbody>
               </table>
+              <div *ngIf="viajes?.length === 0" class="empty-table-message">Sin Viajes</div>
         </div>
     </div>
 </div>

@@ -1,0 +1,40 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row operation-section">
+        <div class="col-sm-12 btn-new">
+          <button (click)="CrearSindicato()" class="btn mr-1">Crear Sindicato</button>
+          <button (click)="ActivarSindicato()" class="btn ml-1">Activar Sindicato</button>
+
+        </div>
+
+    </div>
+    <div class="row row-container">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-sindicatos">
+                <thead class="thead-sindicatos">
+                  <tr>
+                    <th scope="col" class="text-center">Id</th>
+                    <th scope="col" class="text-center">Nombre</th>
+                    <th scope="col" class="text-center">Estado</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let sindicato of sindicatos">
+                  <tr>
+                    <td class="text-center">{{sindicato.id_sindicato}}</td>
+                    <th class="text-center">{{sindicato.nombre}}</th>
+                    <td class="text-center">{{sindicato.estado===true?'Activado':'Desactivado'}}</td>
+                    <td><a class="btn btn-table btn-ver-sindicato" (click)="EditarSindicato(sindicato.id_sindicato)">Editar</a></td>
+                    <td><a class="btn btn-table btn-ver-sindicato" (click)="EliminarSindicato(sindicato.id_sindicato)">Eliminar</a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+

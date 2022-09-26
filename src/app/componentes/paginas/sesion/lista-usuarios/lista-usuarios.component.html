@@ -1,0 +1,57 @@
+<div class="image-container">
+    <img src="../../../../../assets/imagenes/mamaCortada.jpg" alt="" class="image-top">
+</div>
+
+<div class="container">
+    <div class="row top-row-ubication">
+      <div class="col-12 col-ubicacion">
+          <h1>Lista Usuarios</h1>
+      </div>
+    </div>
+    <div class="row operation-section">
+        <div class="col-sm-4 col-md-3">
+          <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+            <option disabled selected value="undefined">Buscar por</option>
+            <option>Nombre Usuario</option>
+            <option>Carnet</option>
+          </select>   
+        </div>
+  
+        <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Usuario'" class="col-sm-8 col-md-7">
+            <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+        </div>
+        <div *ngIf="parametroBusqueda==='Carnet'" class="col-sm-8 col-md-7">
+          <input type="number" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. 78964583">
+        </div>
+
+        <div class="col-sm-12 col-md-2 btn-new">
+          <button (click)="CrearUsuario()" class="btn">Registrar Usuario</button>
+        </div>
+    </div>
+    <div class="row row-container">
+        <div class="table-responsive box-card-parent">
+            <table class="table table-striped tabla-usuarios">
+                <thead class="thead-usuarios">
+                  <tr>
+                    <th scope="col" class="text-center">Carnet</th>
+                    <th scope="col" class="text-center">Nombre</th>
+                    <th scope="col" class="text-center">rol</th>
+                    <th scope="col" class="text-center">celular</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let usuario of usuariosFiltrados">
+                  <tr>
+                    <td class="text-center">{{usuario.carnet}}</td>
+                    <th class="text-center">{{usuario.nombres}} {{usuario.apellido_paterno}}</th>
+                    <td class="text-center">{{usuario.rol}}</td>
+                    <td class="text-center">{{usuario.celular_referencia}}</td>
+                    <td><a class="btn btn-table btn-ver-usuario" (click)="AbrirUsuario(usuario.id_usuario)">Ver Usuario</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div *ngIf="usuarios?.length === 0" class="empty-table-message">Sin Usuarios</div>
+        </div>
+    </div>
+</div>
+

@@ -4,6 +4,11 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion">
+            <h1>Detalles Viaje</h1>
+        </div>
+    </div>
     <div class="row columna-container">
         <div class="col">
             <div class="row">
@@ -66,7 +71,7 @@
                             <th scope="col" class="text-center">Cliente</th>
                             <th scope="col" class="text-center">Precio</th>
                             <th scope="col" class="text-center">Pagado</th>
-                            <th scope="col"></th>
+                            <th *ngIf="ValidarVista()" scope="col"></th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let pasaje of viaje.pasajes">
@@ -75,7 +80,7 @@
                             <td class="text-center">{{pasaje.nombre_completo}}</td>
                             <td class="text-center">{{pasaje.precio}}</td>
                             <td class="text-center">{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
-                            <td><a class="btn btn-table btn-detalles" (click)="AbrirPasaje(pasaje.id_pasaje)">Ver</a></td>
+                            <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="AbrirPasaje(pasaje.id_pasaje)">Ver</a></td>
                            
                           </tr>
                           
@@ -96,7 +101,7 @@
                             <th scope="col" class="text-center">Cliente</th>
                             <th scope="col" class="text-center">Pagada</th>
                             <th scope="col" class="text-center">Bultos</th>
-                            <th scope="col"></th>
+                            <th *ngIf="ValidarVista()" scope="col"></th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let encomienda of viaje.encomiendas">
@@ -105,11 +110,11 @@
                             <td class="text-center">{{encomienda.nombre_cliente}}</td>
                             <td class="text-center">{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
                             <td class="text-center">{{encomienda.cantidad_bultos}}</td>
-                            <td><a class="btn btn-table btn-detalles" (click)="VerEncomienda(encomienda.id_encomienda)">Ver</a></td>
+                            <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="VerEncomienda(encomienda.id_encomienda)">Ver</a></td>
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene encomiendas</div>
+                      <div *ngIf="viaje?.encomiendas?.length === 0" class="empty-table-message">Este viaje aun no tiene encomiendas</div>
                 </div>
             </div>
             <div class="row">
@@ -124,7 +129,7 @@
                             <th scope="col" class="text-center">Cliente</th>
                             <th scope="col" class="text-center">Cantidad</th>
                             <th scope="col" class="text-center">Estado</th>
-                            <th scope="col"></th>
+                            <th *ngIf="ValidarVista()" scope="col"></th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let reserva of viaje.reservas">
@@ -133,17 +138,16 @@
                             <td class="text-center">{{reserva.nombre_completo_reserva}}</td>
                             <td class="text-center">{{reserva.cantidad}}</td>
                             <td class="text-center">{{reserva.estado}}</td>
-                            <td><a class="btn btn-table btn-detalles" (click)="OpcionesReserva(reserva.id_reserva)">Ver</a></td>
+                            <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="OpcionesReserva(reserva.id_reserva)">Ver</a></td>
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="viaje?.pasajes?.length === 0" class="empty-table-message">Este viaje aun no tiene reservas</div>
+                      <div *ngIf="viaje?.reservas?.length === 0" class="empty-table-message">Este viaje aun no tiene reservas</div>
                 </div>
             </div>
             <div class="row sections-buttons">
                 <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>
-                <div class="text-center"><button class="btn button-editar" (click)="Editar(viaje.id_viaje)">Editar Viaje</button></div>
-                <div class="text-center"><button class="btn button-ver-recibo" (click)="VerRecibo(viaje.id_viaje)">Ver Recibo</button></div>
+                <div *ngIf="ValidarVista()" class="text-center"><button class="btn button-editar" (click)="Editar(viaje.id_viaje)">Editar Viaje</button></div>
             </div>
         </div>        
     </div>

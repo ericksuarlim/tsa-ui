@@ -9,6 +9,8 @@ import 'moment/locale/es';
 import { Viaje } from 'src/app/modelos/viaje';
 import { ModalOpcionesViajesComponent } from 'src/app/componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-detalles-turno',
@@ -19,20 +21,29 @@ export class DetallesTurnoComponent implements OnInit {
 
   conductores: Conductor [];
   turno: Turno;
+
+  sindicatoCargado: number;
+  sindicatoUsuario: number;
+
   constructor(
     private conductoresService:ServicioConductoresService, 
     private turnoService:ServicioTurnosService, 
     private route: ActivatedRoute,
     private router:Router,
-    public modalService: NgbModal
+    public modalService: NgbModal,
+    private _location: Location,
   ) { }
 
   ngOnInit(): void {
     const idTurno = Number(this.route.snapshot.paramMap.get("id_turno"));
-    this.conductoresService.ObtenerConductores().subscribe(conductores=>{
-      this.conductores = conductores;
-    })
-    this.turnoService.ObtenerTurno(idTurno).subscribe(turno=>{this.turno = turno});
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.turnoService.ObtenerTurno(idTurno).subscribe(turno=>{
+      this.turno = turno;
+      if(this.sindicatoCargado!=this.sindicatoUsuario || this.turno.id_sindicato != this.sindicatoUsuario){
+        this.router.navigate(['/']);
+      }
+    });
   }
 
   EliminarTurno(){
@@ -46,9 +57,9 @@ export class DetallesTurnoComponent implements OnInit {
     modalRef.componentInstance.viaje = copiaViaje;
   }
 
-  getConductorNombre(carnet:Number){
-    var respuesta = this.conductores.filter(c=>{return c.carnet ==carnet});
-    return respuesta[0].nombre + " " +respuesta[0].apellido_paterno;
+  Atras(){
+    this._location.back();
   }
+
 
 }

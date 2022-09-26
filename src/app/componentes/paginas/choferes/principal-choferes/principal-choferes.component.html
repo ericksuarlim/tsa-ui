@@ -3,23 +3,34 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion">
+            <h1>Conductores {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
+        </div>
+      </div>
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
-            <input type="text" name="nombre_conductor " class="input-search form-control" placeholder="Ej. Ramiro Colque">
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <select name="tipo_busqueda" class="form-control">
-                <option>Nombre</option>
-                <option>Carnet</option>
+        <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
+            <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+              <option disabled selected value="undefined">Buscar por</option>
+              <option>Nombre Conductor</option>
+              <option>Carnet</option>
             </select>   
-        </div>
-        <div class="col-sm-12 col-md-2 btn-new">
+          </div>
+    
+          <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Conductor'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+              <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+          </div>
+          <div *ngIf="parametroBusqueda==='Carnet'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+            <input type="number" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. 10847851">
+          </div>
+    
+        <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
             <a href="/conductores/formulario" class="btn">Crear Chofer</a>
         </div>
     </div>
     
     <div class="row row-container">
-        <div class="box-card-parent col-md-6 col-lg-4 col-sm-12" *ngFor="let conductor of conductores">
+        <div class="box-card-parent col-md-6 col-lg-4 col-sm-12" *ngFor="let conductor of conductoresFiltrados">
             <div class="box-card row">
                 <div class="panel-body-main col-sm-12">
                    <div class="panel-heading">
@@ -44,8 +55,8 @@
 
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-editar" (click)="editarConductor(conductor.carnet)">Editar </button>
-                        <button class="btn btn-borrar" (click)="AbrilModalEliminar(conductor)">Borrar </button>
+                        <button *ngIf="ValidarVista()" class="btn btn-editar" (click)="editarConductor(conductor.carnet)">Editar </button>
+                        <button *ngIf="ValidarVista()" class="btn btn-borrar" (click)="AbrilModalEliminar(conductor)">Borrar </button>
                     </div>
                 </div>
             </div>

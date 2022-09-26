@@ -4,12 +4,17 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+        <div class="col-12 col-ubicacion">
+            <h1>Detalles Encomienda</h1>
+        </div>
+    </div>
     <div class="row columna-container">
         <div class="col">
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <div class="col-12">
-                        <p><b>Id Encomienda:</b> {{encomienda.viaje?.id_viaje}}</p>                
+                        <p><b>Id Encomienda:</b> {{encomienda.id_encomienda}}</p>                
                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
@@ -65,12 +70,17 @@
                         <p><b>Pagada:</b> {{encomienda.pagada===true? "Pagada" : "Por pagar"}}</p>           
                     </div>   
                 </div>
+                <div class="col-12">
+                    <div class="col-12">
+                        <p><b>Detalle:</b> {{encomienda.detalle}}</p>        
+                    </div>
+                </div>
             
             </div>
             <div class="row sections-buttons">
                 <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>
-                <div class="text-center"><button class="btn button-editar" (click)="Editar(encomienda.id_encomienda,encomienda.id_viaje)">Editar</button></div>
-                <div class="text-center"><button class="btn button-ver-recibo" (click)="VerRecibo(encomienda.id_encomienda)">Ver Recibo</button></div>
+                <div *ngIf="ValidarVista()" class="text-center"><button class="btn button-editar" (click)="Editar(encomienda.id_encomienda,encomienda.id_viaje)">Editar</button></div>
+                <div *ngIf="ValidarVista()" class="text-center"><button class="btn button-ver-recibo" (click)="VerRecibo(encomienda.id_encomienda)">Ver Recibo</button></div>
             </div>
         </div>        
     </div>

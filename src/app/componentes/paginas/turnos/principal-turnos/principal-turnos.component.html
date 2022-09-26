@@ -3,17 +3,29 @@
 </div>
 
 <div class="container">
+    <div class="row top-row-ubication">
+      <div class="col-12 col-ubicacion">
+          <h1>Turnos {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
+      </div>
+    </div>
+
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7 ">
-            <input type="text" name="nombre_conductor " class="input-search form-control" placeholder="Ej. 05/04/2022">
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <select name="tipo_busqueda" class="form-control">
-                <option>Fecha</option>
-                <option>Numero Turno</option>
-            </select>   
-        </div>
-        <div class="col-sm-12 col-md-2 btn-new">
+      <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
+        <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+          <option disabled selected value="undefined">Buscar por</option>
+          <option>Id Turno</option>
+          <option>Fecha</option>
+        </select>   
+      </div>
+
+      <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Id Turno'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+          <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. 10">
+      </div>
+      <div *ngIf="parametroBusqueda==='Fecha'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+        <input type="date" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()">
+      </div>
+
+        <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
             <a href="/turnos/formulario" class="btn">Crear Turno</a>
         </div>
     </div>
@@ -25,20 +37,21 @@
                   <tr>
                     <th scope="col" class="text-center">Id. Turno</th>
                     <th scope="col" class="text-center">Fecha</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th *ngIf="ValidarVista()" scope="col"></th>
+                    <th *ngIf="ValidarVista()" scope="col"></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let turno of turnos">
+                <tbody *ngFor="let turno of turnosFiltrados">
                   <tr>
                     <td scope="row" class="td-size text-center">{{turno.id_turno}}</td>
                     <td class="td-size text-center">{{ turno.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
-                    <a class="btn btn-table btn-detalles" (click)="verTurno(turno.id_turno)">Ver Detalles</a>
-                    <a class="btn btn-table btn-editar" (click)="editarTurno(turno.id_turno)">Editar</a>
+                    <a *ngIf="ValidarVista()" class="btn btn-table btn-detalles" (click)="verTurno(turno.id_turno)">Ver Detalles</a>
+                    <a *ngIf="ValidarVista()" class="btn btn-table btn-editar" (click)="editarTurno(turno.id_turno)">Editar</a>
                   </tr>
                  
                 </tbody>
               </table>
+              <div *ngIf="turnos?.length === 0" class="empty-table-message">Sin Turnos</div>
         </div>
     </div>
   </div>

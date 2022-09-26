@@ -16,17 +16,19 @@
                             <li> <img class="office-icon" src="../../../assets/imagenes/chinchetas.png" alt="">Oficina Santa Ana</li>
                         </ul>
                     </div> -->
-                    <div class="row nav-bar-info">
-                        <div class="col-12 col-md-3 ubication-bar text-center text-md-right">
-                            <img class="ubication-icon" src="../../../assets/imagenes/marcador-de-posicion.png" alt="">Calle Jorge Nacif Landivar Esq. Circunvalacion
-                        </div>
-                        <div class="col-12 col-md-3 phone-bar text-center text-md-left">
-                            <img class="cellphone-icon " src="../../../assets/imagenes/llamada-de-telefono-inteligente.png" alt="">+71234567
-                        </div>
-                        <div class="col-12 col-md-6 office-bar text-center text-md-right">
-                            <img class="office-icon" src="../../../assets/imagenes/chinchetas.png" alt="">Oficina Santa Ana
-                        </div>
-                    </div>  
+                    <div class="col">
+                        <div class="row nav-bar-info">
+                            <div class="col-12 col-md-3 ubication-bar text-center text-md-right">
+                                <img class="ubication-icon" src="../../../assets/imagenes/marcador-de-posicion.png" alt="">Calle Jorge Nacif Landivar Esq. Circunvalacion
+                            </div>
+                            <div class="col-12 col-md-3 phone-bar text-center text-md-left">
+                                <img class="cellphone-icon " src="../../../assets/imagenes/llamada-de-telefono-inteligente.png" alt="">+71234567
+                            </div>
+                            <div class="col-12 col-md-6 office-bar text-center text-md-right">
+                                <img class="office-icon" src="../../../assets/imagenes/chinchetas.png" alt="">Oficina Santa Ana
+                            </div>
+                        </div>  
+                    </div>
                 </div>
                 
             </div>
@@ -40,29 +42,34 @@
                                 <a href="" class="title-main"><img class="logo-image-santana" src="../../../assets/imagenes/logo_terminal.png" alt="">Terminal de Buses</a>
                             </div>
                         </div>
-                        
                     
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                             <img src="../../../assets/imagenes/hide-icon-menu.png" class="button-image-toggler">
+                            <label class="navbar-toggler-label">MENU</label> 
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul class="navbar-nav ml-auto ul-navbar">
-                                <li class="nav-item active"><a href="/viajes" class="nav-link float-right">Salidas</a></li>
-                                <li class="nav-item"><a href="/encomiendas" class="nav-link float-right">Encomiendas</a></li>
-                                <li class="nav-item"><a href="/reservas" class="nav-link float-right">Reservas</a></li>
-                                <li class="nav-item dropdown">
+                                <!-- <li *ngIf="usuario===null" class="nav-item active"><a href="/viajes" class="nav-link float-right">Salidas</a></li>
+                                <li *ngIf="usuario===null" class="nav-item"><a href="/encomiendas" class="nav-link float-right">Encomiendas</a></li>
+                                <li *ngIf="usuario===null" class="nav-item"><a href="/reservas" class="nav-link float-right">Reservas</a></li> -->
+                                <li  class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle float-right" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Servicios
                                     </a>
                                     <ul class="dropdown-menu" >
-                                        <li class="dropdown-item"><a href="/viajes">Salidas y Llegadas</a></li>
-                                        <li class="dropdown-item"><a href="/pasajes">Pasajes</a></li>
-                                        <li class="dropdown-item"><a href="/reservas">Reservas</a></li>
-                                        <li class="dropdown-item"><a href="/encomiendas">Encomiendas</a></li>
-                                        <li class="dropdown-item"><a href="/turnos">Turnos</a></li>
-                                        <li class="dropdown-item"><a href="/conductores">Conductores</a></li>
-                                        <li class="dropdown-item"><a href="/anuncios">Anuncios</a></li>
+                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/viajes">Viajes</a></li>
+                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/encomiendas">Encomiendas</a></li>
+                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/reservas">Reservas</a></li>
+                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/anuncios">Anuncios</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/viajes']" [queryParams]="{id_sindicato: sindicatoUsuario}">Viajes</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/encomiendas']" [queryParams]="{id_sindicato: sindicatoUsuario}">Encomiendas</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/reservas']" [queryParams]="{id_sindicato: sindicatoUsuario}">Reservas</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/anuncios']" [queryParams]="{id_sindicato: sindicatoUsuario}">Anuncios</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/pasajes']" [queryParams]="{id_sindicato: sindicatoUsuario}">Pasajes</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/turnos']" [queryParams]="{id_sindicato: sindicatoUsuario}">Turnos</a></li>
+                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/conductores']" [queryParams]="{id_sindicato: sindicatoUsuario}">Conductores</a></li>
+                                        
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -70,12 +77,16 @@
                                         Sindicatos
                                     </a>
                                     <ul class="dropdown-menu" >
-                                        <li class="dropdown-item"><a href="/servicio-sindicato">Yacuma</a></li>
-                                        <li class="dropdown-item"><a href="/servicio-sindicato" >1º Mayo</a></li>
-                                        <li class="dropdown-item"><a href="/servicio-sindicato" >12 de Marzo</a></li>
-                                        <li class="dropdown-item"><a href="/servicio-sindicato">Movima</a></li>
+                                        <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(4)">Yacuma</a></li>
+                                        <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(1)">1º Mayo</a></li>
+                                        <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(2)" >12 de Marzo</a></li>
+                                        <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(3)">Movima</a></li>
                                     </ul>
                                 </li>
+                                <li *ngIf="usuario===null" class="nav-item"><a href="/sesion/inicio-sesion" class="nav-link float-right">Iniciar Sesion</a></li>
+                                <li *ngIf="rol==='administrador' || rol==='superadministrador'" class="nav-item"><a (click)="AbrirModalAdministrador()" class="nav-link float-right btn-opcines-administrador">Administrar</a></li>
+                                <li *ngIf="usuario!=null" class="nav-item"><a (click)="CerrarSesion()" class="nav-link float-right btn-cerrar-sesion">Cerrar Sesion</a></li>
+
                             </ul>
                         </div>
                     </nav>

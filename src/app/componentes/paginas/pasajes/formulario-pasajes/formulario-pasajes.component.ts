@@ -25,6 +25,8 @@ export class FormularioPasajesComponent implements OnInit {
   pasaje: Pasaje = new Pasaje();
   viaje: Viaje = new Viaje();
   pasajeNuevo: boolean = true;
+  sindicatoUsuario: number;
+  nombreSindicato: string;
 
   validacion= {
     nombre_completo: true,
@@ -47,8 +49,19 @@ export class FormularioPasajesComponent implements OnInit {
     const id_viaje = this.route.snapshot.queryParams["id_viaje"];
     const id_pasaje = this.route.snapshot.queryParams["id_pasaje"];
     this.pasajeNuevo = id_pasaje ==undefined;
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
+
     if(!this.pasajeNuevo){
-      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{this.pasaje=pasaje});
+      this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{
+        if(pasaje.viaje?.conductore?.id_sindicato===this.sindicatoUsuario){
+          this.pasaje=pasaje;
+        }
+        else
+        {
+          this.router.navigate(['/']);
+        }  
+      });
     }
     this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
   }
@@ -84,8 +97,7 @@ export class FormularioPasajesComponent implements OnInit {
   }
 
   sendViaWhatsApp(pasajeNuevo:Pasaje) { 
-    //console.log(window.location.href);
-    const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}`;
+    const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}?id_sindicato=${localStorage.getItem('id_sindicato_usuario')}`;
     const message = `Usted adquirió un boleto de transporte${(pasajeNuevo.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : "en el sindicato: "+pasajeNuevo.viaje?.conductore?.sindicato?.nombre}.%0A%0ASu boleto y recibo de compra digitales se encuentran en el siguiente enlace:%0A${urlRecibo}%0A%0AMuchas gracias por su preferencia!`;
     const phoneNumber = `591${this.pasaje.celular}`; 
     const messageText = message.split(' ').join('%20');; 

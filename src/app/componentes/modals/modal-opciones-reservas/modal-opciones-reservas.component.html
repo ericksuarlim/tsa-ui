@@ -19,7 +19,9 @@
                 </div>
                 <div  class="col-md-3">
                     <h5 class="modal-label-title">Estado</h5>
-                    <select name="estado" class="form-control" [(ngModel)]="reserva.estado" (ngModelChange)="ValidarReserva('verificar')">
+                    <select [disabled]="!ValidarVista() || estadoPasado!='Pendiente'"  name="estado" [ngClass]="{'estado-aceptado ': reserva.estado === 'Aceptado',
+                    'estado-rechazado ': reserva.estado === 'Rechazado', 
+                    'estado-pendiente ': reserva.estado === 'Pendiente'}" class="form-control" [(ngModel)]="reserva.estado" (ngModelChange)="ValidarReserva('verificar')">
                         <option>Pendiente</option>
                         <option>Aceptado</option>
                         <option>Rechazado</option>
@@ -53,7 +55,7 @@
                                 </tr>
                             </tbody>
                         </table>
-             
+                        <div *ngIf="viajes?.length === 0" class="empty-table-message">Sin Viajes</div>
                     </div>
                     <div class="col-12">
                         <div *ngIf="!validacion.id_viaje" class="text-danger">{{mensajeErrorValidacion.viaje}}</div>  
@@ -84,13 +86,13 @@
             <div class="row">
                 <div  class="col-12">
                     <h5 class="modal-label-title">Comentario</h5>
-                    <input type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
+                    <input [disabled]="!ValidarVista() || estadoPasado!='Pendiente'"  type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-cancelar" (click)="Cancelar()">Cancelar</button>
-            <button type="button" class="btn btn-actualizar" (click)="Actualizar()">Actualizar</button>
+            <button type="button" class="btn btn-cancelar" (click)="Cancelar()">{{ValidarVista() && estadoPasado==='Pendiente'? 'Cancelar':'Atras' }}</button>
+            <button *ngIf="ValidarVista() && estadoPasado==='Pendiente'"  type="button"  class="btn btn-actualizar" (click)="Actualizar()">Actualizar</button>
         </div>
     </div>
 </div>

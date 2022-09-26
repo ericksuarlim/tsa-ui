@@ -1,0 +1,89 @@
+.container{
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-top{
+    width: 100%;
+    margin-top: -70px;
+    max-height: 370px;
+    filter: brightness(35%);
+}
+
+.btn{
+    width: 150px;
+    border-radius: 100px;
+    height: 40px;
+}
+
+.button-descargar{
+    background-color: #a31e1e;
+    color: #FFFFFF;
+}
+
+.button-cerrar{
+    border: 1px solid #FB9130;
+    background-color: #FFFFFF;
+}
+
+.columna-container{
+    background-color: #fbfbfb;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 30px;
+    font-weight: 800px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    box-shadow:5px 10px 10px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
+}
+
+.columna-container p{
+    color: rgb(100, 100, 100);
+}
+
+.columna-container b{
+    color: #212529;
+}
+.box-card-parent{
+    padding: 15px;
+}
+
+.sections-buttons{
+    margin-top: 25px;
+}
+
+.button-editar{
+    border: 1px solid #FB9130;
+    background-color: #FB9130;
+    color: #FFFFFF;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@media (min-width: 990px) {
+    .columna-container{
+        margin: 30px auto;
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 542px) {
+    .sections-buttons{
+        display: block;
+    }
+    .btn{
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 543px) {
+    .sections-buttons{
+        justify-content: center;
+    }
+}
+
+@media (max-width: 577px) {
+    .columna-container{
+        margin: 30px 1px 1px 1px;
+    }
+}
+

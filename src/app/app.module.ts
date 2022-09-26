@@ -35,8 +35,19 @@ import { ModalOpcionesCreacionComponent } from './componentes/modals/modal-opcio
 import { PrincipalAnunciosComponent } from './componentes/paginas/anuncios/principal-anuncios/principal-anuncios.component';
 import { DetalleAnuncioComponent } from './componentes/paginas/anuncios/detalle-anuncio/detalle-anuncio.component';
 import { FormularioAnunciosComponent } from './componentes/paginas/anuncios/formulario-anuncios/formulario-anuncios.component';
+import { InicioSesionComponent } from './componentes/paginas/sesion/inicio-sesion/inicio-sesion.component';
+import { FormularioCrearUsuarioComponent } from './componentes/paginas/sesion/formulario-crear-usuario/formulario-crear-usuario.component';
+import { FormularioRestablecerPasswordComponent } from './componentes/paginas/sesion/formulario-restablecer-password/formulario-restablecer-password.component';
+import { ModalOpcionesAdministradorComponent } from './componentes/modals/modal-opciones-administrador/modal-opciones-administrador.component';
+import { FormularioHabilitarUsuarioComponent } from './componentes/paginas/sesion/formulario-habilitar-usuario/formulario-habilitar-usuario.component';
+import { ListaUsuariosComponent } from './componentes/paginas/sesion/lista-usuarios/lista-usuarios.component';
+import { DetallesUsuarioComponent } from './componentes/paginas/sesion/detalles-usuario/detalles-usuario.component';
+import { ModalEnvioCodigoComponent } from './componentes/modals/modal-envio-codigo/modal-envio-codigo.component';
 registerLocaleData(localeEsAr, 'es-Ar');
-
+import { BnNgIdleService } from 'bn-ng-idle';
+import { SindicatoPrincipalComponent } from './componentes/paginas/sindicatos/sindicato-principal/sindicato-principal.component';
+import { FormularioSindicatoComponent } from './componentes/paginas/sindicatos/formulario-sindicato/formulario-sindicato.component';
+import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/habilitar-sindicato/habilitar-sindicato.component'; 
 
 @NgModule({
   declarations: [
@@ -69,6 +80,17 @@ registerLocaleData(localeEsAr, 'es-Ar');
     PrincipalAnunciosComponent,
     DetalleAnuncioComponent,
     FormularioAnunciosComponent,
+    InicioSesionComponent,
+    FormularioCrearUsuarioComponent,
+    FormularioRestablecerPasswordComponent,
+    ModalOpcionesAdministradorComponent,
+    FormularioHabilitarUsuarioComponent,
+    ListaUsuariosComponent,
+    DetallesUsuarioComponent,
+    ModalEnvioCodigoComponent,
+    SindicatoPrincipalComponent,
+    FormularioSindicatoComponent,
+    HabilitarSindicatoComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +99,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     HttpClientModule,
     NgbModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
+  providers: [BnNgIdleService,{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

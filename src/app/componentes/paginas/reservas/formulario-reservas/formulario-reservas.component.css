@@ -2,7 +2,7 @@
     width: 100%;
     margin-top: -70px;
     max-height: 370px;
-    filter: brightness(50%);
+    filter: brightness(35%);
 }
 
 .container{
@@ -72,6 +72,11 @@
 .thead-viajes{
     background:#222222;
     color: white;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
 }
 
 .col-info-no-viajes{
@@ -163,6 +168,5 @@ table > tbody:empty:before {
 .radio-table-select{
     width: 25%;
     height: 1.2em;
-
-
+    margin-top: -3PX;
 }

@@ -14,7 +14,9 @@ import {Location} from '@angular/common';
 export class PasajeIndividualComponent implements OnInit {
 
   pasaje: Pasaje= new Pasaje();
-  
+  sindicatoCargado: number;
+  sindicatoUsuario: number;
+
   constructor(
     private servicioPasaje:ServicioPasajesService,
     private router: Router,
@@ -24,8 +26,13 @@ export class PasajeIndividualComponent implements OnInit {
 
   ngOnInit(): void {
     const id_pasaje = this.route.snapshot.params["id_pasaje"];
+    this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
+    this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe(pasaje=>{
       this.pasaje=pasaje;
+      if(this.sindicatoCargado!=this.sindicatoUsuario || this.pasaje.viaje.conductore.id_sindicato != this.sindicatoUsuario){
+        this.router.navigate(['/']);
+      }
     });
   }
 
@@ -46,11 +53,10 @@ export class PasajeIndividualComponent implements OnInit {
 
   Imprimir(){
     const content: Element = document.getElementById('recibo-pasaje');
-
     html2pdf().from(content).toPdf().get('pdf').then(function (pdfObj) {
       pdfObj.autoPrint();
       window.open(pdfObj.output('bloburl'), '_blank');
-  });
+    });
   }
 
 }

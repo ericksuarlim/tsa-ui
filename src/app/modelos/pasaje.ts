@@ -16,7 +16,10 @@ export class Pasaje{
         hora_llegada: string;
         aporte: string;
         id_turno: number;
+        origen: string;
+        destino: string;
         disponibilidad: number;
+        fecha: Date;
         conductore: {
             activo: boolean,
             apellido_materno: string,
@@ -27,7 +30,7 @@ export class Pasaje{
             grupo: string,
             id_auto_1: string,
             id_auto_2: string,
-            id_sindicato:string,
+            id_sindicato:number,
             nombre: string,
             sindicato: {
                 id_sindicato: number;

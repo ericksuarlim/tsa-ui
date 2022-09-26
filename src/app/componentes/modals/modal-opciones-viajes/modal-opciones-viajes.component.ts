@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Viaje } from 'src/app/modelos/viaje';
 import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
@@ -13,14 +13,17 @@ export class ModalOpcionesViajesComponent implements OnInit {
 
   viaje: Viaje = new Viaje();
   cambiarUbicacion: boolean = false;
+  id_sindicato: string;
 
   constructor(
     private activeModal: NgbActiveModal,
     private router:Router,
     private viajesService: ServicioViajesService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.id_sindicato = this.route.snapshot.queryParams["id_sindicato"];
   }
   
   Cancelar(){
@@ -51,7 +54,9 @@ export class ModalOpcionesViajesComponent implements OnInit {
 
   VerViaje(id_viaje:number){
     this.activeModal.close(); 
-    this.router.navigateByUrl(`/viajes/${id_viaje}`);
+    this.router.navigate([`/viajes/${id_viaje}`], { queryParams: { id_sindicato:this.id_sindicato }})
+
+    // this.router.navigateByUrl(`/viajes/${id_viaje}`);
   }
 
 

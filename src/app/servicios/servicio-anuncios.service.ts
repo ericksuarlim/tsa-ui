@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Anuncio } from '../modelos/anuncios';
+import { userData } from '../commons/userData'
 
 const httpOptions = {
   headers : new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+    'Authorization': "Bearer "+ userData.jwt,
+    'Sindicato': userData.sindicato
   })
 }
 
@@ -18,10 +21,13 @@ export class ServicioAnunciosService {
   baseUrl: string = environment.urlApi + "/anuncios";
 
   constructor(private http:HttpClient) { }
-    //Obtener registros de anuncios
 
   ObtenerAnuncios(): Observable<Anuncio[]>{
     return this.http.get<Anuncio[]>(this.baseUrl);
+  }
+
+  ObtenerAnunciosPorSindicato(id_sindicato:number): Observable<Anuncio[]>{
+    return this.http.get<Anuncio[]>(`${this.baseUrl}/sindicato/${id_sindicato}`);
   }
 
   CrearAnuncio(anuncio:Anuncio):Observable<Anuncio>{
@@ -37,6 +43,6 @@ export class ServicioAnunciosService {
   }
 
   EliminarAnuncio(id_anuncio:number):Observable<any>{
-    return this.http.delete<any>(this.baseUrl + "/" + id_anuncio)
+    return this.http.delete<any>(this.baseUrl + "/" + id_anuncio,httpOptions)
   }
 }

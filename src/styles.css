@@ -751,10 +751,20 @@
 	padding-bottom:14px;
 }
 
-.services-block .inner-box .lower-box h3 a{
+.services-block .inner-box .lower-box h3{
 	position:relative;
-	color:#222222;
+	/* color:#222222; */
 	font-size:20px;
+	font-weight:600;
+	transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-webkit-transition:all 0.3s ease;
+	-ms-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+}
+
+.inner-box:hover > h3 {
+	font-size:12px;
 	font-weight:600;
 	transition:all 0.3s ease;
 	-moz-transition:all 0.3s ease;
@@ -1020,8 +1030,58 @@
 	color:#ffffff;
 }
 
+/***
 
+====================================================================
+	Ubicacion Vistas
+====================================================================
 
+***/
+
+.top-row-ubication{
+    margin-top: -55px;
+}
+
+.col-ubicacion{
+    text-align: center;
+}
+
+.col-ubicacion h1{
+    font-size: 1.3em;
+    text-transform: uppercase;
+    width: 25%;
+    background-color: #00000069;
+    color: #FB9130;
+    display: inline;
+    padding: 10px;
+    font-weight: 450;
+}
+
+.details-row-top{
+	margin: 30px 3px 3px 3px;
+}
+
+.details-formulario-row-top{
+    margin-top: 30px;
+}
+
+@media (max-width: 465px){
+    .col-ubicacion h1{
+        font-size: 1em;
+        padding: 5px; 
+    }
+
+    .top-row-ubication{
+        margin-top: -49px;
+    }
+}
+
+@media (max-width: 550px){
+	.col-ubication-h1__small{
+		font-size: 0.80em;
+		padding: 5px; 
+	}
+}
 
 /***
 
@@ -1033,10 +1093,7 @@
 
 
 @media only screen and (max-width: 1340px){
-	.row-services-block{
-		/* padding-left: 200px;
-		padding-right: 200px; */
-	}
+
 	.page-wrapper{
 		overflow:hidden;	
 	}
@@ -1045,17 +1102,11 @@
 
 @media only screen and (min-width: 1200px){
 
-	.row-services-block{
-		/* padding-left: 200px;
-		padding-right: 200px; */
-	}
+
 }
 
 @media only screen and (max-width: 1140px){
-	.row-services-block{
-		/* padding-left: 200px;
-		padding-right: 200px; */
-	}
+
 	
 	
 	.main-header{
@@ -1104,13 +1155,7 @@
 	}
 }
 
-@media only screen and (max-width: 1023px){
-
-	.row-services-block{
-		padding-left: 120px;
-		padding-right: 120px;
-	}
-	
+@media (min-width: 662px) and (max-width: 1023px) {
 	.main-header .main-box .logo-box {
 		position:relative;
 		left:0px;
@@ -1120,8 +1165,18 @@
 		width:200px;
 		margin:0px;
 		text-align:left;
-        min-width: 60%;
+        min-width: 40%;
 	}
+}
+
+@media only screen and (max-width: 1023px){
+
+	.row-services-block{
+		padding-left: 120px;
+		padding-right: 120px;
+	}
+	
+	
 	
 	.main-header .main-box .outer-container{
 		padding-left:0px;	

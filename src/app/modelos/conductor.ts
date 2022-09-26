@@ -9,5 +9,5 @@ export class Conductor{
     id_auto_1 : string;
     id_auto_2 : string;
     grupo : string;
-    id_sindicato : string;
+    id_sindicato : number;
 }

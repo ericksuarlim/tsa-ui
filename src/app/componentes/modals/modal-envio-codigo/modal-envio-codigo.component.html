@@ -1,0 +1,17 @@
+<div class="modal-header">
+    Ingrese su nombre de usuario
+ </div>
+ <div class="modal-body ">
+    <div class="col">
+        <div class="row">
+            <div class="col-12">
+                <input type="text"  name="nombre_usuario" class="input-form-sesion form-control" [(ngModel)]="nombre_usuario" (ngModelChange)="ValidarEntrada('verificar')">
+                <div *ngIf="!validacion.nombre_usuario" class="text-danger">{{mensajeErrorValidacion.nombre_usuario}}</div>   
+                <div class="aviso-mensaje">Se enviara un mensaje para restablecer su contraseña al numero de telefono asociado a esta cuenta</div>   
+            </div>
+        </div>
+    </div>    
+ </div>
+ <div class="modal-footer">
+     <button type="button" class="btn btn-cancelar" (click)="EnviarCodigo()">Enviar Codigo</button>
+ </div>

@@ -3,19 +3,28 @@
 </div>
 
 <div class="container">
+  <div class="row top-row-ubication">
+    <div class="col-12 col-ubicacion">
+        <h1>Anuncios {{ nombreSindicato? '| Sindicato '+nombreSindicato:''}}</h1>
+    </div>
+  </div>
     <div class="row operation-section">
-        <div class="col-sm-8 col-md-7">
-            <input type="text" name="Titulo" class="input-search form-control" placeholder="Ej. Salidas Diarias a TDD">
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <select name="tipo_busqueda" class="form-control">
-                <option>TItulo</option>
-                <option>Codigo Anuncio</option>
-                <option>Fecha</option>
-            </select>   
-        </div>
+      <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
+        <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
+          <option disabled selected value="undefined">Buscar por</option>
+          <option>Titulo</option>
+          <option>Fecha</option>
+        </select>   
+      </div>
 
-        <div class="col-sm-12 col-md-2 btn-new">
+      <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Titulo'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+          <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Se necesita secretaria">
+      </div>
+      <div *ngIf="parametroBusqueda==='Fecha'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+        <input type="date" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" >
+      </div>
+
+        <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">
           <button (click)="RedirigirCrearAnuncio()" class="btn">Crear Anuncio</button>
         </div>
     </div>
@@ -29,21 +38,21 @@
                     <th scope="col">Sindicato</th>
                     <th scope="col">Detalle</th>
                     <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th *ngIf="ValidarVista()" scope="col"></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let anuncio of anuncios">
+                <tbody *ngFor="let anuncio of anunciosFiltrados">
                   <tr>
                     <td>{{anuncio.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
                     <th>{{anuncio.titulo}}</th>
                     <td>{{anuncio.sindicato?.nombre}}</td>
                     <td >{{(anuncio.detalle | slice:0:35)+'..'}}</td>
-                    <td><a class="btn btn-table btn-eliminar" (click)="ModalEliminarAnuncio(anuncio)">Eliminar</a></td>
+                    <td *ngIf="ValidarVista()"><a class="btn btn-table btn-eliminar" (click)="ModalEliminarAnuncio(anuncio)">Eliminar</a></td>
                     <td><a class="btn btn-table btn-ver" (click)="VerAnuncio(anuncio.id_anuncio)">Ver</a></td>
                   </tr>
                 </tbody>
               </table>
-        </div>
+              <div *ngIf="anuncios?.length === 0" class="empty-table-message">Sin Anuncios</div>        </div>
     </div>
 </div>
 
