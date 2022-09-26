@@ -98,7 +98,7 @@ export class FormularioPasajesComponent implements OnInit {
   }
 
   sendViaWhatsApp(pasajeNuevo:Pasaje) { 
-    const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}?id_sindicato=${localStorage.getItem('id_sindicato')}`;
+    const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}?id_sindicato=${localStorage.getItem('id_sindicato_usuario')}`;
     const message = `Usted adquirió un boleto de transporte${(pasajeNuevo.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : "en el sindicato: "+pasajeNuevo.viaje?.conductore?.sindicato?.nombre}.%0A%0ASu boleto y recibo de compra digitales se encuentran en el siguiente enlace:%0A${urlRecibo}%0A%0AMuchas gracias por su preferencia!`;
     const phoneNumber = `591${this.pasaje.celular}`; 
     const messageText = message.split(' ').join('%20');; 
