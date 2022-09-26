@@ -54,7 +54,6 @@ export class ModalOpcionesReservasComponent implements OnInit {
     this.esGeneral = this.sindicatoCargado === undefined;
     this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
-    console.log(this.reserva.estado)
     if(this.reserva.id_viaje===null)
     {
       this.sinViaje = true;

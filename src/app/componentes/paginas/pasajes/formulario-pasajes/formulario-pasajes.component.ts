@@ -54,7 +54,6 @@ export class FormularioPasajesComponent implements OnInit {
 
     if(!this.pasajeNuevo){
       this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{
-        console.log(pasaje.viaje?.conductore?.id_sindicato)
         if(pasaje.viaje?.conductore?.id_sindicato===this.sindicatoUsuario){
           this.pasaje=pasaje;
         }

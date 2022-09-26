@@ -74,7 +74,6 @@ export class FormularioReservasComponent implements OnInit {
     const response = this.validacion.fecha && this.validacion.cantidad && this.validacion.nombre_completo_reserva &&
     this.validacion.celular && this.validacion.id_sindicato && this.validacion.id_viaje;
    
-    console.log("res",response);
     return response;
   }
 
@@ -84,7 +83,6 @@ export class FormularioReservasComponent implements OnInit {
   }
 
   RegistrarReserva(){
-    console.log("Entro afuera");
     if(this.ValidarReserva("registrar"))
     {
       var reservaEnviar = new Reserva();
@@ -102,7 +100,6 @@ export class FormularioReservasComponent implements OnInit {
       reservaEnviar.nombre_completo_reserva = this.reserva.nombre_completo_reserva;
       reservaEnviar.celular = this.reserva.celular;
       reservaEnviar.estado = "Pendiente";
-      console.log("Entro");
       this.reservaService.CrearReserva(reservaEnviar).subscribe(result=>{
         this.router.navigate([`/reservas`])
       });
