@@ -23,11 +23,12 @@ export class ModalEnvioCodigoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //Iniciador
   }
 
 
   ValidarEntrada(action:string){
-    if(this.nombre_usuario === "" || (action=="registrar" && this.nombre_usuario == undefined)){this.mensajeErrorValidacion.nombre_usuario="Nombre usuario necesario"; this.validacion.nombre_usuario = false}else{this.validacion.nombre_usuario =true};
+    if(this.nombre_usuario === "" || (action=="registrar" && this.nombre_usuario == undefined)){this.mensajeErrorValidacion.nombre_usuario="Nombre usuario necesario"; this.validacion.nombre_usuario = false}else{this.validacion.nombre_usuario =true}
 
     const response = this.validacion.nombre_usuario;
     return response;

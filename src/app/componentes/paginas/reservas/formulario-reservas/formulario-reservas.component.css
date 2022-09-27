@@ -136,10 +136,6 @@ table > tbody:empty:before {
     transform: translateY(-50%);
 }
 
-.table th, .table td {
-    vertical-align: middle;
-}
-
 @media (max-width: 767px) {
     .image-top{
         margin-top: -20px;

@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PiePaginaComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    //constructor
+   }
 
   ngOnInit(): void {
+    //Iniciador
   }
 
 }

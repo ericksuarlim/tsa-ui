@@ -50,17 +50,9 @@ export class PrincipalReservasComponent implements OnInit {
       this.reservasFiltradas = this.reservas.filter((reserva: Reserva) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Fecha')
+            if(String(reserva.fecha).includes(palabra) || String(reserva.nombre_completo_reserva.toLowerCase()).includes(palabra))
             {
-              if ( String(reserva.fecha).includes(palabra)) {
                 encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(reserva.nombre_completo_reserva.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
             }
           });
           return encontrado;
@@ -73,13 +65,9 @@ export class PrincipalReservasComponent implements OnInit {
   }
 
   OpcionesReserva(reserva: Reserva){
-    let copiaReserva = new Reserva()
-    copiaReserva = {...reserva};
+    let copiaReserva = {...reserva};
     const modalRef = this.modalService.open(ModalOpcionesReservasComponent, { size: 'xl', backdrop: 'static' });
     modalRef.componentInstance.reserva = copiaReserva;
-    // modalRef.componentInstance.actualizar.subscribe((confirm: boolean) => {
-    //     window.location.reload();
-    // });
   }
 
   ValidarVista(){

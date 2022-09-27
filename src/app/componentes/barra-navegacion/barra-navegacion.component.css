@@ -5,21 +5,12 @@
 }
 
 .title-main{
+    font: bold;
     font-size: 0.90em;
     color: #4E4E4E;
-    font: bold;
     text-decoration: none;
     padding-top: 25px;
 }
-
-.ubication-bar{
-
-}
-
-.office-bar{
-    
-}
-
 
 .title-main:hover{
 	color:#ff8201;

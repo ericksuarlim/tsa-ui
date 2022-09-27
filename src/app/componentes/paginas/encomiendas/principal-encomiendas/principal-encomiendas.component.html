@@ -28,7 +28,7 @@
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
-            <table class="table table-striped tabla-encomiendas">
+            <table aria-describedby="tabla-lista-principal-encomiendas" class="table table-striped tabla-encomiendas">
                 <thead class="thead-encomiendas">
                   <tr>
                     <th scope="col">Fecha</th>
@@ -43,7 +43,7 @@
                 </thead>
                 <tbody *ngFor="let encomienda of encomiendasFiltradas">
                   <tr>
-                    <th>{{encomienda.viaje?.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
+                    <th scope="row">{{encomienda.viaje?.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
                     <td>{{encomienda.nombre_cliente}}</td>
                     <td>{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
                     <td>{{encomienda.viaje?.hora_salida}}</td>

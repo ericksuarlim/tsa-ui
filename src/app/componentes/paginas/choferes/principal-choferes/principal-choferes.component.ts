@@ -46,27 +46,15 @@ export class PrincipalChoferesComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit() {
-    
-  }
-
   Filtrar() {
     if(this.cadenaBusqueda!=undefined && this.parametroBusqueda!=undefined){
       const palabras: string[] = this.cadenaBusqueda.toString().toLowerCase().trim().split(' ');
       this.conductoresFiltrados = this.conductores.filter((conductor: Conductor) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Carnet')
+            if(String(conductor.carnet).includes(palabra) || String(conductor.nombre.toLowerCase()).includes(palabra))
             {
-              if ( String(conductor.carnet).includes(palabra)) {
-                encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(conductor.nombre.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
+              encontrado = true;
             }
           });
           return encontrado;

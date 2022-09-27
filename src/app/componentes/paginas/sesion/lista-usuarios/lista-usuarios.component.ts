@@ -34,17 +34,9 @@ export class ListaUsuariosComponent implements OnInit {
       this.usuariosFiltrados = this.usuarios.filter((usuario: Usuario) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Carnet')
+            if(String(usuario.carnet).includes(palabra) || String(usuario.nombres.toLowerCase()).includes(palabra))
             {
-              if ( String(usuario.carnet).includes(palabra)) {
-                encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(usuario.nombres.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
+              encontrado = true;
             }
           });
           return encontrado;

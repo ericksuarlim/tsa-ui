@@ -51,17 +51,9 @@ export class PrincipalAnunciosComponent implements OnInit {
       this.anunciosFiltrados = this.anuncios.filter((anuncio: Anuncio) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Fecha')
+            if(String(anuncio.fecha).includes(palabra) || String(anuncio.titulo.toLowerCase()).includes(palabra))
             {
-              if ( String(anuncio.fecha).includes(palabra)) {
                 encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(anuncio.titulo.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
             }
           });
           return encontrado;

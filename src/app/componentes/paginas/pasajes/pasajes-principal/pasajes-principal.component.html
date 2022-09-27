@@ -29,7 +29,7 @@
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
-            <table class="table table-striped tabla-pasajes">
+            <table aria-describedby="tabla-lista-principal-pasajes" class="table table-striped tabla-pasajes">
                 <thead class="thead-pasajes">
                   <tr>
                     <th scope="col" class="text-center">Cod. Pasaje</th>
@@ -45,7 +45,7 @@
                 <tbody *ngFor="let pasaje of pasajesFiltrados">
                   <tr>
                     <td class="text-center">{{pasaje.id_pasaje}}</td>
-                    <th class="text-center">{{pasaje.viaje?.fecha| date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
+                    <th scope="row" class="text-center">{{pasaje.viaje?.fecha| date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
                     <td class="text-center">{{pasaje.nombre_completo}}</td>
                     <td class="text-center">{{pasaje.precio}}</td>
                     <td class="text-center">{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>

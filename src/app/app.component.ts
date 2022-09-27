@@ -5,7 +5,6 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import { ServicioAutenticacionService } from './servicios/servicio-autenticacion.service';
 import { Router } from '@angular/router';
 import { ServicioSindicatosService } from './servicios/servicio-sindicatos.service';
-import { Sindicato } from './modelos/sindicato';
 
 @Component({
   selector: 'app-root',
@@ -40,9 +39,15 @@ export class AppComponent {
   guardarSindicatos(){
 
     this.sindicatosService.ObtenerSindicatos().subscribe(sindicatos=>{
-      var nuevaLista: any[] = [];
+      let nuevaLista: any[] = [];
       sindicatos.forEach(sindicato=>{
-        nuevaLista.push(Object.keys(sindicato).reduce(function(obj, k) {if (k == 'id_sindicato' || k=='nombre') obj[k] = sindicato[k];return obj;}, {}));
+        nuevaLista.push(Object.keys(sindicato).reduce(function(obj, k) {
+          if (k == 'id_sindicato' || k=='nombre') 
+          {
+            obj[k] = sindicato[k];
+          }
+          return obj;
+        }, {}));
       })
       nuevaLista.sort(function (a, b) {
         if (a.id_sindicato > b.id_sindicato) {
@@ -74,6 +79,6 @@ export class AppComponent {
   }
 
   async initFirebase(){
-    await firebase.initializeApp(environment.firebaseConfig);
+    firebase.initializeApp(environment.firebaseConfig);
   }
 }

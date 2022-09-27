@@ -30,7 +30,7 @@
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
-            <table class="table table-striped tabla-viajes">
+            <table aria-describedby="tabla-lista-principal-viajes" class="table table-striped tabla-viajes">
                 <thead class="thead-viajes">
                   <tr>
                     <th class="text-center" scope="col">Fec. Salida</th>
@@ -46,7 +46,7 @@
                 </thead>
                 <tbody *ngFor="let viaje of viajesFiltrados">
                   <tr>
-                    <th class="text-center">{{viaje.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
+                    <th scope="row" class="text-center">{{viaje.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</th>
                     <td class="text-center">{{viaje.conductore?.nombre}} {{viaje.conductore?.apellido_paterno}}</td>
                     <td class="text-center">{{viaje.ubicacion}}</td>
                     <td class="text-center">{{viaje.hora_salida}}</td>

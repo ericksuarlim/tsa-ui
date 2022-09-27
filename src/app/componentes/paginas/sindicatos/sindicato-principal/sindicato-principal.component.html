@@ -13,7 +13,7 @@
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
-            <table class="table table-striped tabla-sindicatos">
+            <table aria-describedby="tabla-lista-principal-sindicatos" class="table table-striped tabla-sindicatos">
                 <thead class="thead-sindicatos">
                   <tr>
                     <th scope="col" class="text-center">Id</th>
@@ -26,7 +26,7 @@
                 <tbody *ngFor="let sindicato of sindicatos">
                   <tr>
                     <td class="text-center">{{sindicato.id_sindicato}}</td>
-                    <th class="text-center">{{sindicato.nombre}}</th>
+                    <th scope="row" class="text-center">{{sindicato.nombre}}</th>
                     <td class="text-center">{{sindicato.estado===true?'Activado':'Desactivado'}}</td>
                     <td><a class="btn btn-table btn-ver-sindicato" (click)="EditarSindicato(sindicato.id_sindicato)">Editar</a></td>
                     <td><a class="btn btn-table btn-ver-sindicato" (click)="EliminarSindicato(sindicato.id_sindicato)">Eliminar</a></td>

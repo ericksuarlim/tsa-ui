@@ -48,17 +48,9 @@ export class PasajesPrincipalComponent implements OnInit {
       this.pasajesFiltrados = this.pasajes.filter((pasaje: Pasaje) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Fecha')
+            if(String(pasaje.viaje.fecha).includes(palabra) || String(pasaje.nombre_completo.toLowerCase()).includes(palabra))
             {
-              if ( String(pasaje.viaje.fecha).includes(palabra)) {
                 encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(pasaje.nombre_completo.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
             }
           });
           return encontrado;

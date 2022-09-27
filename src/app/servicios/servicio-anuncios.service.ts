@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Anuncio } from '../modelos/anuncios';
-import { userData } from '../commons/userData'
+import { UserData } from '../commons/UserData'
 
 const httpOptions = {
   headers : new HttpHeaders({
     'Content-Type':'application/json',
-    'Authorization': "Bearer "+ userData.jwt,
-    'Sindicato': userData.sindicato
+    'Authorization': "Bearer "+ UserData.jwt,
+    'Sindicato': UserData.sindicato
   })
 }
 

@@ -50,17 +50,9 @@ export class PrincipalViajesComponent implements OnInit {
       this.viajesFiltrados = this.viajes.filter((viaje: Viaje) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Fecha')
+            if(String(viaje.fecha).includes(palabra) || String(viaje.conductore.nombre.toLowerCase()).includes(palabra))
             {
-              if ( String(viaje.fecha).includes(palabra)) {
-                encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(viaje.conductore.nombre.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
+              encontrado = true;
             }
           });
           return encontrado;
@@ -74,8 +66,7 @@ export class PrincipalViajesComponent implements OnInit {
 
 
   opcionesViaje(viaje:Viaje){
-    let copiaViaje = new Viaje()
-    copiaViaje = {...viaje};
+    let copiaViaje = {...viaje};
     const modalRef = this.modalService.open(ModalOpcionesViajesComponent, { size: 'lg'});
     modalRef.componentInstance.viaje = copiaViaje;
   }

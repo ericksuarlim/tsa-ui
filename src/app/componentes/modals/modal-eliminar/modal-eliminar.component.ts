@@ -19,6 +19,7 @@ export class ModalEliminarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //Iniciador
   }
 
   async confirmar(){

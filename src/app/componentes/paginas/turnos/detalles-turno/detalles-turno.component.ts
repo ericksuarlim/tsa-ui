@@ -4,7 +4,6 @@ import { Conductor } from 'src/app/modelos/conductor';
 import { Turno } from 'src/app/modelos/turno';
 import { ServicioConductoresService } from 'src/app/servicios/servicio-conductores.service';
 import { ServicioTurnosService } from 'src/app/servicios/servicio-turnos.service';
-import * as moment from 'moment';
 import 'moment/locale/es';
 import { Viaje } from 'src/app/modelos/viaje';
 import { ModalOpcionesViajesComponent } from 'src/app/componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
@@ -45,14 +44,9 @@ export class DetallesTurnoComponent implements OnInit {
       }
     });
   }
-
-  EliminarTurno(){
-
-  }
-
+  
   opcionesViaje(viaje:Viaje){ 
-    let copiaViaje = new Viaje()
-    copiaViaje = {...viaje};
+    let copiaViaje = {...viaje};
     const modalRef = this.modalService.open(ModalOpcionesViajesComponent, { size: 'lg'});
     modalRef.componentInstance.viaje = copiaViaje;
   }
