@@ -32,7 +32,7 @@
     
     <div class="row row-container">
         <div class="box-card-parent col-12">
-            <table class="table tabla-turnos">
+            <table aria-describedby="tabla-lista-principal-turnos" class="table tabla-turnos">
                 <thead class="thead-turnos">
                   <tr>
                     <th scope="col" class="text-center">Id. Turno</th>
@@ -43,7 +43,7 @@
                 </thead>
                 <tbody *ngFor="let turno of turnosFiltrados">
                   <tr>
-                    <td scope="row" class="td-size text-center">{{turno.id_turno}}</td>
+                    <td class="td-size text-center">{{turno.id_turno}}</td>
                     <td class="td-size text-center">{{ turno.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
                     <a *ngIf="ValidarVista()" class="btn btn-table btn-detalles" (click)="verTurno(turno.id_turno)">Ver Detalles</a>
                     <a *ngIf="ValidarVista()" class="btn btn-table btn-editar" (click)="editarTurno(turno.id_turno)">Editar</a>

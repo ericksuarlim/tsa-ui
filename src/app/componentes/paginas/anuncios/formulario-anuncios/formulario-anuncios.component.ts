@@ -80,9 +80,9 @@ export class FormularioAnunciosComponent implements OnInit {
   }
 
   ValidarCampos(action: string){
-    if(this.anuncio.titulo === "" || (action=="registrar" && this.anuncio.titulo) == undefined){this.mensajeErrorValidacion.titulo="Titulo necesario"; this.validacion.titulo = false}else{this.validacion.titulo =true};
-    if(this.anuncio.celular_referencia === null || (action=="registrar" && this.anuncio.celular_referencia == undefined)){this.mensajeErrorValidacion.celular_referencia="Celular necesario"; this.validacion.celular_referencia = false}else{this.validacion.celular_referencia =true};
-    if(this.anuncio.detalle === "" || (action=="registrar" && this.anuncio.detalle == undefined)){this.mensajeErrorValidacion.detalle="Detalle necesario"; this.validacion.detalle = false}else{this.validacion.detalle =true};
+    if(this.anuncio.titulo === "" || (action=="registrar" && this.anuncio.titulo) == undefined){this.mensajeErrorValidacion.titulo="Titulo necesario"; this.validacion.titulo = false}else{this.validacion.titulo =true}
+    if(this.anuncio.celular_referencia === null || (action=="registrar" && this.anuncio.celular_referencia == undefined)){this.mensajeErrorValidacion.celular_referencia="Celular necesario"; this.validacion.celular_referencia = false}else{this.validacion.celular_referencia =true}
+    if(this.anuncio.detalle === "" || (action=="registrar" && this.anuncio.detalle == undefined)){this.mensajeErrorValidacion.detalle="Detalle necesario"; this.validacion.detalle = false}else{this.validacion.detalle =true}
 
     const response = this.validacion.titulo && this.validacion.detalle && this.validacion.celular_referencia;
     return response;

@@ -65,11 +65,11 @@ export class FormularioCrearUsuarioComponent implements OnInit {
   }
 
   ValidarCampos(action: string){
-    if(this.usuario.carnet === null || (action=="registrar" && this.usuario.carnet == undefined)){this.mensajeErrorValidacion.carnet="Carnet necesario"; this.validacion.carnet = false}else{this.validacion.carnet =true};
-    if(this.usuario.nombres === "" || (action=="registrar" && this.usuario.nombres == undefined)){this.mensajeErrorValidacion.nombres="Nombre necesario"; this.validacion.nombres = false}else{this.validacion.nombres =true};
-    if(this.usuario.apellido_paterno === "" || (action=="registrar" && this.usuario.apellido_paterno == undefined)){this.mensajeErrorValidacion.apellido_paterno="Apellido paterno necesario"; this.validacion.apellido_paterno = false}else{this.validacion.apellido_paterno =true};
-    if(this.usuario.celular_referencia === null || (action=="registrar" && this.usuario.celular_referencia == undefined)){this.mensajeErrorValidacion.celular_referencia="Celular necesario"; this.validacion.celular_referencia = false}else{this.validacion.celular_referencia =true};
-    if(this.usuario.rol === "" || (action=="registrar" && this.usuario.rol == undefined)){this.mensajeErrorValidacion.rol="Rol necesario"; this.validacion.rol = false}else{this.validacion.rol =true};
+    if(this.usuario.carnet === null || (action=="registrar" && this.usuario.carnet == undefined)){this.mensajeErrorValidacion.carnet="Carnet necesario"; this.validacion.carnet = false}else{this.validacion.carnet =true}
+    if(this.usuario.nombres === "" || (action=="registrar" && this.usuario.nombres == undefined)){this.mensajeErrorValidacion.nombres="Nombre necesario"; this.validacion.nombres = false}else{this.validacion.nombres =true}
+    if(this.usuario.apellido_paterno === "" || (action=="registrar" && this.usuario.apellido_paterno == undefined)){this.mensajeErrorValidacion.apellido_paterno="Apellido paterno necesario"; this.validacion.apellido_paterno = false}else{this.validacion.apellido_paterno =true}
+    if(this.usuario.celular_referencia === null || (action=="registrar" && this.usuario.celular_referencia == undefined)){this.mensajeErrorValidacion.celular_referencia="Celular necesario"; this.validacion.celular_referencia = false}else{this.validacion.celular_referencia =true}
+    if(this.usuario.rol === "" || (action=="registrar" && this.usuario.rol == undefined)){this.mensajeErrorValidacion.rol="Rol necesario"; this.validacion.rol = false}else{this.validacion.rol =true}
 
     const response = this.validacion.carnet && this.validacion.celular_referencia && this.validacion.apellido_paterno && this.validacion.nombres && this.validacion.rol ;
     return response;

@@ -62,16 +62,6 @@
                                 <input type="text"  name="id_auto_2" class="input-form-conductores form-control"  [(ngModel)]="conductor.id_auto_2" placeholder="No Requerido" value required>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-12">
-                            <h1 for="id_sindicato" class="input-title">Sindicato</h1>
-                            <select name="id_sindicato" class="form-control"  [(ngModel)]="conductor.id_sindicato" (ngModelChange)="ValidarCampos('verificar')" value required>
-                                <option value="1">1º Mayo</option>
-                                <option value="2">12 de Marzo</option>
-                                <option value="3">Movima</option>
-                                <option value="4">Yacuma</option>
-                            </select> 
-                            <div *ngIf="!validacion.id_sindicato" class="text-danger">{{mensajeErrorValidacion.id_sindicato}}</div>   
-                        </div> -->
                         <div class="col-sm-12">
                             <h1 for="grupo" class="input-title">Grupo</h1>
                             <input type="text"  name="grupo" class="input-form-conductores form-control" [(ngModel)]="conductor.grupo" (ngModelChange)="ValidarCampos('verificar')" placeholder="Ej Turno Santa Ana"  value required>

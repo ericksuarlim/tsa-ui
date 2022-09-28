@@ -48,9 +48,9 @@ export class FormularioSindicatoComponent implements OnInit {
   }
 
   ValidarCampos(action:string){
-    if(this.sindicato.nombre === "" || (action=="registrar" && this.sindicato.nombre == undefined)){this.mensajeErrorValidacion.nombre="Nombre necesario"; this.validacion.nombre = false}else{this.validacion.nombre =true};
-    if(this.sindicato.ciudad === "" || (action=="registrar" && this.sindicato.ciudad == undefined)){this.mensajeErrorValidacion.ciudad="Ciudad necesaria"; this.validacion.ciudad = false}else{this.validacion.ciudad =true};
-    if(this.sindicato.estado === null || (action=="registrar" && this.sindicato.estado == undefined)){this.mensajeErrorValidacion.estado="Estado necesario"; this.validacion.estado = false}else{this.validacion.estado =true};
+    if(this.sindicato.nombre === "" || (action=="registrar" && this.sindicato.nombre == undefined)){this.mensajeErrorValidacion.nombre="Nombre necesario"; this.validacion.nombre = false}else{this.validacion.nombre =true}
+    if(this.sindicato.ciudad === "" || (action=="registrar" && this.sindicato.ciudad == undefined)){this.mensajeErrorValidacion.ciudad="Ciudad necesaria"; this.validacion.ciudad = false}else{this.validacion.ciudad =true}
+    if(this.sindicato.estado === null || (action=="registrar" && this.sindicato.estado == undefined)){this.mensajeErrorValidacion.estado="Estado necesario"; this.validacion.estado = false}else{this.validacion.estado =true}
 
     const response = this.validacion.nombre && this.validacion.estado && this.validacion.ciudad;
     return response;

@@ -29,7 +29,7 @@ export class BarraNavegacionComponent implements OnInit {
   }
 
   AbrirModalAdministrador(){
-    const modalRef = this.modalService.open(ModalOpcionesAdministradorComponent, { size: 'lg'});
+    this.modalService.open(ModalOpcionesAdministradorComponent, { size: 'lg'});
   }
 
   CerrarSesion(){

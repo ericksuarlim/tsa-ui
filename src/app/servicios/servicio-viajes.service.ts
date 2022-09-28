@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Viaje } from '../modelos/viaje';
 import { environment } from '../../environments/environment'
-import { userData } from '../commons/userData'
+import { UserData } from '../commons/UserData'
 
 const httpOptions = {
   headers : new HttpHeaders({
     'Content-Type':'application/json',
-    'Authorization': "Bearer "+ userData.jwt,
-    'Sindicato': userData.sindicato
+    'Authorization': "Bearer "+ UserData.jwt,
+    'Sindicato': UserData.sindicato
   })
 }
 

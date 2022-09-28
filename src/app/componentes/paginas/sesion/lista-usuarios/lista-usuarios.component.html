@@ -30,7 +30,7 @@
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
-            <table class="table table-striped tabla-usuarios">
+            <table aria-describedby="tabla-lista-principal-usuarios" class="table table-striped tabla-usuarios">
                 <thead class="thead-usuarios">
                   <tr>
                     <th scope="col" class="text-center">Carnet</th>
@@ -43,7 +43,7 @@
                 <tbody *ngFor="let usuario of usuariosFiltrados">
                   <tr>
                     <td class="text-center">{{usuario.carnet}}</td>
-                    <th class="text-center">{{usuario.nombres}} {{usuario.apellido_paterno}}</th>
+                    <th scope="row" class="text-center">{{usuario.nombres}} {{usuario.apellido_paterno}}</th>
                     <td class="text-center">{{usuario.rol}}</td>
                     <td class="text-center">{{usuario.celular_referencia}}</td>
                     <td><a class="btn btn-table btn-ver-usuario" (click)="AbrirUsuario(usuario.id_usuario)">Ver Usuario</a></td>

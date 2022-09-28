@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {RouterModule} from '@angular/router';
-import { Sindicato } from 'src/app/modelos/sindicato';
 
 @Component({
   selector: 'app-servicios-sindicatos',

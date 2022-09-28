@@ -18,32 +18,32 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <p><b>Nombre Usuario:</b> {{usuario.nombre_usuario}}</p>                
+                    <p><strong>Nombre Usuario:</strong> {{usuario.nombre_usuario}}</p>                
                 </div>
                 <div class="col-12 col-md-6">
-                    <p><b>Contraseña:</b> {{usuario.password}}</p>                
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <p><b>Usuario:</b> {{usuario.nombres}} {{usuario.apellido_paterno}}</p>                
-                </div>
-                <div class="col-12 col-md-6">
-                    <p><b>Correo Electronico:</b> {{usuario.correo_electronico}}</p>                
+                    <p><strong>Contraseña:</strong> {{usuario.password}}</p>                
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <p><b>Numero referencia:</b> {{usuario.celular_referencia}}</p>                
+                    <p><strong>Usuario:</strong> {{usuario.nombres}} {{usuario.apellido_paterno}}</p>                
                 </div>
                 <div class="col-12 col-md-6">
-                    <p><b>Sindicato:</b> {{usuario.sindicato?.nombre}}</p>                
+                    <p><strong>Correo Electronico:</strong> {{usuario.correo_electronico}}</p>                
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <p><strong>Numero referencia:</strong> {{usuario.celular_referencia}}</p>                
                 </div>
                 <div class="col-12 col-md-6">
-                    <p><b>Rol:</b> {{usuario.rol}}</p>                
+                    <p><strong>Sindicato:</strong> {{usuario.sindicato?.nombre}}</p>                
                 </div>
                 <div class="col-12 col-md-6">
-                    <p><b>Estado:</b> {{usuario.habilitado===true? 'Habilitado' : 'Desabilitado'}}</p>                
+                    <p><strong>Rol:</strong> {{usuario.rol}}</p>                
+                </div>
+                <div class="col-12 col-md-6">
+                    <p><strong>Estado:</strong> {{usuario.habilitado===true? 'Habilitado' : 'Desabilitado'}}</p>                
                 </div>
             </div>
             <div class="row sections-buttons">

@@ -54,9 +54,7 @@ export class ModalOpcionesViajesComponent implements OnInit {
 
   VerViaje(id_viaje:number){
     this.activeModal.close(); 
-    this.router.navigate([`/viajes/${id_viaje}`], { queryParams: { id_sindicato:this.id_sindicato }})
-
-    // this.router.navigateByUrl(`/viajes/${id_viaje}`);
+    this.router.navigate([`/viajes/${id_viaje}`], { queryParams: { id_sindicato:this.id_sindicato }});
   }
 
 

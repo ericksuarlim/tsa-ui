@@ -67,12 +67,12 @@ export class FormularioPasajesComponent implements OnInit {
   }
 
   ValidarCampos(action: string){
-    if(this.pasaje.carnet_pasajero === null || (action=="registrar" && this.pasaje.carnet_pasajero == undefined)){this.mensajeErrorValidacion.carnet_pasajero="Carnet necesario"; this.validacion.carnet_pasajero = false}else{this.validacion.carnet_pasajero =true};
-    if(this.pasaje.nombre_completo === "" || (action=="registrar" && this.pasaje.nombre_completo) == undefined){this.mensajeErrorValidacion.nombre_completo="Nombre necesario"; this.validacion.nombre_completo = false}else{this.validacion.nombre_completo =true};
-    if(this.pasaje.pagado === null || (action=="registrar" && this.pasaje.pagado == undefined)){this.mensajeErrorValidacion.pagado="Estado de pago necesario"; this.validacion.pagado = false}else{this.validacion.pagado =true};
-    if(this.pasaje.precio === null || (action=="registrar" && this.pasaje.precio == undefined)){this.mensajeErrorValidacion.precio="Precio necesario"; this.validacion.precio = false}else{this.validacion.precio =true};
-    if(this.pasaje.celular === null || (action=="registrar" && this.pasaje.celular == undefined)){this.mensajeErrorValidacion.celular="Celular necesario"; this.validacion.celular = false}else{this.validacion.celular =true};
-    if(this.pasaje.asiento === "" || (action=="registrar" && this.pasaje.asiento == undefined)){this.mensajeErrorValidacion.asiento="Asiento necesario"; this.validacion.asiento = false}else{this.validacion.asiento =true};
+    if(this.pasaje.carnet_pasajero === null || (action=="registrar" && this.pasaje.carnet_pasajero == undefined)){this.mensajeErrorValidacion.carnet_pasajero="Carnet necesario"; this.validacion.carnet_pasajero = false}else{this.validacion.carnet_pasajero =true}
+    if(this.pasaje.nombre_completo === "" || (action=="registrar" && this.pasaje.nombre_completo) == undefined){this.mensajeErrorValidacion.nombre_completo="Nombre necesario"; this.validacion.nombre_completo = false}else{this.validacion.nombre_completo =true}
+    if(this.pasaje.pagado === null || (action=="registrar" && this.pasaje.pagado == undefined)){this.mensajeErrorValidacion.pagado="Estado de pago necesario"; this.validacion.pagado = false}else{this.validacion.pagado =true}
+    if(this.pasaje.precio === null || (action=="registrar" && this.pasaje.precio == undefined)){this.mensajeErrorValidacion.precio="Precio necesario"; this.validacion.precio = false}else{this.validacion.precio =true}
+    if(this.pasaje.celular === null || (action=="registrar" && this.pasaje.celular == undefined)){this.mensajeErrorValidacion.celular="Celular necesario"; this.validacion.celular = false}else{this.validacion.celular =true}
+    if(this.pasaje.asiento === "" || (action=="registrar" && this.pasaje.asiento == undefined)){this.mensajeErrorValidacion.asiento="Asiento necesario"; this.validacion.asiento = false}else{this.validacion.asiento =true}
 
     const response = this.validacion.carnet_pasajero && this.validacion.nombre_completo && this.validacion.asiento && this.validacion.pagado && this.validacion.precio && this.validacion.celular;
     return response;
@@ -100,8 +100,8 @@ export class FormularioPasajesComponent implements OnInit {
     const urlRecibo = `${environment.urlApi}/pasajes/recibo/${pasajeNuevo.id_pasaje}?id_sindicato=${localStorage.getItem('id_sindicato_usuario')}`;
     const message = `Usted adquirió un boleto de transporte${(pasajeNuevo.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : "en el sindicato: "+pasajeNuevo.viaje?.conductore?.sindicato?.nombre}.%0A%0ASu boleto y recibo de compra digitales se encuentran en el siguiente enlace:%0A${urlRecibo}%0A%0AMuchas gracias por su preferencia!`;
     const phoneNumber = `591${this.pasaje.celular}`; 
-    const messageText = message.split(' ').join('%20');; 
-    var finalUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + messageText ; 
+    const messageText = message.split(' ').join('%20');
+    let finalUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + messageText ; 
     window.open(finalUrl, "_blank");
   }
 

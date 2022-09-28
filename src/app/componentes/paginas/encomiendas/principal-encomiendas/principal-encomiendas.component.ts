@@ -50,17 +50,9 @@ export class PrincipalEncomiendasComponent implements OnInit {
       this.encomiendasFiltradas = this.encomiendas.filter((encomienda: Encomienda) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Fecha')
+            if(String(encomienda.viaje.fecha).includes(palabra) || String(encomienda.nombre_cliente.toLowerCase()).includes(palabra))
             {
-              if ( String(encomienda.viaje.fecha).includes(palabra)) {
-                encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(encomienda.nombre_cliente.toLowerCase()).includes(palabra)) {
-                encontrado = true;
-              }
+              encontrado = true;
             }
           });
           return encontrado;

@@ -48,17 +48,9 @@ export class PrincipalTurnosComponent implements OnInit {
       this.turnosFiltrados = this.turnos.filter((turno: Turno) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(this.parametroBusqueda==='Fecha')
+            if(String(turno.fecha).includes(palabra) ||  String(turno.id_turno).includes(palabra))
             {
-              if ( String(turno.fecha).includes(palabra)) {
-                encontrado = true;
-              }
-            }
-            else
-            {
-              if ( String(turno.id_turno).includes(palabra)) {
-                encontrado = true;
-              }
+              encontrado = true;
             }
           });
           return encontrado;

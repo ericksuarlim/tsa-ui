@@ -12,49 +12,49 @@
     <div class="col columna-container" id="recibo-encomienda">
         <div class="row justify-content-between">
             <div class="col-12 col-sm-4">
-                <p><b>Encomienda No: </b>{{encomienda.id_encomienda}}</p>
-                <p><b>Fecha: </b>{{encomienda?.viaje?.fecha| date:'dd/MM/yyyy'}}</p>
+                <p><strong>Encomienda No: </strong>{{encomienda.id_encomienda}}</p>
+                <p><strong>Fecha: </strong>{{encomienda?.viaje?.fecha| date:'dd/MM/yyyy'}}</p>
             </div>
             <div class="col-12 col-sm-7">
-                <p class="text-md-right"><b>Terminal de Buses {{encomienda?.viaje?.conductore?.sindicato?.ciudad}}, Sindicato: </b>{{encomienda?.viaje?.conductore?.sindicato?.nombre}}</p>
+                <p class="text-md-right"><strong>Terminal de Buses {{encomienda?.viaje?.conductore?.sindicato?.ciudad}}, Sindicato: </strong>{{encomienda?.viaje?.conductore?.sindicato?.nombre}}</p>
             </div>
         </div>
         <div class="row justify-content-between">
             <div class="col-12 col-sm-4">
-                <b>Info. Encomienda</b>
+                <strong>Info. Encomienda</strong>
                 <p>Cliente: {{encomienda.nombre_cliente}}</p>
                 <p>Celular: {{encomienda.celular_cliente}}</p>
                 <p>CI: {{encomienda.carnet_cliente}}</p>
             </div>
             <div class="col-12 col-sm-6">
-                <p class="text-md-right"><b >Info. Sindicato</b></p>
+                <p class="text-md-right"><strong >Info. Sindicato</strong></p>
                 <p class="text-md-right">Sindicato: {{encomienda?.viaje?.conductore?.sindicato?.nombre}}</p>
                 <p class="text-md-right">Ciudad: {{encomienda?.viaje?.conductore?.sindicato?.ciudad}}<p>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6">
-                <p class="text-md-right"><b>Desde: </b>{{encomienda?.viaje?.origen}}</p>
-                <p class="text-md-right"><b>A: </b>{{encomienda?.viaje?.destino}}</p>
-                <p class="text-md-right"><b>Cliente: </b>{{encomienda.nombre_cliente}}</p>
-                <p class="text-md-right"><b>Cantidad Bultos: </b>{{encomienda.cantidad_bultos}}</p>
+                <p class="text-md-right"><strong>Desde: </strong>{{encomienda?.viaje?.origen}}</p>
+                <p class="text-md-right"><strong>A: </strong>{{encomienda?.viaje?.destino}}</p>
+                <p class="text-md-right"><strong>Cliente: </strong>{{encomienda.nombre_cliente}}</p>
+                <p class="text-md-right"><strong>Cantidad Bultos: </strong>{{encomienda.cantidad_bultos}}</p>
                 
             </div>
             <div class="col-12 col-sm-6">
-                <p><b>Salida: </b>{{encomienda?.viaje?.hora_salida}}</p>
-                <p><b>Llegada: </b>{{encomienda?.viaje?.hora_llegada}} </p>
-                <p><b>Numero Viaje: </b>{{encomienda?.viaje?.id_viaje}}</p>
-                <p><b>Fecha: </b>{{encomienda?.viaje?.fecha| date:'dd/MM/yyyy'}}</p>
+                <p><strong>Salida: </strong>{{encomienda?.viaje?.hora_salida}}</p>
+                <p><strong>Llegada: </strong>{{encomienda?.viaje?.hora_llegada}} </p>
+                <p><strong>Numero Viaje: </strong>{{encomienda?.viaje?.id_viaje}}</p>
+                <p><strong>Fecha: </strong>{{encomienda?.viaje?.fecha| date:'dd/MM/yyyy'}}</p>
             
                 
             </div>
             <div class="col-12">
-                <p><b>Detalle: </b>{{encomienda.detalle}}</p>
+                <p><strong>Detalle: </strong>{{encomienda.detalle}}</p>
             </div>
         </div>
         <div class="row">
             <div class="table-responsive box-card-parent">
-                <table class="table table-striped">
+                <table aria-describedby="tabla-detalle-recibo-encomienda" class="table table-striped">
                     <thead class="thead-encomienda">
                     <tr>
                         <th scope="col">Detalle</th>
@@ -74,15 +74,15 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-3">
-                <p class="text-right"><b>TOTAL</b></p>
+                <p class="text-right"><strong>TOTAL</strong></p>
             </div>
             <div class="col-4">
-                <p class="text-right"><b>{{encomienda.monto_pago}} BS</b></p>
+                <p class="text-right"><strong>{{encomienda.monto_pago}} BS</strong></p>
             </div>
         </div>
         <div class="row ">
             <div class="col-12">
-                <p><b>NOTA:</b></p>
+                <p><strong>NOTA:</strong></p>
                 <p>EL presente documento tiene valor a nivel nacional respaldado por el sindicato.</p>
             </div>
         </div>

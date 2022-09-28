@@ -34,11 +34,12 @@ export class InicioSesionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //Iniciador
   }
 
   ValidarEntrada(action:string){
-    if(this.nombre_usuario === "" || (action=="registrar" && this.nombre_usuario == undefined)){this.mensajeErrorValidacion.nombre_usuario="Nombre usuario necesario"; this.validacion.nombre_usuario = false}else{this.validacion.nombre_usuario =true};
-    if(this.password === "" || (action=="registrar" && this.password == undefined)){this.mensajeErrorValidacion.password="Contraseña necesaria"; this.validacion.password = false}else{this.validacion.password =true};
+    if(this.nombre_usuario === "" || (action=="registrar" && this.nombre_usuario == undefined)){this.mensajeErrorValidacion.nombre_usuario="Nombre usuario necesario"; this.validacion.nombre_usuario = false}else{this.validacion.nombre_usuario =true}
+    if(this.password === "" || (action=="registrar" && this.password == undefined)){this.mensajeErrorValidacion.password="Contraseña necesaria"; this.validacion.password = false}else{this.validacion.password =true}
 
     const response = this.validacion.nombre_usuario && this.validacion.password;
     return response;
@@ -74,7 +75,7 @@ export class InicioSesionComponent implements OnInit {
   }
 
   AbrirEnvioCodigo(){
-    const modalRef = this.modalService.open(ModalEnvioCodigoComponent);
+    this.modalService.open(ModalEnvioCodigoComponent);
   }
 
   toBinary(string:any) {
@@ -93,5 +94,8 @@ export class InicioSesionComponent implements OnInit {
     return String.fromCharCode(...new Uint16Array(bytes.buffer));
   }
 
+  Cancelar(){
+    this._location.back();
+  }
 
 }

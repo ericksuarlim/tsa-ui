@@ -30,7 +30,7 @@
     </div>
     <div class="row row-container">
         <div class="table-responsive box-card-parent">
-            <table class="table table-striped tabla-anuncios">
+            <table aria-describedby="tabla-lista-principal-anuncios" class="table table-striped tabla-anuncios">
                 <thead class="thead-anuncios">
                   <tr>
                     <th scope="col">Fecha</th>
@@ -44,7 +44,7 @@
                 <tbody *ngFor="let anuncio of anunciosFiltrados">
                   <tr>
                     <td>{{anuncio.fecha | date:'dd MMMM yyyy':'+0200':'es-AR'}}</td>
-                    <th>{{anuncio.titulo}}</th>
+                    <th scope="row">{{anuncio.titulo}}</th>
                     <td>{{anuncio.sindicato?.nombre}}</td>
                     <td >{{(anuncio.detalle | slice:0:35)+'..'}}</td>
                     <td *ngIf="ValidarVista()"><a class="btn btn-table btn-eliminar" (click)="ModalEliminarAnuncio(anuncio)">Eliminar</a></td>

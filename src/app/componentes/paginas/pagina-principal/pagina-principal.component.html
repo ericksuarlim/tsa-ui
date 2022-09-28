@@ -9,7 +9,7 @@
                     <div (click)="AbrirServicioSindicatos(sindicato.id_sindicato)" class="inner-box">
                         <div class="upper-box">
                             <div class="icon-box">
-                                <img class="van-image-icon" src="../../../../assets/imagenes/van.png">
+                                <img class="van-image-icon" alt="sindicato-van-icon" src="../../../../assets/imagenes/van.png">
                             </div>
                             <span class="number">{{sindicato.id_sindicato}}</span>
                         </div>
@@ -20,70 +20,6 @@
                         <h3 class="services-block-celphone">Cel {{sindicato.celular}}</h3>
                     </div>
                 </div>
-
-                <!-- <div class="services-block col-lg-3 col-sm-6 col-6">
-                    <div (click)="AbrirServicioSindicatos(3)" class="inner-box">
-                        <div class="upper-box">
-                            <div class="icon-box">
-                                <img class="van-image-icon" src="../../../../assets/imagenes/van.png">
-                            </div>
-                            <span class="number">01</span>
-                        </div>
-                        <div class="lower-box">
-                            <h3>Sindicato Movima</h3>
-                        </div>           
-                        <h3 class="services-block-address">Parque Boris Banzer</h3>
-                        <h3 class="services-block-celphone">Cel 71234567</h3>
-                    </div>
-                </div>
-        
-                <div class="services-block col-lg-3 col-sm-6 col-6">
-                    <div (click)="AbrirServicioSindicatos(1)" class="inner-box">
-                        <div class="upper-box">
-                            <div class="icon-box">
-                                <img class="van-image-icon" src="../../../../assets/imagenes/van.png">
-                            </div>
-                            <span class="number">02</span>
-                        </div>
-                        <div class="lower-box">
-                            <h3>Sindicato 1º Mayo</h3>
-                        </div>           
-                        <h3 class="services-block-address">Parque Boris Banzer</h3>
-                        <h3 class="services-block-celphone">Cel 71234567</h3>
-                    </div>
-                </div>
-        
-                <div class="services-block col-lg-3 col-sm-6 col-6">
-                    <div (click)="AbrirServicioSindicatos(2)" class="inner-box">
-                        <div class="upper-box">
-                            <div class="icon-box">
-                                <img class="van-image-icon" src="../../../../assets/imagenes/van.png">
-                            </div>
-                            <span class="number">03</span>
-                        </div>
-                        <div class="lower-box">
-                            <h3>Sindicato 12 de Marzo</h3>
-                        </div>           
-                        <h3 class="services-block-address">Parque Boris Banzer</h3>
-                        <h3 class="services-block-celphone">Cel 71234567</h3>
-                    </div>
-                </div>
-        
-                <div class="services-block col-lg-3 col-sm-6 col-6">
-                    <div (click)="AbrirServicioSindicatos(4)" class="inner-box">
-                        <div class="upper-box">
-                            <div class="icon-box">
-                                <img class="van-image-icon" src="../../../../assets/imagenes/van.png">
-                            </div>
-                            <span class="number">04</span>
-                        </div>
-                        <div class="lower-box">
-                            <h3>Sindicato Yacuma</h3>
-                        </div>           
-                        <h3 class="services-block-address">Parque Boris Banzer</h3>
-                        <h3 class="services-block-celphone">Cel 71234567</h3>
-                    </div>
-                </div>         -->
             </div>
         
         </section>
@@ -117,57 +53,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 text-center card-anuncio" *ngFor="let anuncio of anuncios">
-                    <div class="row card-body p-2">
-                        <h4 class="card-title">{{anuncio.titulo}}</h4>
-                        <p class="card-text">{{ anuncio.detalle | slice:0:50 }}{{ anuncio.detalle.length > 50 ? '...' : ''}}</p>
-                        <div  class="info col">
-                            <ul>
-                                <li>
-                                    <span class="caption">Sindicato:</span>
-                                    <span>{{anuncio.sindicato.nombre}}</span>
-                                </li>
-                                <li>
-                                    <span class="caption">Cel:</span>
-                                    <span> +591 {{anuncio.celular_referencia}}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                      </div>
-                </div>
-
-            </div> -->
-
-
-
-            <!-- <div class="vgr-cards" *ngFor="let anuncio of anuncios" >
-                <div class="card" (click)="AbrirAnuncio(anuncio.id_anuncio)">
-                  <div class="card-img-body">
-                    <img class="card-img" src="../../../../assets/imagenes/carreteraSantaAna.jpg" alt="Card image cap">
-                  </div>
-                  <div class="card-body">
-                    <h4 class="card-title">{{anuncio.titulo}}</h4>
-                    <p class="card-text">{{(anuncio.detalle.length>200) ? (anuncio.detalle | slice:0:150+'..'):(anuncio.detalle)}}</p>
-                    <div  class="info">
-                        <ul>
-                            <li>
-                                <span class="caption">Sindicato:</span>
-                                <span>{{anuncio.sindicato.nombre}}</span>
-                            </li>
-                            <li>
-                                <span class="caption">Cel:</span>
-                                <span> +591 {{anuncio.celular_referencia}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                  </div>
-                </div>
-            </div> -->
-        
         </section>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Conductor } from 'src/app/modelos/conductor';
@@ -70,9 +70,9 @@ export class ModalOpcionesReservasComponent implements OnInit {
     }
   }
 
-  ValidarReserva(action:String):boolean{
-    if((this.reserva.id_viaje === null && this.viajes?.length>0) || ((action=="registrar" && this.reserva.id_viaje == undefined && this.viajes?.length>0))){this.mensajeErrorValidacion.viaje="Se debe de seleccionar un viaje"; this.validacion.id_viaje = false}else{this.validacion.id_viaje =true};
-    if(this.reserva.estado ==="Pendiente"){this.mensajeErrorValidacion.estado="Para actualizar debe de cambiar el estado"; this.validacion.estado = false}else{this.validacion.estado =true};
+  ValidarReserva(action:string):boolean{
+    if((this.reserva.id_viaje === null && this.viajes?.length>0) || (action=="registrar" && this.reserva.id_viaje == undefined && this.viajes?.length>0)){this.mensajeErrorValidacion.viaje="Se debe de seleccionar un viaje"; this.validacion.id_viaje = false}else{this.validacion.id_viaje =true}
+    if(this.reserva.estado ==="Pendiente"){this.mensajeErrorValidacion.estado="Para actualizar debe de cambiar el estado"; this.validacion.estado = false}else{this.validacion.estado =true}
     const response = this.validacion.id_viaje && this.validacion.estado;
     return response;
   }
@@ -92,8 +92,6 @@ export class ModalOpcionesReservasComponent implements OnInit {
         this.reserva.id_sindicato = this.reserva.viaje.conductore.id_sindicato;
       }
       this.reservasService.EditarReserva(this.reserva).subscribe(()=>{
-        // this.actualizar.emit(true);
-        // this.activeModal.close();
         this.activeModal.close(); 
         window.location.reload(); 
       });
@@ -101,7 +99,6 @@ export class ModalOpcionesReservasComponent implements OnInit {
   }
 
   Cancelar(){
-    //this.actualizar.emit(false);
     this.activeModal.close(); 
   }
 

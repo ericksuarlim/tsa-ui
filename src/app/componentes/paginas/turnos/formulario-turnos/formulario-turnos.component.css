@@ -55,12 +55,10 @@
 
 .btn-cancelar{
     margin-top: 22px;
-    background-color: white;
     border-radius: 100px;
     float: right;
     border: 1px solid #FB9130;
-    background-color: #FFFFFF;
-    
+    background-color: #FFFFFF;  
 }
 
 .table th, .table td {
