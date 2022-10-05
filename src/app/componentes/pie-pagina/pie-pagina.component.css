@@ -21,3 +21,9 @@
     padding-bottom: 0px;
 
 }
+
+@media (max-width:470px) {
+    .footer-copyright-section{
+        font-size: 0.65em;
+    }
+}

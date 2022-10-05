@@ -15,6 +15,7 @@ export class BarraNavegacionComponent implements OnInit {
   usuario: string;
   rol: string;
   sindicatoUsuario: number;
+
   constructor(
     public modalService: NgbModal,
     private autenticacionService: ServicioAutenticacionService,

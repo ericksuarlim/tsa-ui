@@ -17,11 +17,15 @@ export class FormularioSindicatoComponent implements OnInit {
     nombre:true,
     estado: true,
     ciudad: true,
+    direccion: true,
+    celular: true
   }
   mensajeErrorValidacion= {
     nombre: "",
     estado: "",
     ciudad: "",
+    direccion:"",
+    celular: ""
   }
 
   constructor(
@@ -51,8 +55,10 @@ export class FormularioSindicatoComponent implements OnInit {
     if(this.sindicato.nombre === "" || (action=="registrar" && this.sindicato.nombre == undefined)){this.mensajeErrorValidacion.nombre="Nombre necesario"; this.validacion.nombre = false}else{this.validacion.nombre =true}
     if(this.sindicato.ciudad === "" || (action=="registrar" && this.sindicato.ciudad == undefined)){this.mensajeErrorValidacion.ciudad="Ciudad necesaria"; this.validacion.ciudad = false}else{this.validacion.ciudad =true}
     if(this.sindicato.estado === null || (action=="registrar" && this.sindicato.estado == undefined)){this.mensajeErrorValidacion.estado="Estado necesario"; this.validacion.estado = false}else{this.validacion.estado =true}
+    if(this.sindicato.celular === null || (action=="registrar" && this.sindicato.celular == undefined)){this.mensajeErrorValidacion.celular="Celular necesario"; this.validacion.celular = false}else if(this.sindicato.celular<0){this.mensajeErrorValidacion.celular="Celular invalido"; this.validacion.celular=false}else{this.validacion.estado =true}
+    if(this.sindicato.direccion === "" || (action=="registrar" && this.sindicato.direccion == undefined)){this.mensajeErrorValidacion.direccion="Direccion necesario"; this.validacion.direccion = false}else{this.validacion.estado =true}
 
-    const response = this.validacion.nombre && this.validacion.estado && this.validacion.ciudad;
+    const response = this.validacion.nombre && this.validacion.estado && this.validacion.ciudad && this.validacion.celular && this.validacion.direccion;
     return response;
   }
 

@@ -33,7 +33,7 @@ export class DetalleViajeComponent implements OnInit {
     const id_viaje = this.route.snapshot.params["id_viaje"];
     this.sindicatoCargado = Number(this.route.snapshot.queryParams["id_sindicato"]);
     this.esGeneral = this.sindicatoCargado === undefined;
-    this.usuario = localStorage.getItem('usuario');
+    this.usuario = localStorage.getItem('nombre_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.servicioViajes.ObtenerViaje(id_viaje).subscribe(viaje=>{
       this.viaje=viaje;
@@ -50,7 +50,7 @@ export class DetalleViajeComponent implements OnInit {
   }
 
   AbrirPasaje(id_pasaje:number){
-    this.router.navigateByUrl(`/pasajes/recibo/${id_pasaje}`);
+    this.router.navigate([`/pasajes/recibo/${id_pasaje}`], { queryParams: { id_sindicato:this.sindicatoCargado }})
   }
 
   VerEncomienda(id_encomienda: number){

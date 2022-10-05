@@ -3,4 +3,6 @@ export class Sindicato{
     nombre: string;
     estado: boolean;
     ciudad: string;
+    celular: number;
+    direccion: string;
 }

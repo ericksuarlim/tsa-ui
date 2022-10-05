@@ -102,7 +102,7 @@ export class FormularioCrearUsuarioComponent implements OnInit {
       else
       {
         this.usuario.nombre_usuario = `secretaria_${this.numeroCorrelativo}`;
-        this.usuario.password = `secretaria${this.GeneradorCaracteres()}`;
+        this.usuario.password = `operador${this.GeneradorCaracteres()}`;
       }
       this.usuariosService.CrearUsuario(this.usuario).subscribe((result)=>{
         this.router.navigateByUrl(`/usuarios/${result.id_usuario}`);
