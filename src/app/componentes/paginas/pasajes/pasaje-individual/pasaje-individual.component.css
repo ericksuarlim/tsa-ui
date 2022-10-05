@@ -23,6 +23,11 @@
     margin-right: 5px;
 }
 
+.button-editar{
+    background-color: #FB9130;
+    color: #FFFFFF;
+}
+
 .button-descargar{
     background-color: #a31e1e;
     color: #FFFFFF;
@@ -69,7 +74,7 @@
     }
 }
 
-@media (max-width: 542px) {
+@media (max-width: 767px) {
     .sections-buttons{
         display: block;
     }
@@ -78,7 +83,7 @@
     }
 }
 
-@media (min-width: 543px) {
+@media (min-width: 768px) {
     .sections-buttons{
         justify-content: center;
     }

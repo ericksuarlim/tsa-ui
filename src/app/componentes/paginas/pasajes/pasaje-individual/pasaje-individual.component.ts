@@ -59,4 +59,8 @@ export class PasajeIndividualComponent implements OnInit {
     });
   }
 
+  Editar(id_pasaje:number,id_viaje:number){
+    this.router.navigate(["/pasajes/formulario"], { queryParams: { id_pasaje, id_viaje } });
+  }
+
 }

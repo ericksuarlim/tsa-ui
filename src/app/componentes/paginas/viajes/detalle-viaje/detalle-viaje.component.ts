@@ -54,7 +54,9 @@ export class DetalleViajeComponent implements OnInit {
   }
 
   VerEncomienda(id_encomienda: number){
-    this.router.navigateByUrl(`/encomiendas/seguimiento/${id_encomienda}`);
+    // this.router.navigateByUrl(`/encomiendas/seguimiento/${id_encomienda}`);
+    this.router.navigate([`/encomiendas/seguimiento/${id_encomienda}`], { queryParams: { id_sindicato:this.sindicatoCargado }})
+
   }
 
   OpcionesReserva(id_reserva: number){

@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOpcionesReservasComponent } from 'src/app/componentes/modals/modal-opciones-reservas/modal-opciones-reservas.component';
 import { Reserva } from 'src/app/modelos/reserva';
 import { ServicioReservasService } from 'src/app/servicios/servicio-reservas.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-principal-reservas',
@@ -27,7 +28,10 @@ export class PrincipalReservasComponent implements OnInit {
     private router:Router,
     public modalService: NgbModal,
     private route: ActivatedRoute,
-  ) { }
+    location: Location
+  ) { 
+    location.onUrlChange(()=>{window.location.reload()})
+  }
 
   ngOnInit(): void {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];

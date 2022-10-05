@@ -175,6 +175,11 @@
 }
 
 
+@media (min-width: 990px) and (max-width: 1036px) {
+    .ul-navbar > li > a{
+        font-size: 0.75em;
+    }
+}
 
 @media only screen and (max-width: 1023px){
 	.logo-box {

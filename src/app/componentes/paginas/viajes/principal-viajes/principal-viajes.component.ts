@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOpcionesViajesComponent } from 'src/app/componentes/modals/modal-opciones-viajes/modal-opciones-viajes.component';
 import { Viaje } from 'src/app/modelos/viaje';
 import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-principal-viajes',
@@ -27,7 +28,10 @@ export class PrincipalViajesComponent implements OnInit {
     public modalService: NgbModal,
     private route: ActivatedRoute,
     private router:Router,
-  ) { }
+    location: Location
+  ) {
+    location.onUrlChange(()=>{window.location.reload()})
+  }
 
   ngOnInit(): void {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];
