@@ -127,6 +127,10 @@
     height: 36px;
 }
 
+.p-aporte-deuda{
+    color: #d31919 !important;
+}
+
 @media (min-width: 990px) {
     .columna-container{
         margin: 30px auto;

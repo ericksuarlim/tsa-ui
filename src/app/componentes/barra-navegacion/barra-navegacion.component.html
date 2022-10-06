@@ -12,7 +12,7 @@
                                 <img class="cellphone-icon " src="../../../assets/imagenes/llamada-de-telefono-inteligente.png" alt="">+71234567
                             </div>
                             <div class="col-12 col-md-6 office-bar text-center text-md-right">
-                                <img class="office-icon" src="../../../assets/imagenes/chinchetas.png" alt="">Oficina Santa Ana
+                                <img class="user-icon" src="../../../assets/imagenes/usuario.png" alt="">{{usuario?usuario: 'Cliente'}}
                             </div>
                         </div>  
                     </div>
@@ -42,18 +42,10 @@
                                         Servicios
                                     </a>
                                     <ul class="dropdown-menu" >
-                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/viajes">Viajes</a></li>
-                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/encomiendas">Encomiendas</a></li>
-                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/reservas">Reservas</a></li>
-                                        <li  *ngIf="usuario===null" class="dropdown-item"><a href="/anuncios">Anuncios</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/viajes']" [queryParams]="{id_sindicato: sindicatoUsuario}">Viajes</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/encomiendas']" [queryParams]="{id_sindicato: sindicatoUsuario}">Encomiendas</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/reservas']" [queryParams]="{id_sindicato: sindicatoUsuario}">Reservas</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/anuncios']" [queryParams]="{id_sindicato: sindicatoUsuario}">Anuncios</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/pasajes']" [queryParams]="{id_sindicato: sindicatoUsuario}">Pasajes</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/turnos']" [queryParams]="{id_sindicato: sindicatoUsuario}">Turnos</a></li>
-                                        <li *ngIf="usuario!=null" class="dropdown-item"><a [routerLink]="['/conductores']" [queryParams]="{id_sindicato: sindicatoUsuario}">Conductores</a></li>
-                                        
+                                        <li  class="dropdown-item"><a href="/viajes">Viajes</a></li>
+                                        <li  class="dropdown-item"><a href="/encomiendas">Encomiendas</a></li>
+                                        <li  class="dropdown-item"><a href="/reservas">Reservas</a></li>
+                                        <li  class="dropdown-item"><a href="/anuncios">Anuncios</a></li>                                        
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -65,6 +57,20 @@
                                         <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(1)">1º Mayo</a></li>
                                         <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(2)" >12 de Marzo</a></li>
                                         <li class="dropdown-item"><a (click)="AbrirServicioSindicatos(3)">Movima</a></li>
+                                    </ul>
+                                </li>
+                                <li  *ngIf="usuario!=null"  class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle float-right" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{nombreSindicato}}
+                                    </a>
+                                    <ul class="dropdown-menu" >
+                                        <li class="dropdown-item"><a [routerLink]="['/viajes']" [queryParams]="{id_sindicato: sindicatoUsuario}">Viajes</a></li>
+                                        <li class="dropdown-item"><a [routerLink]="['/encomiendas']" [queryParams]="{id_sindicato: sindicatoUsuario}">Encomiendas</a></li>
+                                        <li class="dropdown-item"><a [routerLink]="['/reservas']" [queryParams]="{id_sindicato: sindicatoUsuario}">Reservas</a></li>
+                                        <li class="dropdown-item"><a [routerLink]="['/anuncios']" [queryParams]="{id_sindicato: sindicatoUsuario}">Anuncios</a></li>
+                                        <li class="dropdown-item"><a [routerLink]="['/pasajes']" [queryParams]="{id_sindicato: sindicatoUsuario}">Pasajes</a></li>
+                                        <li class="dropdown-item"><a [routerLink]="['/turnos']" [queryParams]="{id_sindicato: sindicatoUsuario}">Turnos</a></li>
+                                        <li class="dropdown-item"><a [routerLink]="['/conductores']" [queryParams]="{id_sindicato: sindicatoUsuario}">Conductores</a></li>
                                     </ul>
                                 </li>
                                 <li *ngIf="usuario===null" class="nav-item"><a href="/sesion/inicio-sesion" class="nav-link float-right">Iniciar Sesion</a></li>

@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOpcionesCreacionComponent } from 'src/app/componentes/modals/modal-opciones-creacion/modal-opciones-creacion.component';
 import { Encomienda } from 'src/app/modelos/encomienda';
 import { ServicioEncomiendasService } from 'src/app/servicios/servicio-encomiendas.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-principal-encomiendas',
@@ -26,8 +27,11 @@ export class PrincipalEncomiendasComponent implements OnInit {
     private servicioEncomiendas:ServicioEncomiendasService,
     private router: Router,
     public modalService: NgbModal,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    location: Location
+  ) { 
+    location.onUrlChange(()=>{window.location.reload()})
+  }
 
   ngOnInit(): void {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];

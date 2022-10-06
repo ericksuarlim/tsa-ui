@@ -25,7 +25,7 @@ export class ReciboEncomiendaComponent implements OnInit {
     this.servicioEncomiendas.ObtenerEncomienda(id_encomienda).subscribe(encomienda=>{this.encomienda=encomienda});
   }
 
-  Cancelar(){
+  Atras(){
     this._location.back();
   }
 

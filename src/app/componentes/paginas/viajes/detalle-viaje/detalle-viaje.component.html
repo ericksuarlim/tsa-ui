@@ -45,6 +45,9 @@
                     <div class="col-12">
                         <p><strong>Hora Salida:</strong> {{viaje.hora_salida}}</p>                
                     </div>
+                    <div class="col-12">
+                        <p [ngClass]="{'p-aporte-deuda': viaje.aporte === 'No Pagado'}"><strong>Aporte Pagado:</strong> {{viaje.aporte}}</p>                
+                    </div>
                 </div>
                 
                 <div class="col-12 col-sm-6">
@@ -79,7 +82,7 @@
                             <th scope="row" class="text-center">{{pasaje.id_pasaje}}</th>
                             <td class="text-center">{{pasaje.nombre_completo}}</td>
                             <td class="text-center">{{pasaje.precio}}</td>
-                            <td class="text-center">{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
+                            <td class="text-center" [ngClass]="{'p-aporte-deuda': pasaje.pagado === false}">{{pasaje.pagado===true? "Pagado" : "Por pagar"}}</td>
                             <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="AbrirPasaje(pasaje.id_pasaje)">Ver</a></td>
                           </tr>  
                         </tbody>
@@ -106,7 +109,7 @@
                           <tr>
                             <th scope="row" class="text-center">{{encomienda.id_encomienda}}</th>
                             <td class="text-center">{{encomienda.nombre_cliente}}</td>
-                            <td class="text-center">{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
+                            <td class="text-center" [ngClass]="{'p-aporte-deuda': encomienda.pagada === false}">{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
                             <td class="text-center">{{encomienda.cantidad_bultos}}</td>
                             <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="VerEncomienda(encomienda.id_encomienda)">Ver</a></td>
                           </tr>

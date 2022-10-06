@@ -19,6 +19,7 @@ export class FormularioTurnosComponent implements OnInit {
   botonAgregarHabilitado: boolean = true;
 
   conductores: Conductor[];
+  conductoresDisponibles: Conductor[];
   viajes: Viaje[] = [];
   turnoNuevo: boolean;
   sindicatoUsuario: number;
@@ -61,7 +62,10 @@ export class FormularioTurnosComponent implements OnInit {
         this.turno = turno;
       });
     }
-    this.conductoresService.ObtenerConductoresPorSindicato(this.sindicatoUsuario).subscribe(conductores=>{this.conductores = conductores})
+    this.conductoresService.ObtenerConductoresPorSindicato(this.sindicatoUsuario).subscribe(conductores=>{
+      this.conductores = conductores;
+      this.conductoresDisponibles = conductores;
+    })
   }
 
   CrearTurno(){
@@ -124,7 +128,7 @@ export class FormularioTurnosComponent implements OnInit {
   }
 
   DesabilitarConductores(carnet:number){
-    return this.turno.viajes.some(v=>v.id_carnet_conductor===carnet); 
+    return  this.turno.viajes.some(v=>Number(v.id_carnet_conductor)===carnet); 
   }
 
 }

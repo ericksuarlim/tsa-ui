@@ -15,6 +15,8 @@ export class BarraNavegacionComponent implements OnInit {
   usuario: string;
   rol: string;
   sindicatoUsuario: number;
+  nombreSindicato: string;
+
   constructor(
     public modalService: NgbModal,
     private autenticacionService: ServicioAutenticacionService,
@@ -26,6 +28,9 @@ export class BarraNavegacionComponent implements OnInit {
     this.usuario = localStorage.getItem('nombre_usuario');
     this.rol = localStorage.getItem('rol_usuario');
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
+    if(this.sindicatoUsuario){
+      this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[Number(this.sindicatoUsuario)-1].nombre;
+    }
   }
 
   AbrirModalAdministrador(){

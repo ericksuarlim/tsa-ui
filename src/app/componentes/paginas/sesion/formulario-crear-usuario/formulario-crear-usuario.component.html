@@ -47,7 +47,7 @@
                         <h1 for="rol" class="input-title">Rol</h1>
                         <select name="rol" class="form-control"  [(ngModel)]="usuario.rol" (ngModelChange)="ValidarCampos('verificar')" value required [disabled]="!usuarioNuevo">
                             <option value="administrador">Administrador</option>
-                            <option value="secretaria">Secretaria</option>
+                            <option value="operador">Operador</option>
                         </select>
                         <div *ngIf="!validacion.carnet" class="text-danger">{{mensajeErrorValidacion.carnet}}</div>   
                     </div>

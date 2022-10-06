@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalEliminarComponent } from 'src/app/componentes/modals/modal-eliminar/modal-eliminar.component';
 import { Anuncio } from 'src/app/modelos/anuncios';
 import { ServicioAnunciosService } from 'src/app/servicios/servicio-anuncios.service';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-principal-anuncios',
@@ -28,7 +30,10 @@ export class PrincipalAnunciosComponent implements OnInit {
     public modalService: NgbModal,
     private router:Router,
     private route: ActivatedRoute,
-    ) { }
+    location: Location
+  ) {     
+    location.onUrlChange(()=>{window.location.reload()})
+  }
 
   ngOnInit(): void {
     this.sindicatoCargado = this.route.snapshot.queryParams["id_sindicato"];

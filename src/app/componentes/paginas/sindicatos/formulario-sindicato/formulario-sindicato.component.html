@@ -10,12 +10,12 @@
         <div class="col-sm-12">
             <form class="formulario-sindicatos" name="FormularioSindicatos">
                 <div class="row">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <h1 for="nombre" class="input-title">Nombre</h1>
                             <input type="text"  name="nombre" class="input-form-sindicatos form-control" [(ngModel)]="sindicato.nombre" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
                             <div *ngIf="!validacion.nombre" class="text-danger">{{mensajeErrorValidacion.nombre}}</div>   
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <h1 for="estado" class="input-title">Estado</h1>
                             <select name="estado" class="form-control"  [(ngModel)]="sindicato.estado" (ngModelChange)="ValidarCampos('verificar')" value required>
                                 <option value="true">Activado</option>
@@ -23,11 +23,31 @@
                             </select>                            
                             <div *ngIf="!validacion.estado" class="text-danger">{{mensajeErrorValidacion.estado}}</div>   
                         </div>
+
+                        <div class="col-12 col-md-4">
+                            <h1 for="celular" class="input-title">Celular</h1>
+                            <input type="number"  name="celular" class="input-form-sindicatos form-control" [(ngModel)]="sindicato.celular" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.celular" class="text-danger">{{mensajeErrorValidacion.celular}}</div>   
+                        </div>
+                        
                         <div class="col-12 col-md-4">
                             <h1 for="ciudad" class="input-title">Ciudad</h1>
-                            <input type="text"  name="ciudad" class="input-form-sindicatos form-control" [(ngModel)]="sindicato.ciudad" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <select name="ciudad" class="form-control"  [(ngModel)]="sindicato.ciudad" (ngModelChange)="ValidarCampos('verificar')" value required>
+                                <option value="Santa Ana">Santa Ana</option>
+                                <option value="Trinidad">Trinidad</option>
+                                <option value="Cayubaba">Cayubaba</option>
+                                <option value="Guayara">Guayara</option>
+                                <option value="San Joaquin">San Joaquin</option>
+                                <option value="Magdalena">Magdalena</option>
+                            </select>  
                             <div *ngIf="!validacion.ciudad" class="text-danger">{{mensajeErrorValidacion.ciudad}}</div>   
-                        </div>                       
+                        </div>   
+                        <div class="col-12 col-md-4">
+                            <h1 for="direccion" class="input-title">Direccion</h1>
+                            <input type="text"  name="direccion" class="input-form-sindicatos form-control" [(ngModel)]="sindicato.direccion" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <div *ngIf="!validacion.direccion" class="text-danger">{{mensajeErrorValidacion.direccion}}</div>   
+                        </div>
+                    
                 </div>
                
                 <div class="row section-bottons">

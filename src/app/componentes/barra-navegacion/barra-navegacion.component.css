@@ -18,8 +18,13 @@
 	text-decoration: none;
 }
 
-.main-header .header-top .ubication-icon, .cellphone-icon, .office-icon{
+.main-header .header-top .ubication-icon, .cellphone-icon{
 	max-width: 18px;
+    margin-right: 5px;
+}
+
+.main-header .header-top .user-icon{
+    max-width: 15px;
     margin-right: 5px;
 }
 
@@ -170,6 +175,11 @@
 }
 
 
+@media (min-width: 990px) and (max-width: 1036px) {
+    .ul-navbar > li > a{
+        font-size: 0.75em;
+    }
+}
 
 @media only screen and (max-width: 1023px){
 	.logo-box {
@@ -211,7 +221,7 @@
 
 @media only screen and (min-width: 768px){
    .office-bar{
-    padding-right: 80px;
+        padding-right: 80px;
    }
    .nav-bar-info{
        font-size: 0.85em;
