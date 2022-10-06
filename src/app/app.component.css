@@ -1,3 +1,10 @@
-.container-main{
-    padding-bottom: 350px;
+.body{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+.wrapper{
+    flex:1;
 }
