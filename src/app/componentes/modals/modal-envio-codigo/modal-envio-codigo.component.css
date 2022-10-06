@@ -19,12 +19,14 @@
     border-radius: 100px;
 }
 
-.btn-actions{
+
+
+.btn-cerrar{
     background: #ffffff;
     color: #222222;
     border: 1px solid #FB9130;
-    font-size: 0.85em;
-    width: 30%;
+
+
 }
 
 .modal-body .btn:hover{

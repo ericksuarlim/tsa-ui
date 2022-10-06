@@ -10,6 +10,8 @@ import { ServicioAutenticacionService } from 'src/app/servicios/servicio-autenti
 })
 export class ModalEnvioCodigoComponent implements OnInit {
   nombre_usuario:string;
+  exito:boolean= true;
+  textoMensajeRespuesta: string = '';
   validacion= {
     nombre_usuario: true,
   }
@@ -41,17 +43,23 @@ export class ModalEnvioCodigoComponent implements OnInit {
        nombre_usuario: this.nombre_usuario
       }
       this.autenticacionService.SolicitudRestablecerPassword(datos).subscribe((resultado)=>{
-        if(resultado.isOperational===true){
-          this.activeModal.close(); 
+        if(resultado.status == "queued"){
+          this.exito = true;
+          this.textoMensajeRespuesta = "Exito! revise el mensaje de texto en su celular"
         }
         else
         {
-          this.validacion.nombre_usuario = false;
-          this.mensajeErrorValidacion.nombre_usuario = resultado.description
+          console.log("Error con Twilio, comunicate con tu superior!",resultado.status);
+          this.exito = false;
+          this.textoMensajeRespuesta = `Error, comunicate con tu superior! ${resultado.moreInfo}`;
         }
       })
 
     }
+  }
+
+  Cerrar(){
+    this.activeModal.close(); 
   }
 
 }
