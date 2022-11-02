@@ -68,7 +68,7 @@ export class FormularioReservasComponent implements OnInit {
     if(this.reserva.cantidad === null  || (action=="registrar" && this.reserva.cantidad == undefined)){this.mensajeErrorValidacion.cantidad="Cantidad necesaria"; this.validacion.cantidad = false}else if(this.reserva.cantidad===0){this.mensajeErrorValidacion.cantidad="Cantidad invalida"; this.validacion.cantidad = false}else if(this.reserva.cantidad>8){this.mensajeErrorValidacion.cantidad="Cantidad maxima 8"; this.validacion.cantidad = false}else{this.validacion.cantidad =true}
     if((this.reserva.id_viaje === null && this.viajesFiltrados?.length>0) || (action=="registrar" && this.reserva.id_viaje == undefined && this.viajesFiltrados?.length>0)){this.mensajeErrorValidacion.viaje="Se debe de seleccionar un viaje"; this.validacion.id_viaje = false}else{this.validacion.id_viaje =true}
     if(this.reserva.nombre_completo_reserva === "" || (action=="registrar" && this.reserva.nombre_completo_reserva == undefined)){this.mensajeErrorValidacion.nombre_completo_reserva="Nombre de referencia necesario"; this.validacion.nombre_completo_reserva = false}else{this.validacion.nombre_completo_reserva =true}
-    if(this.reserva.celular === null || (action=="registrar" && this.reserva.celular == undefined)){this.mensajeErrorValidacion.celular="Celular necesario"; this.validacion.celular = false}else if(this.reserva.celular<0){this.mensajeErrorValidacion.celular="Celular invalido";this.validacion.celular=false}else{this.validacion.celular =true}
+    if(this.reserva.celular === null || ( action=="registrar" && this.reserva.celular == undefined)){this.mensajeErrorValidacion.celular="Celular necesario"; this.validacion.celular = false}else if(this.reserva.celular<0){this.mensajeErrorValidacion.celular="Celular invalido";this.validacion.celular=false}else{this.validacion.celular =true}
     if((this.reserva.id_sindicato === null && this.viajesFiltrados?.length===0) || (action=="registrar" && this.reserva.id_sindicato == undefined && this.viajesFiltrados?.length===0)){this.mensajeErrorValidacion.id_sindicato="Sindicato necesario"; this.validacion.id_sindicato = false}else{this.validacion.id_sindicato =true}
 
     const response = this.validacion.fecha && this.validacion.cantidad && this.validacion.nombre_completo_reserva &&
@@ -94,9 +94,11 @@ export class FormularioReservasComponent implements OnInit {
         reservaEnviar.id_viaje = null;
       }
       else{ 
+
         reservaEnviar.id_sindicato = null;
         reservaEnviar.id_viaje = this.reserva.id_viaje;
       }
+
       reservaEnviar.nombre_completo_reserva = this.reserva.nombre_completo_reserva;
       reservaEnviar.celular = this.reserva.celular;
       reservaEnviar.estado = "Pendiente";

@@ -12,7 +12,7 @@
       <div [ngClass]="ValidarVista()?'col-sm-4 col-md-3' : 'col-sm-4'">
         <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
           <option disabled selected value="undefined">Buscar por</option>
-          <option>Nombre Cliente</option>
+          <option>Nombre Conductor</option>
           <option>Fecha</option>
         </select>   
       </div>

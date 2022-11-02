@@ -13,6 +13,12 @@ const httpOptions = {
   })
 }
 
+const httpOptionsB = {
+  headers : new HttpHeaders({
+    'Content-Type':'application/json',
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +35,7 @@ export class ServicioReservasService {
   }  
 
   CrearReserva(reserva:Reserva):Observable<Reserva>{
-    return this.http.post<any>(this.baseUrl, reserva, httpOptions);
+    return this.http.post<any>(this.baseUrl, reserva, httpOptionsB);
   }
 
   ObtenerReserva(id_reserva:number):Observable<Reserva>{
