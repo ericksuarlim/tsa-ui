@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <h5 for="celular" class="input-operation-section-title">Celular</h5>
-                            <input type="text" name="celular" class="input-search form-control input-operation-section" [(ngModel)]="reserva.celular" (ngModelChange)="ValidarReserva('verificar')" >
+                            <input type="number" name="celular" class="input-search form-control input-operation-section" [(ngModel)]="reserva.celular" (ngModelChange)="ValidarReserva('verificar')" >
                             <div *ngIf="!validacion.celular" class="text-danger">{{mensajeErrorValidacion.celular}}</div>  
                         </div>
 

@@ -94,8 +94,8 @@ export class FormularioEncomiendasComponent implements OnInit {
   }
 
   sendViaWhatsApp(encomiendaNueva:Encomienda) { 
-    const urlRecibo = `${environment.urlApi}/encomiendas/recibo/${encomiendaNueva.id_encomienda}`;
-    const urlSeguimiento = `${environment.urlApi}/encomiendas/seguimiento/${encomiendaNueva.id_encomienda}`;
+    const urlRecibo = `https://terminalmovima.com/encomiendas/recibo/${encomiendaNueva.id_encomienda}`;
+    const urlSeguimiento = `https://terminalmovima.com/encomiendas/seguimiento/${encomiendaNueva.id_encomienda}`;
     const message = `Usted deposito una encomienda${(encomiendaNueva.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : " en el sindicato: "+encomiendaNueva.viaje?.conductore?.sindicato?.nombre}.%0A%0AUsted puede obtener su recibo digital en el siguiente enlace:%0A${urlRecibo}%0A%0AUsted tambien puede realizar un seguimiento a su encomienda a traves del siguiente enlace:%0A${urlSeguimiento}%0A%0ATenga cuidado de no compartir los enlaces, muchas gracias por su preferencia!`;
     const phoneNumber = `591${this.encomienda.celular_cliente}`; 
     const messageText = message.split(' ').join('%20');
