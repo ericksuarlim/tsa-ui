@@ -13,6 +13,12 @@ const httpOptions = {
   })
 }
 
+const httpOptionsB = {
+  headers : new HttpHeaders({
+    'Content-Type':'application/json',
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +41,7 @@ export class ServicioPasajesService {
   }
 
   ObtenerPasaje(id_pasaje:number):Observable<Pasaje>{
-    return this.http.get<Pasaje>(this.baseUrl+"/"+id_pasaje, httpOptions);
+    return this.http.get<Pasaje>(this.baseUrl+"/"+id_pasaje, httpOptionsB);
   }
     
   EditarPasaje(pasaje:Pasaje):Observable<any>{

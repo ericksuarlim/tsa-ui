@@ -30,9 +30,6 @@ export class PasajeIndividualComponent implements OnInit {
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe(pasaje=>{
       this.pasaje=pasaje;
-      if(this.sindicatoCargado!=this.sindicatoUsuario || this.pasaje.viaje.conductore.id_sindicato != this.sindicatoUsuario){
-        this.router.navigate(['/']);
-      }
     });
   }
 
