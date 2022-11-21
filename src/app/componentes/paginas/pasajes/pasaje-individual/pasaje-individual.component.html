@@ -86,7 +86,7 @@
     </div>
     <div class="row sections-buttons">
         <div class="text-center"><button class="btn button-cancelar" (click)="Cancelar()">Atras</button></div>
-        <div class="text-center"><button class="btn button-editar" (click)="Editar(pasaje.id_pasaje,pasaje.id_viaje)">Editar</button></div>
+        <div *ngIf="ValidarVista()" class="text-center"><button class="btn button-editar" (click)="Editar(pasaje.id_pasaje,pasaje.id_viaje)">Editar</button></div>
         <div class="text-center"><button class="btn button-imprimir" (click)="Imprimir()">Imprimir</button></div>
         <div class="text-center"><button class="btn button-descargar" (click)="ExportarPDF()">Descargar PDF</button></div>
     </div>

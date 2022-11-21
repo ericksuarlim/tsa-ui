@@ -60,4 +60,8 @@ export class PasajeIndividualComponent implements OnInit {
     this.router.navigate(["/pasajes/formulario"], { queryParams: { id_pasaje, id_viaje } });
   }
 
+  ValidarVista(){
+    return this.sindicatoUsuario==null;  
+  }
+
 }

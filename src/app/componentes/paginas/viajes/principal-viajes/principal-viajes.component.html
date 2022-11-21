@@ -17,7 +17,7 @@
         </select>   
       </div>
 
-      <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Cliente'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+      <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Conductor'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
           <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
       </div>
       <div *ngIf="parametroBusqueda==='Fecha'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">

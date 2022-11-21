@@ -44,7 +44,7 @@ export class PrincipalViajesComponent implements OnInit {
     }
     else
     {
-      this.servicioViajes.ObtenerViajes().subscribe(viajes =>{this.viajes= viajes;this.viajesFiltrados = this.viajes;});
+      this.servicioViajes.ObtenerViajes().subscribe(viajes =>{this.viajes= viajes.filter(v=>v.origen!=null);this.viajesFiltrados = this.viajes.filter(v=>v.origen!=null);});
     }
   }
 
