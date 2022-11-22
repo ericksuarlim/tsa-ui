@@ -38,7 +38,7 @@
                     <th class="text-center" scope="col">Ubicacion</th>
                     <th class="text-center" scope="col">Hora Salida</th>
                     <th class="text-center" scope="col">Hora Llegada</th>
-                    <th class="text-center" scope="col">Disponibilidad</th>
+                    <th class="text-center" scope="col">Sindicato</th>
                     <th class="text-center" scope="col">Origen</th>
                     <th class="text-center" scope="col">Destino</th>
                     <th scope="col"></th>
@@ -51,7 +51,7 @@
                     <td class="text-center">{{viaje.ubicacion}}</td>
                     <td class="text-center">{{viaje.hora_salida}}</td>
                     <td class="text-center">{{viaje.hora_llegada}}</td>
-                    <td class="text-center">{{viaje.disponibilidad}}</td>
+                    <td class="text-center">{{viaje.conductore?.sindicato.nombre}}</td>
                     <td class="text-center">{{viaje.origen}}</td>
                     <td class="text-center">{{viaje.destino}}</td>
                     <td ><a class="btn btn-table btn-detalles" (click)="ValidarVista()? opcionesViaje(viaje) : VerViaje(viaje.id_viaje)">{{ValidarVista() ? 'Opciones' : 'Ver'}}</a></td>
