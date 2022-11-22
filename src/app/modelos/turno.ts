@@ -60,6 +60,12 @@ export class Turno{
             id_auto_2: string,
             id_sindicato:number,
             nombre: string,
+            sindicato: {
+                id_sindicato: number;
+                nombre: string;
+                estado: boolean;
+                ciudad: string;
+            };
         };
         turno:{
             fecha: Date,

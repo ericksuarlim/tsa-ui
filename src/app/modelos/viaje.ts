@@ -44,17 +44,23 @@ export class Viaje{
         comentario: string;
     };
     conductore: {
-        activo: boolean,
-        apellido_materno: string,
-        apellido_paterno: string,
-        carnet: number,
-        ciudad: string,
-        fecha_nacimiento: Date,
-        grupo: string,
-        id_auto_1: string,
-        id_auto_2: string,
-        id_sindicato:number,
-        nombre: string,
+        activo: boolean;
+        apellido_materno: string;
+        apellido_paterno: string;
+        carnet: number;
+        ciudad: string;
+        fecha_nacimiento: Date;
+        grupo: string;
+        id_auto_1: string;
+        id_auto_2: string;
+        id_sindicato:number;
+        nombre: string;
+        sindicato: {
+            id_sindicato: number;
+            nombre: string;
+            estado: boolean;
+            ciudad: string;
+        };
     };
     turno:{
         fecha: Date,
