@@ -61,7 +61,7 @@ export class FormularioReservasComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = localStorage.getItem('nombre_usuario');
-    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+    this.http.get("https://api.ipify.org/?format=json").subscribe((res:any)=>{
       this.ipAddress = res.ip
       this.reservaService.ValidarReservasIp(res.ip).subscribe((resp)=>{
         if(this.usuario===null && !resp){
