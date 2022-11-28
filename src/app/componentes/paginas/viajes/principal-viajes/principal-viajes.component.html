@@ -13,15 +13,20 @@
         <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
           <option disabled selected value="undefined">Buscar por</option>
           <option>Nombre Conductor</option>
+          <option>Ubicacion</option>
           <option>Fecha</option>
         </select>   
       </div>
 
       <div *ngIf="parametroBusqueda===undefined || parametroBusqueda==='Nombre Conductor'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
-          <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+        <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
       </div>
       <div *ngIf="parametroBusqueda==='Fecha'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
         <input type="date" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+      </div>
+
+      <div *ngIf="parametroBusqueda==='Ubicacion'" [ngClass]="ValidarVista()?'col-sm-8 col-md-7' : 'col-sm-8'">
+        <input type="text" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Santa Ana">
       </div>
       
       <div *ngIf="ValidarVista()" class="col-sm-12 col-md-2 btn-new">

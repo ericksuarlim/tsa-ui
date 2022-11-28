@@ -70,4 +70,8 @@ export class DetalleViajeComponent implements OnInit {
   ValidarVista(){
     return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado && this.permisoBotones;  
   }
+
+  ValidarPrivacidad(){
+    return this.usuario!=null;
+  }
 }

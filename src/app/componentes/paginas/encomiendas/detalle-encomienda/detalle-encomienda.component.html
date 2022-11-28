@@ -11,6 +11,14 @@
     </div>
     <div class="row columna-container">
         <div class="col">
+            <div class="row" *ngIf="!ValidarPrivacidad()">
+                <div class="col-12">
+                    <p for="validacion_privacidad" class="input-title">Para ver todos los datos ingrese codigo de encomienda</p>
+                </div>
+                <div class="col-12 col-sm-4 input-codigo-encomiendas">
+                    <input type="number"  name="validacion_privacidad" class="form-control" [(ngModel)]="codigo_privacidad" (ngModelChange)="ValidarPrivacidad()" placeholder="Ej. 10">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <div class="col-12">
@@ -35,47 +43,45 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-6">
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <p><strong>Conductor:</strong> {{encomienda.viaje?.conductore?.nombre}} {{encomienda.viaje?.conductore?.apellido_paterno}}</p>                
                     </div>
-                    <div class="col-12">
-                        <p><strong>Origen:</strong> {{encomienda.viaje?.origen}}</p>                
-                    </div>
-                    <div class="col-12">
-                        <p><strong>Destino:</strong> {{encomienda.viaje?.destino}}</p>                
-                    </div>
-                    <div class="col-12">
-                        <p><strong>Hora Salida:</strong> {{encomienda.viaje?.hora_salida}}</p>                
-                    </div>
-                    <div class="col-12">
-                        <p><strong>Hora Llegada:</strong> {{encomienda.viaje?.hora_llegada}}</p>                
-                    </div>
-                </div>
-                
-                <div class="col-12 col-sm-6">
-                    <div class="col-12">
-                        <p><strong>Cliente:</strong> {{encomienda.nombre_cliente}}</p>        
-                    </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <p><strong>Sindicato:</strong> {{encomienda.viaje?.conductore?.sindicato.nombre}}</p>                              
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
+                        <p><strong>Origen:</strong> {{encomienda.viaje?.origen}}</p>                
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <p><strong>Destino:</strong> {{encomienda.viaje?.destino}}</p>                
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <p><strong>Hora Salida:</strong> {{encomienda.viaje?.hora_salida}}</p>                
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <p><strong>Hora Llegada:</strong> {{encomienda.viaje?.hora_llegada}}</p>                
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <p><strong>Pagada:</strong> {{encomienda.pagada===true? "Pagada" : "Por pagar"}}</p>           
+                    </div> 
+                    <div class="col-12 col-sm-6">
+                        <p><strong>Cantidad Bultos:</strong> {{encomienda.cantidad_bultos}}</p>                
+                    </div>
+                    <div *ngIf="ValidarPrivacidad()" class="col-12 col-sm-6">
+                        <p><strong>Cliente:</strong> {{encomienda.nombre_cliente}}</p>        
+                    </div>
+                    <div *ngIf="ValidarPrivacidad()" class="col-12 col-sm-6">
                         <p><strong>Celular:</strong> {{encomienda.celular_cliente}}</p>         
                     </div>  
-                    <div class="col-12">
+                    <div *ngIf="ValidarPrivacidad()" class="col-12 col-sm-6">
                         <p><strong>Monto Pago:</strong> {{encomienda.monto_pago}}</p>           
                     </div>
-                    <div class="col-12">
-                        <p><strong>Pagada:</strong> {{encomienda.pagada===true? "Pagada" : "Por pagar"}}</p>           
-                    </div>   
-                </div>
-                <div class="col-12">
-                    <div class="col-12">
+                    <div *ngIf="ValidarPrivacidad()" class="col-12 col-sm-6">
+                        <p><strong>Codigo Encomienda:</strong> {{encomienda.codigo_encomienda}}</p>                
+                    </div> 
+                    <div *ngIf="ValidarPrivacidad()" class="col-12">
                         <p><strong>Detalle:</strong> {{encomienda.detalle}}</p>        
                     </div>
-                </div>
-            
             </div>
             <div class="row sections-buttons">
                 <div class="text-center"><button class="btn button-atras" (click)="Atras()">Atras</button></div>

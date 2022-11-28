@@ -49,4 +49,8 @@ export class ServicioReservasService {
   EliminarReserva(id_reserva:number):Observable<any>{
     return this.http.delete<any>(this.baseUrl + "/" + id_reserva, httpOptions)
   }
+
+  ValidarReservasIp(ip_usuario:string): Observable<boolean>{
+    return this.http.get<boolean>(`${this.baseUrl}/cantidad/${ip_usuario}`);
+  }  
 }

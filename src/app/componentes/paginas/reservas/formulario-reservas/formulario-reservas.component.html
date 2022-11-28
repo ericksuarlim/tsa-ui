@@ -10,7 +10,7 @@
     <div class="row details-formulario-row-top">
         <div class="col-sm-12">
             <form class="formulario-reservas" name="FormularioReservas">
-                <div class="col ">
+                <div *ngIf="reservasAdmitidas" class="col">
                     <div class="row top-section">
                         <div class="col-sm-12 col-md-6">
                             <h5 for="fecha" class="input-operation-section-title">Fecha</h5>
@@ -100,6 +100,13 @@
                         </div>
                     </div>  
                 </div> 
+                <div *ngIf="!reservasAdmitidas" class="col">
+                        <p class="title-limit">¡Límite de reservas excedido!</p>
+                        <p class="body-limit">Esta dirección de dispositivo llego al límite diario de 10 reservas permitidas. Para mayor información contactar a la terminal de buses o al sindicato correspondiente.</p>
+                </div>
+                <div *ngIf="!reservasAdmitidas" class="col-sm-12 section-bottons">
+                    <button class="btn button-cancelar" (click)="Cancelar()">Cancelar</button>
+                </div>
             </form>
         </div>
     </div>

@@ -47,7 +47,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
 import { BnNgIdleService } from 'bn-ng-idle';
 import { SindicatoPrincipalComponent } from './componentes/paginas/sindicatos/sindicato-principal/sindicato-principal.component';
 import { FormularioSindicatoComponent } from './componentes/paginas/sindicatos/formulario-sindicato/formulario-sindicato.component';
-import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/habilitar-sindicato/habilitar-sindicato.component'; 
+import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/habilitar-sindicato/habilitar-sindicato.component';
+import { ModalCodigoReservaComponent } from './componentes/modals/modal-codigo-reserva/modal-codigo-reserva.component'; 
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { HabilitarSindicatoComponent } from './componentes/paginas/sindicatos/ha
     SindicatoPrincipalComponent,
     FormularioSindicatoComponent,
     HabilitarSindicatoComponent,
+    ModalCodigoReservaComponent,
   ],
   imports: [
     BrowserModule,

@@ -54,7 +54,7 @@ export class PrincipalReservasComponent implements OnInit {
       this.reservasFiltradas = this.reservas.filter((reserva: Reserva) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(String(reserva.fecha).includes(palabra) || String(reserva.nombre_completo_reserva.toLowerCase()).includes(palabra))
+            if(String(reserva.fecha).includes(palabra) || String(reserva.nombre_completo_reserva.toLowerCase()).includes(palabra) || String(reserva.id_reserva).includes(palabra))
             {
                 encontrado = true;
             }
@@ -66,6 +66,9 @@ export class PrincipalReservasComponent implements OnInit {
         this.reservasFiltradas = this.reservas;
       }
     }
+    else{
+      this.reservasFiltradas = this.reservas;
+    }
   }
 
   OpcionesReserva(reserva: Reserva){
@@ -76,6 +79,10 @@ export class PrincipalReservasComponent implements OnInit {
 
   ValidarVista(){
     return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===Number(this.sindicatoCargado);
+  }
+
+  ValidadPrivacidad(){
+    return this.usuario!=null;
   }
 
 }

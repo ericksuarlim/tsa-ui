@@ -1,0 +1,26 @@
+.modal-header {
+    border: none;
+    justify-content: center;
+    text-transform: uppercase;
+    padding-bottom: 0px;
+    font-style: bold;
+}
+
+.btn-cerrar{
+    background: #ffffff;
+    border: 1px solid #FB9130;    
+}
+
+.advice-body{
+    color: #989898;
+    text-align: center;
+}
+
+.btn-guardar{
+    background: #FB9130;
+    color: #ffffff;
+}
+
+.btn{
+    border-radius: 100px;
+}

@@ -8,6 +8,7 @@ export class Encomienda{
     celular_cliente: number;
     cantidad_bultos: number;
     detalle: string;
+    codigo_encomienda: number;
     viaje: {
         id_viaje: number;
         id_carnet_conductor: number;

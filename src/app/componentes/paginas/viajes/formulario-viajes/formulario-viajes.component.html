@@ -36,12 +36,18 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <h1 for="origen" class="input-title">Origen</h1>
-                            <input type="text"  name="origen" class="input-form-viajes form-control" [(ngModel)]="viaje.origen" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <input [ngModelOptions]="{standalone: true}" list="id-origen"  class="input-form-viajes form-control"  [(ngModel)]="viaje.origen" (ngModelChange)="ValidarCampos('verificar')">
+                            <datalist id="id-origen">
+                                <option *ngFor="let ciudad of ciudades" >{{ciudad}}</option>
+                            </datalist>
                             <div *ngIf="!validacion.origen" class="text-danger">{{mensajeErrorValidacion.origen}}</div>                             
                         </div>
                         <div class="col-12 col-md-3">
                             <h1 for="destino" class="input-title">Destino</h1>
-                            <input type="text"  name="destino" class="input-form-viajes form-control" [(ngModel)]="viaje.destino" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <input [ngModelOptions]="{standalone: true}" list="id-destino"  class="input-form-viajes form-control"  [(ngModel)]="viaje.destino" (ngModelChange)="ValidarCampos('verificar')">
+                            <datalist id="id-destino">
+                                <option *ngFor="let ciudad of ciudades" >{{ciudad}}</option>
+                            </datalist>
                             <div *ngIf="!validacion.destino" class="text-danger">{{mensajeErrorValidacion.destino}}</div>                             
                         </div>
                     </div>
