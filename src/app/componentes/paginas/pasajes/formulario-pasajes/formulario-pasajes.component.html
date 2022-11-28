@@ -29,7 +29,11 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <h1 for="asiento" class="input-title">Asiento</h1>
-                            <input type="text"  name="asiento" class="input-form-pasajes form-control" [(ngModel)]="pasaje.asiento" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                            <!-- <input type="text"  name="asiento" class="input-form-pasajes form-control" [(ngModel)]="pasaje.asiento" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required> -->
+                            <select [ngModelOptions]="{standalone: true}"class="form-control"  [(ngModel)]="pasaje.asiento" (ngModelChange)="ValidarCampos('verificar')" placeholder="Requerido" value required>
+                                <option selected disabled value=''>Seleccionar Asiento</option>
+                                <option *ngFor="let numero of numerosAsientos" [value]="numero" [disabled]="DesabilitarAsientos(numero)">{{numero}}</option>
+                            </select> 
                             <div *ngIf="!validacion.asiento" class="text-danger">{{mensajeErrorValidacion.asiento}}</div>   
                         </div>
                         <div class="col-12 col-md-4">

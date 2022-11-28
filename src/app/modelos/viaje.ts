@@ -20,7 +20,7 @@ export class Viaje{
         carnet_pasajero : number;
         id_pasaje : number;
         id_viaje : number;
-    };
+    }[];
     encomiendas: {
         id_encomienda : number;
         id_viaje : number;
@@ -31,6 +31,7 @@ export class Viaje{
         celular_cliente: number;
         cantidad_bultos: number;
         detalle: string;
+        codigo_encomienda: number;
     };
     reservas:{
         id_reserva: number;
@@ -42,6 +43,8 @@ export class Viaje{
         estado: string;
         cantidad: number;
         comentario: string;
+        codigo_reserva: number;
+        ip_reserva: string;
     };
     conductore: {
         activo: boolean;

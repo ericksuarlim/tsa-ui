@@ -62,7 +62,7 @@
                     </div>  
                 </div>
             </div>
-            <div class="row">
+            <div *ngIf="ValidarPrivacidad()" class="row">
                 <div class="col-12 text-center">
                     <h1 class="title-table"><strong>Pasajes</strong></h1>
                 </div>
@@ -99,7 +99,7 @@
                         <thead class="thead-pasajes">
                           <tr>
                             <th scope="col" class="text-center">Cod. Encomienda</th>
-                            <th scope="col" class="text-center">Cliente</th>
+                            <th *ngIf="ValidarPrivacidad()" scope="col" class="text-center">Cliente</th>
                             <th scope="col" class="text-center">Pagada</th>
                             <th scope="col" class="text-center">Bultos</th>
                             <th *ngIf="ValidarVista()" scope="col"></th>
@@ -108,7 +108,7 @@
                         <tbody *ngFor="let encomienda of viaje.encomiendas">
                           <tr>
                             <th scope="row" class="text-center">{{encomienda.id_encomienda}}</th>
-                            <td class="text-center">{{encomienda.nombre_cliente}}</td>
+                            <td *ngIf="ValidarPrivacidad()" class="text-center">{{encomienda.nombre_cliente}}</td>
                             <td class="text-center" [ngClass]="{'p-aporte-deuda': encomienda.pagada === false}">{{encomienda.pagada===true? "Pagada" : "Por pagar"}}</td>
                             <td class="text-center">{{encomienda.cantidad_bultos}}</td>
                             <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="VerEncomienda(encomienda.id_encomienda)">Ver</a></td>
@@ -127,7 +127,7 @@
                         <thead class="thead-pasajes">
                           <tr>
                             <th scope="col" class="text-center">Cod. Reserva</th>
-                            <th scope="col" class="text-center">Cliente</th>
+                            <th *ngIf="ValidarPrivacidad()" scope="col" class="text-center">Cliente</th>
                             <th scope="col" class="text-center">Cantidad</th>
                             <th scope="col" class="text-center">Estado</th>
                             <th *ngIf="ValidarVista()" scope="col"></th>
@@ -136,7 +136,7 @@
                         <tbody *ngFor="let reserva of viaje.reservas">
                           <tr>
                             <th scope="row" class="text-center">{{reserva.id_reserva}}</th>
-                            <td class="text-center">{{reserva.nombre_completo_reserva}}</td>
+                            <td *ngIf="ValidarPrivacidad()" class="text-center">{{reserva.nombre_completo_reserva}}</td>
                             <td class="text-center">{{reserva.cantidad}}</td>
                             <td class="text-center">{{reserva.estado}}</td>
                             <td *ngIf="ValidarVista()"><a class="btn btn-table btn-detalles" (click)="OpcionesReserva(reserva.id_reserva)">Ver</a></td>

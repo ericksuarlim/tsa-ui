@@ -13,6 +13,16 @@
     background-color: #EDEDED;
 }
 
+.input-codigo-reservas{
+    margin: 2px auto 20px auto;
+}
+
+.input-title{
+    margin-bottom: 3px;
+    font-size: 1em;
+    text-align: center;
+}
+
 .modal-content{
     border: none;
 }
@@ -25,6 +35,7 @@
     border: none;
     justify-content: center;
     text-transform: uppercase;
+    padding-bottom: 0px;
 }
 .modal-body {
     border: none;

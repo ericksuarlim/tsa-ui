@@ -24,6 +24,8 @@ export class ModalOpcionesReservasComponent implements OnInit {
   sindicatoUsuario: number;
   sindicatoCargado: number;
   estadoPasado: string;
+  codigo_privacidad: number;
+  esPrivado: boolean;
 
   validacion= {
     estado: true,
@@ -104,6 +106,10 @@ export class ModalOpcionesReservasComponent implements OnInit {
 
   ValidarVista(){
     return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===this.sindicatoCargado;
+  }
+
+  ValidarPrivacidad(){
+    return this.usuario!=null || (this.usuario===null && this.codigo_privacidad===this.reserva.codigo_reserva)
   }
 
 }

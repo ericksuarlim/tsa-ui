@@ -54,7 +54,7 @@ export class PrincipalEncomiendasComponent implements OnInit {
       this.encomiendasFiltradas = this.encomiendas.filter((encomienda: Encomienda) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(String(encomienda.viaje.fecha).includes(palabra) || String(encomienda.nombre_cliente.toLowerCase()).includes(palabra))
+            if(String(encomienda.viaje.fecha).includes(palabra) || String(encomienda.nombre_cliente.toLowerCase()).includes(palabra) || String(encomienda.id_encomienda).includes(palabra))
             {
               encontrado = true;
             }
@@ -62,10 +62,14 @@ export class PrincipalEncomiendasComponent implements OnInit {
           return encontrado;
         }
       );
-      if(this.encomiendasFiltradas.length===0){
+      if(this.encomiendasFiltradas.length!=1){
         this.encomiendasFiltradas = this.encomiendas;
       }
-    }   
+    }
+    else{
+      this.encomiendasFiltradas = this.encomiendas;
+    }
+
   }
 
   VerEncomienda(id_encomienda: number){
@@ -78,6 +82,10 @@ export class PrincipalEncomiendasComponent implements OnInit {
 
   ValidarVista(){
     return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===Number(this.sindicatoCargado);
+  }
+
+  ValidadPrivacidad(){
+    return this.usuario!=null;
   }
 
 }

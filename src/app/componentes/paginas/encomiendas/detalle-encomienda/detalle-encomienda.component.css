@@ -80,6 +80,15 @@
     color: rgb(100, 100, 100);
 }
 
+.input-title{
+    margin-bottom: 3px;
+    font-size: 0.75em;
+}
+
+.input-codigo-encomiendas{
+    margin: 2px auto 10px auto;
+}
+
 .columna-container strong{
     color: #212529;
 }

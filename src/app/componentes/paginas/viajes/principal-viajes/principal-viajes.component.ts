@@ -54,7 +54,7 @@ export class PrincipalViajesComponent implements OnInit {
       this.viajesFiltrados = this.viajes.filter((viaje: Viaje) => {
           let encontrado = false;
           palabras.forEach(palabra => {
-            if(String(viaje.fecha).includes(palabra) || String(viaje.conductore.nombre.toLowerCase()).includes(palabra))
+            if(String(viaje.fecha).includes(palabra) || String(viaje.conductore.nombre.toLowerCase()).includes(palabra) || String(viaje.origen.toLowerCase()).includes(palabra))
             {
               encontrado = true;
             }

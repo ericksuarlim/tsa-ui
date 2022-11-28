@@ -18,6 +18,8 @@ export class DetalleEncomiendaComponent implements OnInit {
   sindicatoCargado: number;
   usuario: string;
   sindicatoUsuario: number;
+  codigo_privacidad: number;
+  esPrivado: boolean;
 
   constructor(
     private servicioEncomiendas:ServicioEncomiendasService,
@@ -52,6 +54,10 @@ export class DetalleEncomiendaComponent implements OnInit {
 
   ValidarVista(){
     return this.usuario!=null && !this.esGeneral && this.sindicatoUsuario===Number(this.sindicatoCargado) && this.permisoBotones;  
+  }
+
+  ValidarPrivacidad(){
+    return this.usuario!=null || (this.usuario===null && this.codigo_privacidad===this.encomienda.codigo_encomienda)
   }
 
 }

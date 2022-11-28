@@ -8,6 +8,9 @@ import { ServicioReservasService } from 'src/app/servicios/servicio-reservas.ser
 import { ServicioSindicatosService } from 'src/app/servicios/servicio-sindicatos.service';
 import { ServicioViajesService } from 'src/app/servicios/servicio-viajes.service';
 import {Location} from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalCodigoReservaComponent } from 'src/app/componentes/modals/modal-codigo-reserva/modal-codigo-reserva.component';
 
 @Component({
   selector: 'app-formulario-reservas',
@@ -18,6 +21,10 @@ export class FormularioReservasComponent implements OnInit {
   reserva: Reserva  = new Reserva();
   viajes: Viaje[];
   viajesFiltrados: Viaje[];
+  ipAddress: string;
+  usuarioAdmitido: boolean;
+  reservasAdmitidas: boolean = true;
+  usuario: string;
 
   sindicatos: Sindicato[];
   reservaNueva: boolean = true;
@@ -45,17 +52,32 @@ export class FormularioReservasComponent implements OnInit {
     private reservaService:ServicioReservasService,
     private router: Router,
     private route: ActivatedRoute,
-    private _location: Location
-  ){ }
+    private _location: Location,
+    private http:HttpClient,
+    public modalService: NgbModal,
 
-  ngOnInit(): void {
-    this.viajesService.ObtenerViajes().subscribe(viajes=>{
-      this.viajes = viajes
-      this.viajesFiltrados = viajes.filter((v:Viaje)=>{return (moment(v.fecha).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD'))});
-    })
-    this.reserva.fecha = new Date();
-    this.sindicatosServices.ObtenerSindicatos().subscribe(sindicatos=>{this.sindicatos = sindicatos})
-    
+  ){ 
+  }
+
+  ngOnInit() {
+    this.usuario = localStorage.getItem('nombre_usuario');
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+      this.ipAddress = res.ip
+      this.reservaService.ValidarReservasIp(res.ip).subscribe((resp)=>{
+        if(this.usuario===null && !resp){
+          this.reservasAdmitidas = false;
+        }
+        else{
+          this.reservasAdmitidas = true;
+          this.viajesService.ObtenerViajes().subscribe(viajes=>{
+            this.viajes = viajes
+            this.viajesFiltrados = viajes.filter((v:Viaje)=>{return (moment(v.fecha).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD'))});
+          })
+          this.reserva.fecha = new Date();
+          this.sindicatosServices.ObtenerSindicatos().subscribe(sindicatos=>{this.sindicatos = sindicatos})
+        }
+      });
+    });
   }
 
   FiltrarViajes(name:string){
@@ -102,7 +124,10 @@ export class FormularioReservasComponent implements OnInit {
       reservaEnviar.nombre_completo_reserva = this.reserva.nombre_completo_reserva;
       reservaEnviar.celular = this.reserva.celular;
       reservaEnviar.estado = "Pendiente";
+      reservaEnviar.codigo_reserva = Math.floor(Math.random() * 100000) + 1;
+      reservaEnviar.ip_reserva = this.ipAddress;
       this.reservaService.CrearReserva(reservaEnviar).subscribe(result=>{
+        this.MostrarCodigoReserva(result)
         this.router.navigate([`/reservas`])
       });
     } 
@@ -112,4 +137,9 @@ export class FormularioReservasComponent implements OnInit {
     this._location.back();
   }
 
+  MostrarCodigoReserva(reserva: Reserva){
+    let copiaReserva = {...reserva};
+    const modalRef = this.modalService.open(ModalCodigoReservaComponent, {backdrop: 'static' });
+    modalRef.componentInstance.reserva = copiaReserva;
+  }
 }

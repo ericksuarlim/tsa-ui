@@ -8,6 +8,8 @@ export class Reserva{
     estado: string;
     cantidad: number;
     comentario: string;
+    codigo_reserva: number;
+    ip_reserva: string;
     sindicato: {
         id_sindicato: number;
         nombre: string;

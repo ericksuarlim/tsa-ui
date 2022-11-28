@@ -86,6 +86,7 @@ export class FormularioEncomiendasComponent implements OnInit {
   CrearEncomienda(){
     if(this.ValidarCampos("registrar")){
       this.encomienda.id_viaje = this.viaje.id_viaje;
+      this.encomienda.codigo_encomienda = Math.floor(Math.random() * 100000) + 1;
       this.servicioEncomienda.CrearEncomienda(this.encomienda).subscribe(result=>{
         this.sendViaWhatsApp(result);
         this._location.back();
@@ -96,7 +97,7 @@ export class FormularioEncomiendasComponent implements OnInit {
   sendViaWhatsApp(encomiendaNueva:Encomienda) { 
     const urlRecibo = `https://terminalmovima.com/encomiendas/recibo/${encomiendaNueva.id_encomienda}`;
     const urlSeguimiento = `https://terminalmovima.com/encomiendas/seguimiento/${encomiendaNueva.id_encomienda}`;
-    const message = `Usted deposito una encomienda${(encomiendaNueva.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : " en el sindicato: "+encomiendaNueva.viaje?.conductore?.sindicato?.nombre}.%0A%0AUsted puede obtener su recibo digital en el siguiente enlace:%0A${urlRecibo}%0A%0AUsted tambien puede realizar un seguimiento a su encomienda a traves del siguiente enlace:%0A${urlSeguimiento}%0A%0ATenga cuidado de no compartir los enlaces, muchas gracias por su preferencia!`;
+    const message = `Usted deposito una encomienda${(encomiendaNueva.viaje?.conductore?.sindicato?.nombre=== undefined) ? '' : " en el sindicato: "+encomiendaNueva.viaje?.conductore?.sindicato?.nombre}.%0A%0AEl codigo privado de la reserva es:%0A${encomiendaNueva.codigo_encomienda}.%0A%0AUsted puede obtener su recibo digital en el siguiente enlace:%0A${urlRecibo}%0A%0AUsted tambien puede realizar un seguimiento a su encomienda a traves del siguiente enlace:%0A${urlSeguimiento}%0A%0ATenga cuidado de no compartir los enlaces, muchas gracias por su preferencia!`;
     const phoneNumber = `591${this.encomienda.celular_cliente}`; 
     const messageText = message.split(' ').join('%20');
     let finalUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + messageText ; 

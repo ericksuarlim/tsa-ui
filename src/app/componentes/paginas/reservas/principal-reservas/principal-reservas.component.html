@@ -13,6 +13,7 @@
         <select name="tipo_busqueda" [(ngModel)]="parametroBusqueda" (ngModelChange)="Filtrar()" (click)="cadenaBusqueda=''" class="form-control">
           <option disabled selected value="undefined">Buscar por</option>
           <option>Nombre Cliente</option>
+          <option>Identificador</option>
           <option>Fecha</option>
         </select>    
       </div>
@@ -23,6 +24,10 @@
 
       <div *ngIf="parametroBusqueda==='Fecha'"  class="col-sm-8 col-md-7">
         <input type="date" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. Ramiro Colque">
+      </div>
+
+      <div *ngIf="parametroBusqueda==='Identificador'" class="col-sm-8 col-md-7">
+        <input type="number" name="cadenaBusqueda" class="input-search form-control" [(ngModel)]="cadenaBusqueda" (ngModelChange)="Filtrar()" placeholder="Ej. 10">
       </div>
         
       <div class="col-sm-12 col-md-2 btn-new">
@@ -35,9 +40,9 @@
                 <thead class="thead-reservas">
                   <tr>
                     <th scope="col">Fec. Solicitada</th>
-                    <th scope="col">Cliente Referencia</th>
+                    <th scope="col">Identificador</th>
+                    <th scope="col" *ngIf="ValidadPrivacidad()">Cliente Referencia</th>
                     <th scope="col">Sindicato</th>
-                    <th scope="col">Cantidad</th>
                     <th scope="col">Estado</th>
                     <th scope="col"></th>
                   </tr>
@@ -45,9 +50,9 @@
                 <tbody *ngFor="let reserva of reservasFiltradas">
                   <tr>
                     <th scope="row">{{ reserva.fecha | date:'dd MMM yyyy':'+0200':'es-AR'}}</th>
-                    <td>{{reserva.nombre_completo_reserva}}</td>
+                    <td>{{reserva.id_reserva}}</td>
+                    <td *ngIf="ValidadPrivacidad()">{{reserva.nombre_completo_reserva}}</td>
                     <td>{{reserva.id_sindicato !=null ? reserva.sindicato?.nombre : reserva.viaje?.conductore.sindicato.nombre}}</td>
-                    <td class="text-center">{{reserva.cantidad}}</td>
                     <th  scope="row" [ngClass]="{'estado-aceptado': reserva.estado === 'Aceptado',
                     'estado-rechazado': reserva.estado === 'Rechazado', 
                     'estado-pendiente': reserva.estado === 'Pendiente'}">{{reserva.estado}}</th>

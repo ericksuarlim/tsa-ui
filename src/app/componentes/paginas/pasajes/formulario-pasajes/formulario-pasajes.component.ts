@@ -20,8 +20,10 @@ export class FormularioPasajesComponent implements OnInit {
     private route: ActivatedRoute,
     private viajesService:ServicioViajesService,
     private _location: Location
-  ) { }
+  ) {
+  }
 
+  numerosAsientos: number[];
   pasaje: Pasaje = new Pasaje();
   viaje: Viaje = new Viaje();
   pasajeNuevo: boolean = true;
@@ -51,7 +53,7 @@ export class FormularioPasajesComponent implements OnInit {
     this.pasajeNuevo = id_pasaje ==undefined;
     this.sindicatoUsuario = Number(localStorage.getItem('id_sindicato_usuario'));
     this.nombreSindicato = JSON.parse(localStorage.getItem("sindicatos"))[this.sindicatoUsuario-1].nombre;
-
+    
     if(!this.pasajeNuevo){
       this.servicioPasaje.ObtenerPasaje(id_pasaje).subscribe((pasaje)=>{
         if(pasaje.viaje?.conductore?.id_sindicato===this.sindicatoUsuario){
@@ -63,7 +65,12 @@ export class FormularioPasajesComponent implements OnInit {
         }  
       });
     }
-    this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{this.viaje=viaje})
+    this.viajesService.ObtenerViaje(id_viaje).subscribe(viaje=>{
+      this.viaje=viaje;
+      this.numerosAsientos = Array(this.viaje.disponibilidad+this.viaje.pasajes.length).fill(0).map((x,i)=>i+1);   
+    });
+
+
   }
 
   ValidarCampos(action: string){
@@ -72,7 +79,7 @@ export class FormularioPasajesComponent implements OnInit {
     if(this.pasaje.pagado === null || (action=="registrar" && this.pasaje.pagado == undefined)){this.mensajeErrorValidacion.pagado="Estado de pago necesario"; this.validacion.pagado = false}else{this.validacion.pagado =true}
     if(this.pasaje.precio === null || (action=="registrar" && this.pasaje.precio == undefined)){this.mensajeErrorValidacion.precio="Precio necesario"; this.validacion.precio = false}else if(this.pasaje.precio<0){this.mensajeErrorValidacion.precio="Cantidad invalidad"; this.validacion.precio = false}else{this.validacion.precio =true}
     if(this.pasaje.celular === null || (action=="registrar" && this.pasaje.celular == undefined)){this.mensajeErrorValidacion.celular="Celular necesario"; this.validacion.celular = false}else if(this.pasaje.celular<0){this.mensajeErrorValidacion.celular="Celular invalido";this.validacion.celular=false}else{this.validacion.celular =true}
-    if(this.pasaje.asiento === "" || (action=="registrar" && this.pasaje.asiento == undefined)){this.mensajeErrorValidacion.asiento="Asiento necesario"; this.validacion.asiento = false}else{this.validacion.asiento =true}
+    if(this.pasaje.asiento === null || (action=="registrar" && this.pasaje.asiento == undefined)){this.mensajeErrorValidacion.asiento="Asiento necesario"; this.validacion.asiento = false}else{this.validacion.asiento =true}
 
     const response = this.validacion.carnet_pasajero && this.validacion.nombre_completo && this.validacion.asiento && this.validacion.pagado && this.validacion.precio && this.validacion.celular;
     return response;
@@ -107,6 +114,10 @@ export class FormularioPasajesComponent implements OnInit {
 
   Cancelar(){
     this._location.back();
+  }
+
+  DesabilitarAsientos(asiento:number){
+    return this.viaje.pasajes.some(p=>Number(p.asiento)===asiento);
   }
 
 }

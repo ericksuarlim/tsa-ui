@@ -18,6 +18,7 @@ export class FormularioViajesComponent implements OnInit {
   viajeNuevo: boolean = true;
   conductores: Conductor[];
   sindicatoUsuario: number;
+  ciudades: string[] = ['Santa Ana', 'Trinidad', 'San Joaquin', 'San Ramon', 'Guayara', 'San Ingacio', 'Cayubaba', 'Peru', 'Magdalena']
 
 
   validacion= {

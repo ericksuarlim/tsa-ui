@@ -4,10 +4,18 @@
             <h2 class="modal-title">Reserva {{ reserva.id_reserva}}</h2>
         </div>
         <div class="modal-body">
+            <div class="row" *ngIf="!ValidarPrivacidad()">
+                <div class="col-12">
+                    <p for="validacion_privacidad" class="input-title">Para ver todos los datos ingrese codigo de reserva</p>
+                </div>
+                <div class="col-12 col-sm-4 input-codigo-reservas ">
+                    <input type="number" name="validacion_privacidad" class="form-control" [(ngModel)]="codigo_privacidad" (ngModelChange)="ValidarPrivacidad()" placeholder="Ej. 10">
+                </div>
+            </div>
             <div class="row">
                 <div  class="col-md-3">
                     <h5 class="modal-label-title">Nombre Referencia</h5>
-                    <label class="modal-label-data">{{reserva.nombre_completo_reserva}}</label>
+                    <label class="modal-label-data">{{ValidarPrivacidad()===true?reserva.nombre_completo_reserva:'No disponible'}}</label>
                 </div>
                 <div  class="col-md-3">
                     <h5 class="modal-label-title">Fecha Solicitada</h5>
@@ -86,7 +94,8 @@
             <div class="row">
                 <div  class="col-12">
                     <h5 class="modal-label-title">Comentario</h5>
-                    <input [disabled]="!ValidarVista() || estadoPasado!='Pendiente'"  type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
+                    <input *ngIf="ValidarPrivacidad()" [disabled]="!ValidarVista() || estadoPasado!='Pendiente'"  type="text" class="form-control input-comentario" [(ngModel)]="reserva.comentario">
+                    <textarea *ngIf="!ValidarPrivacidad()"  [disabled]="true" class="form-control input-comentario" placeholder="No disponible"></textarea>
                 </div>
             </div>
         </div>

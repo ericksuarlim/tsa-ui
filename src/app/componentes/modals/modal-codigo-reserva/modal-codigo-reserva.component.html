@@ -1,0 +1,13 @@
+<div id="codigo-reserva">
+    <div class="modal-header">
+        Codigo - Reserva Nro. {{reserva.id_reserva}}
+    </div>
+    <div class="modal-body" >
+        <p class="advice-body">Usted debe guardar el siguiente código, una vez cerrada esta ventana no tendrá acceso a este código</p>
+    <h3 class="text-center">{{reserva.codigo_reserva}}</h3> 
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-cerrar" (click)="Cerrar()">Cerrar</button>
+        <button type="button" class="btn btn-guardar" (click)="Guardar()">Guardar</button>
+    </div>
+</div>
